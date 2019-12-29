@@ -19,6 +19,14 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (Input.GetAxisRaw("Horizontal") == 1)
+        {
+            this.transform.localScale = new Vector3(0.5f, 0.51f, 0.5f);
+        }
+        else if(Input.GetAxisRaw("Horizontal") == -1)
+        {
+            this.transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
         moveVelocity = moveInput.normalized * speed;
     }
     private void FixedUpdate()

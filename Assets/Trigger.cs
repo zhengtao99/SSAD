@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Trigger : MonoBehaviour
 {
-    public static int Score = 0;
+    public int Score = 0;
 
     public Text txt;
     private void OnTriggerEnter2D(Collider2D other)
