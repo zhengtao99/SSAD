@@ -552,3 +552,4 @@ D:\GitHub\SSAD\Temp\bin\Debug\System.Transactions.dll
 D:\GitHub\SSAD\Temp\bin\Debug\System.Web.dll
 D:\GitHub\SSAD\Temp\bin\Debug\System.Windows.dll
 D:\GitHub\SSAD\Temp\bin\Debug\System.Xml.Serialization.dll
+D:\GitHub\SSAD\Temp\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
