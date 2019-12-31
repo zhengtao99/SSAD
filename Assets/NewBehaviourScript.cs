@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public delegate void PlayerDelegate(int value);
+    public static event PlayerDelegate OnPlayerDied;
 
     // Start is called before the first frame update
     private Rigidbody2D rb;
@@ -24,11 +26,11 @@ public class NewBehaviourScript : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetAxisRaw("Horizontal") == 1)
         {
-            this.transform.localScale = new Vector3(1f, 1f, 1f);
+            this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
         }
         else if(Input.GetAxisRaw("Horizontal") == -1)
         {
-            this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
         }
         moveVelocity = moveInput.normalized * speed;
     }
@@ -41,8 +43,15 @@ public class NewBehaviourScript : MonoBehaviour
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);
-            Score += 10;
+            Score += 1;
             txt.text = "Score: " + Score;
+        }
+        if (other.gameObject.tag == "Minion")
+        {
+            //Destroy(other.gameObject);
+            //Score += 10;
+            //txt.text = "Score: Hit";
+            OnPlayerDied(Score); //event sent to GameManager
         }
     }
 }
