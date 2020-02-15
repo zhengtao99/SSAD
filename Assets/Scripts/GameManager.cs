@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
+        SetPageState(PageState.Start);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
     }
 

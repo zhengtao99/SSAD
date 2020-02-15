@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MinionController : MonoBehaviour
 {
@@ -27,14 +28,16 @@ public class MinionController : MonoBehaviour
         { 
             delay -= Time.deltaTime;
         }
-        if (moveInput.x == 1)
+        
+        if (moveInput.x == 1)  //move left
         {
-            this.transform.localScale = new Vector3(0.5f, 0.51f, 0.5f);
+            this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
-        else if (moveInput.x == -1)
+        else if (moveInput.x == -1)  //move right
         {
-            this.transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
+        
         Vector2 moveVelocity = moveInput.normalized * speed;
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
     }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -26,11 +27,13 @@ public class NewBehaviourScript : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetAxisRaw("Horizontal") == 1)
         {
-            this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
+            //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
+            this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
         else if(Input.GetAxisRaw("Horizontal") == -1)
         {
-            this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
+            //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
+            this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
         moveVelocity = moveInput.normalized * speed;
     }
