@@ -13,6 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
+    public bool isPause = false;
     public float speed;
     public int Score = 0;
 
@@ -39,7 +40,14 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        if (isPause)
+        {
+            rb.MovePosition(rb.position);
+        }
+        else
+        {
+            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -57,4 +65,6 @@ public class NewBehaviourScript : MonoBehaviour
             OnPlayerDied(Score); //event sent to GameManager
         }
     }
+
+  
 }

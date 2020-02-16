@@ -9,14 +9,16 @@ public class GameManager : MonoBehaviour
     public GameObject startPage;
     public GameObject playPage;
     public GameObject gameOverPage;
+    public GameObject chestPopUpPage;
     public Text scoreText;
     public GameObject initialPlayState;
 
-    enum PageState {
+    public enum PageState {
         None,    //None of others
         Start,
         Play,
-        GameOver
+        GameOver,
+        ChestPopUp
     } 
 
     bool gameOver = true; //Initially not start game
@@ -47,27 +49,38 @@ public class GameManager : MonoBehaviour
         SetPageState(PageState.GameOver);
     }
 
-    void SetPageState(PageState state) {
+    public void SetPageState(PageState state) {
         switch (state) {
             case PageState.None:
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
                 break;
             case PageState.Start:
                 startPage.SetActive(true);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
                 break;
             case PageState.GameOver:
                 startPage.SetActive(false);
                 gameOverPage.SetActive(true);
                 playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
                 break;
             case PageState.Play:
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
+                chestPopUpPage.SetActive(false);
+                break;
+            case PageState.ChestPopUp:
+                Debug.Log("StateChange Chest Pop up");
+                startPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(true);
+                chestPopUpPage.SetActive(true);
                 break;
         }
     }
@@ -84,5 +97,11 @@ public class GameManager : MonoBehaviour
     //activated when play button is hit
     public void StartGame() {
         SetPageState(PageState.Play);
+    }
+
+    public void ChestPopUp()
+    {
+        Debug.Log("Game Manager Chest Pop up");
+        SetPageState(PageState.ChestPopUp);
     }
 }

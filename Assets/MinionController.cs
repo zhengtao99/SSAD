@@ -9,6 +9,7 @@ public class MinionController : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     private Vector2 moveInput;
+    public bool isPause = false;
     float delay = 0;
 
     void Start()
@@ -25,10 +26,10 @@ public class MinionController : MonoBehaviour
     private void FixedUpdate()
     {
         if (delay > 0)
-        { 
+        {
             delay -= Time.deltaTime;
         }
-        
+
         if (moveInput.x == 1)  //move left
         {
             this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
@@ -37,12 +38,21 @@ public class MinionController : MonoBehaviour
         {
             this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
-        
+
         Vector2 moveVelocity = moveInput.normalized * speed;
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        if (isPause)
+        {
+            rb.MovePosition(rb.position);
+        }
+        else
+        {
+            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.tag == "Wall")
         {
             if (delay > 0)
@@ -79,8 +89,8 @@ public class MinionController : MonoBehaviour
                 moveInput.x = 0;
                 moveInput.y = 0;
             }
-           
-        }
-    }
 
+        }
+        
+    }
 }
