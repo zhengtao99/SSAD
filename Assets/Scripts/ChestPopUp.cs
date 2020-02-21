@@ -34,7 +34,7 @@ public class ChestPopUp : MonoBehaviour
             minion.GetComponent<MinionController>().isPause = true;
 
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<NewBehaviourScript>().isPause = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = true;
     }
 
     void ResumeGame()
@@ -45,7 +45,7 @@ public class ChestPopUp : MonoBehaviour
             minion.GetComponent<MinionController>().isPause = false;
 
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<NewBehaviourScript>().isPause = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
         GameManager.Instance.SetPageState(GameManager.PageState.Play);
     }
 

@@ -35,12 +35,12 @@ public class GameManager : MonoBehaviour
 
     void OnEnable() {
         // += to subscribe event in other C# script
-        NewBehaviourScript.OnPlayerDied += OnPlayerDied;
+        PlayerController.OnPlayerDied += OnPlayerDied;
     }
 
     void OnDisable() {
         // -= to unsubscribe event in other C# script
-        NewBehaviourScript.OnPlayerDied -= OnPlayerDied;
+        PlayerController.OnPlayerDied -= OnPlayerDied;
     }
 
     void OnPlayerDied(int value) {
