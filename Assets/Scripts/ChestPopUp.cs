@@ -8,7 +8,8 @@ public class ChestPopUp : MonoBehaviour
     private GameObject[] minions;
     private GameObject player;
     private Rigidbody2D rb;
-    public Vector2 moveInput;
+
+    private bool isOpened = false;
 
 
 
@@ -33,7 +34,7 @@ public class ChestPopUp : MonoBehaviour
             minion.GetComponent<MinionController>().isPause = true;
 
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<NewBehaviourScript>().isPause = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = true;
     }
 
     void ResumeGame()
@@ -44,18 +45,23 @@ public class ChestPopUp : MonoBehaviour
             minion.GetComponent<MinionController>().isPause = false;
 
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<NewBehaviourScript>().isPause = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
         GameManager.Instance.SetPageState(GameManager.PageState.Play);
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
         
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !isOpened)
         {
             PauseGame();
             GameManager.Instance.ChestPopUp();
-            Invoke("ResumeGame", 1.0f);
+            CreateOpenedChest.OpenedChestInstance.CreateOpenedChests(transform.position.x,
+            transform.position.y, transform.position.z);
+            gameObject.SetActive(false);
+            Invoke("ResumeGame", 1f);
+            isOpened = true;
+            
         }
     }
 }
