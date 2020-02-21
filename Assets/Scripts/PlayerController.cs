@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        StartCoroutine(ConnectionManager.Login());
         if (other.gameObject.tag == "Coin")
         {
 
@@ -104,31 +103,4 @@ public class PlayerController : MonoBehaviour
             OnPlayerDied(Score); //event sent to GameManager
         }
     }
-    public void Connect()
-    {
-        StartCoroutine(GetText());
-
-    }
-    IEnumerator GetText()
-    {
-        UnityWebRequest www = UnityWebRequest.Get("https://localhost:44365/api/loginapi/aaa/124");
-        yield return www.SendWebRequest();
-        Debug.Log("Connecting");
-        Debug.Log("Connecting");
-        Debug.Log("Connecting");
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            // Show results as text
-            Debug.Log(www.downloadHandler.text);
-
-            // Or retrieve results as binary data
-            byte[] results = www.downloadHandler.data;
-        }
-    }
-
-
 }

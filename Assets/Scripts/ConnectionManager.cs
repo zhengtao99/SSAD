@@ -9,23 +9,18 @@ using UnityEngine.Networking;
 
 namespace Assets.Scripts
 {
-     class ConnectionManager : MonoBehaviour
+    class ConnectionManager : MonoBehaviour
     {
-        public static IEnumerator Login()
-        {
-            UnityWebRequest www = UnityWebRequest.Get("https://localhost:44365/api/loginapi/aaa/123");
-            yield return www.SendWebRequest();
-            if (www.isNetworkError || www.isHttpError)
-            {
-                //Debug.Log(www.error);
-            }
-            else
-            {
-                //Debug.Log(www.downloadHandler.text);
+        //static string Domain = "https://localhost:44365";
+        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
-                // Or retrieve results as binary data
-                byte[] results = www.downloadHandler.data;
-            }
+        public static IEnumerator Login(string username, string password)
+        { 
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/login/" + username + "/" + password);
+             yield return www.SendWebRequest();
+            Debug.Log("*" + www.downloadHandler.text);
+            bool result = bool.Parse(www.downloadHandler.text);
+            LoginController.Result(result);
         }
     }
     

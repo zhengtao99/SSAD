@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Text; 
+using System.Text;
+using System.Linq;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -200,34 +201,62 @@ public class MazeGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GenerateMaze();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    void DestroyMaze()
+    {
+      var components =   GameObject.FindGameObjectsWithTag("Page").Where(z => z.name == "PlayPage").First().GetComponents<Component>();
+        foreach (var x in components)
+        {
+            if (!(x is Transform))
+            {
+                Destroy(x);
+            }
+        }
+    }
+    void GenerateMaze()
+    {
         fixChestMinion();
 
         //walls and path to go + horizontal walls broken + vertical walls broken - no of chests - 1 player
         //numOfCoins = (2*(row/2)*(col/2) - 1) + (row/2 - 3) + (col/2 - 1) - chestCells.Length - 1;
         numOfCoins = 85;
 
-        count = (row/2)*(col/2) - chestCells.Length - 1;  //1 player
+        count = (row / 2) * (col / 2) - chestCells.Length - 1;  //1 player
 
-        for (int x = 0 ; x < col ; x++) {
-            for (int y = 0 ; y < row ; y++) {
-                if (x % 2 == 1 && y % 2 == 1) {
+        for (int x = 0; x < col; x++)
+        {
+            for (int y = 0; y < row; y++)
+            {
+                if (x % 2 == 1 && y % 2 == 1)
+                {
                     mark[x, y] = 1;  //coin
                 }
                 else
                     mark[x, y] = 0;  //brick
             }
         }
-        for (int i = 0 ; i < chestCells.Length ; i++) {
+        for (int i = 0; i < chestCells.Length; i++)
+        {
             Cell chest = (Cell)chestCells[i];
             mark[chest.x, chest.y] = 2;  //chest
         }
-        for (int i = 0 ; i < minionCells.Length ; i++) {
+        for (int i = 0; i < minionCells.Length; i++)
+        {
             Cell minion = (Cell)minionCells[i];
             mark[minion.x, minion.y] = 3;  //chest
         }
 
-        for (int x = 0 ; x < col / 2 ; x++) {
-            for (int y = 0 ; y < row / 2 ; y++) {
+        for (int x = 0; x < col / 2; x++)
+        {
+            for (int y = 0; y < row / 2; y++)
+            {
                 visited[x, y] = false;
             }
         }
@@ -241,13 +270,6 @@ public class MazeGenerator : MonoBehaviour
         PlaceObjects();
         Debug.Log("Number of coins: " + count);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void PlaceObjects() {
         for (int x = 0 ; x < col ; x++) {
             for (int y = 0 ; y < row ; y++) {
