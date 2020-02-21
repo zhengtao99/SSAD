@@ -6,8 +6,11 @@ using UnityEngine.UI;
 using System;
 using Assets.Scripts;
 using UnityEngine.Networking;
+
 public class PlayerController : MonoBehaviour
 {
+    public GameObject projectile;
+
     public delegate void PlayerDelegate(int value);
     public static event PlayerDelegate OnPlayerDied;
     public static event PlayerDelegate OnScoreUpdate;
@@ -38,7 +41,38 @@ public class PlayerController : MonoBehaviour
             //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
             this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
+
         moveVelocity = moveInput.normalized * speed;
+
+
+        //Press Z to fire projectile (testing)
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Vector2 moveVelocity = new Vector2(-1, 0);
+
+            if (moveInput.x == -1)
+            {
+                Debug.Log("x-1");
+                GameObject pro = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+                //rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+            }
+
+            else if (moveInput.x == 1)
+            {
+                Debug.Log("x1");
+            }
+
+            else if (moveInput.y == 1)
+            {
+                Debug.Log("y1");
+            }
+
+            else if (moveInput.y == -1)
+            {
+                Debug.Log("y-1");
+            }
+                
+        }
 
     }
     private void FixedUpdate()
