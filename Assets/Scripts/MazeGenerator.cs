@@ -13,9 +13,9 @@ public class MazeGenerator : MonoBehaviour
     public Vector3 mazePos; //positon of maze
     public int row; //An odd number
     public int col; //An odd number
-    //public int numOfCoins;
+    public int numOfCoins = 85; //Fix number of coins
 
-    //For coins: real index (odd x, odd y)
+    //For coins(not real): real index (odd x, odd y)
     public bool[,] visited = new bool[50, 50]; //[x][y]
 
     //Full maze
@@ -47,7 +47,7 @@ public class MazeGenerator : MonoBehaviour
             new Cell(5, 3),
             new Cell(col - 1 - 3, row - 1 - 5)
         };
-        minionCells = new Cell[]{
+        minionCells = new Cell[] {
             new Cell(1, 7),
             new Cell(7, 1),
             new Cell(col - 2, 5),
@@ -98,7 +98,6 @@ public class MazeGenerator : MonoBehaviour
     public void DFS_Backtracking(Cell cur) {
         //Use algorithm on coins array then change to real index by (2x+1, 2y+1)
         
-       // Debug.Log("At " + (2*cur.x+1) + " " + (2*cur.y+1));
         visited[cur.x, cur.y] = true;
     
         // STEP 1
@@ -125,6 +124,7 @@ public class MazeGenerator : MonoBehaviour
             else if (cur.y < next.y) { //mark bottom cell as coin
                 mark[realX, realY + 1] = 1;
             }
+            count++;  //1 more coin 
 
             // STEP 4
             cur = next;
@@ -136,14 +136,18 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    public void BreakWall() {
+    public void BreakWall(int time) {
         //For each even row: break a brick that between 2 bricks
         for (int y = 2 ; y < row - 1; y += 2) {
+            if (count == numOfCoins)
+                break;
+
             if (y < row / 2) {
                 //search from left
                 for (int x = 1 ; x < col - 1 ; x++) {
                     if (mark[x - 1, y] == 0 && mark[x, y] == 0 && mark[x + 1, y] == 0) {
                         mark[x, y] = 1;  //mark as coin
+                        count++;
                         break;
                     }
                 }
@@ -152,6 +156,7 @@ public class MazeGenerator : MonoBehaviour
                 for (int x = col - 2 ; x > 0 ; x--) {
                     if (mark[x - 1, y] == 0 && mark[x, y] == 0 && mark[x + 1, y] == 0) {
                         mark[x, y] = 1;  //mark as coin
+                        count++;
                         break;
                     }
                 }
@@ -160,11 +165,15 @@ public class MazeGenerator : MonoBehaviour
         
         //For each even col: break a cell that between 2 cells
         for (int x = 2 ; x < col - 1; x += 2) {
+            if (count == numOfCoins)
+                break;
+        
             if (x < col / 2) {
                 //search from bottom
                 for (int y = row - 2 ; y > 0 ; y--) {
                     if (mark[x, y - 1] == 0 && mark[x, y] == 0 && mark[x, y + 1] == 0) {
                         mark[x, y] = 1;  //mark as coin
+                        count++;
                         break;
                     }
                 }
@@ -173,10 +182,18 @@ public class MazeGenerator : MonoBehaviour
                 for (int y = 1 ; y < row - 1 ; y++) {
                     if (mark[x, y - 1] == 0 && mark[x, y] == 0 && mark[x, y + 1] == 0) {
                         mark[x, y] = 1;  //mark as coin
+                        count++;
                         break;
                     }
                 }
             }
+        }
+        
+        if (time == 2)  //just let it repeat 2 times
+            return;
+        
+        if (count < numOfCoins) {
+            BreakWall(2);
         }
     }
 
@@ -184,6 +201,12 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         fixChestMinion();
+
+        //walls and path to go + horizontal walls broken + vertical walls broken - no of chests - 1 player
+        //numOfCoins = (2*(row/2)*(col/2) - 1) + (row/2 - 3) + (col/2 - 1) - chestCells.Length - 1;
+        numOfCoins = 85;
+
+        count = (row/2)*(col/2) - chestCells.Length - 1;  //1 player
 
         for (int x = 0 ; x < col ; x++) {
             for (int y = 0 ; y < row ; y++) {
@@ -210,7 +233,7 @@ public class MazeGenerator : MonoBehaviour
         }
 
         DFS_Backtracking(new Cell(0, 0));
-        BreakWall();
+        BreakWall(1);
 
         //Player
         mark[col / 2, row / 2] = 4;
@@ -236,7 +259,6 @@ public class MazeGenerator : MonoBehaviour
                         break;
                     case 1:
                         gameObject = Instantiate(CoinPrefab) as GameObject;
-                        count++;
                         break;
                     case 2:
                         gameObject = Instantiate(ChestPrefab) as GameObject;
@@ -244,7 +266,6 @@ public class MazeGenerator : MonoBehaviour
                     case 3:
                         gameObject = Instantiate(CoinPrefab) as GameObject;
                         minion = Instantiate(MinionPrefab) as GameObject;
-                        count++;
                         break;
                     case 4:
                         gameObject = Instantiate(PlayerPrefab) as GameObject;
