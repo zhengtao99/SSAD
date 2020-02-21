@@ -9,9 +9,11 @@ public class LoginController : MonoBehaviour
 {
     public static string username;
     public static string password;
+    public static GameObject loginPage;
     public void Submit()
     {
-        var inputFields = GameObject.FindGameObjectsWithTag("Page").Where(z=>z.name == "LoginPage").First().GetComponentsInChildren<InputField>();
+        loginPage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name == "LoginPage").First();
+        var inputFields = loginPage.GetComponentsInChildren<InputField>();
         username = inputFields.Where(z => z.name == "Username").First().text;
         password = inputFields.Where(z => z.name == "Password").First().text;
 
@@ -23,5 +25,15 @@ public class LoginController : MonoBehaviour
         {
             GameManager.Instance.MainMenu();
         }
+        else
+        {
+            var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
+            message.enabled = true;
+        }
+    }
+    public  void ClearText()
+    {
+        var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
+        message.enabled = false;
     }
 }

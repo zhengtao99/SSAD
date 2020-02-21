@@ -18,7 +18,6 @@ namespace Assets.Scripts
         { 
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/login/" + username + "/" + password);
              yield return www.SendWebRequest();
-            Debug.Log("*" + www.downloadHandler.text);
             bool result = bool.Parse(www.downloadHandler.text);
             LoginController.Result(result);
         }
