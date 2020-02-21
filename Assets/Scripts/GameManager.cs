@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     void OnPlayerDied(int value) {
         gameOver = true;
         scoreText.text = "Score: " + value.ToString();
+        CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
         SetPageState(PageState.GameOver);
     }
 
