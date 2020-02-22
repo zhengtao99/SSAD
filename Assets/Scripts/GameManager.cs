@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     void Awake() {
         Instance = this;
         SetPageState(PageState.Login);
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
     }
 
     void OnEnable() {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         scoreText.text = "Score: " + value.ToString();
         CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
+        Debug.Log("Game over");
         SetPageState(PageState.GameOver);
     }
 
@@ -102,16 +104,15 @@ public class GameManager : MonoBehaviour
     //activated when replay button is hit
     public void MainMenu() {
         SetPageState(PageState.Start);
+        playPage = initialPlayState;
+        
+        //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
     }
 
     //activated when play button is hit
     public void StartGame() {
         SetPageState(PageState.Play);
-        playPage = initialPlayState;
-
-        //Save initial state again (clone another object)
-        initialPlayState = Instantiate(playPage, playPage.transform.parent);
     }
 
     public void ChestPopUp()
