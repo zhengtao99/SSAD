@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChestPopUp : MonoBehaviour
 {
-
+    public static ChestPopUp Instance;
     private GameObject[] minions;
     private GameObject player;
     private Rigidbody2D rb;
@@ -16,6 +16,7 @@ public class ChestPopUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         minions = GameObject.FindGameObjectsWithTag("Minion");
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -35,9 +36,10 @@ public class ChestPopUp : MonoBehaviour
 
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = true;
+        GameManager.Instance.QuestionPopUp();
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         foreach (GameObject minion in minions)
         {
@@ -59,9 +61,13 @@ public class ChestPopUp : MonoBehaviour
             CreateOpenedChest.OpenedChestInstance.CreateOpenedChests(transform.position.x,
             transform.position.y, transform.position.z);
             gameObject.SetActive(false);
-            Invoke("ResumeGame", 1f);
-            isOpened = true;
-            
+            Invoke("delayPopUp",1f);
+            //Invoke("ResumeGame",1f);
+            isOpened = true;  
         }
+    }
+
+    void delayPopUp(){
+        GameManager.Instance.QuestionPopUp();
     }
 }

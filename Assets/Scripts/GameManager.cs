@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject playPage;
     public GameObject gameOverPage;
     public GameObject chestPopUpPage;
+    public GameObject questionPopUpPage;
     public Text scoreText;
     GameObject initialPlayState;
 
@@ -20,7 +21,8 @@ public class GameManager : MonoBehaviour
         Start,
         Play,
         GameOver,
-        ChestPopUp
+        ChestPopUp,
+        QuestionPopUp
     } 
 
     bool gameOver = true; //Initially not start game
@@ -49,7 +51,6 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         scoreText.text = "Score: " + value.ToString();
         CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
-        Debug.Log("Game over");
         SetPageState(PageState.GameOver);
     }
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
                 break;
             case PageState.Login:
                 loginPage.SetActive(true);
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
                 break;
             case PageState.Start:
                 loginPage.SetActive(false);
@@ -75,6 +78,7 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
                 break;
             case PageState.GameOver:
                 loginPage.SetActive(false);
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(true);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
                 break;
             case PageState.Play:
                 loginPage.SetActive(false);
@@ -89,14 +94,23 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
                 loginPage.SetActive(false);
-                Debug.Log("StateChange Chest Pop up");
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(true);
+                questionPopUpPage.SetActive(false);
+                break;
+            case PageState.QuestionPopUp:
+                loginPage.SetActive(false);
+                startPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(true);
+                chestPopUpPage.SetActive(true);
+                questionPopUpPage.SetActive(true);
                 break;
         }
     }
@@ -117,7 +131,10 @@ public class GameManager : MonoBehaviour
 
     public void ChestPopUp()
     {
-        Debug.Log("Game Manager Chest Pop up");
         SetPageState(PageState.ChestPopUp);
+    }
+
+    public void QuestionPopUp(){
+        SetPageState(PageState.QuestionPopUp);
     }
 }
