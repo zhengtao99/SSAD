@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using Assets.Scripts;
 using UnityEngine.Networking;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,14 +14,14 @@ public class PlayerController : MonoBehaviour
 
     public delegate void PlayerDelegate(int value);
     public static event PlayerDelegate OnPlayerDied;
-    public static event PlayerDelegate OnScoreUpdate;
+
 
     // Start is called before the first frame update
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public bool isPause = false;
     public float speed;
-    public int Score = 0;
+    int score = 0;
 
     // Update is called once per frame
     private void Start()
@@ -92,15 +93,23 @@ public class PlayerController : MonoBehaviour
         {
 
             Destroy(other.gameObject);
-            Score += 1;
-            OnScoreUpdate(Score); //event sent to ScoreText
+           ScoreUpdate(); 
         }
         if (other.gameObject.tag == "Minion")
         {
             //Destroy(other.gameObject);
             //Score += 10;
             //txt.text = "Score: Hit";
-            OnPlayerDied(Score); //event sent to GameManager
+            OnPlayerDied(score); //event sent to GameManager
         }
+    }
+    void ScoreUpdate()
+    {
+        score += 1;
+        var mazePage = GameObject.FindGameObjectsWithTag("Page").First();
+        var textBox = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
+
+        textBox.text = "Coin: " + score;
+
     }
 }
