@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject playPage;
     public GameObject gameOverPage;
     public GameObject chestPopUpPage;
+    public GameObject worldPage;
+    public GameObject sectionPage;
     public GameObject questionPopUpPage;
     public Text scoreText;
     GameObject initialPlayState;
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
         Play,
         GameOver,
         ChestPopUp,
+        WorldUI,
+        SectionUI,
         QuestionPopUp
     } 
 
@@ -33,8 +37,8 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
+        SetPageState(PageState.WorldUI);
         //SetPageState(PageState.Login);
-        SetPageState(PageState.Start);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
     }
 
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Login:
@@ -71,6 +77,8 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Start:
@@ -79,6 +87,8 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.GameOver:
@@ -87,6 +97,8 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(true);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Play:
@@ -95,6 +107,8 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
@@ -103,6 +117,30 @@ public class GameManager : MonoBehaviour
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(true);
+                questionPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                break;
+            case PageState.WorldUI:
+                loginPage.SetActive(false);
+                Debug.Log("StateChange World UI up");
+                startPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                worldPage.SetActive(true);
+                sectionPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                break;
+            case PageState.SectionUI:
+                loginPage.SetActive(false);
+                Debug.Log("StateChange World UI up");
+                startPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(true);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.QuestionPopUp:
@@ -133,6 +171,16 @@ public class GameManager : MonoBehaviour
     public void ChestPopUp()
     {
         SetPageState(PageState.ChestPopUp);
+    }
+
+    public void sectionUI()
+    {
+        SetPageState(PageState.SectionUI);
+    }
+
+    public void worldUI()
+    {
+        SetPageState(PageState.WorldUI);
     }
 
     public void QuestionPopUp(){

@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Destroy(other.gameObject);
-           ScoreUpdate(); 
+           //ScoreUpdate(); 
         }
         if (other.gameObject.tag == "Minion")
         {
