@@ -6,42 +6,88 @@ using UnityEngine.UI;
 public class WorldController : MonoBehaviour
 {
     public Text subject;
-    public Sprite[] images;
-    public SpriteRenderer img;
+    public GameObject[] images;
+    private GameObject currentImg;
+    private GameObject lastImg;
     public int currentPage;
+    public string[] worlds = { "Mathemtics", "Physics", "Programming" };
+    private float speed = 20.0f;
+    private bool moveCurrent = false;
+    private bool moveLast = false;
+    private bool right = false;
+    private Vector3 lastImgDest;
+
+    private Vector3 currentImgDest = new Vector3(2.1f, 0, 0);
+    private Vector3 scaleFactor = new Vector3(0.025f, 0.025f, 0.025f);
+    private Vector3 leftEnd = new Vector3(-5f, 0, 0);
+    private Vector3 rightEnd = new Vector3(7.5f, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
         currentPage = 0;
-        SetCurrentPage();
+        currentImg = Instantiate(images[0]) as GameObject;
+        currentImg.SetActive(true);
+        Transform t = currentImg.transform;
+        t.SetParent(transform);
+        t.localPosition = currentImgDest;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (lastImg && (Mathf.Abs(lastImg.transform.localPosition.x - lastImgDest.x) == 0))
+        {
+            Destroy(lastImg);
+            moveLast = false;
+        }
+
+        if (Mathf.Abs(currentImg.transform.localPosition.x - currentImgDest.x) == 0)
+        {
+            moveCurrent = false;
+        }
+
+        if (moveCurrent)
+        {
+            currentImg.transform.localPosition = Vector3.MoveTowards(currentImg.transform.localPosition, currentImgDest, Time.deltaTime * speed);
+        }
+
+        if (moveLast)
+        {
+            lastImg.transform.localScale -= scaleFactor;
+            lastImg.transform.localPosition = Vector3.MoveTowards(lastImg.transform.localPosition, lastImgDest, Time.deltaTime * speed);
+        }
+
     }
 
     void SetCurrentPage()
     {
-        switch (this.currentPage)
+        subject.text = worlds[currentPage];
+        lastImg = currentImg;
+        currentImg = Instantiate(images[currentPage]) as GameObject;
+        currentImg.SetActive(true);
+
+        Transform t = currentImg.transform;
+        t.SetParent(transform);
+
+        Vector3 pos = rightEnd;
+
+        if (right)
         {
-            case 0:
-                subject.text = "Mathematics";
-                img.sprite = images[0];
-                break;
-            case 1:
-                subject.text = "Physics";
-                img.sprite = images[1];
-                break;
-            case 2:
-                subject.text = "Programming";
-                img.sprite = images[2];
-                break;
+            pos = leftEnd;
         }
+
+        t.localPosition = pos;
+        moveCurrent = true;
+        moveLast = true;
     }
-    public void OnClickBack() { 
-        if(this.currentPage == 0)
+    public void OnClickBack() {
+
+        if (moveLast || moveCurrent)
+        {
+            return;
+        }
+
+        if (this.currentPage == 0)
         {
             this.currentPage = 2;
         }
@@ -49,12 +95,21 @@ public class WorldController : MonoBehaviour
         {
             this.currentPage = this.currentPage - 1;
         }
+        lastImgDest = leftEnd;
+        right = false;
         SetCurrentPage();
     }
 
     public void OnClickForward()
     {
+        if (moveLast || moveCurrent)
+        {
+            return;
+        }
+
         this.currentPage = (this.currentPage + 1)%3;
+        right = true;
+        lastImgDest = rightEnd;
         SetCurrentPage();
     }
 
