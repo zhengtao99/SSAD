@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Destroy(other.gameObject);
-           //ScoreUpdate(); 
+           ScoreUpdate(); 
         }
         if (other.gameObject.tag == "Minion")
         {
@@ -105,8 +105,9 @@ public class PlayerController : MonoBehaviour
     }
     void ScoreUpdate()
     {
-        score += 1;
-        var mazePage = GameObject.FindGameObjectsWithTag("Page").First();
+        score += 10;
+        var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z=>z.name.ToLower().Contains("maze")).First();
+
         var textBox = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
 
         textBox.text = "Coin: " + score;
