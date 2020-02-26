@@ -9,6 +9,7 @@ public class LoginController : MonoBehaviour
 {
     public static string username;
     public static string password;
+   
     public static GameObject loginPage;
     public void Submit()
     {

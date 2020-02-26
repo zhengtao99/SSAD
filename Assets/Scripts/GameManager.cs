@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject loginPage;
+    public GameObject profilePage;
     public GameObject startPage;
     public GameObject playPage;
     public GameObject gameOverPage;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public enum PageState {
         None,    //None of others
         Login,
+        Profile,
         Start,
         Play,
         GameOver,
@@ -37,9 +39,9 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.WorldUI);
-        //SetPageState(PageState.Login);
+        SetPageState(PageState.Login);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
+       
     }
 
     void OnEnable() {
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void SetPageState(PageState state) {
         switch (state) {
             case PageState.None:
+                profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -72,6 +75,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Login:
+                profilePage.SetActive(false);
                 loginPage.SetActive(true);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Start:
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 startPage.SetActive(true);
                 gameOverPage.SetActive(false);
@@ -92,6 +97,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.GameOver:
+                profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(true);
@@ -102,6 +108,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Play:
+                profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -112,6 +119,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
+                profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -122,8 +130,8 @@ public class GameManager : MonoBehaviour
                 sectionPage.SetActive(false);
                 break;
             case PageState.WorldUI:
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
-                Debug.Log("StateChange World UI up");
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
@@ -133,8 +141,8 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.SectionUI:
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
-                Debug.Log("StateChange World UI up");
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
@@ -144,10 +152,13 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.QuestionPopUp:
+                profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
                 chestPopUpPage.SetActive(true);
                 questionPopUpPage.SetActive(true);
                 break;
