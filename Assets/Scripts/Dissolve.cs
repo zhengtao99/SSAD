@@ -6,27 +6,43 @@ using UnityEngine.UIElements;
 
 public class Dissolve : MonoBehaviour
 {
-    Material material;
+    Material material, textMaterial;
 
     bool isDissolving = false;
-    bool dissolved = false;
-    float fade = 0f;
+    bool dissolved;
+    float visible;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        if (GetComponent<SpriteRenderer>() !=null)
+        //Finds all the material of the object to manipulate with animation
+        dissolved = false;
+        visible = 0f;
+        if (GetComponent<SpriteRenderer>() != null)
             material = GetComponent<SpriteRenderer>().material;
-        if (GetComponent<UnityEngine.UI.Image>() != null)
+        else if (GetComponent<UnityEngine.UI.Image>() != null) 
+        { 
+            if (GetComponentInChildren<Text>() != null)
+            {
+                textMaterial = GetComponentInChildren<Text>().material;
+            }
             material = GetComponent<UnityEngine.UI.Image>().material;
-        if (GetComponent<Text>() != null)
+        }
+        else if (GetComponent<Text>() != null)
         {
             material = GetComponent<Text>().material;
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
+        dissolved = false;
+        visible = 0f;
+    }
+
+    // Update is called once per frame
+    void Update() 
+        {
+        //Animate till fade >= 1f (Means object is fully visible)
         if (!dissolved)
         {
             isDissolving = true;
@@ -35,15 +51,17 @@ public class Dissolve : MonoBehaviour
 
         if (isDissolving)
         {
-            fade += Time.deltaTime;
-
-
-            if (fade >= 1f)
-            {
-                fade = 1f;
+            visible += Time.deltaTime/2; // Slows down the animation
+            if (visible >= 1f)
+             {
+                visible = 1f;
                 isDissolving = false;
             }
-            material.SetFloat("_Fade", fade);
+            material.SetFloat("_Fade", visible);
+            if (textMaterial != null)
+            {
+                textMaterial.SetFloat("_Fade", visible);
+            }
         }
     }
 }

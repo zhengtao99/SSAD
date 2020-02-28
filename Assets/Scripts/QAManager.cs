@@ -67,8 +67,7 @@ public class QAManager : MonoBehaviour
         {
             button.GetComponent<Button>().interactable = true;
             button.GetComponentInChildren<Text>().color = Color.black;
-            button.GetComponent<Button>().colors = originalColors; 
-
+            button.GetComponent<Button>().colors = originalColors;
         }
     }
 
