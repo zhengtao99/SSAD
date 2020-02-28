@@ -12,16 +12,39 @@ public class MinionController : MonoBehaviour
     public bool isPause = false;
     float delay = 0;
 
+    public GameObject fireball;
+    public bool stopFiring;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         moveInput = new Vector2(1, 1);
+
+        InvokeRepeating("Fire", 0.0f, 3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Freeze minions
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (isPause)
+            {
+                isPause = false;
+
+                SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+                renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+
+            else
+            {
+                isPause = true;
+
+                SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+                renderer.color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -50,6 +73,15 @@ public class MinionController : MonoBehaviour
         }
         
     }
+    private void Fire()
+    {
+        if (!isPause && !stopFiring)
+        {
+            Debug.Log(stopFiring);
+            GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 

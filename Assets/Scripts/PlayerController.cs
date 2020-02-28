@@ -10,11 +10,12 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject projectile;
+    //public Sprite Player_Dead;
+    //MinionController mc;
+    private GameObject[] minions;
 
     public delegate void PlayerDelegate(int value);
     public static event PlayerDelegate OnPlayerDied;
-
 
     // Start is called before the first frame update
     private Rigidbody2D rb;
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Debug.Log("AAA");
+
+        minions = GameObject.FindGameObjectsWithTag("Minion");
     }
     void Update()
     {
@@ -47,35 +50,6 @@ public class PlayerController : MonoBehaviour
         moveVelocity = moveInput.normalized * speed;
 
 
-        //Press Z to fire projectile (testing)
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Vector2 moveVelocity = new Vector2(-1, 0);
-
-            if (moveInput.x == -1)
-            {
-                Debug.Log("x-1");
-                GameObject pro = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
-                //rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-            }
-
-            else if (moveInput.x == 1)
-            {
-                Debug.Log("x1");
-            }
-
-            else if (moveInput.y == 1)
-            {
-                Debug.Log("y1");
-            }
-
-            else if (moveInput.y == -1)
-            {
-                Debug.Log("y-1");
-            }
-                
-        }
-
     }
     private void FixedUpdate()
     {
@@ -92,8 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Coin")
         {
-
-            Destroy(other.gameObject);
+           Destroy(other.gameObject);
            ScoreUpdate(); 
         }
         if (other.gameObject.tag == "Minion")
@@ -101,8 +74,39 @@ public class PlayerController : MonoBehaviour
             //Destroy(other.gameObject);
             //Score += 10;
             //txt.text = "Score: Hit";
-            OnPlayerDied(score); //event sent to GameManager
+
+            foreach (GameObject minion in minions)
+            {
+
+                minion.GetComponent<MinionController>().stopFiring = true;
+
+            }
+            OnPlayerDied(score); //event sent to GameManager    
+            
         }
+        if (other.gameObject.tag == "Fireball")
+        {
+            //Animator animator = this.gameObject.GetComponent<Animator>();
+            //animator.runtimeAnimatorController = Resources.Load("New Sprite") as RuntimeAnimatorController;
+            //animator.enabled = false;
+            //this.gameObject.GetComponent<SpriteRenderer>().sprite = Player_Dead;
+
+            Destroy(other.gameObject);
+
+            StartCoroutine(hit());
+        }
+    }
+    IEnumerator hit()
+    {
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        for (int i = 0; i < 8; i++)
+        {
+            renderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+            yield return new WaitForSeconds(0.1f);
+            renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return null;
     }
     void ScoreUpdate()
     {
