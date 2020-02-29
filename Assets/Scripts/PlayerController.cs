@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 minion.GetComponent<MinionController>().stopFiring = true;
 
             }
+            FindObjectOfType<SoundManager>().Play("CharacterDeath");
             OnPlayerDied(score); //event sent to GameManager    
             
         }

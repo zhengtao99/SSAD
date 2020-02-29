@@ -57,11 +57,12 @@ public class ChestPopUp : MonoBehaviour
         if (other.tag == "Player" && !isOpened)
         {
             PauseGame();
+            FindObjectOfType<SoundManager>().Play("ChestOpening");
             GameManager.Instance.ChestPopUp();
             CreateOpenedChest.OpenedChestInstance.CreateOpenedChests(transform.position.x,
             transform.position.y, transform.position.z);
             gameObject.SetActive(false);
-            Invoke("delayPopUp",1f);
+            Invoke("delayPopUp",1.5f);
             //Invoke("ResumeGame",1f);
             isOpened = true;  
         }

@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Start);
+        SetPageState(PageState.WorldUI);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
        
     }
@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Login:
+                FindObjectOfType<SoundManager>().Play("GameLaunch");
                 profilePage.SetActive(false);
                 loginPage.SetActive(true);
                 startPage.SetActive(false);
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.GameOver:
+                FindObjectOfType<SoundManager>().Pause("EasyStage");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
@@ -108,6 +110,8 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.Play:
+                FindObjectOfType<SoundManager>().Play("EasyStage");
+                FindObjectOfType<SoundManager>().Pause("Lobby");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
@@ -130,6 +134,7 @@ public class GameManager : MonoBehaviour
                 sectionPage.SetActive(false);
                 break;
             case PageState.WorldUI:
+                FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
@@ -141,6 +146,7 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.SectionUI:
+                FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 startPage.SetActive(false);
