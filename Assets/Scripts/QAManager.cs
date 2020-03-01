@@ -72,7 +72,7 @@ public class QAManager : MonoBehaviour
     }
 
     public void VerifyAnswer(){
-        FindObjectOfType<SoundManager>().Play("MajorClick");
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         bool isCorrect = (answerID == 1? true :false);
         DisableButtons();
         if (isCorrect)
@@ -88,7 +88,7 @@ public class QAManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        FindObjectOfType<SoundManager>().Play("MajorClick");
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         EnableButtons();
         continueButton.SetActive(false);
         ChestPopUp.Instance.ResumeGame();

@@ -84,7 +84,7 @@ public class SectionController : MonoBehaviour
 
     public void OnClickBack()
     {
-        FindObjectOfType<SoundManager>().Play("MinorClick");
+        FindObjectOfType<SoundManager>().Play("MinorButton");
         if (moveLast || moveCurrent)
         {
             return;
@@ -106,7 +106,7 @@ public class SectionController : MonoBehaviour
 
     public void OnClickForward()
     {
-        FindObjectOfType<SoundManager>().Play("MinorClick");
+        FindObjectOfType<SoundManager>().Play("MinorButton");
         if (moveLast || moveCurrent)
         {
             return;

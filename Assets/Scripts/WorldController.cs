@@ -84,7 +84,7 @@ public class WorldController : MonoBehaviour
         moveLast = true;
     }
     public void OnClickBack() {
-        FindObjectOfType<SoundManager>().Play("MinorClick");
+        FindObjectOfType<SoundManager>().Play("MinorButton");
         if (moveLast || moveCurrent)
         {
             return;
@@ -105,7 +105,7 @@ public class WorldController : MonoBehaviour
 
     public void OnClickForward()
     {
-        FindObjectOfType<SoundManager>().Play("MinorClick");
+        FindObjectOfType<SoundManager>().Play("MinorButton");
         if (moveLast || moveCurrent)
         {
             return;

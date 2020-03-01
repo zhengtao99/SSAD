@@ -66,7 +66,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Coin")
         {
-           Destroy(other.gameObject);
+            FindObjectOfType<SoundManager>().Play("CoinCollection");
+            Destroy(other.gameObject);
            ScoreUpdate(); 
         }
         if (other.gameObject.tag == "Minion")

@@ -38,13 +38,4 @@ public class SoundManager : MonoBehaviour
             return;
         s.source.Pause();
     }
-
-
-    //public void PlayGameLaunch()
-    //{
-
-    //    audioSrc.PlayOneShot(gameLaunchSound);
-    //}
-
-
 }

@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
 
     //activated when play button is hit
     public void StartGame() {
-        FindObjectOfType<SoundManager>().Play("MajorClick");
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.Play);
     }
 
@@ -193,13 +193,13 @@ public class GameManager : MonoBehaviour
 
     public void sectionUI()
     {
-        FindObjectOfType<SoundManager>().Play("MajorClick");
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.SectionUI);
     }
 
     public void worldUI()
     {
-        FindObjectOfType<SoundManager>().Play("MajorClick");
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.WorldUI);
     }
 
