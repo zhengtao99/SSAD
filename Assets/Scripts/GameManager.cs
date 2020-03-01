@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.WorldUI);
+        SetPageState(PageState.Login);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
        
     }
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
 
     //activated when replay button is hit
     public void MainMenu() {
-        SetPageState(PageState.Start);
+        SetPageState(PageState.WorldUI);
         playPage = initialPlayState;
         
         //Save initial state again (clone another object)
