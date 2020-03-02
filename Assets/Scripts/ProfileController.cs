@@ -11,6 +11,6 @@ public class ProfileController : MonoBehaviour
     {
         var profilePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("profile")).First();
         var usernameText = profilePage.GetComponentsInChildren<Text>().Where(z => z.name.ToLower().Contains("username")).First();
-        usernameText.text = LoginController.username;
+        usernameText.text = LoginController.user.Username;
     }
 }
