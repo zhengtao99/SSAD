@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!162 &1
+EditorUserSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 4
+  m_ConfigSettings:
+    UnityEditor.ShaderGraph.FloatingWindowsLayout2:
+      value: 181344140043005e1a220d3b1f364b524c0c5a27130c293326201334cee5322ca0bd30e8eb293a707b0fd0180b3d0a36fc0d3d04e649500d1002ee0b5dbd1d2c27c00ad113cb1e10e41f1addc80993b9859884a69ae6d8f0d1cda9e8fbfefaf9f9dea3fdb9ade882f0ffb0e1ff929797919fe69399919196e8879d91b3ece1dac3d3c78cc2c5c09983d9f0dfecc6f1f2c5f4f2c2ccf1c8ffcdc8d0f079f1f534353226e9efebe5d4eeec3dd62a25dddc6f6aca3b75868e8f8290708d868abd8e5b958c8f04c181d96ca169916244696d66796d537e1a3578497c69121f601e572a252f73267c43273e6d6a44454c6d4d090338740c3d5e44333c4f0d10545147544e450e0c18091b482f1e0b01312b392628012725382e2d3a18245f68b1617ab37d76ebda06e021e8acb619b21b7daaa4a7a8445c4444094f53af44978e474b9194429a924a4a444cbb9b01f952a312d3f9fdeec4dbf8eee7e7d8f9c2d6eaf6b3ffe3e7e2eaa5a8fba9b2f8fbabe796e3e2ed9ee99f97eef2fd99908e849e889b8198c6
+      flags: 0
+    UnityEditor.ShaderGraph.ToggleSettings:
+      value: 18135d1527590858060c032302276919051e1a26296a7c243f3c187fa0e92708f0e220e0e22d09352a0bed30017c5b39f3061a0eba4909041d01ef3e03f0061a15c00a87408a4332c41719908f00
+      flags: 0
+    vcSharedLogLevel:
+      value: 0a5f5209
+      flags: 0
+  m_VCAutomaticAdd: 1
+  m_VCDebugCom: 0
+  m_VCDebugCmd: 0
+  m_VCDebugOut: 0
+  m_SemanticMergeMode: 2
+  m_VCShowFailedCheckout: 1
+  m_VCOverwriteFailedCheckoutAssets: 1
+  m_VCOverlayIcons: 1
+  m_VCAllowAsyncUpdate: 0

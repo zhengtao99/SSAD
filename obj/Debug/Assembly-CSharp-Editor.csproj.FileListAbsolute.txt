@@ -1,0 +1,2 @@
+D:\GitHub\SSAD\obj\Debug\Assembly-CSharp-Editor.csprojResolveAssemblyReference.cache
+D:\GitHub\SSAD\obj\Debug\Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
