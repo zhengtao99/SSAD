@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.Linq;
-using Assets.Scripts;
-using Assets.Model;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -30,7 +28,7 @@ public class MazeGenerator : MonoBehaviour
     public Cell[] chestCells;
 
     public Cell[] minionCells;
-    public static List<Question> questions;
+
     public struct Cell {
         public int x;  //column
         public int y;  //row
@@ -204,7 +202,6 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         GenerateMaze();
-        StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
 
     // Update is called once per frame
@@ -271,6 +268,7 @@ public class MazeGenerator : MonoBehaviour
         mark[col / 2, row / 2] = 4;
 
         PlaceObjects();
+        Debug.Log("Number of coins: " + count);
     }
     void PlaceObjects() {
         for (int x = 0 ; x < col ; x++) {
