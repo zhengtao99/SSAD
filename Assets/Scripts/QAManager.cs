@@ -17,6 +17,9 @@ public class QAManager : MonoBehaviour
     private Text ansText = null;
     private int answerID;
     public static ColorBlock originalColors;
+
+    private int correctAns = 0;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -117,6 +120,14 @@ public class QAManager : MonoBehaviour
         colors.selectedColor = Color.green;
         colors.disabledColor = Color.green;
         pressedButton.colors = colors;
-        playerController.countCorrectAns();
+        playerController.increaseCorrectAns();
+        /*
+        correctAns += 1;
+        if (correctAns == 4)
+        {
+            playerController.openNewLevel();
+            LevelController.Instance.setWin(true);
+        }
+        */
     }
 }

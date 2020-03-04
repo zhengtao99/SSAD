@@ -6,6 +6,7 @@ using System.Linq;
 
 public class MazeGenerator : MonoBehaviour
 {
+    public static MazeGenerator Instance;
     public GameObject BrickPrefab; 
     public GameObject CoinPrefab; 
     public GameObject ChestPrefab;
@@ -15,6 +16,7 @@ public class MazeGenerator : MonoBehaviour
     public int row; //An odd number
     public int col; //An odd number
     public int numOfCoins = 85; //Fix number of coins
+    private int maxScore = 85 * 10 + 6 * 30;
 
     //For coins(not real): real index (odd x, odd y)
     public bool[,] visited = new bool[50, 50]; //[x][y]
@@ -38,6 +40,16 @@ public class MazeGenerator : MonoBehaviour
             this.y = y;
         }
     };
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+        public int getMaxScore()
+    {
+        return maxScore;
+    }
 
     public void fixChestMinion() {
         chestCells = new Cell[]{
