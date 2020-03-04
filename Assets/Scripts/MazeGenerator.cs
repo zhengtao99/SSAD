@@ -199,10 +199,18 @@ public class MazeGenerator : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    
     void Start()
     {
         GenerateMaze();
     }
+    
+    /*
+    private void OnEnable()
+    {
+        GenerateMaze();
+    }
+    */
 
     // Update is called once per frame
     void Update()

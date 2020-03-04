@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Ready);
+        SetPageState(PageState.Login);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
        
     }
@@ -292,6 +292,11 @@ public class GameManager : MonoBehaviour
 
     public void QuestionPopUp(){
         SetPageState(PageState.QuestionPopUp);
+    }
+
+    public void levelUI()
+    {
+        SetPageState(PageState.LevelUI);
     }
 
     public void popUpUnlockedLevelBoard()
