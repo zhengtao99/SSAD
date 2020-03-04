@@ -77,7 +77,7 @@ public class MinionController : MonoBehaviour
     {
         if (!isPause && !stopFiring)
         {
-            Debug.Log(stopFiring);
+            //Debug.Log(stopFiring);
             GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
         }
     }

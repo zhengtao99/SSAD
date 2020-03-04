@@ -37,6 +37,13 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("maze")).First();
+        /*
+        var x = mazePage.GetComponentsInChildren<SpriteRenderer>().ToList();
+        foreach(var y in x)
+        {
+            Debug.Log(y.name);
+        }
+        */
         lifeBox = mazePage.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "LoseLife").First();
         lifeBox.enabled = false;
 
@@ -133,7 +140,9 @@ public class PlayerController : MonoBehaviour
         lifeText.text = "Life: " + countLife;
         if (countLife == 0)
         {
-            OnPlayerDied(score); //event sent to GameManager
+            PauseGame();
+            //OnPlayerDied(score); //event sent to LevelController
+            LevelController.Instance.GameOverPopUp(score);
         }
         else
         {
