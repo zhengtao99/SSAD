@@ -251,25 +251,33 @@ public class GameManager : MonoBehaviour
     //activated when replay button is hit
     public void MainMenu() {
         SetPageState(PageState.WorldUI);
+        /*
         playPage = initialPlayState;
         
         //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        */
     }
 
     public void OnClickReplay()
     {
+        /*
         //SetPageState(PageState.Play);
         playPage = initialPlayState;
 
         //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        */
         SetPageState(PageState.Play);
     }
 
     //activated when play button is hit
     public void StartGame() {
         FindObjectOfType<SoundManager>().Play("MajorButton");
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
         SetPageState(PageState.Play);
     }
 
