@@ -292,6 +292,16 @@ public class GameManager : MonoBehaviour
         SetPageState(PageState.Play);
     }
 
+    public void OnClickReplay()
+    {
+        //SetPageState(PageState.Play);
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        SetPageState(PageState.Play);
+    }
+
     //activated when play button is hit
     public void StartGame() {
         FindObjectOfType<SoundManager>().Play("MajorButton");
@@ -317,6 +327,11 @@ public class GameManager : MonoBehaviour
 
     public void QuestionPopUp(){
         SetPageState(PageState.QuestionPopUp);
+    }
+
+    public void levelUI()
+    {
+        SetPageState(PageState.LevelUI);
     }
 
     public void popUpUnlockedLevelBoard()
