@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject loading;
     public GameObject loginPage;
     public GameObject profilePage;
     public GameObject readyPage;
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Ready);
+        SetPageState(PageState.Login);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
        
     }
@@ -258,40 +257,6 @@ public class GameManager : MonoBehaviour
         //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
         */
-    }
-    public void ReadyGame()
-    {
-        SetPageState(PageState.Ready);
-    }
-
-    public void OnClickReplay()
-    {
-        //SetPageState(PageState.Play);
-        playPage = initialPlayState;
-
-        //Save initial state again (clone another object)
-        initialPlayState = Instantiate(playPage, playPage.transform.parent);
-        SetPageState(PageState.Play);
-    }
-
-    public void OnClickReplay()
-    {
-        //SetPageState(PageState.Play);
-        playPage = initialPlayState;
-
-        //Save initial state again (clone another object)
-        initialPlayState = Instantiate(playPage, playPage.transform.parent);
-        SetPageState(PageState.Play);
-    }
-
-    public void OnClickReplay()
-    {
-        //SetPageState(PageState.Play);
-        playPage = initialPlayState;
-
-        //Save initial state again (clone another object)
-        initialPlayState = Instantiate(playPage, playPage.transform.parent);
-        SetPageState(PageState.Play);
     }
 
     public void OnClickReplay()

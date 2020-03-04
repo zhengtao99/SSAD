@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
 
     public void hideLevelBox()
     {
+        Debug.Log("aha");
         levelText.enabled = false;
         levelBox.enabled = false;
     }
