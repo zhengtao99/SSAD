@@ -18,7 +18,7 @@ public class QAManager : MonoBehaviour
     private int answerID;
     public static ColorBlock originalColors;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         if(transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
             RetrievePossibleAnswers();

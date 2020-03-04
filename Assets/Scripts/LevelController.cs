@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
@@ -16,9 +17,13 @@ public class LevelController : MonoBehaviour
     //Last completed level
     int lastCompletedLevel = 2; //0 if haven't completed any
 
+    public Sprite unlockedLevelBoard;
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -106,9 +111,22 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    void click(int value)
+    {
+        Debug.Log("a");
+    }
+
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+            
+        }
+        */
+
         if (lastCompletedLevel > 0)
         {
             GameObject newFlag = flags[lastCompletedLevel - 1];
