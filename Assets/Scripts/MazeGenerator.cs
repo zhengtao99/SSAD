@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.Linq;
+using Assets.Scripts;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -203,6 +204,7 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         GenerateMaze();
+        StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
     
     /*
