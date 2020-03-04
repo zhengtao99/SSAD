@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameObject loading;
     public GameObject loginPage;
     public GameObject profilePage;
     public GameObject readyPage;
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject worldPage;
     public GameObject sectionPage;
     public GameObject questionPopUpPage;
+    public GameObject levelPage;
+    public GameObject unlockedLevelPopUp;
+    public GameObject completedLevelPopUp;
     public Text scoreText;
     GameObject initialPlayState;
 
@@ -29,7 +33,10 @@ public class GameManager : MonoBehaviour
         ChestPopUp,
         WorldUI,
         SectionUI,
-        QuestionPopUp
+        QuestionPopUp,
+        LevelUI,
+        UnlockedLevelPopUp,
+        CompletedLevelPopUp
     } 
 
     bool gameOver = true; //Initially not start game
@@ -40,11 +47,11 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Login);
+        SetPageState(PageState.Ready);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
        
     }
-
+    /*
     void OnEnable() {
         // += to subscribe event in other C# script
         PlayerController.OnPlayerDied += OnPlayerDied;
@@ -61,6 +68,7 @@ public class GameManager : MonoBehaviour
         CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
         SetPageState(PageState.GameOver);
     }
+    */
 
     public void SetPageState(PageState state) {
         switch (state) {
@@ -74,6 +82,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.Login:
                 FindObjectOfType<SoundManager>().Play("GameLaunch");
@@ -86,6 +97,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.Ready:
                 profilePage.SetActive(false);
@@ -97,6 +111,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.GameOver:
                 FindObjectOfType<SoundManager>().Pause("EasyStage");
@@ -104,11 +121,14 @@ public class GameManager : MonoBehaviour
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
                 gameOverPage.SetActive(true);
-                playPage.SetActive(false);
+                playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.Play:
                 FindObjectOfType<SoundManager>().Play("EasyStage");
@@ -122,6 +142,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.ChestPopUp:
                 profilePage.SetActive(false);
@@ -133,6 +156,9 @@ public class GameManager : MonoBehaviour
                 questionPopUpPage.SetActive(false);
                 worldPage.SetActive(false);
                 sectionPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.WorldUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -145,6 +171,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(true);
                 sectionPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.SectionUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -157,6 +186,9 @@ public class GameManager : MonoBehaviour
                 worldPage.SetActive(false);
                 sectionPage.SetActive(true);
                 questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
                 break;
             case PageState.QuestionPopUp:
                 profilePage.SetActive(false);
@@ -168,6 +200,51 @@ public class GameManager : MonoBehaviour
                 sectionPage.SetActive(false);
                 chestPopUpPage.SetActive(true);
                 questionPopUpPage.SetActive(true);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
+                break;
+            case PageState.LevelUI:
+                profilePage.SetActive(false);
+                loginPage.SetActive(false);
+                readyPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                levelPage.SetActive(true);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
+                break;
+            case PageState.UnlockedLevelPopUp:
+                profilePage.SetActive(false);
+                loginPage.SetActive(false);
+                readyPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                levelPage.SetActive(true);
+                unlockedLevelPopUp.SetActive(true);
+                completedLevelPopUp.SetActive(false);
+                break;
+            case PageState.CompletedLevelPopUp:
+                profilePage.SetActive(false);
+                loginPage.SetActive(false);
+                readyPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                levelPage.SetActive(true);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(true);
                 break;
         }
     }
@@ -179,6 +256,40 @@ public class GameManager : MonoBehaviour
         
         //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
+    }
+    public void ReadyGame()
+    {
+        SetPageState(PageState.Ready);
+    }
+
+    public void OnClickReplay()
+    {
+        //SetPageState(PageState.Play);
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        SetPageState(PageState.Play);
+    }
+
+    public void OnClickReplay()
+    {
+        //SetPageState(PageState.Play);
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        SetPageState(PageState.Play);
+    }
+
+    public void OnClickReplay()
+    {
+        //SetPageState(PageState.Play);
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        SetPageState(PageState.Play);
     }
 
     //activated when play button is hit
@@ -206,5 +317,15 @@ public class GameManager : MonoBehaviour
 
     public void QuestionPopUp(){
         SetPageState(PageState.QuestionPopUp);
+    }
+
+    public void popUpUnlockedLevelBoard()
+    {
+        SetPageState(PageState.UnlockedLevelPopUp);
+    }
+
+    public void popUpUCompletedLevelBoard()
+    {
+        SetPageState(PageState.CompletedLevelPopUp);
     }
 }

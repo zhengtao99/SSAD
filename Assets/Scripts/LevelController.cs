@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
+    public static LevelController Instance;
     public GameObject canvas;
     public Sprite lockedImg;
     public Sprite unlockedImg;
@@ -17,13 +19,22 @@ public class LevelController : MonoBehaviour
     //Last completed level
     int lastCompletedLevel = 2; //0 if haven't completed any
 
-    public Sprite unlockedLevelBoard;
+    //public SpriteRenderer unlockedLevelBoard;
+    //public SpriteRenderer completedLevelBoard;
+
+    public GameObject UnlockedLevelPopUp;
+    public GameObject CompletedLevelPopUp;
+    public GameObject LoseLevelPopUp;
+    public int chosenLevel = -1;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
-    {
-
-
+    { 
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -63,6 +74,53 @@ public class LevelController : MonoBehaviour
                 flag.transform.localScale = new Vector3(0, 0, 0);
             }
         }
+    }
+
+    public void openLevel()
+    {
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            string levelButtonName = EventSystem.current.currentSelectedGameObject.name;  //level_button_1 (4)
+            char levelStr = levelButtonName[16];
+            if (levelStr >= '0' && levelStr <= '9')
+                chosenLevel = (int)char.GetNumericValue(levelStr) + 1;
+            else
+                return;
+
+            if (chosenLevel <= lastCompletedLevel)
+            {
+                SpriteRenderer completedLevelBoard = CompletedLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "completed_level_board").First();
+                completedLevelBoard.sprite = Resources.Load<Sprite>("LevelCompleted/completed_level_" + chosenLevel);
+                disableAllLevelBtns();
+                GameManager.Instance.popUpUCompletedLevelBoard();
+            } 
+            else if (chosenLevel == lastCompletedLevel + 1)
+            {
+                SpriteRenderer unlockedLevelBoard = UnlockedLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "unlocked_level_board").First();
+                unlockedLevelBoard.sprite = Resources.Load<Sprite>("LevelUnlocked/unlocked_level_" + chosenLevel);
+                disableAllLevelBtns();
+                GameManager.Instance.popUpUnlockedLevelBoard();
+            }
+        }
+    }
+
+    public void closeLevelPopUp()
+    {
+        enableAllLevelBtns();
+        GameManager.Instance.SetPageState(GameManager.PageState.LevelUI);
+    }
+
+    public void GameOverPopUp(int value)
+    {
+        CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
+
+        SpriteRenderer loseLevelBoard = LoseLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "lose_level_board").First();
+        loseLevelBoard.sprite = Resources.Load<Sprite>("LevelLose/lose_level_" + chosenLevel);
+
+        Text scoreText = LoseLevelPopUp.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
+        scoreText.text = value.ToString();
+
+        GameManager.Instance.SetPageState(GameManager.PageState.GameOver);
     }
 
     public void completeLevel()
@@ -111,22 +169,29 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    void click(int value)
+    public void enableAllLevelBtns()
     {
-        Debug.Log("a");
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject levelButton = levelButtons[i];
+            Button btn = levelButton.GetComponent<Button>();
+            btn.enabled = true;
+        }
+    }
+
+    public void disableAllLevelBtns()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject levelButton = levelButtons[i];
+            Button btn = levelButton.GetComponent<Button>();
+            btn.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (EventSystem.current.currentSelectedGameObject != null)
-        {
-            Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-            
-        }
-        */
-
         if (lastCompletedLevel > 0)
         {
             GameObject newFlag = flags[lastCompletedLevel - 1];
