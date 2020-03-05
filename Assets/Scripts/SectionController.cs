@@ -32,8 +32,7 @@ public class SectionController : MonoBehaviour
         currentImg.SetActive(true);
         Transform t = currentImg.transform;
         t.SetParent(transform);
-        t.localPosition = currentImgDest;
-        var x = StartCoroutine(ConnectionManager.GetTopic(1));      
+        t.localPosition = currentImgDest;       
     }
     // Update is called once per frame
     void Update()
@@ -65,6 +64,7 @@ public class SectionController : MonoBehaviour
 
     public void SetCurrentPage()
     {
+      
         sections = ConnectionManager.Topics.OrderByDescending(z => z.Name).Select(z => z.Name).ToArray();
         sectionTxt.text = sections[this.currentPage];
         lastImg = currentImg;

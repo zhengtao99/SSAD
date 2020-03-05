@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -37,6 +38,8 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+        StartCoroutine(ConnectionManager.GetAvailableStages(10,1));
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -44,7 +47,14 @@ public class LevelController : MonoBehaviour
             if (child.tag == "Flag")
                 flags.Add(child.gameObject);
         }
-
+       
+       
+       
+    }
+    public void SetAvailableStages()
+    {
+        var stages = ConnectionManager.AvailableStages;
+        lastCompletedLevel = stages.Count;
         for (int i = 0; i < 10; i++)
         {
             GameObject levelButton = levelButtons[i];
@@ -53,7 +63,7 @@ public class LevelController : MonoBehaviour
             Image img = levelButton.GetComponent<Image>();
             Button btn = levelButton.GetComponent<Button>();
             SpriteRenderer spriteRenderer = levelButton.GetComponent<SpriteRenderer>();
-            
+
             ani.enabled = false;
             if (img != null && btn != null)
             {
@@ -61,23 +71,23 @@ public class LevelController : MonoBehaviour
                 img.enabled = true;
                 spriteRenderer.enabled = false;
             }
-            
-            if (i <= lastCompletedLevel - 1)  //completed: < or ==
+
+            if (i <= lastCompletedLevel-1)  //completed: < or ==
             {
-                img.sprite = unlockedImg;
+                img.sprite = unlockedImg;               
                 flag.transform.localScale = flagScale;
             }
             else  //not completed: >
-            {             
+            {
                 if (i == lastCompletedLevel)
                     img.sprite = unlockedImg;
                 else
                     img.sprite = lockedImg;
                 flag.transform.localScale = new Vector3(0, 0, 0);
             }
+
         }
     }
-
     void OnEnable()
     {
         for (int i = 0; i < 10; i++)

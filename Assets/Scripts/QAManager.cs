@@ -25,7 +25,7 @@ public class QAManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        if(transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
+        if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
             PopulateQuestion();
             continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
@@ -61,8 +61,10 @@ public class QAManager : MonoBehaviour
 
     public void PopulateQuestion()
     {
+       
         qnText.text = "Qn: " + "The question will be retrieved here. Loading....";
         var questions = ConnectionManager.Questions;
+       
         int randomNumber = Random.Range(0, questions.Count);
         var question = questions[randomNumber];
         qnText.text = question.Description;

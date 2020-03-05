@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.WorldUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
-                profilePage.SetActive(false);
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.SectionUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
-                profilePage.SetActive(false);
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
                 winLevelPopUp.SetActive(false);
                 break;
             case PageState.LevelUI:
-                profilePage.SetActive(false);
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
                 gameOverPage.SetActive(false);

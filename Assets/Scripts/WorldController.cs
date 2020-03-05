@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class WorldController : MonoBehaviour
     private GameObject currentImg;
     private GameObject lastImg;
     public int currentPage;
-    public string[] worlds = { "Mathemtics", "Physics", "Programming" };
+    public static string currentWorld;
     private float speed = 20.0f;
     private bool moveCurrent = false;
     private bool moveLast = false;
@@ -23,6 +24,7 @@ public class WorldController : MonoBehaviour
     private Vector3 leftEnd = new Vector3(-5f, 0, 0);
     private Vector3 rightEnd = new Vector3(7.5f, 0, 0);
     // Start is called before the first frame update
+    private string[] worlds;
     void Start()
     {
         currentPage = 0;
@@ -31,6 +33,7 @@ public class WorldController : MonoBehaviour
         Transform t = currentImg.transform;
         t.SetParent(transform);
         t.localPosition = currentImgDest;
+        StartCoroutine(ConnectionManager.GetWorld());
     }
 
     // Update is called once per frame
@@ -62,9 +65,11 @@ public class WorldController : MonoBehaviour
 
     }
 
-    void SetCurrentPage()
+    public void SetCurrentPage()
     {
-        subject.text = worlds[currentPage];
+        worlds = ConnectionManager.Worlds.Select(z=>z.Name).ToArray();
+        currentWorld = worlds[currentPage];
+        subject.text = currentWorld;
         lastImg = currentImg;
         currentImg = Instantiate(images[currentPage]) as GameObject;
         currentImg.SetActive(true);
@@ -119,6 +124,6 @@ public class WorldController : MonoBehaviour
 
     public void OnClickContinue()
     {
-
+        StartCoroutine(ConnectionManager.GetTopic(ConnectionManager.Worlds.Where(z => z.Name == currentWorld).First().Id));
     }
 }
