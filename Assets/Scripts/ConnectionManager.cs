@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using Assets.Model;
 
 namespace Assets.Scripts
 {
@@ -25,12 +26,14 @@ namespace Assets.Scripts
         }
         public static IEnumerator GetQuestions(int topicId, int stage)
         {
+            Debug.Log("getting questions");
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/questions/" + topicId + "/" + stage);
             yield return www.SendWebRequest();
             string json = "{\"Questions\":" + www.downloadHandler.text + "}";
             var questionCollection = JsonUtility.FromJson<QuestionCollection>(json);          
             Questions = questionCollection.Questions;
+            Debug.Log("got questions");
             GameManager.Instance.HideLoading();
         }
         public static IEnumerator GetTopic(int WorldId)
