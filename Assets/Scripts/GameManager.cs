@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
         
     }
+ 
     public void SetPageState(PageState state) {
         switch (state) {
             case PageState.None:

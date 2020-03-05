@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
-using Assets.Model;
 
 namespace Assets.Scripts
 {
