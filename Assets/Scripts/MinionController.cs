@@ -12,40 +12,34 @@ public class MinionController : MonoBehaviour
     public bool isPause = false;
     float delay = 0;
 
+    public GameObject attackEffect;
     public GameObject fireball;
-    public bool stopFiring;
+    public GameObject freeze;
+    public GameObject alert;
+    public bool stopFiring = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         moveInput = new Vector2(1, 1);
-
-        InvokeRepeating("Fire", 0.0f, 3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Minion fire when triggered
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            StartCoroutine(Fire());
+        }
+
         //Freeze minions
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (isPause)
-            {
-                isPause = false;
-
-                SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-                renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-            }
-
-            else
-            {
-                isPause = true;
-
-                SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-                renderer.color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-            }
+            StartCoroutine(FreezeMinions());
         }
     }
+
     private void FixedUpdate()
     {
         if (delay > 0)
@@ -73,13 +67,62 @@ public class MinionController : MonoBehaviour
         }
         
     }
-    private void Fire()
+    IEnumerator FreezeMinions()
     {
-        if (!isPause && !stopFiring)
+        Animator anim = this.gameObject.GetComponent<Animator>();
+
+        isPause = true;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+        anim.enabled = false;
+        Instantiate(freeze, transform.position, Quaternion.identity, transform);
+
+        yield return new WaitForSeconds(5.0f);
+
+        isPause = false;
+        renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        anim.enabled = true;
+        foreach (Transform child in transform)
         {
-            //Debug.Log(stopFiring);
-            GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
+            Destroy(child.gameObject);
         }
+    }
+
+    IEnumerator Fire()
+    {
+        Vector3 offset = new Vector3(0.4f, 1, 0);
+        Instantiate(alert, transform.position + offset, Quaternion.identity, transform);
+
+        yield return new WaitForSeconds(3f);
+
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        StartCoroutine(activateEffect2());
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (!isPause && !stopFiring)
+            {
+                GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
+                yield return new WaitForSeconds(3.0f);
+            }
+        }
+
+        //yield return null;
+    }
+
+    IEnumerator activateEffect2()
+    {
+        Vector3 offset = new Vector3(0, 0.2f, 0);
+        Instantiate(attackEffect, transform.position + offset, Quaternion.identity, transform);
+        yield return new WaitForSeconds(9f);
+
+        GameObject[] aE = GameObject.FindGameObjectsWithTag("attackEffect");
+        foreach (GameObject a in aE)
+            GameObject.Destroy(a);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

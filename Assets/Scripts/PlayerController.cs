@@ -10,8 +10,17 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    //public Sprite Player_Dead;
-    //MinionController mc;
+    //Timer
+    private float timing = 3.0f;
+    private bool timerActive = false;
+
+    public GameObject glow;
+    public GameObject deadEffect;
+    public bool isGlowing = false;
+    public float glowTime = 3.0f;
+    public bool isInjured = false;
+    private UnityEngine.Object explosionRef;
+
     private GameObject[] minions;
 
     public delegate void PlayerDelegate(int value);
@@ -24,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private int correctAns;
     private Text levelText;
     private SpriteRenderer levelBox;
-    // Start is called before the first frame update
+
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     public bool isPause = false;
@@ -34,6 +43,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
+        explosionRef = Resources.Load("PlayerExplosion");
+
         rb = GetComponent<Rigidbody2D>();
 
         var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("maze")).First();
@@ -60,6 +71,7 @@ public class PlayerController : MonoBehaviour
         levelText.enabled = false;
         levelBox.enabled = false;
     }
+
     void Update()
     {
         if (score == MazeGenerator.Instance.getMaxScore())
@@ -81,8 +93,12 @@ public class PlayerController : MonoBehaviour
 
         moveVelocity = moveInput.normalized * speed;
 
-
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            StartCoroutine(startGlow());
+        }
     }
+
     private void FixedUpdate()
     {
         if (isPause)
@@ -94,43 +110,76 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Coin")
         {
             FindObjectOfType<SoundManager>().Play("CoinCollection");
             Destroy(other.gameObject);
-           ScoreUpdate(); 
+            ScoreUpdate();
         }
-        if (other.gameObject.tag == "Minion")
+
+        if (other.gameObject.tag == "Minion" && !isGlowing && !isInjured)
         {
             LifeUpdate();
-
         }
-        if (other.gameObject.tag == "Fireball")
+
+        else if ((other.gameObject.tag == "Minion" || other.gameObject.tag == "Fireball") && isGlowing)
         {
-            //Animator animator = this.gameObject.GetComponent<Animator>();
-            //animator.runtimeAnimatorController = Resources.Load("New Sprite") as RuntimeAnimatorController;
-            //animator.enabled = false;
-            //this.gameObject.GetComponent<SpriteRenderer>().sprite = Player_Dead;
-
             Destroy(other.gameObject);
+            Vector3 offset = new Vector3(-0.2f, 0.1f, 0);
+            Instantiate(deadEffect, other.transform.position + offset, Quaternion.identity);
+            StartCoroutine(activateEffect());
+        }
 
-            StartCoroutine(hit());
+        if (other.gameObject.tag == "Fireball" && !isGlowing && !isInjured)
+        {
+            Destroy(other.gameObject);
+            LifeUpdate();
         }
     }
+
+    IEnumerator activateEffect()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(GameObject.FindWithTag("deadEffect"));
+    }
+
     IEnumerator hit()
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         for (int i = 0; i < 8; i++)
         {
+            isInjured = true;
             renderer.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             yield return new WaitForSeconds(0.1f);
             renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             yield return new WaitForSeconds(0.1f);
         }
+
+        isInjured = false;
         yield return null;
     }
+
+    IEnumerator startGlow()
+    {
+        isGlowing = true;
+        Vector3 offset = new Vector3(0, -0.1f, 0);
+        Instantiate(glow, transform.position + offset, Quaternion.identity, transform);
+
+        yield return new WaitForSeconds(glowTime);
+
+        isGlowing = false;
+
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        yield return null;
+    }
+
     void ScoreUpdate()
     {
         score += 10;
@@ -143,24 +192,58 @@ public class PlayerController : MonoBehaviour
         countLife -= 1;
         lifeText.text = "Life: " + countLife;
         bool win;
+
         if (countLife == 0)
         {
-            PauseGame();
+            //PauseGame();
             //OnPlayerDied(score); //event sent to LevelController
+
+            GameObject explosion = (GameObject)Instantiate(explosionRef);
+            explosion.transform.position = new Vector2(transform.position.x, transform.position.y + .3f);
+            Destroy(gameObject);
+            FindObjectOfType<SoundManager>().Play("CharacterDeath");
+
             if (correctAns >= 4)
+            {
                 win = true;
+            }
+
             else
+            {
                 win = false;
+            }
+
+            if (minions[0] != null)
+            {
+                foreach (GameObject minion in minions)
+                {
+                    minion.GetComponent<MinionController>().stopFiring = true;
+                }
+            }
+
 
             EndGame(win);
+
+            //StartCoroutine(passWin(win));
         }
+
         else
         {
-            lifeBox.enabled = true;
-            PauseGame();
-            Invoke("ResumeGame", 0.5f);
+            StartCoroutine(hit());
+            //lifeBox.enabled = true;
+            //PauseGame();
+            //Invoke("ResumeGame", 0.5f);
         }
     }
+
+    //IEnumerator passWin(bool win)
+    //{
+    //    Debug.Log("passWin called");
+    //    yield return new WaitForSeconds(2f);
+    //    EndGame(win);
+    //    Debug.Log("passWin22 called");
+    //    yield return null;
+    //}
 
     private void EndGame(bool win)
     {
