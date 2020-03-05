@@ -62,7 +62,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-       
+        if (score == MazeGenerator.Instance.getMaxScore())
+        {
+            EndGame(true);
+        }
+
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (Input.GetAxisRaw("Horizontal") == 1)
         {
@@ -138,17 +142,36 @@ public class PlayerController : MonoBehaviour
     {
         countLife -= 1;
         lifeText.text = "Life: " + countLife;
+        bool win;
         if (countLife == 0)
         {
             PauseGame();
             //OnPlayerDied(score); //event sent to LevelController
-            LevelController.Instance.GameOverPopUp(score);
+            if (correctAns >= 4)
+                win = true;
+            else
+                win = false;
+
+            EndGame(win);
         }
         else
         {
             lifeBox.enabled = true;
             PauseGame();
             Invoke("ResumeGame", 0.5f);
+        }
+    }
+
+    private void EndGame(bool win)
+    {
+        CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
+        if (win)
+        {
+            LevelController.Instance.WinPopUp(score);
+        }
+        else
+        {
+            LevelController.Instance.GameOverPopUp(score);
         }
     }
 
@@ -181,17 +204,19 @@ public class PlayerController : MonoBehaviour
         Invoke("hideLevelBox", 2f);
     }
 
-    public void countCorrectAns()
+    public void increaseCorrectAns()
     {
         correctAns += 1;
-        if(correctAns == 3)
+        if(correctAns == 4)
         {
             openNewLevel();
+            LevelController.Instance.setWin(true);
         }
     }
 
     public void hideLevelBox()
     {
+        Debug.Log("aha");
         levelText.enabled = false;
         levelBox.enabled = false;
     }

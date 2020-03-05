@@ -1,6 +1,4 @@
-﻿using Assets.Model;
-using Assets.Scripts;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,12 +17,15 @@ public class QAManager : MonoBehaviour
     private Text ansText = null;
     private int answerID;
     public static ColorBlock originalColors;
+
+    private int correctAns = 0;
+
     // Start is called before the first frame update
     void OnEnable()
     {
-        if (transform.name.ToLower().Contains("questionpopuppage"))
-        {
-            PopulateQuestion();
+        if(transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
+            RetrievePossibleAnswers();
+            RetrieveQuestion();
             continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
         }
@@ -38,34 +39,22 @@ public class QAManager : MonoBehaviour
         
     }
 
-    public void PopulateAnswers(List<Answer> answers)
-    {
+    void RetrievePossibleAnswers(){
         //Create list to randomly pick up 1 button to populate data
-
         List<GameObject> buttons = new List<GameObject>{topLeftButton,topRightButton,
         bottomLeftButton,bottomRightButton};
-        while (buttons.Count != 0)
-        {
-            int index = Random.Range(0, buttons.Count - 1); //Not inclusive of Max
+        while (buttons.Count != 0){
+            int index = Random.Range(0,buttons.Count); //Not inclusive of Max
             GameObject button = buttons[index];//Retrieve button from list
             ansText = button.GetComponentInChildren<Text>();
-            ansText.text = answers[buttons.Count - 1].Description; //Retrieve 1 possible answer
+            ansText.text = "answer " + index; //Retrieve 1 possible answer
             answerID = 2;//Retrieve answer ID;
-            answers.RemoveAt(buttons.Count - 1);
             buttons.RemoveAt(index);
         }
-
     }
 
-    public void PopulateQuestion()
-    {
+    void RetrieveQuestion(){
         qnText.text = "Qn: " + "The question will be retrieved here. Loading....";
-        var questions = ConnectionManager.Questions;
-        int randomNumber = Random.Range(0, questions.Count);
-        var question = questions[randomNumber];
-        qnText.text = question.Description;
-        PopulateAnswers(question.Answers);
-        questions.Remove(question);
     }
 
     void DisableButtons()
@@ -131,6 +120,14 @@ public class QAManager : MonoBehaviour
         colors.selectedColor = Color.green;
         colors.disabledColor = Color.green;
         pressedButton.colors = colors;
-        playerController.countCorrectAns();
+        playerController.increaseCorrectAns();
+        /*
+        correctAns += 1;
+        if (correctAns == 4)
+        {
+            playerController.openNewLevel();
+            LevelController.Instance.setWin(true);
+        }
+        */
     }
 }

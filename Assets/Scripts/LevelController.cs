@@ -25,7 +25,9 @@ public class LevelController : MonoBehaviour
     public GameObject UnlockedLevelPopUp;
     public GameObject CompletedLevelPopUp;
     public GameObject LoseLevelPopUp;
-    public int chosenLevel = -1;
+    public GameObject WinLevelPopUp;
+    private int chosenLevel = -1;
+    private bool win = false;
 
     void Awake()
     {
@@ -34,7 +36,7 @@ public class LevelController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -51,7 +53,7 @@ public class LevelController : MonoBehaviour
             Image img = levelButton.GetComponent<Image>();
             Button btn = levelButton.GetComponent<Button>();
             SpriteRenderer spriteRenderer = levelButton.GetComponent<SpriteRenderer>();
-
+            
             ani.enabled = false;
             if (img != null && btn != null)
             {
@@ -59,7 +61,7 @@ public class LevelController : MonoBehaviour
                 img.enabled = true;
                 spriteRenderer.enabled = false;
             }
-
+            
             if (i <= lastCompletedLevel - 1)  //completed: < or ==
             {
                 img.sprite = unlockedImg;
@@ -74,6 +76,37 @@ public class LevelController : MonoBehaviour
                 flag.transform.localScale = new Vector3(0, 0, 0);
             }
         }
+    }
+
+    void OnEnable()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject levelButton = levelButtons[i];
+            Animator ani = levelButton.GetComponent<Animator>();
+            Image img = levelButton.GetComponent<Image>();
+            Button btn = levelButton.GetComponent<Button>();
+            SpriteRenderer spriteRenderer = levelButton.GetComponent<SpriteRenderer>();
+
+            ani.enabled = false;
+            if (img != null && btn != null)
+            {
+                btn.enabled = true;
+                img.enabled = true;
+                spriteRenderer.enabled = false;
+            }
+        }
+
+        if (win)
+        {
+            completeLevel();
+            win = false;
+        }
+    }
+
+    public void setWin(bool value)
+    {
+        win = value;
     }
 
     public void openLevel()
@@ -107,20 +140,29 @@ public class LevelController : MonoBehaviour
     public void closeLevelPopUp()
     {
         enableAllLevelBtns();
-        GameManager.Instance.SetPageState(GameManager.PageState.LevelUI);
+        GameManager.Instance.levelUI();
     }
 
     public void GameOverPopUp(int value)
     {
-        CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
-
         SpriteRenderer loseLevelBoard = LoseLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "lose_level_board").First();
         loseLevelBoard.sprite = Resources.Load<Sprite>("LevelLose/lose_level_" + chosenLevel);
 
         Text scoreText = LoseLevelPopUp.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
         scoreText.text = value.ToString();
 
-        GameManager.Instance.SetPageState(GameManager.PageState.GameOver);
+        GameManager.Instance.EnterGameOver();
+    }
+
+    public void WinPopUp(int value)
+    {
+        SpriteRenderer winLevelBoard = WinLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "win_level_board").First();
+        winLevelBoard.sprite = Resources.Load<Sprite>("LevelWin/win_level_" + chosenLevel);
+
+        Text scoreText = WinLevelPopUp.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
+        scoreText.text = value.ToString();
+
+        GameManager.Instance.EnterGameWin();
     }
 
     public void completeLevel()
