@@ -65,7 +65,6 @@ namespace Assets.Scripts
             string json = "{\"Topics\":" + www.downloadHandler.text + "}";
             var topicCollection = JsonUtility.FromJson<TopicCollection>(json);
             Topics = topicCollection.Topics;
-            Debug.Log(Topics.Count);
             GameManager.Instance.HideLoading();
             GameManager.Instance.sectionUI();
             GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("section")).First().GetComponent<SectionController>().SetCurrentPage();
@@ -90,6 +89,7 @@ namespace Assets.Scripts
             var stageCollection = JsonUtility.FromJson<AvailableStageCollection>(json);
             AvailableStages = stageCollection.AvailableStages;
             GameManager.Instance.HideLoading();
+            GameManager.Instance.levelUI();
             GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("level")).First().GetComponent<LevelController>().SetAvailableStages();
         }
     }

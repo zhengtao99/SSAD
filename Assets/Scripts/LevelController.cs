@@ -38,8 +38,10 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        StartCoroutine(ConnectionManager.GetAvailableStages(10,1));
+            
+    }
+    public void SetAvailableStages()
+    {
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -47,12 +49,6 @@ public class LevelController : MonoBehaviour
             if (child.tag == "Flag")
                 flags.Add(child.gameObject);
         }
-       
-       
-       
-    }
-    public void SetAvailableStages()
-    {
         var stages = ConnectionManager.AvailableStages;
         lastCompletedLevel = stages.Count;
         for (int i = 0; i < 10; i++)

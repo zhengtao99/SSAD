@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using Assets.Model;
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,7 @@ public class SectionController : MonoBehaviour
                 currentImg.transform.localPosition = Vector3.MoveTowards(currentImg.transform.localPosition, currentImgDest, Time.deltaTime * speed);
             }
 
-            if (moveLast)
+            if (moveLast && lastImg != null)
             {
                 lastImg.transform.localScale -= scaleFactor;
                 lastImg.transform.localPosition = Vector3.MoveTowards(lastImg.transform.localPosition, lastImgDest, Time.deltaTime * speed);
@@ -114,5 +115,11 @@ public class SectionController : MonoBehaviour
         right = true;
         lastImgDest = rightEnd;
         SetCurrentPage();
+    }
+    public void StartGame()
+    {
+        User user = ConnectionManager.user;
+        Topic topic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
+        StartCoroutine(ConnectionManager.GetAvailableStages(topic.Id, user.Id));
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using Assets.Model;
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ public class WorldController : MonoBehaviour
     private GameObject currentImg;
     private GameObject lastImg;
     public int currentPage;
-    public static string currentWorld;
+    public static World currentWorld;
+    private string currentWorldName;
     private float speed = 20.0f;
     private bool moveCurrent = false;
     private bool moveLast = false;
@@ -68,8 +70,8 @@ public class WorldController : MonoBehaviour
     public void SetCurrentPage()
     {
         worlds = ConnectionManager.Worlds.Select(z=>z.Name).ToArray();
-        currentWorld = worlds[currentPage];
-        subject.text = currentWorld;
+        currentWorldName = worlds[currentPage];
+        subject.text = currentWorldName;
         lastImg = currentImg;
         currentImg = Instantiate(images[currentPage]) as GameObject;
         currentImg.SetActive(true);
@@ -124,6 +126,7 @@ public class WorldController : MonoBehaviour
 
     public void OnClickContinue()
     {
-        StartCoroutine(ConnectionManager.GetTopic(ConnectionManager.Worlds.Where(z => z.Name == currentWorld).First().Id));
+        currentWorld = ConnectionManager.Worlds.Where(z => z.Name == currentWorldName).First();
+        StartCoroutine(ConnectionManager.GetTopic(currentWorld.Id));
     }
 }
