@@ -11,7 +11,7 @@ public class SectionController : MonoBehaviour
     public GameObject[] images;
     private GameObject currentImg;
     private GameObject lastImg;
-    public int currentPage;
+    private int currentPage = 0;
     static string[] sections;
     private float speed = 20.0f;
     private bool moveCurrent = false;
@@ -27,12 +27,7 @@ public class SectionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentPage = 0;
-        currentImg = Instantiate(images[0]) as GameObject;
-        currentImg.SetActive(true);
-        Transform t = currentImg.transform;
-        t.SetParent(transform);
-        t.localPosition = currentImgDest;       
+              
     }
     // Update is called once per frame
     void Update()
@@ -64,7 +59,6 @@ public class SectionController : MonoBehaviour
 
     public void SetCurrentPage()
     {
-      
         sections = ConnectionManager.Topics.OrderByDescending(z => z.Name).Select(z => z.Name).ToArray();
         sectionTxt.text = sections[this.currentPage];
         lastImg = currentImg;

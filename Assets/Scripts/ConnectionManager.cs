@@ -12,21 +12,39 @@ namespace Assets.Scripts
 {
     class ConnectionManager : MonoBehaviour
     {
-        //static string Domain = "https://localhost:44365";
-        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        static string Domain = "https://localhost:44365";
+        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
+        public static User user;
         public static List<Question> Questions;
         public static List<Topic> Topics;
         public static List<World> Worlds;
         public static List<AvailableStage> AvailableStages;
+    
         public static IEnumerator Login(string username, string password)
         {
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/login/" + username + "/" + password);
              yield return www.SendWebRequest();
             GameManager.Instance.HideLoading();
-            bool result = bool.Parse(www.downloadHandler.text);
-            LoginController.Result(result);
+            try
+            {
+                bool result = bool.Parse(www.downloadHandler.text);
+                LoginController.Result(result);
+            }
+            catch(Exception ex)
+            {
+                try
+                {
+                    user = JsonUtility.FromJson<User>(www.downloadHandler.text);
+                    GameManager.Instance.WorldUI();
+                }
+                catch(Exception ex2)
+                {
+                   
+                }
+            }
+            
         }
         public static IEnumerator GetQuestions(int topicId, int stage)
         {
@@ -47,6 +65,7 @@ namespace Assets.Scripts
             string json = "{\"Topics\":" + www.downloadHandler.text + "}";
             var topicCollection = JsonUtility.FromJson<TopicCollection>(json);
             Topics = topicCollection.Topics;
+            Debug.Log(Topics.Count);
             GameManager.Instance.HideLoading();
             GameManager.Instance.sectionUI();
             GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("section")).First().GetComponent<SectionController>().SetCurrentPage();

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -264,7 +265,8 @@ public class GameManager : MonoBehaviour
     }
 
     //activated when replay button is hit
-    public void MainMenu() {
+    public void WorldUI() {
+        StartCoroutine(ConnectionManager.GetWorld());
         SetPageState(PageState.WorldUI);
     }
 

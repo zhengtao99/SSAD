@@ -30,10 +30,10 @@ public class WorldController : MonoBehaviour
         currentPage = 0;
         currentImg = Instantiate(images[0]) as GameObject;
         currentImg.SetActive(true);
+        images[0].SetActive(false);
         Transform t = currentImg.transform;
         t.SetParent(transform);
         t.localPosition = currentImgDest;
-        StartCoroutine(ConnectionManager.GetWorld());
     }
 
     // Update is called once per frame

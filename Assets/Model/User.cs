@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assets.Model
 {
+    [Serializable]
     public class User
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public int Id;
+        public string FirstName;
+        public string LastName;
     }
 }

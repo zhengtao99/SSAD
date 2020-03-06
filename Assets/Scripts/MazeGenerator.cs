@@ -290,7 +290,6 @@ public class MazeGenerator : MonoBehaviour
         mark[col / 2, row / 2] = 4;
 
         PlaceObjects();
-        Debug.Log("Number of coins: " + count);
     }
     void PlaceObjects() {
         for (int x = 0 ; x < col ; x++) {

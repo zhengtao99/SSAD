@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,6 @@ public class ProfileController : MonoBehaviour
     {
         var profilePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("profile")).First();
         var usernameText = profilePage.GetComponentsInChildren<Text>().Where(z => z.name.ToLower().Contains("username")).First();
-        usernameText.text = LoginController.username;
+        usernameText.text = ConnectionManager.user.FirstName + " " + ConnectionManager.user.LastName;
     }
 }

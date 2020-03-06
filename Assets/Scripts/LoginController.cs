@@ -7,16 +7,15 @@ using System.Linq;
 
 public class LoginController : MonoBehaviour
 {
-    public static string username;
-    public static string password;
+
    
     public static GameObject loginPage;
     public void Submit()
     {
         loginPage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name == "LoginPage").First();
         var inputFields = loginPage.GetComponentsInChildren<InputField>();
-        username = inputFields.Where(z => z.name == "Username").First().text;
-        password = inputFields.Where(z => z.name == "Password").First().text;
+        var username = inputFields.Where(z => z.name == "Username").First().text;
+        var password = inputFields.Where(z => z.name == "Password").First().text;
 
         StartCoroutine(ConnectionManager.Login(username, password));
     }
@@ -24,7 +23,7 @@ public class LoginController : MonoBehaviour
     {
         if(result)
         {
-            GameManager.Instance.MainMenu();
+            GameManager.Instance.WorldUI();
         }
         else
         {
