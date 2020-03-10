@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject glow;
     public GameObject deadEffect;
+    private GameObject[] heartArr;
     public bool isGlowing = false;
     public float glowTime = 3.0f;
     public bool isInjured = false;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public bool isPause = false;
     public float speed;
     int score = 0;
-
+    private int direction;
     // Update is called once per frame
     private void Start()
     {
@@ -58,8 +58,8 @@ public class PlayerController : MonoBehaviour
         lifeBox = mazePage.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "LoseLife").First();
         lifeBox.enabled = false;
 
-        lifeText = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "LifeText").First();
-        lifeText.text = "Life: " + countLife;
+        //lifeText = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "LifeText").First();
+        //lifeText.text = "Life: " + countLife;
 
         scoreText = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText").First();
 
@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
         levelBox = mazePage.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "OpenLevel").First();
         minions = GameObject.FindGameObjectsWithTag("Minion");
         player = GameObject.FindGameObjectWithTag("Player");
+        heartArr = GameObject.FindGameObjectsWithTag("Heart");
         correctAns = 0;
         levelText.enabled = false;
         levelBox.enabled = false;
@@ -80,18 +81,30 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (Input.GetAxisRaw("Horizontal") == 1)
+        if (direction == 0)
         {
             //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
             this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+            moveVelocity = new Vector2(5, 0);
         }
-        else if(Input.GetAxisRaw("Horizontal") == -1)
+        else if (direction == 1)
         {
             //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
             this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+            moveVelocity = new Vector2(-5, 0);
         }
-
-        moveVelocity = moveInput.normalized * speed;
+        else if(direction == 2)
+        {
+            moveVelocity = new Vector2(0, 5);
+        }
+        else if(direction == 3)
+        {
+            moveVelocity = new Vector2(0, -5);
+        }
+        else
+        {
+            moveVelocity = new Vector2(0, 0);
+        }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -190,7 +203,8 @@ public class PlayerController : MonoBehaviour
     public void LifeUpdate()
     {
         countLife -= 1;
-        lifeText.text = "Life: " + countLife;
+        Destroy(heartArr[countLife]);
+        //lifeText.text = "Life: " + countLife;
         bool win;
 
         if (countLife == 0)
@@ -281,7 +295,7 @@ public class PlayerController : MonoBehaviour
 
     public void openNewLevel()
     {
-        levelText.text = "Level 3 is opened"; 
+        levelText.text = "Level 3 is opened";
         levelText.enabled = true;
         levelBox.enabled = true;
         Invoke("hideLevelBox", 2f);
@@ -290,7 +304,7 @@ public class PlayerController : MonoBehaviour
     public void increaseCorrectAns()
     {
         correctAns += 1;
-        if(correctAns == 4)
+        if (correctAns == 4)
         {
             openNewLevel();
             LevelController.Instance.setWin(true);
@@ -302,5 +316,30 @@ public class PlayerController : MonoBehaviour
         Debug.Log("aha");
         levelText.enabled = false;
         levelBox.enabled = false;
+    }
+
+    public void moveLeft()
+    {
+        direction = 1;
+    }
+
+    public void moveRight()
+    {
+        direction = 0;
+    }
+
+    public void moveUp()
+    {
+        direction = 2;
+    }
+
+    public void moveDown()
+    {
+        direction = 3;
+    }
+
+    public void stopMove()
+    {
+        direction = -1;
     }
 }

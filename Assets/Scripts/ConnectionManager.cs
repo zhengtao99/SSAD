@@ -12,8 +12,8 @@ namespace Assets.Scripts
 {
     class ConnectionManager : MonoBehaviour
     {
-        static string Domain = "https://localhost:44365";
-        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        //static string Domain = "https://localhost:44365";
+        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;
@@ -37,6 +37,7 @@ namespace Assets.Scripts
                 try
                 {
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
+                    Debug.Log(user);
                     GameManager.Instance.WorldUI();
                 }
                 catch(Exception ex2)

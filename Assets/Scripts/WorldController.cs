@@ -73,7 +73,7 @@ public class WorldController : MonoBehaviour
         currentWorldName = worlds[currentPage];
         subject.text = currentWorldName;
         lastImg = currentImg;
-        currentImg = Instantiate(images[currentPage]) as GameObject;
+        currentImg = Instantiate(images[currentPage % 3]) as GameObject;
         currentImg.SetActive(true);
 
         Transform t = currentImg.transform;
