@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject unlockedLevelPopUp;
     public GameObject completedLevelPopUp;
     public GameObject winLevelPopUp;
+    public GameObject leaderboardPage;
     public Text scoreText;
     GameObject initialPlayState;
 
@@ -39,7 +40,8 @@ public class GameManager : MonoBehaviour
         LevelUI,
         UnlockedLevelPopUp,
         CompletedLevelPopUp,
-        GameWin
+        GameWin,
+        LeaderboardPage
     } 
 
     bool gameOver = true; //Initially not start game
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Login);
+        SetPageState(PageState.LeaderboardPage);
 
         //Ensure initialPlayState (playPage clone) is disabled
         playPage.SetActive(false);
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.Login:
                 FindObjectOfType<SoundManager>().Play("GameLaunch");
@@ -90,6 +93,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.Ready:
                 profilePage.SetActive(false);
@@ -105,6 +109,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.GameOver:
                 FindObjectOfType<SoundManager>().Pause("EasyStage");
@@ -121,6 +126,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.Play:
                 FindObjectOfType<SoundManager>().Play("EasyStage");
@@ -138,6 +144,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
                 profilePage.SetActive(false);
@@ -153,6 +160,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.WorldUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -169,6 +177,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.SectionUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -185,6 +194,24 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
+                break;
+            case PageState.LeaderboardPage:
+                FindObjectOfType<SoundManager>().Play("Lobby");
+                profilePage.SetActive(true);
+                loginPage.SetActive(false);
+                readyPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
+                winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(true);
                 break;
             case PageState.QuestionPopUp:
                 profilePage.SetActive(false);
@@ -200,6 +227,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.LevelUI:
                 profilePage.SetActive(true);
@@ -215,6 +243,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.UnlockedLevelPopUp:
                 profilePage.SetActive(false);
@@ -230,6 +259,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(true);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.CompletedLevelPopUp:
                 profilePage.SetActive(false);
@@ -245,6 +275,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(true);
                 winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
                 break;
             case PageState.GameWin:
                 profilePage.SetActive(false);
@@ -260,6 +291,7 @@ public class GameManager : MonoBehaviour
                 unlockedLevelPopUp.SetActive(false);
                 completedLevelPopUp.SetActive(false);
                 winLevelPopUp.SetActive(true);
+                leaderboardPage.SetActive(false);
                 break;
         }
     }
