@@ -91,7 +91,7 @@ namespace Assets.Scripts
             AvailableStages = stageCollection.AvailableStages;
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();
-            GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("level")).First().GetComponent<LevelController>().SetAvailableStages();
+            //GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("level")).First().GetComponent<LevelController>().SetAvailableStages();
         }
     }
     

@@ -38,7 +38,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            
+
     }
     public void SetAvailableStages()
     {
@@ -51,6 +51,7 @@ public class LevelController : MonoBehaviour
         }
         var stages = ConnectionManager.AvailableStages;
         lastCompletedLevel = stages.Count;
+        //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
         for (int i = 0; i < 10; i++)
         {
             GameObject levelButton = levelButtons[i];
@@ -86,6 +87,9 @@ public class LevelController : MonoBehaviour
     }
     void OnEnable()
     {
+        SetAvailableStages();
+        //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
+        /*
         for (int i = 0; i < 10; i++)
         {
             GameObject levelButton = levelButtons[i];
@@ -102,7 +106,7 @@ public class LevelController : MonoBehaviour
                 spriteRenderer.enabled = false;
             }
         }
-
+        */
         if (win)
         {
             completeLevel();
@@ -174,7 +178,8 @@ public class LevelController : MonoBehaviour
     public void completeLevel()
     {
         //Increase the completed levels
-        lastCompletedLevel++;
+        if (lastCompletedLevel != 10)
+            lastCompletedLevel++;
 
         //Wait 1s to popup flag then unlock next level
         Invoke("unlockLevel", 1f);
