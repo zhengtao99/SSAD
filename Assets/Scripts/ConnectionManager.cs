@@ -68,7 +68,7 @@ namespace Assets.Scripts
             Topics = topicCollection.Topics;
             GameManager.Instance.HideLoading();
             GameManager.Instance.sectionUI();
-            GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("section")).First().GetComponent<SectionController>().SetCurrentPage();
+            GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("section")).First().GetComponent<SectionController>().StartSectionPage();
         }
         public static IEnumerator GetWorld()
         {

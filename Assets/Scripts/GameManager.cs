@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.LeaderboardPage);
+        SetPageState(PageState.Login);
 
         //Ensure initialPlayState (playPage clone) is disabled
         playPage.SetActive(false);
