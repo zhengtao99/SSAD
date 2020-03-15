@@ -13,6 +13,7 @@ public class MazeGenerator : MonoBehaviour
     public GameObject ChestPrefab;
     public GameObject PlayerPrefab;
     public GameObject MinionPrefab;
+    public SpriteRenderer GameBackground;
     public Vector3 mazePos; //positon of maze
     public int row; //An odd number
     public int col; //An odd number
@@ -211,11 +212,34 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    public void SetWalls_SetBackground(int chosenLevel)
+    {
+        int id;
+        if (chosenLevel <= 5)
+            id = chosenLevel;
+        else
+            id = chosenLevel - 5;
+
+        GameBackground.sprite = Resources.Load<Sprite>("GameBg/game_bg_" + id);
+
+        foreach (Transform child in this.transform)
+        {
+            if (child.tag == "Wall")
+            {
+                GameObject wall = child.gameObject;
+                SpriteRenderer wallSprite = wall.GetComponent<SpriteRenderer>();
+                wallSprite.sprite = Resources.Load<Sprite>("Wall/wall_" + id);
+            }
+        }
+    }
+
     // Start is called before the first frame update
-    
+
     void Start()
     {
         GenerateMaze();
+        int chosenLevel = LevelController.Instance.getChosenLevel();
+        SetWalls_SetBackground(chosenLevel);
     }
     
     /*
