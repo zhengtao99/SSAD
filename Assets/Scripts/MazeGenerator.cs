@@ -216,7 +216,6 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         GenerateMaze();
-        StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
     
     /*

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.Scripts;
 public class JoyStickController : MonoBehaviour
 {
     private PlayerController playerController;
@@ -20,7 +20,8 @@ public class JoyStickController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
-        circle.transform.localPosition = new Vector2(370, -197);
+        circle.transform.localPosition = new Vector2(304, -205);
+        StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class JoyStickController : MonoBehaviour
             touchStart = false;
             xCoord = 0;
             yCoord = 0;
-            circle.transform.localPosition = new Vector2(370, -197);
+            circle.transform.localPosition = new Vector2(304, -205);
             playerController.stopMove();
         }
     }
@@ -85,9 +86,9 @@ public class JoyStickController : MonoBehaviour
 
     private bool inThreshold()
     {
-        Debug.Log(xCoord);
-        Debug.Log(yCoord);
-        if (xCoord > 651 && xCoord < 811 && yCoord > 0 && yCoord < 147)
+        //Debug.Log(xCoord);
+        //Debug.Log(yCoord);
+        if (xCoord > 865 && xCoord < 1017 && yCoord > 22 && yCoord < 168)
         {
             return true;
         }
