@@ -305,7 +305,6 @@ public class GameManager : MonoBehaviour
     //activated when play button is hit
     public void StartGame() {
         FindObjectOfType<SoundManager>().Play("MajorButton");
-
         //Destroy old play page
         Destroy(playPage);
 
