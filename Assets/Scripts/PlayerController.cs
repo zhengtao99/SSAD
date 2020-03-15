@@ -269,6 +269,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             LevelController.Instance.GameOverPopUp(score);
+            var topic = SectionController.currentTopic;
+            var user = ConnectionManager.user;
+            var level = LevelController.chosenLevel;
+            StartCoroutine(ConnectionManager.UpdateHighscore(user.Id, topic.Id, level, score, true));
         }
     }
 

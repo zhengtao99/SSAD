@@ -12,14 +12,15 @@ namespace Assets.Scripts
 {
     class ConnectionManager : MonoBehaviour
     {
-        //static string Domain = "https://localhost:44365";
-        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        static string Domain = "https://localhost:44365"; //ZT host
+        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;
         public static List<Topic> Topics;
         public static List<World> Worlds;
         public static List<AvailableStage> AvailableStages;
+        public static List<Highscore> Highscores;
     
         public static IEnumerator Login(string username, string password)
         {
@@ -32,15 +33,14 @@ namespace Assets.Scripts
                 bool result = bool.Parse(www.downloadHandler.text);
                 LoginController.Result(result);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 try
                 {
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
-                    Debug.Log(user);
                     GameManager.Instance.WorldUI();
                 }
-                catch(Exception ex2)
+                catch(Exception)
                 {
                    
                 }
@@ -83,6 +83,7 @@ namespace Assets.Scripts
         }
         public static IEnumerator GetAvailableStages(int TopicId, int UserId)
         {
+           
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + UserId);
             yield return www.SendWebRequest();         
@@ -91,7 +92,33 @@ namespace Assets.Scripts
             AvailableStages = stageCollection.AvailableStages;
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();
-            //GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("level")).First().GetComponent<LevelController>().SetAvailableStages();
+        }
+        public static IEnumerator UpdateHighscore(int UserId, int TopicId, int Stage, int Score, bool IsCleared)
+        {
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscore/" + UserId + "/" + TopicId + "/" + Stage + "/" + Score + "/" + IsCleared);
+            yield return www.SendWebRequest();
+        }
+        public static IEnumerator SaveAnalytics(int UserId, int QnsId, int AnsId, TimeSpan Speed)
+        {
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Speed.TotalMilliseconds);
+            yield return www.SendWebRequest();
+            Debug.Log(www.url);
+        }
+        public static IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
+        {
+            if (Search == "")
+            {
+                Search = "-";
+            }
+            if(Filter == "")
+            {
+                Filter = "-";
+            }
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + Search + "/" + Filter);
+            yield return www.SendWebRequest();
+            var highscore = JsonUtility.FromJson<Highscore>(www.downloadHandler.text);
+            Debug.Log(highscore.User.Id);
+            Debug.Log(highscore.TotalScore);
         }
     }
     

@@ -24,7 +24,7 @@ public class SectionController : MonoBehaviour
     private Vector3 scaleFactor = new Vector3(0.06f, 0.06f, 0.06f);
     private Vector3 leftEnd = new Vector3(2.5f, 0, 0);
     private Vector3 rightEnd = new Vector3(10.5f, 0, 0);
-
+    public static Topic currentTopic;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,9 +115,11 @@ public class SectionController : MonoBehaviour
     }
     public void StartGame()
     {
+        ConnectionManager.Highscores = new List<Highscore>();
         User user = ConnectionManager.user;
-        Topic topic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
-        StartCoroutine(ConnectionManager.GetAvailableStages(topic.Id, user.Id));
+        currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
+        StartCoroutine(ConnectionManager.GetAvailableStages(currentTopic.Id, user.Id));
+        //StartCoroutine(ConnectionManager.GetTopicHighscore(topic.Id, "", ""));
     }
 
     public void ViewLeaderboard()

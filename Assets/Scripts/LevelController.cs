@@ -27,7 +27,7 @@ public class LevelController : MonoBehaviour
     public GameObject CompletedLevelPopUp;
     public GameObject LoseLevelPopUp;
     public GameObject WinLevelPopUp;
-    private int chosenLevel = -1;
+    public static int chosenLevel = -1;
     private bool win = false;
 
     void Awake()
@@ -142,6 +142,8 @@ public class LevelController : MonoBehaviour
                 completedLevelBoard.sprite = Resources.Load<Sprite>("LevelCompleted/completed_level_" + chosenLevel);
                 disableAllLevelBtns();
                 GameManager.Instance.popUpUCompletedLevelBoard();
+                var ScoreText = CompletedLevelPopUp.GetComponentsInChildren<Text>().First();
+                ScoreText.text = ConnectionManager.AvailableStages.Where(z => z.Stage == chosenLevel).First().Amount.ToString();
             } 
             else if (chosenLevel == lastCompletedLevel + 1)
             {
