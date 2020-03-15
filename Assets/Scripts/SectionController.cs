@@ -120,6 +120,11 @@ public class SectionController : MonoBehaviour
         StartCoroutine(ConnectionManager.GetAvailableStages(topic.Id, user.Id));
     }
 
+    public void ViewLeaderboard()
+    {
+        GameManager.Instance.ViewLeaderboard();
+    }
+
     public void StartSectionPage()
     {
         this.currentPage = 0;

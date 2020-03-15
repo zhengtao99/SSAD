@@ -12,6 +12,7 @@ public class LoginController : MonoBehaviour
     public static GameObject loginPage;
     public void Submit()
     {
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         loginPage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name == "LoginPage").First();
         var inputFields = loginPage.GetComponentsInChildren<InputField>();
         var username = inputFields.Where(z => z.name == "Username").First().text;

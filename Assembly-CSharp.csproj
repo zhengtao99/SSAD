@@ -89,6 +89,8 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ProfileController.cs" />
     <Compile Include="Assets\Scripts\QAManager.cs" />
+    <Compile Include="Assets\Scripts\RankController.cs" />
+    <Compile Include="Assets\Scripts\RankListController.cs" />
     <Compile Include="Assets\Scripts\SectionController.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />

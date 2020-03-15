@@ -27,7 +27,7 @@ public class QAManager : MonoBehaviour
     {
         if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
             PopulateQuestion();
-            continueButton = GameObject.Find("Continue");
+            //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
         }
         player = GameObject.FindGameObjectWithTag("Player");
