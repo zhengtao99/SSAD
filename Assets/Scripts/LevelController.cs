@@ -40,6 +40,12 @@ public class LevelController : MonoBehaviour
     {
 
     }
+
+    public int getChosenLevel()
+    {
+        return chosenLevel;
+    }
+
     public void SetAvailableStages()
     {
         foreach (Transform child in canvas.transform)

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Brickwall : MonoBehaviour
 {
     public GameObject flame;
+    private SpriteRenderer wallSprite;
 
     void Start()
     {
-        
+        wallSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -26,4 +27,6 @@ public class Brickwall : MonoBehaviour
             Destroy(fl, 0.5f);
         }
     }
+
+    
 }

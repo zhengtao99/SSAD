@@ -211,11 +211,33 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    public void setWalls(int chosenLevel)
+    {
+        int id;
+        if (chosenLevel <= 5)
+            id = chosenLevel;
+        else
+            id = chosenLevel - 5; 
+
+        foreach (Transform child in this.transform)
+        {
+            if (child.tag == "Wall")
+            {
+                //walls.Add(child.gameObject);
+                GameObject wall = child.gameObject;
+                SpriteRenderer wallSprite = wall.GetComponent<SpriteRenderer>();
+                wallSprite.sprite = Resources.Load<Sprite>("Wall/wall_" + id);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     
     void Start()
     {
         GenerateMaze();
+        int chosenLevel = LevelController.Instance.getChosenLevel();
+        setWalls(chosenLevel);
     }
     
     /*
