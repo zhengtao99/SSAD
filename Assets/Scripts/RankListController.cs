@@ -33,7 +33,7 @@ public class RankListController : MonoBehaviour
 
         //Update Rank Clone with Index, Name, Level and Score
         TextMeshProUGUI indexText = rank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        indexText.text = ConnectionManager.Highscores.Count.ToString();
+        indexText.text = highscore.Rank.ToString();
         TextMeshProUGUI nameText = rank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         nameText.text = highscore.User.FirstName + " " + highscore.User.LastName;
         TextMeshProUGUI levelText = rank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
@@ -79,7 +79,7 @@ public class RankListController : MonoBehaviour
         TextMeshProUGUI scoreText = currentPlayerRank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         if (highscore != null)
         {
-            indexText.text = ConnectionManager.Highscores.Count.ToString();
+            indexText.text = highscore.Rank.ToString();
             nameText.text = highscore.User.FirstName + " " + highscore.User.LastName;
             levelText.text = "LV. " + highscore.Stage.ToString();
             scoreText.text = highscore.TotalScore.ToString();

@@ -10,6 +10,7 @@ namespace Assets.Model
     public class Highscore
     {
         public User User;
+        public int Rank;
         public int Stage;
         public int TotalScore;
     }
