@@ -104,7 +104,7 @@ namespace Assets.Scripts
             yield return www.SendWebRequest();
         }
         public IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
-        {
+        {          
             bool firstLoad = false;
             if (Search == "")
             {
@@ -117,6 +117,7 @@ namespace Assets.Scripts
             }
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + Search + "/" + Filter);
             yield return www.SendWebRequest();
+
             string json = www.downloadHandler.text;
             if (json != "")
             {

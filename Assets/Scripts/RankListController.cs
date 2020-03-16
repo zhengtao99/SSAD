@@ -16,8 +16,17 @@ public class RankListController : MonoBehaviour
     public GameObject currentPlayerRank;
 
     private List<GameObject> ranks = new List<GameObject>();
+    public void Search()
+    {
+        ConnectionManager.Highscores = new List<Highscore>();
+        var tb = GameObject.Find("SearchBox").GetComponentsInChildren<TextMeshProUGUI>().Where(z=>z.name=="Text").First();
+        ConnectionManager cm = new ConnectionManager();
+        string text = tb.text;
+        StartCoroutine(cm.GetTopicHighscore(SectionController.currentTopic.Id, text.Remove(text.Count()-1, 1),""));
+    }
     public void AddRank(int TopicId, string Search, string Filter, Highscore highscore)
     {
+        StopAllCoroutines();
         ConnectionManager cm = new ConnectionManager();
         GameObject rank = Instantiate(rankTemplate) as GameObject;
         rank.SetActive(true);
