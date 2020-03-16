@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts;
+using Assets.Model;
+using System.Linq;
 
 public class RankListController : MonoBehaviour
 {
@@ -13,87 +16,75 @@ public class RankListController : MonoBehaviour
     public GameObject currentPlayerRank;
 
     private List<GameObject> ranks = new List<GameObject>();
-
-    private List<Player> playersList = new List<Player> { 
-        new Player(1, "Yuanchao", 100, 1200), 
-        new Player(2, "Minh Thu", 50, 600), 
-        new Player(3, "Zheng Tao", 8, 22)
-    };
-
-    // Start is called before the first frame update
-    void OnEnable()
+    public void AddRank(int TopicId, string Search, string Filter, Highscore highscore)
     {
-        PopulatePlayers();
-        //SetCurrentPlayerRank();
-        GenerateRanks();
-    }
+        ConnectionManager cm = new ConnectionManager();
+        GameObject rank = Instantiate(rankTemplate) as GameObject;
+        rank.SetActive(true);
 
-    public void PopulatePlayers()
-    {
-        //Retrieve list of players, add into playersList with highest score first
+        //Update Rank Clone with Index, Name, Level and Score
+        TextMeshProUGUI indexText = rank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        indexText.text = ConnectionManager.Highscores.Count.ToString();
+        TextMeshProUGUI nameText = rank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        nameText.text = highscore.User.FirstName + " " + highscore.User.LastName;
+        TextMeshProUGUI levelText = rank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        levelText.text = "LV. " + highscore.Stage.ToString();
+        TextMeshProUGUI scoreText = rank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        scoreText.text = highscore.TotalScore.ToString() ;
 
-        //playersList.Clear();
-        //for loop to add into playersList
-        //playersList.Add();
-    }
-
-    private void GenerateRanks()
-    {
-        //To generate the list in the leaderboard page
-
-        if (ranks.Count > 0)
+        //Push into list
+        rank.transform.SetParent(rankTemplate.transform.parent, false);
+        ranks.Add(rank.gameObject);
+        if(ValidateMatchingUser(highscore) == true)
         {
-            foreach (GameObject rank in ranks)
-            {
-                Destroy(rank.gameObject);
-            }
-            ranks.Clear();
+            SetCurrentPlayerRank();
         }
+
+        StartCoroutine(cm.GetTopicHighscore(TopicId, Search, Filter));
         
-        foreach (Player player in playersList)
+    }
+    public void ClearRanks()
+    {
+        foreach(var rank in ranks)
         {
-            //Create Rank Clone
-            GameObject rank = Instantiate(rankTemplate) as GameObject;
-            rank.SetActive(true);
-
-            //Update Rank Clone with Index, Name, Level and Score
-            TextMeshProUGUI indexText = rank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            indexText.text = player.index.ToString();
-            TextMeshProUGUI nameText = rank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-            nameText.text = player.name;
-            TextMeshProUGUI levelText = rank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            levelText.text = player.level.ToString();
-            TextMeshProUGUI scoreText = rank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            scoreText.text = player.score.ToString();
-
-            //Push into list
-            rank.transform.SetParent(rankTemplate.transform.parent, false);
-            ranks.Add(rank.gameObject);
+            Destroy(rank);
         }
     }
-
-    public void SetCurrentPlayerRank(int index, string name, int level, int score)
+    public void SetCurrentDefaultRank()
     {
-        //SetCurrentPlayerRank
+        TextMeshProUGUI indexText = currentPlayerRank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI nameText = currentPlayerRank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI levelText = currentPlayerRank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI scoreText = currentPlayerRank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        indexText.text = "-";
+        nameText.text = ConnectionManager.user.FirstName + " " + ConnectionManager.user.LastName;
+        levelText.text = "LV. 0";
+        scoreText.text = "0";
     }
-}
-
-internal class Player
-{
-    public Player(int index, string name, int level, int score)
+    public void SetCurrentPlayerRank()
     {
-        this.index = index;
-        this.name = name;
-        this.level = level;
-        this.score = score;
+        var highscore = ConnectionManager.Highscores.Where(z => z.User.Id == ConnectionManager.user.Id).First();
+        TextMeshProUGUI indexText = currentPlayerRank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI nameText = currentPlayerRank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI levelText = currentPlayerRank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI scoreText = currentPlayerRank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        if (highscore != null)
+        {
+            indexText.text = ConnectionManager.Highscores.Count.ToString();
+            nameText.text = highscore.User.FirstName + " " + highscore.User.LastName;
+            levelText.text = "LV. " + highscore.Stage.ToString();
+            scoreText.text = highscore.TotalScore.ToString();
+        }
     }
-
-    public int index { get; set; }
-
-    public string name { get; set; }
-
-    public int level { get; set; }
-
-    public int score { get; set; }
-
+    public bool ValidateMatchingUser(Highscore highscore)
+    {
+        if(highscore.User.Id == ConnectionManager.user.Id)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

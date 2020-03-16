@@ -61,6 +61,7 @@ public class SectionController : MonoBehaviour
     public void SetCurrentPage()
     {
         sectionTxt.text = sections[this.currentPage];
+        currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
         lastImg = currentImg;
         currentImg = Instantiate(images[this.currentPage % 3]) as GameObject;
 
@@ -114,23 +115,25 @@ public class SectionController : MonoBehaviour
         SetCurrentPage();
     }
     public void StartGame()
-    {
-        ConnectionManager.Highscores = new List<Highscore>();
+    {      
         User user = ConnectionManager.user;
-        currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
         StartCoroutine(ConnectionManager.GetAvailableStages(currentTopic.Id, user.Id));
-        //StartCoroutine(ConnectionManager.GetTopicHighscore(topic.Id, "", ""));
+        //StartCoroutine(ConnectionManager.GetTopicHighscore(currentTopic.Id, "", ""));
     }
-
+   
     public void ViewLeaderboard()
     {
-        GameManager.Instance.ViewLeaderboard();
+        ConnectionManager.Highscores = new List<Highscore>();
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.GetTopicHighscore(currentTopic.Id, "", ""));
+
     }
 
     public void StartSectionPage()
     {
         this.currentPage = 0;
         sections = ConnectionManager.Topics.OrderByDescending(z => z.Name).Select(z => z.Name).ToArray();
+        currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
         sectionTxt.text = sections[this.currentPage];
         Destroy(lastImg);
         Destroy(currentImg);

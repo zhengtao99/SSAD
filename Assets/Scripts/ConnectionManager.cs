@@ -10,7 +10,7 @@ using Assets.Model;
 
 namespace Assets.Scripts
 {
-    class ConnectionManager : MonoBehaviour
+    class ConnectionManager
     {
         static string Domain = "https://localhost:44365"; //ZT host
         //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
@@ -21,7 +21,7 @@ namespace Assets.Scripts
         public static List<World> Worlds;
         public static List<AvailableStage> AvailableStages;
         public static List<Highscore> Highscores;
-    
+
         public static IEnumerator Login(string username, string password)
         {
             GameManager.Instance.ShowLoading();
@@ -102,24 +102,38 @@ namespace Assets.Scripts
         {
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Speed.TotalMilliseconds);
             yield return www.SendWebRequest();
-            Debug.Log(www.url);
         }
-        public static IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
+        public IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
         {
+            bool firstLoad = false;
             if (Search == "")
             {
                 Search = "-";
             }
-            if(Filter == "")
+            if (Filter == "")
             {
+                firstLoad = true;
                 Filter = "-";
             }
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + Search + "/" + Filter);
             yield return www.SendWebRequest();
-            var highscore = JsonUtility.FromJson<Highscore>(www.downloadHandler.text);
-            Debug.Log(highscore.User.Id);
-            Debug.Log(highscore.TotalScore);
+            string json = www.downloadHandler.text;
+            if (json != "")
+            {
+                var highscore = JsonUtility.FromJson<Highscore>(json);
+                Highscores.Add(highscore);
+                var ids = Highscores.Select(z => z.User.Id.ToString()).ToArray();
+                var idStr = string.Join("-", ids);
+                GameManager.Instance.ViewLeaderboard();
+                if (firstLoad)
+                {
+                    GameObject.Find("RankListContent").GetComponent<RankListController>().ClearRanks();
+                    GameObject.Find("RankListContent").GetComponent<RankListController>().SetCurrentDefaultRank();
+                }
+                GameObject.Find("RankListContent").GetComponent<RankListController>().AddRank(TopicId, Search, idStr, highscore);
+            }
         }
+       
     }
     
 }
