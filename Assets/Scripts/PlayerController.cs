@@ -9,10 +9,6 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
-    //Timer
-    private float timing = 3.0f;
-    private bool timerActive = false;
-
     public GameObject glow;
     public GameObject deadEffect;
     private GameObject[] heartArr;
@@ -71,6 +67,9 @@ public class PlayerController : MonoBehaviour
         correctAns = 0;
         levelText.enabled = false;
         levelBox.enabled = false;
+
+        int chosenLevel = PlayerPrefs.GetInt("chosenLevel");
+        Debug.Log("Level is: " + chosenLevel);
     }
 
     void Update()
@@ -141,6 +140,7 @@ public class PlayerController : MonoBehaviour
         else if ((other.gameObject.tag == "Minion" || other.gameObject.tag == "Fireball") && isGlowing)
         {
             Destroy(other.gameObject);
+            FindObjectOfType<SoundManager>().Play("MinionDeath");
             Vector3 offset = new Vector3(-0.2f, 0.1f, 0);
             Instantiate(deadEffect, other.transform.position + offset, Quaternion.identity);
             StartCoroutine(activateEffect());
@@ -161,6 +161,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator hit()
     {
+        FindObjectOfType<SoundManager>().Play("CharacterHit");
+
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         for (int i = 0; i < 8; i++)
         {
@@ -173,6 +175,11 @@ public class PlayerController : MonoBehaviour
 
         isInjured = false;
         yield return null;
+    }
+
+    public void IStartGlow()
+    {
+        StartCoroutine(startGlow());
     }
 
     IEnumerator startGlow()

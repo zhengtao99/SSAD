@@ -6,8 +6,6 @@ public class SoundManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-
-
     void Awake()
     {
         foreach (Sound s in sounds)
@@ -20,7 +18,6 @@ public class SoundManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-
 
     public void Play (string name)
     {

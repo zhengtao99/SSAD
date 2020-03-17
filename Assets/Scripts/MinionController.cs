@@ -67,8 +67,44 @@ public class MinionController : MonoBehaviour
         }
         
     }
+
+    public void IFire()
+    {
+        StartCoroutine(Fire());
+    }
+
+    public void IFreezeMinions()
+    {
+        StartCoroutine(FreezeMinions());
+    }
+
+    public void ISlowDownMinion()
+    {
+        StartCoroutine(SlowDownMinion());
+    }
+
+    public void ISpeedUpMinion()
+    {
+        StartCoroutine(SpeedUpMinion());
+    }
+
+    IEnumerator SlowDownMinion()
+    {
+        speed = 1;
+        yield return new WaitForSeconds(10.0f);
+        speed = 3;
+    }
+
+    IEnumerator SpeedUpMinion()
+    {
+        speed = 5;
+        yield return new WaitForSeconds(10.0f);
+        speed = 3;
+    }
     IEnumerator FreezeMinions()
     {
+        FindObjectOfType<SoundManager>().Play("Freeze");
+
         Animator anim = this.gameObject.GetComponent<Animator>();
 
         isPause = true;
@@ -106,6 +142,7 @@ public class MinionController : MonoBehaviour
         {
             if (!isPause && !stopFiring)
             {
+                FindObjectOfType<SoundManager>().Play("Fireball");
                 GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
                 yield return new WaitForSeconds(3.0f);
             }

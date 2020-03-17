@@ -56,7 +56,6 @@ public class QAManager : MonoBehaviour
             answers.RemoveAt(buttons.Count - 1);
             buttons.RemoveAt(index);
         }
-
     }
 
     public void PopulateQuestion()
@@ -105,6 +104,12 @@ public class QAManager : MonoBehaviour
             TurnRed();
         }
         continueButton.SetActive(true);
+
+        //if answered correctly
+        //GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
+
+        //if answered wrongly
+        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 
     public void ResumeGame()

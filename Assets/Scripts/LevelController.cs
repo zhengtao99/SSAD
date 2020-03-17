@@ -153,6 +153,8 @@ public class LevelController : MonoBehaviour
                 GameManager.Instance.popUpUnlockedLevelBoard();
             }
         }
+
+        PlayerPrefs.SetInt("chosenLevel", chosenLevel);
     }
 
     public void closeLevelPopUp()
@@ -191,6 +193,8 @@ public class LevelController : MonoBehaviour
 
         //Wait 1s to popup flag then unlock next level
         Invoke("unlockLevel", 1f);
+
+        FindObjectOfType<SoundManager>().Play("NextLevel");
     }
 
     public void unlockLevel()
