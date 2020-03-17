@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
 
-            if (correctAns >= 4)
+            if (correctAns >= 3)
             {
                 win = true;
             }

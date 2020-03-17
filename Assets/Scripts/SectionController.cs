@@ -63,7 +63,7 @@ public class SectionController : MonoBehaviour
         sectionTxt.text = sections[this.currentPage];
         currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();
         lastImg = currentImg;
-        currentImg = Instantiate(images[this.currentPage % 3]) as GameObject;
+        currentImg = Instantiate(images[this.currentPage % 5]) as GameObject;
 
         currentImg.SetActive(true);
         Transform t = currentImg.transform;

@@ -129,4 +129,20 @@ public class WorldController : MonoBehaviour
         currentWorld = ConnectionManager.Worlds.Where(z => z.Name == currentWorldName).First();
         StartCoroutine(ConnectionManager.GetTopic(currentWorld.Id));
     }
+
+    public void StartWorldPage()
+    {
+        Destroy(lastImg);
+        Destroy(currentImg);
+        worlds = ConnectionManager.Worlds.Select(z => z.Name).ToArray();
+        currentWorldName = worlds[0];
+        subject.text = currentWorldName;
+        lastImg = currentImg;
+        currentImg = Instantiate(images[0]) as GameObject;
+        currentImg.SetActive(true);
+
+        Transform t = currentImg.transform;
+        t.SetParent(transform);
+        t.localPosition = currentImgDest;
+    }
 }

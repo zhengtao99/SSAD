@@ -237,9 +237,9 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateMaze();
         int chosenLevel = LevelController.Instance.getChosenLevel();
         SetWalls_SetBackground(chosenLevel);
+        GenerateMaze();        
     }
     
     /*

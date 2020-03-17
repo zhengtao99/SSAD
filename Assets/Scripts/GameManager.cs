@@ -372,4 +372,9 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.LeaderboardPage);
     }
+
+    public void Ready()
+    {
+        SetPageState(PageState.Ready);
+    }
 }

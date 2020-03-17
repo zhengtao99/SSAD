@@ -20,7 +20,7 @@ public class JoyStickController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
-        circle.transform.localPosition = new Vector2(304, -205);
+        circle.transform.localPosition = new Vector2(outerCircle.transform.localPosition.x, outerCircle.transform.localPosition.y);
         StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
 
@@ -44,7 +44,7 @@ public class JoyStickController : MonoBehaviour
             touchStart = false;
             xCoord = 0;
             yCoord = 0;
-            circle.transform.localPosition = new Vector2(304, -205);
+            circle.transform.localPosition = new Vector2(outerCircle.transform.localPosition.x, outerCircle.transform.localPosition.y);
             playerController.stopMove();
         }
     }
@@ -86,9 +86,8 @@ public class JoyStickController : MonoBehaviour
 
     private bool inThreshold()
     {
-        //Debug.Log(xCoord);
-        //Debug.Log(yCoord);
-        if (xCoord > 865 && xCoord < 1017 && yCoord > 22 && yCoord < 168)
+        Vector3 pz = Camera.main.WorldToScreenPoint(outerCircle.transform.position);
+        if (xCoord > pz.x - 70 && xCoord < pz.x + 70 && yCoord > pz.y - 70 && yCoord < pz.y + 70)
         {
             return true;
         }

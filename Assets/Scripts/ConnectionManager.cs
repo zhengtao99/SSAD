@@ -12,8 +12,8 @@ namespace Assets.Scripts
 {
     class ConnectionManager
     {
-        static string Domain = "https://localhost:44365"; //ZT host
-        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        //static string Domain = "https://localhost:44365"; //ZT host
+        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;
@@ -79,7 +79,7 @@ namespace Assets.Scripts
             var worldCollection = JsonUtility.FromJson<WorldCollection>(json);
             Worlds = worldCollection.Worlds;
             GameManager.Instance.HideLoading();
-            GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("world")).First().GetComponent<WorldController>().SetCurrentPage();
+            GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("world")).First().GetComponent<WorldController>().StartWorldPage();
         }
         public static IEnumerator GetAvailableStages(int TopicId, int UserId)
         {
