@@ -175,25 +175,35 @@ public class MinionController : MonoBehaviour
 
             if (absY > absX)
             {
-                if (moveInput.y == 1)
+                if (absY > 0)
                 {
-                    moveInput.y = -1;
-                }
-                else
-                {
-                    moveInput.y = 1;
+                    if (moveInput.y == 1)
+                    {
+                        moveInput.y = -1;
+                    }
+                    else
+                    {
+                        moveInput.y = 1;
+                    }
                 }
             }
 
             else if (absY < absX)
             {
-                if (moveInput.x == 1)
+                if (absX > 0)
                 {
-                    moveInput.x = -1;
+                    if (moveInput.x == 1)
+                    {
+                        moveInput.x = -1;
+                    }
+                    else
+                    {
+                        moveInput.x = 1;
+                    }
                 }
                 else
                 {
-                    moveInput.x = 1;
+                    moveInput.x = -moveInput.x;
                 }
             }
 
