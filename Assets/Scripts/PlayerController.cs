@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
 
-            if (correctAns >= 3)
+            if (correctAns >= 4)
             {
                 win = true;
             }
@@ -306,7 +306,8 @@ public class PlayerController : MonoBehaviour
 
     public void openNewLevel()
     {
-        levelText.text = "Level 3 is opened";
+        int newLevel = LevelController.Instance.getChosenLevel() + 1;
+        levelText.text = "Level " + newLevel + " is opened";
         levelText.enabled = true;
         levelBox.enabled = true;
         Invoke("hideLevelBox", 2f);
@@ -315,7 +316,7 @@ public class PlayerController : MonoBehaviour
     public void increaseCorrectAns()
     {
         correctAns += 1;
-        if (correctAns == 4)
+        if (correctAns == 3)
         {
             openNewLevel();
             LevelController.Instance.setWin(true);
