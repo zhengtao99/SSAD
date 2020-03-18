@@ -48,7 +48,7 @@ public class QAManager : MonoBehaviour
         bottomLeftButton,bottomRightButton};
         while (buttons.Count != 0)
         {
-            int index = Random.Range(0, buttons.Count - 1); //Not inclusive of Max
+            int index = Random.Range(0, buttons.Count); //Not inclusive of Max
             GameObject button = buttons[index];//Retrieve button from list
             ansText = button.GetComponentInChildren<Text>();
             ansText.text = answers[buttons.Count - 1].Description; //Retrieve 1 possible answer

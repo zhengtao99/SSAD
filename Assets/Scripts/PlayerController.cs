@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("maze")).First();
+        //var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("maze")).First();
+        var mazePage = GameManager.Instance.playPage;
         /*
         var x = mazePage.GetComponentsInChildren<SpriteRenderer>().ToList();
         foreach(var y in x)

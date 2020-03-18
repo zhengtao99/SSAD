@@ -302,9 +302,8 @@ public class GameManager : MonoBehaviour
         SetPageState(PageState.WorldUI);
     }
 
-    //activated when play button is hit
-    public void StartGame() {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
+    public void createNewGame()
+    {
         //Destroy old play page
         Destroy(playPage);
 
@@ -312,7 +311,24 @@ public class GameManager : MonoBehaviour
 
         //Save initial state again (clone another object)
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
-        SetPageState(PageState.Play);
+    }
+
+    //activated when play button is hit
+    public void StartGame() {
+        FindObjectOfType<SoundManager>().Play("MajorButton");
+
+        /*
+        //Destroy old play page
+        Destroy(playPage);
+
+        playPage = initialPlayState;
+
+        //Save initial state again (clone another object)
+        initialPlayState = Instantiate(playPage, playPage.transform.parent);
+        //SetPageState(PageState.Play);
+        */
+
+        StartCoroutine(ConnectionManager.GetQuestions(SectionController.currentTopic.Id, LevelController.Instance.getChosenLevel()));
     }
     public void ChestPopUp()
     {

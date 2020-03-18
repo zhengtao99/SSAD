@@ -35,8 +35,10 @@ public class ReadyController : MonoBehaviour
         //}
         if(time == -1000)
         {
-            GameManager gameManager = mainCamera.GetComponent<GameManager>();
-            gameManager.StartGame();
+            //GameManager gameManager = mainCamera.GetComponent<GameManager>();
+            //gameManager.StartGame();
+            GameManager.Instance.createNewGame();
+            GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
         else if (time == 0)
         {

@@ -21,7 +21,7 @@ public class JoyStickController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
         circle.transform.localPosition = new Vector2(outerCircle.transform.localPosition.x, outerCircle.transform.localPosition.y);
-        StartCoroutine(ConnectionManager.GetQuestions(10, 1));
+        //StartCoroutine(ConnectionManager.GetQuestions(10, 1));
     }
 
     // Update is called once per frame
