@@ -52,8 +52,7 @@ public class ChestPopUp : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D other)
-    {
-        
+    { 
         if (other.tag == "Player" && !isOpened)
         {
             PauseGame();
@@ -64,7 +63,9 @@ public class ChestPopUp : MonoBehaviour
             gameObject.SetActive(false);
             Invoke("delayPopUp",1.5f);
             //Invoke("ResumeGame",1f);
-            isOpened = true;  
+            isOpened = true;
+
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().Push();
         }
     }
 

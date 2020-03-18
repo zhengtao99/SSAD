@@ -27,13 +27,13 @@ public class MinionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Minion fire when triggered
-        if (Input.GetKeyDown(KeyCode.X))
+        //Minion fire FOR TESTING
+        if (Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(Fire());
         }
 
-        //Freeze minions
+        //Freeze minions FOR TESTING
         if (Input.GetKeyDown(KeyCode.Z))
         {
             StartCoroutine(FreezeMinions());

@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
     public float speed;
     int score = 0;
     private int direction;
-    // Update is called once per frame
+    private Vector2 moveInput;
+    int nsew = 0;
+
     private void Start()
     {
         explosionRef = Resources.Load("PlayerExplosion");
@@ -70,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
         int chosenLevel = PlayerPrefs.GetInt("chosenLevel");
         Debug.Log("Level is: " + chosenLevel);
+
+        moveInput = new Vector2(1, 1);
     }
 
     void Update()
@@ -85,20 +89,24 @@ public class PlayerController : MonoBehaviour
             //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
             this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
             moveVelocity = new Vector2(5, 0);
+            nsew = 2;
         }
         else if (direction == 1)
         {
             //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
             this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
             moveVelocity = new Vector2(-5, 0);
+            nsew = 4;
         }
         else if(direction == 2)
         {
             moveVelocity = new Vector2(0, 5);
+            nsew = 1;
         }
         else if(direction == 3)
         {
             moveVelocity = new Vector2(0, -5);
+            nsew = 3;
         }
         else
         {
@@ -109,6 +117,30 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(startGlow());
         }
+
+        //do not remove
+        if (moveInput.x == 1)
+        {
+            nsew = 2;
+        }
+
+        else if (moveInput.x == -1)
+        {
+            nsew = 4;
+        }
+
+        else if (moveInput.y == 1)
+        {
+            nsew = 1;
+        }
+
+        else if (moveInput.y == -1)
+        {
+            nsew = 3;
+        }
+
+        //Debug.Log(nsew);
+        ////do not remove
     }
 
     private void FixedUpdate()
@@ -198,6 +230,25 @@ public class PlayerController : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    public void Push()
+    {
+        switch (nsew)
+        {
+            case 1:
+                rb.AddForce(-transform.up * 12);
+                break;
+            case 2:
+                rb.AddForce(-transform.right * 12);
+                break;
+            case 3:
+                rb.AddForce(transform.up * 12);
+                break;
+            case 4:
+                rb.AddForce(transform.right * 12);
+                break;
+        }
     }
 
     void ScoreUpdate()

@@ -90,26 +90,28 @@ public class QAManager : MonoBehaviour
         }
     }
 
-    public void VerifyAnswer(){
+    public void VerifyAnswer()
+    {
         FindObjectOfType<SoundManager>().Play("MajorButton");
         bool isCorrect = true;
         DisableButtons();
+
         if (isCorrect)
         {
             TurnGreen();
-            
         }
         else
         {
             TurnRed();
         }
+
         continueButton.SetActive(true);
 
         //if answered correctly
-        //GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
+        PAttack();
 
         //if answered wrongly
-        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
+        //MAttack();
     }
 
     public void ResumeGame()
@@ -148,5 +150,15 @@ public class QAManager : MonoBehaviour
             LevelController.Instance.setWin(true);
         }
         */
+    }
+
+    public void PAttack()
+    {
+        GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
+    }
+
+    public void MAttack()
+    {
+        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 }
