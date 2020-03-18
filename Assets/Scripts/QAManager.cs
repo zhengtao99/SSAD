@@ -22,6 +22,7 @@ public class QAManager : MonoBehaviour
     public static ColorBlock originalColors;
     private static DateTime startTime;
     public static int questionID;
+    public int correct;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -55,11 +56,11 @@ public class QAManager : MonoBehaviour
             ansText = button.GetComponentInChildren<Text>();
             ansText.text = answers[buttons.Count - 1].Description; //Retrieve 1 possible answer
             button.GetComponent<QAManager>().answerID = answers[buttons.Count - 1].Id;//Retrieve answerID
-            Debug.Log("Error 1");
+            //Debug.Log("Error 1");
             answers.RemoveAt(buttons.Count - 1);
-            Debug.Log("Error 2");
+            //Debug.Log("Error 2");
             buttons.RemoveAt(index);
-            Debug.Log("Error 3");
+            //Debug.Log("Error 3");
         }
     }
 
@@ -104,21 +105,23 @@ public class QAManager : MonoBehaviour
 
         if (answerID == 1)
         {
+            correct = 1;
+            PlayerPrefs.SetInt("correct", correct);
+            //Debug.Log("set correct is true, check actual correct: " +correct);
             TurnGreen();
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
         }
+
         else
         {
+            correct = 0;
+            PlayerPrefs.SetInt("correct", correct);
+            //Debug.Log("set correct is false, check actual correct: " + correct);
             TurnRed();
         }
+
         StartCoroutine(ConnectionManager.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
         continueButton.SetActive(true);
-
-        //if answered correctly
-        PAttack();
-
-        //if answered wrongly
-        //MAttack();
     }
 
     public void ResumeGame()
@@ -157,15 +160,5 @@ public class QAManager : MonoBehaviour
             LevelController.Instance.setWin(true);
         }
         */
-    }
-
-    public void PAttack()
-    {
-        GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
-    }
-
-    public void MAttack()
-    {
-        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 }

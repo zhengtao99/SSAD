@@ -164,7 +164,6 @@ public class MinionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.tag == "Wall")
         {
             if (delay > 0)
@@ -185,6 +184,7 @@ public class MinionController : MonoBehaviour
                     moveInput.y = 1;
                 }
             }
+
             else if (absY < absX)
             {
                 if (moveInput.x == 1)
@@ -196,13 +196,12 @@ public class MinionController : MonoBehaviour
                     moveInput.x = 1;
                 }
             }
+
             else
             {
                 moveInput.x = 0;
                 moveInput.y = 0;
             }
-
-        }
-        
+        }      
     }
 }

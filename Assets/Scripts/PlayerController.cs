@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject deadEffect;
     private GameObject[] heartArr;
     public bool isGlowing = false;
-    public float glowTime = 3.0f;
+    public float glowTime = 5.0f;
     public bool isInjured = false;
     private UnityEngine.Object explosionRef;
 
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private int direction;
     private Vector2 moveInput;
     int nsew = 0;
+    bool isFreeze;
 
     private void Start()
     {
@@ -167,6 +168,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Minion" && !isGlowing && !isInjured)
         {
+            minions = GameObject.FindGameObjectsWithTag("Minion");
+
+            foreach (GameObject minion in minions)
+            {
+                MinionController mcs = minion.GetComponent<MinionController>();
+                isFreeze = mcs.isPause;
+            }
+
+            if (!isFreeze)
             LifeUpdate();
         }
 
@@ -286,15 +296,13 @@ public class PlayerController : MonoBehaviour
                 win = false;
             }
 
-            if (minions[0] != null)
+            minions = GameObject.FindGameObjectsWithTag("Minion");
+
+            foreach (GameObject minion in minions)
             {
-                foreach (GameObject minion in minions)
-                {
-                    minion.GetComponent<MinionController>().stopFiring = true;
-                }
+                minion.GetComponent<MinionController>().stopFiring = true;
             }
-
-
+          
             EndGame(win);
 
             //StartCoroutine(passWin(win));

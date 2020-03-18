@@ -11,13 +11,10 @@ public class ChestPopUp : MonoBehaviour
 
     private bool isOpened = false;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
-        minions = GameObject.FindGameObjectsWithTag("Minion");
+        Instance = this;        
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -29,6 +26,8 @@ public class ChestPopUp : MonoBehaviour
 
     void PauseGame()
     {
+        minions = GameObject.FindGameObjectsWithTag("Minion");
+
         foreach (GameObject minion in minions)
         {
 
@@ -41,6 +40,8 @@ public class ChestPopUp : MonoBehaviour
 
     public void ResumeGame()
     {
+        minions = GameObject.FindGameObjectsWithTag("Minion");
+
         foreach (GameObject minion in minions)
         {
 
@@ -48,6 +49,21 @@ public class ChestPopUp : MonoBehaviour
 
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
+
+        //invoke attack
+        int correct = PlayerPrefs.GetInt("correct");
+        if (correct == 1)
+        {
+            //Debug.Log("check correct is true, check actual correct:" + correct);
+            PAttack();
+        }
+
+        else if (correct == 0)
+        {
+            //Debug.Log("check correct is false, check actual correct:" + correct);
+            MAttack();
+        }
+
         GameManager.Instance.SetPageState(GameManager.PageState.Play);
     }
 
@@ -70,5 +86,17 @@ public class ChestPopUp : MonoBehaviour
 
     void delayPopUp(){
         GameManager.Instance.QuestionPopUp();
+    }
+
+    public void PAttack()
+    {
+        //Debug.Log("activate PAttack");
+        GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
+    }
+
+    public void MAttack()
+    {
+        //Debug.Log("activate MAttack");
+        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 }
