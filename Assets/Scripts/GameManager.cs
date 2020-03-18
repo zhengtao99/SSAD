@@ -337,7 +337,6 @@ public class GameManager : MonoBehaviour
 
     public void sectionUI()
     {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.SectionUI);
     }
 
@@ -385,7 +384,6 @@ public class GameManager : MonoBehaviour
 
     public void ViewLeaderboard()
     {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.LeaderboardPage);
     }
 

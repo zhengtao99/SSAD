@@ -126,6 +126,7 @@ public class WorldController : MonoBehaviour
 
     public void OnClickContinue()
     {
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         currentWorld = ConnectionManager.Worlds.Where(z => z.Name == currentWorldName).First();
         StartCoroutine(ConnectionManager.GetTopic(currentWorld.Id));
     }

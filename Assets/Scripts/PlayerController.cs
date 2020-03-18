@@ -252,9 +252,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ScoreUpdate()
+    public void ScoreUpdate(int point=10)
     {
-        score += 10;
+        score += point;
         scoreText.text = "Coin: " + score;
 
     }

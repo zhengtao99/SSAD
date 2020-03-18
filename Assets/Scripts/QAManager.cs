@@ -1,5 +1,6 @@
 ﻿using Assets.Model;
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,8 @@ public class QAManager : MonoBehaviour
     private Text ansText = null;
     private int answerID;
     public static ColorBlock originalColors;
-
-    private int correctAns = 0;
+    private static DateTime startTime;
+    public static int questionID;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -29,6 +30,7 @@ public class QAManager : MonoBehaviour
             PopulateQuestion();
             //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
+            startTime = DateTime.Now;
         }
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
@@ -48,13 +50,16 @@ public class QAManager : MonoBehaviour
         bottomLeftButton,bottomRightButton};
         while (buttons.Count != 0)
         {
-            int index = Random.Range(0, buttons.Count); //Not inclusive of Max
+            int index = UnityEngine.Random.Range(0, buttons.Count); //Not inclusive of Max
             GameObject button = buttons[index];//Retrieve button from list
             ansText = button.GetComponentInChildren<Text>();
             ansText.text = answers[buttons.Count - 1].Description; //Retrieve 1 possible answer
-            answerID = 2;//Retrieve answer ID;
+            button.GetComponent<QAManager>().answerID = answers[buttons.Count - 1].Id;//Retrieve answerID
+            Debug.Log("Error 1");
             answers.RemoveAt(buttons.Count - 1);
+            Debug.Log("Error 2");
             buttons.RemoveAt(index);
+            Debug.Log("Error 3");
         }
     }
 
@@ -64,8 +69,9 @@ public class QAManager : MonoBehaviour
         qnText.text = "Qn: " + "The question will be retrieved here. Loading....";
         var questions = ConnectionManager.Questions;
        
-        int randomNumber = Random.Range(0, questions.Count);
+        int randomNumber = UnityEngine.Random.Range(0, questions.Count);
         var question = questions[randomNumber];
+        questionID = question.Id;
         qnText.text = question.Description;
         PopulateAnswers(question.Answers);
         questions.Remove(question);
@@ -96,15 +102,16 @@ public class QAManager : MonoBehaviour
         bool isCorrect = true;
         DisableButtons();
 
-        if (isCorrect)
+        if (answerID == 1)
         {
             TurnGreen();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
         }
         else
         {
             TurnRed();
         }
-
+        StartCoroutine(ConnectionManager.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
         continueButton.SetActive(true);
 
         //if answered correctly

@@ -57,7 +57,6 @@ public class ChestPopUp : MonoBehaviour
         {
             PauseGame();
             FindObjectOfType<SoundManager>().Play("ChestOpening");
-            GameManager.Instance.ChestPopUp();
             CreateOpenedChest.OpenedChestInstance.CreateOpenedChests(transform.position.x,
             transform.position.y, transform.position.z);
             gameObject.SetActive(false);
