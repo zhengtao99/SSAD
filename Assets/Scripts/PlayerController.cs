@@ -38,10 +38,18 @@ public class PlayerController : MonoBehaviour
     private int direction;
     private Vector2 moveInput;
     int nsew = 0;
+    private int coinsCnt;
 
     private void Start()
     {
         explosionRef = Resources.Load("PlayerExplosion");
+
+        coinsCnt = 0;
+        foreach (Transform child in GameManager.Instance.playPage.transform)
+        {
+            if (child.tag == "Coin")
+                coinsCnt++;
+        }
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -79,11 +87,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (score == MazeGenerator.Instance.getMaxScore())
-        {
-            EndGame(true);
-        }
-
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (direction == 0)
         {
@@ -140,8 +143,16 @@ public class PlayerController : MonoBehaviour
             nsew = 3;
         }
 
-        //Debug.Log(nsew);
-        ////do not remove
+        int openedChestCnt = GameObject.FindGameObjectsWithTag("OpenedChest").Length;
+
+        Debug.Log("coinsCnt: " + coinsCnt);
+        Debug.Log("openedChestCnt: " + openedChestCnt);
+
+        if (openedChestCnt == 6 && coinsCnt == 0)
+        {
+            Debug.Log("Finish all chestboxs and coins");
+            EndGame(true);
+        }
     }
 
     private void FixedUpdate()
@@ -162,6 +173,7 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<SoundManager>().Play("CoinCollection");
             Destroy(other.gameObject);
+            coinsCnt--;
             ScoreUpdate();
         }
 
@@ -256,7 +268,6 @@ public class PlayerController : MonoBehaviour
     {
         score += 10;
         scoreText.text = "Coin: " + score;
-
     }
 
     public void LifeUpdate()
@@ -276,16 +287,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
 
-            if (correctAns >= 4)
-            {
-                win = true;
-            }
-
-            else
-            {
-                win = false;
-            }
-
             if (minions[0] != null)
             {
                 foreach (GameObject minion in minions)
@@ -295,7 +296,7 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            EndGame(win);
+            EndGame(LevelController.Instance.getWin());
 
             //StartCoroutine(passWin(win));
         }
@@ -321,6 +322,24 @@ public class PlayerController : MonoBehaviour
     private void EndGame(bool win)
     {
         CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
+        PauseGame();
+
+        var topic = SectionController.currentTopic;
+        var user = ConnectionManager.user;
+        var level = LevelController.chosenLevel;
+
+        int chosenLevel = LevelController.Instance.getChosenLevel();
+        int lastCompletedLevel = LevelController.Instance.getLastCompletedLevel();
+
+        if (chosenLevel == lastCompletedLevel + 1)
+        {
+            StartCoroutine(ConnectionManager.UpdateHighscore(user.Id, topic.Id, level, score, win));
+        }
+        else
+        {
+            StartCoroutine(ConnectionManager.UpdateHighscore(user.Id, topic.Id, level, score, true));
+        }
+
         if (win)
         {
             LevelController.Instance.WinPopUp(score);
@@ -328,10 +347,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             LevelController.Instance.GameOverPopUp(score);
-            var topic = SectionController.currentTopic;
-            var user = ConnectionManager.user;
-            var level = LevelController.chosenLevel;
-            StartCoroutine(ConnectionManager.UpdateHighscore(user.Id, topic.Id, level, score, true));
         }
     }
 
@@ -363,13 +378,18 @@ public class PlayerController : MonoBehaviour
         levelText.enabled = true;
         levelBox.enabled = true;
         Invoke("hideLevelBox", 2f);
+
+        LevelController.Instance.setWin(true);
     }
 
     public void increaseCorrectAns()
     {
+        int chosenLevel = LevelController.Instance.getChosenLevel();
+        int lastCompletedLevel = LevelController.Instance.getLastCompletedLevel();
+
         correctAns += 1;
-        if (correctAns == 3)
-        {
+        if (correctAns == 3 && chosenLevel == lastCompletedLevel + 1)
+        { 
             openNewLevel();
             LevelController.Instance.setWin(true);
         }

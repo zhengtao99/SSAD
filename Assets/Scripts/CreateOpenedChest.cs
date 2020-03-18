@@ -33,7 +33,8 @@ public class CreateOpenedChest : MonoBehaviour
     public void CloseOpenedChest(){
         GameObject [] openedChests = GameObject.FindGameObjectsWithTag("OpenedChest");
         foreach(GameObject chest in openedChests){
-            chest.SetActive(false);
+            //chest.SetActive(false);
+            Destroy(chest);
         }
     }
 }

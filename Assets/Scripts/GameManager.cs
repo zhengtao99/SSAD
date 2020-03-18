@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using Assets.Model;
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -354,6 +355,12 @@ public class GameManager : MonoBehaviour
     public void levelUI()
     {
         SetPageState(PageState.LevelUI);
+    }
+
+    public void loadLevelUI()
+    {
+        User user = ConnectionManager.user;
+        StartCoroutine(ConnectionManager.GetAvailableStages(SectionController.currentTopic.Id, user.Id));
     }
 
     public void popUpUnlockedLevelBoard()

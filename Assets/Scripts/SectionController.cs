@@ -114,13 +114,14 @@ public class SectionController : MonoBehaviour
         lastImgDest = rightEnd;
         SetCurrentPage();
     }
+    /*
     public void StartGame()
     {      
         User user = ConnectionManager.user;
         StartCoroutine(ConnectionManager.GetAvailableStages(currentTopic.Id, user.Id));
         //StartCoroutine(ConnectionManager.GetTopicHighscore(currentTopic.Id, "", ""));
     }
-   
+    */
     public void ViewLeaderboard()
     {
         ConnectionManager.Highscores = new List<Highscore>();

@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     private Vector3 temp = new Vector3(0, 0, 0);
 
     //Last completed level
-    int lastCompletedLevel = 2; //0 if haven't completed any
+    private int lastCompletedLevel = 2; //0 if haven't completed any
 
     //public SpriteRenderer unlockedLevelBoard;
     //public SpriteRenderer completedLevelBoard;
@@ -39,6 +39,11 @@ public class LevelController : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public int getLastCompletedLevel()
+    {
+        return lastCompletedLevel;
     }
 
     public int getChosenLevel()
@@ -123,6 +128,11 @@ public class LevelController : MonoBehaviour
     public void setWin(bool value)
     {
         win = value;
+    }
+
+    public bool getWin()
+    {
+        return win;
     }
 
     public void openLevel()

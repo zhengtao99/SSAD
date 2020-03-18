@@ -17,7 +17,7 @@ public class MazeGenerator : MonoBehaviour
     public Vector3 mazePos; //positon of maze
     public int row; //An odd number
     public int col; //An odd number
-    public int numOfCoins = 85; //Fix number of coins
+    private int numOfCoins = 85; //Fix number of coins
     private int maxScore = 85 * 10 + 6 * 30;
 
     //For coins(not real): real index (odd x, odd y)
