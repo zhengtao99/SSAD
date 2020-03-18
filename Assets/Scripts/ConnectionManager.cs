@@ -12,8 +12,8 @@ namespace Assets.Scripts
 {
     class ConnectionManager
     {
-        //static string Domain = "https://localhost:44365"; //ZT host
-        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        static string Domain = "https://localhost:44365"; //ZT host
+        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;
@@ -103,6 +103,15 @@ namespace Assets.Scripts
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Speed.TotalMilliseconds);
             yield return www.SendWebRequest();
         }
+        public IEnumerator GetCurrentUserTopicScore(int TopicId, int UserId)
+        {
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + UserId);
+            yield return www.SendWebRequest();
+            string json = www.downloadHandler.text;
+            var highscore = JsonUtility.FromJson<Highscore>(json);
+            GameManager.Instance.ViewLeaderboard();
+            GameObject.Find("RankListContent").GetComponent<RankListController>().SetCurrentPlayerRank(highscore);
+        }
         public IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
         {          
             bool firstLoad = false;
@@ -125,11 +134,10 @@ namespace Assets.Scripts
                 Highscores.Add(highscore);
                 var ids = Highscores.Select(z => z.User.Id.ToString()).ToArray();
                 var idStr = string.Join("-", ids);
-                GameManager.Instance.ViewLeaderboard();
+                //GameManager.Instance.ViewLeaderboard();
                 if (firstLoad)
                 {
                     GameObject.Find("RankListContent").GetComponent<RankListController>().ClearRanks();
-                    GameObject.Find("RankListContent").GetComponent<RankListController>().SetCurrentDefaultRank();
                 }
                 GameObject.Find("RankListContent").GetComponent<RankListController>().AddRank(TopicId, Search, idStr, highscore);
             }

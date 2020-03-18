@@ -44,10 +44,6 @@ public class RankListController : MonoBehaviour
         //Push into list
         rank.transform.SetParent(rankTemplate.transform.parent, false);
         ranks.Add(rank.gameObject);
-        if(ValidateMatchingUser(highscore) == true)
-        {
-            SetCurrentPlayerRank();
-        }
 
         StartCoroutine(cm.GetTopicHighscore(TopicId, Search, Filter));
         
@@ -59,20 +55,8 @@ public class RankListController : MonoBehaviour
             Destroy(rank);
         }
     }
-    public void SetCurrentDefaultRank()
+    public void SetCurrentPlayerRank(Highscore highscore)
     {
-        TextMeshProUGUI indexText = currentPlayerRank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI nameText = currentPlayerRank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI levelText = currentPlayerRank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI scoreText = currentPlayerRank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        indexText.text = "-";
-        nameText.text = ConnectionManager.user.FirstName + " " + ConnectionManager.user.LastName;
-        levelText.text = "LV. 0";
-        scoreText.text = "0";
-    }
-    public void SetCurrentPlayerRank()
-    {
-        var highscore = ConnectionManager.Highscores.Where(z => z.User.Id == ConnectionManager.user.Id).First();
         TextMeshProUGUI indexText = currentPlayerRank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI nameText = currentPlayerRank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI levelText = currentPlayerRank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
@@ -84,16 +68,14 @@ public class RankListController : MonoBehaviour
             levelText.text = "LV. " + highscore.Stage.ToString();
             scoreText.text = highscore.TotalScore.ToString();
         }
-    }
-    public bool ValidateMatchingUser(Highscore highscore)
-    {
-        if(highscore.User.Id == ConnectionManager.user.Id)
-        {
-            return true;
-        }
         else
         {
-            return false;
+            indexText.text = "-";
+            nameText.text = ConnectionManager.user.FirstName + " " + ConnectionManager.user.LastName;
+            levelText.text = "LV. 0";
+            scoreText.text = "0";
         }
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.GetTopicHighscore(SectionController.currentTopic.Id, "", ""));
     }
 }

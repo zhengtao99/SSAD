@@ -125,7 +125,8 @@ public class SectionController : MonoBehaviour
     {
         ConnectionManager.Highscores = new List<Highscore>();
         ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.GetTopicHighscore(currentTopic.Id, "", ""));
+        StartCoroutine(cm.GetCurrentUserTopicScore(currentTopic.Id, ConnectionManager.user.Id));
+      
 
     }
 
