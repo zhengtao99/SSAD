@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     GameObject initialPlayState;
 
+    int chosenLevel;
+
+    void Start()
+    {
+        chosenLevel = PlayerPrefs.GetInt("chosenLevel");
+    }
+
     public enum PageState {
         None,    //None of others
         Login,
@@ -113,7 +120,21 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 break;
             case PageState.GameOver:
-                FindObjectOfType<SoundManager>().Pause("EasyStage");
+
+                if (chosenLevel > 4 && chosenLevel < 8)
+                {
+                    FindObjectOfType<SoundManager>().Pause("MediumStage");
+                }
+
+                else if (chosenLevel > 7)
+                {
+                    FindObjectOfType<SoundManager>().Pause("HardStage");
+                }
+                else
+                {
+                    FindObjectOfType<SoundManager>().Pause("EasyStage");
+                }
+
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -130,7 +151,21 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 break;
             case PageState.Play:
-                FindObjectOfType<SoundManager>().Play("EasyStage");
+
+                if (chosenLevel > 4 && chosenLevel < 8)
+                {
+                    FindObjectOfType<SoundManager>().Play("MediumStage");
+                }
+
+                else if (chosenLevel > 7)
+                {
+                    FindObjectOfType<SoundManager>().Play("HardStage");
+                }
+                else
+                {
+                    FindObjectOfType<SoundManager>().Play("EasyStage");
+                }
+
                 FindObjectOfType<SoundManager>().Pause("Lobby");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
@@ -338,7 +373,6 @@ public class GameManager : MonoBehaviour
 
     public void sectionUI()
     {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.SectionUI);
     }
 
@@ -392,7 +426,6 @@ public class GameManager : MonoBehaviour
 
     public void ViewLeaderboard()
     {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
         SetPageState(PageState.LeaderboardPage);
     }
 

@@ -116,7 +116,8 @@ public class SectionController : MonoBehaviour
     }
     /*
     public void StartGame()
-    {      
+    {
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         User user = ConnectionManager.user;
         StartCoroutine(ConnectionManager.GetAvailableStages(currentTopic.Id, user.Id));
         //StartCoroutine(ConnectionManager.GetTopicHighscore(currentTopic.Id, "", ""));
@@ -124,6 +125,7 @@ public class SectionController : MonoBehaviour
     */
     public void ViewLeaderboard()
     {
+        FindObjectOfType<SoundManager>().Play("MajorButton");
         ConnectionManager.Highscores = new List<Highscore>();
         ConnectionManager cm = new ConnectionManager();
         StartCoroutine(cm.GetCurrentUserTopicScore(currentTopic.Id, ConnectionManager.user.Id));

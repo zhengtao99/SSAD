@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject deadEffect;
     private GameObject[] heartArr;
     public bool isGlowing = false;
-    public float glowTime = 3.0f;
+    public float glowTime = 5.0f;
     public bool isInjured = false;
     private UnityEngine.Object explosionRef;
 
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     int nsew = 0;
     private int coinsCnt;
+    bool isFreeze;
 
     private void Start()
     {
@@ -179,6 +180,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Minion" && !isGlowing && !isInjured)
         {
+            minions = GameObject.FindGameObjectsWithTag("Minion");
+
+            foreach (GameObject minion in minions)
+            {
+                MinionController mcs = minion.GetComponent<MinionController>();
+                isFreeze = mcs.isPause;
+            }
+
+            if (!isFreeze)
             LifeUpdate();
         }
 
@@ -264,9 +274,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ScoreUpdate()
+    public void ScoreUpdate(int point=10)
     {
-        score += 10;
+        score += point;
         scoreText.text = "Coin: " + score;
     }
 
@@ -287,8 +297,19 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
 
-            if (minions[0] != null)
+            if (correctAns >= 4)
             {
+                win = true;
+            }
+
+            else
+            {
+                win = false;
+            }
+
+            minions = GameObject.FindGameObjectsWithTag("Minion");
+
+            if (minions[0] != null) {
                 foreach (GameObject minion in minions)
                 {
                     minion.GetComponent<MinionController>().stopFiring = true;

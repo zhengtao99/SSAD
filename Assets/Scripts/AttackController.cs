@@ -17,73 +17,44 @@ public class AttackController : MonoBehaviour
 
     public void PlayerAttack()
     {
-        if (chosenLevel > 0 && chosenLevel < 4)
+        rn = Random.Range(1, 4);
+
+        if (rn == 1)
+        {
+            SlowMinions();
+        }
+
+        else if (rn == 2)
         {
             FreezeMinions();
         }
 
-        else if (chosenLevel > 3 && chosenLevel < 8)
+        else if (rn == 3)
         {
-            rn = Random.Range(1, 3);
-
-            if (rn == 1)
-            {
-                SlowMinions();
-            }
-
-            else if (rn == 2)
-            {
-                FreezeMinions();
-            }
-        }
-
-        else if (chosenLevel > 7)
-        {
-            rn = Random.Range(1, 4);
-
-            if (rn == 1)
-            {
-                SlowMinions();
-            }
-
-            else if (rn == 2)
-            {
-                FreezeMinions();
-            }
-
-            else if (rn == 3)
-            {
-                PlayerGlow();
-            }
+            PlayerGlow();
         }
     }
 
     public void MinionAttack()
     {
-        if (chosenLevel > 3 && chosenLevel < 8)
+        rn = Random.Range(1, 3);
+
+        if (rn == 1)
         {
             SpeedUpMinions();
         }
 
-        else if (chosenLevel > 7)
+        else if (rn == 2)
         {
-            rn = Random.Range(1, 3);
-
-            if (rn == 1)
-            {
-                SpeedUpMinions();
-            }
-
-            else if (rn == 2)
-            {
-                FireBallAttack();
-            }
+            FireBallAttack();
         }
     }
 
     void FreezeMinions()
     {
         Debug.Log("Freeze");
+
+        minions = GameObject.FindGameObjectsWithTag("Minion");
 
         foreach (GameObject minion in minions)
         {
@@ -94,6 +65,8 @@ public class AttackController : MonoBehaviour
     void SlowMinions()
     {
         Debug.Log("Slow");
+
+        minions = GameObject.FindGameObjectsWithTag("Minion");
 
         foreach (GameObject minion in minions)
         {
@@ -112,6 +85,8 @@ public class AttackController : MonoBehaviour
     {
         Debug.Log("Speed");
 
+        minions = GameObject.FindGameObjectsWithTag("Minion");
+
         foreach (GameObject minion in minions)
         {
             minion.GetComponent<MinionController>().ISpeedUpMinion();
@@ -121,6 +96,8 @@ public class AttackController : MonoBehaviour
     void FireBallAttack()
     {
         Debug.Log("Fireball");
+
+        minions = GameObject.FindGameObjectsWithTag("Minion");
 
         foreach (GameObject minion in minions)
         {
