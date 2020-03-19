@@ -12,8 +12,8 @@ namespace Assets.Scripts
 {
     class ConnectionManager
     {
-        //static string Domain = "https://localhost:44365"; //ZT host
-        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        static string Domain = "https://localhost:44365"; //ZT host
+        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;
@@ -22,6 +22,7 @@ namespace Assets.Scripts
         public static List<AvailableStage> AvailableStages;
         public static List<Highscore> Highscores;
 
+        public static string Category;
         public static IEnumerator Login(string username, string password)
         {
             GameManager.Instance.ShowLoading();
@@ -57,9 +58,6 @@ namespace Assets.Scripts
             var questionCollection = JsonUtility.FromJson<QuestionCollection>(json);          
             Questions = questionCollection.Questions;
             GameManager.Instance.HideLoading();
-            GameManager.Instance.Ready();
-            //GameManager.Instance.createNewGame();
-            //GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
         public static IEnumerator GetTopic(int WorldId)
         {
@@ -86,6 +84,7 @@ namespace Assets.Scripts
         }
         public static IEnumerator GetAvailableStages(int TopicId, int UserId)
         {
+           
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + UserId);
             yield return www.SendWebRequest();         
@@ -105,16 +104,17 @@ namespace Assets.Scripts
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Speed.TotalMilliseconds);
             yield return www.SendWebRequest();
         }
-        public IEnumerator GetCurrentUserTopicScore(int TopicId, int UserId)
+        public IEnumerator GetCurrentUserScore(int Id, int UserId)
         {
-            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + UserId);
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + Id + "/" + UserId);
             yield return www.SendWebRequest();
             string json = www.downloadHandler.text;
             var highscore = JsonUtility.FromJson<Highscore>(json);
             GameManager.Instance.ViewLeaderboard();
+            GameObject.Find("RankListContent").GetComponent<RankListController>().SetLabels();
             GameObject.Find("RankListContent").GetComponent<RankListController>().SetCurrentPlayerRank(highscore);
         }
-        public IEnumerator GetTopicHighscore(int TopicId, string Search, string Filter)
+        public IEnumerator GetHighscore(int id, string Search, string Filter)
         {          
             bool firstLoad = false;
             if (Search == "")
@@ -126,7 +126,7 @@ namespace Assets.Scripts
                 firstLoad = true;
                 Filter = "-";
             }
-            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/topics/" + TopicId + "/" + Search + "/" + Filter);
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + id + "/" + Search + "/" + Filter);
             yield return www.SendWebRequest();
 
             string json = www.downloadHandler.text;
@@ -136,15 +136,13 @@ namespace Assets.Scripts
                 Highscores.Add(highscore);
                 var ids = Highscores.Select(z => z.User.Id.ToString()).ToArray();
                 var idStr = string.Join("-", ids);
-                //GameManager.Instance.ViewLeaderboard();
                 if (firstLoad)
                 {
                     GameObject.Find("RankListContent").GetComponent<RankListController>().ClearRanks();
                 }
-                GameObject.Find("RankListContent").GetComponent<RankListController>().AddRank(TopicId, Search, idStr, highscore);
+                GameObject.Find("RankListContent").GetComponent<RankListController>().AddRank(id, Search, idStr, highscore, Category);
             }
         }
-       
     }
     
 }

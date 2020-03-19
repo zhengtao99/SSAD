@@ -128,8 +128,9 @@ public class SectionController : MonoBehaviour
         FindObjectOfType<SoundManager>().Play("MajorButton");
         ConnectionManager.Highscores = new List<Highscore>();
         ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.GetCurrentUserTopicScore(currentTopic.Id, ConnectionManager.user.Id));
-      
+        StartCoroutine(cm.GetCurrentUserScore(currentTopic.Id, ConnectionManager.user.Id));
+        ConnectionManager.Category = "Topics";
+        StartCoroutine(cm.GetCurrentUserScore(currentTopic.Id, ConnectionManager.user.Id));
 
     }
 
