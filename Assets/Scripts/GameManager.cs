@@ -121,20 +121,20 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.GameOver:
 
-                if (chosenLevel > 4 && chosenLevel < 8)
-                {
-                    FindObjectOfType<SoundManager>().Pause("MediumStage");
-                }
+                //if (chosenLevel > 4 && chosenLevel < 8)
+                //{
+                //    FindObjectOfType<SoundManager>().Pause("MediumStage");
+                //}
 
-                else if (chosenLevel > 7)
-                {
-                    FindObjectOfType<SoundManager>().Pause("HardStage");
-                }
-                else
-                {
-                    FindObjectOfType<SoundManager>().Pause("EasyStage");
-                }
-
+                //else if (chosenLevel > 7)
+                //{
+                //    FindObjectOfType<SoundManager>().Pause("HardStage");
+                //}
+                //else
+                //{
+                //    FindObjectOfType<SoundManager>().Pause("EasyStage");
+                //}
+                FindObjectOfType<SoundManager>().Pause("EasyStage");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -152,20 +152,20 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.Play:
 
-                if (chosenLevel > 4 && chosenLevel < 8)
-                {
-                    FindObjectOfType<SoundManager>().Play("MediumStage");
-                }
+                //if (chosenLevel > 4 && chosenLevel < 8)
+                //{
+                //    FindObjectOfType<SoundManager>().Play("MediumStage");
+                //}
 
-                else if (chosenLevel > 7)
-                {
-                    FindObjectOfType<SoundManager>().Play("HardStage");
-                }
-                else
-                {
-                    FindObjectOfType<SoundManager>().Play("EasyStage");
-                }
-
+                //else if (chosenLevel > 7)
+                //{
+                //    FindObjectOfType<SoundManager>().Play("HardStage");
+                //}
+                //else
+                //{
+                //    FindObjectOfType<SoundManager>().Play("EasyStage");
+                //}
+                FindObjectOfType<SoundManager>().Play("EasyStage");
                 FindObjectOfType<SoundManager>().Pause("Lobby");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);

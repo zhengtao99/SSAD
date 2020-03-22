@@ -28,7 +28,7 @@ public class MinionController : MonoBehaviour
     void Update()
     {
         //Minion fire FOR TESTING
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             StartCoroutine(Fire());
         }
@@ -143,7 +143,12 @@ public class MinionController : MonoBehaviour
             if (!isPause && !stopFiring)
             {
                 FindObjectOfType<SoundManager>().Play("Fireball");
-                GameObject fb = Instantiate(fireball, transform.position, Quaternion.identity) as GameObject;
+
+                GameObject fb1 = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                GameObject fb2 = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;
+                GameObject fb3 = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, 180)) as GameObject;
+                GameObject fb4 = Instantiate(fireball, transform.position, Quaternion.Euler(0, 0, 270)) as GameObject;
+                
                 yield return new WaitForSeconds(3.0f);
             }
         }

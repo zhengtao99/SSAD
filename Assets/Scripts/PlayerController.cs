@@ -146,8 +146,8 @@ public class PlayerController : MonoBehaviour
 
         int openedChestCnt = GameObject.FindGameObjectsWithTag("OpenedChest").Length;
 
-        Debug.Log("coinsCnt: " + coinsCnt);
-        Debug.Log("openedChestCnt: " + openedChestCnt);
+        //Debug.Log("coinsCnt: " + coinsCnt);
+        //Debug.Log("openedChestCnt: " + openedChestCnt);
 
         if (openedChestCnt == 6 && coinsCnt == 0)
         {
@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
             }
 
             if (!isFreeze)
-            LifeUpdate();
+                LifeUpdate();
         }
 
         else if ((other.gameObject.tag == "Minion" || other.gameObject.tag == "Fireball") && isGlowing)
