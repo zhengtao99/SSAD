@@ -128,6 +128,7 @@ namespace Assets.Scripts
                 Filter = "-";
             }
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + id + "/" + Search + "/" + Filter);
+            Debug.Log(www.url);
             yield return www.SendWebRequest();
 
             string json = www.downloadHandler.text;

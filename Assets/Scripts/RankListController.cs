@@ -47,7 +47,16 @@ public class RankListController : MonoBehaviour
         var tb = GameObject.Find("SearchBox").GetComponentsInChildren<TextMeshProUGUI>().Where(z=>z.name=="Text").First();
         ConnectionManager cm = new ConnectionManager();
         string text = tb.text;
-        StartCoroutine(cm.GetHighscore(SectionController.currentTopic.Id, text.Remove(text.Count()-1, 1),""));
+        int id = 0;
+        if(ConnectionManager.Category == "Topics")
+        {
+            id = SectionController.currentTopic.Id;
+        }
+        if (ConnectionManager.Category == "Worlds")
+        {
+            id = WorldController.currentWorld.Id;
+        }
+        StartCoroutine(cm.GetHighscore(id, text.Remove(text.Count()-1, 1),""));
     }
     public void AddRank(int id, string Search, string Filter, Highscore highscore, string category)
     {
