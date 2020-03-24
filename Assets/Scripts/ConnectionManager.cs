@@ -87,10 +87,15 @@ namespace Assets.Scripts
         { 
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + UserId);
+            Debug.Log(www.url);
             yield return www.SendWebRequest();         
             string json = "{\"AvailableStages\":" + www.downloadHandler.text + "}";           
             var stageCollection = JsonUtility.FromJson<AvailableStageCollection>(json);
             AvailableStages = stageCollection.AvailableStages;
+            foreach(var x in AvailableStages)
+            {
+                Debug.Log(x.Stage + ": " + x.isAvailable);
+            }
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();
         }
@@ -128,7 +133,6 @@ namespace Assets.Scripts
                 Filter = "-";
             }
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + id + "/" + Search + "/" + Filter);
-            Debug.Log(www.url);
             yield return www.SendWebRequest();
 
             string json = www.downloadHandler.text;
