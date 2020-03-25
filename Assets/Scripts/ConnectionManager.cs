@@ -115,7 +115,11 @@ namespace Assets.Scripts
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + Id + "/" + UserId);
             yield return www.SendWebRequest();
             string json = www.downloadHandler.text;
-            var highscore = JsonUtility.FromJson<Highscore>(json);
+            Highscore highscore = null;
+            if (json != "null")
+            {
+                 highscore = JsonUtility.FromJson<Highscore>(json);
+            }
             GameManager.Instance.ViewLeaderboard();
             GameObject.Find("LeaderboardPage").GetComponent<RankListController>().SetLabels();
             GameObject.Find("LeaderboardPage").GetComponent<RankListController>().SetCurrentPlayerRank(highscore);
@@ -134,18 +138,17 @@ namespace Assets.Scripts
             }
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscores/" + Category + "/" + id + "/" + Search + "/" + Filter);
             yield return www.SendWebRequest();
-
+            if (firstLoad)
+            {
+                GameObject.Find("LeaderboardPage").GetComponent<RankListController>().ClearRanks();
+            }
             string json = www.downloadHandler.text;
             if (json != "")
             {
                 var highscore = JsonUtility.FromJson<Highscore>(json);
                 Highscores.Add(highscore);
                 var ids = Highscores.Select(z => z.User.Id.ToString()).ToArray();
-                var idStr = string.Join("-", ids);
-                if (firstLoad)
-                {
-                    GameObject.Find("LeaderboardPage").GetComponent<RankListController>().ClearRanks();
-                }
+                var idStr = string.Join("-", ids);             
                 GameObject.Find("LeaderboardPage").GetComponent<RankListController>().AddRank(id, Search, idStr, highscore, Category);
             }
         }
