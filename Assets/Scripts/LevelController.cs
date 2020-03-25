@@ -61,7 +61,8 @@ public class LevelController : MonoBehaviour
                 flags.Add(child.gameObject);
         }
         var stages = ConnectionManager.AvailableStages;
-        lastCompletedLevel = stages.Count;
+        lastCompletedLevel = stages.Where(z=>z.isAvailable).OrderByDescending(z=>z.Stage).Select(z=>z.Stage).FirstOrDefault();
+
         //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
         for (int i = 0; i < 10; i++)
         {

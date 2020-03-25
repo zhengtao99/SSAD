@@ -76,15 +76,11 @@ public class AttackController : MonoBehaviour
 
     void PlayerGlow()
     {
-        Debug.Log("Glow");
-
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().IStartGlow();
     }
 
     void SpeedUpMinions()
     {
-        Debug.Log("Speed");
-
         minions = GameObject.FindGameObjectsWithTag("Minion");
 
         foreach (GameObject minion in minions)
@@ -95,9 +91,7 @@ public class AttackController : MonoBehaviour
 
     void FireBallAttack()
     {
-        Debug.Log("Fireball");
-
-        minions = GameObject.FindGameObjectsWithTag("Minion");
+       minions = GameObject.FindGameObjectsWithTag("Minion");
 
         foreach (GameObject minion in minions)
         {

@@ -32,7 +32,6 @@ public class QAManager : MonoBehaviour
             //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
             startTime = DateTime.Now;
-            Debug.Log("time start");
         }
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
@@ -120,8 +119,8 @@ public class QAManager : MonoBehaviour
             //Debug.Log("set correct is false, check actual correct: " + correct);
             TurnRed();
         }
-        Debug.Log("saved");
-        StartCoroutine(ConnectionManager.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
         continueButton.SetActive(true);
     }
 

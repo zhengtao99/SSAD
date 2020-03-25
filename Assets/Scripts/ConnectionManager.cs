@@ -87,7 +87,7 @@ namespace Assets.Scripts
         { 
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + UserId);
-            Debug.Log(www.url);
+
             yield return www.SendWebRequest();         
             string json = "{\"AvailableStages\":" + www.downloadHandler.text + "}";           
             var stageCollection = JsonUtility.FromJson<AvailableStageCollection>(json);
@@ -104,9 +104,9 @@ namespace Assets.Scripts
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscore/" + UserId + "/" + TopicId + "/" + Stage + "/" + Score + "/" + IsCleared);
             yield return www.SendWebRequest();
         }
-        public static IEnumerator SaveAnalytics(int UserId, int QnsId, int AnsId, TimeSpan Speed)
+        public IEnumerator SaveAnalytics(int UserId, int QnsId, int AnsId, TimeSpan Speed)
         {
-            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Speed.TotalMilliseconds);
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Convert.ToInt32(Speed.TotalMilliseconds));
             yield return www.SendWebRequest();
         }
         public IEnumerator GetCurrentUserScore(int Id, int UserId, string category)
