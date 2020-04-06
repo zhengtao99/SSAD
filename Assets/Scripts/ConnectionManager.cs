@@ -12,8 +12,8 @@ namespace Assets.Scripts
 {
     class ConnectionManager
     {
-        static string Domain = "https://localhost:44365"; //ZT host
-        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        //static string Domain = "https://localhost:44365"; //ZT host
+        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         public static User user;
         public static List<Question> Questions;

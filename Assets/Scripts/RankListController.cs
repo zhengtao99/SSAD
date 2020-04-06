@@ -11,9 +11,8 @@ public class RankListController : MonoBehaviour
 {
     [SerializeField]
     private GameObject rankTemplate;
-
-
     public GameObject currentPlayerRank;
+    public GameObject a;
 
     private List<GameObject> ranks = new List<GameObject>();
     public void WorldSearch()
@@ -60,10 +59,13 @@ public class RankListController : MonoBehaviour
     }
     public void AddRank(int id, string Search, string Filter, Highscore highscore, string category)
     {
+        
         StopAllCoroutines();
         ConnectionManager cm = new ConnectionManager();
         GameObject rank = Instantiate(rankTemplate) as GameObject;
         rank.SetActive(true);
+
+
 
         //Update Rank Clone with Index, Name, Level and Score
         TextMeshProUGUI indexText = rank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -78,7 +80,20 @@ public class RankListController : MonoBehaviour
         //Push into list
         rank.transform.SetParent(rankTemplate.transform.parent, false);
         ranks.Add(rank.gameObject);
-        StartCoroutine(cm.GetHighscore(id, Search, Filter));
+        StartCoroutine(cm.GetHighscore(id, Search, Filter));        
+        
+        a = GameObject.Find("bird_idle_f01");
+        SpriteRenderer m_SpriteRenderer;
+
+        m_SpriteRenderer = GameObject.Find("bird_idle_f01").GetComponent<SpriteRenderer>();
+        m_SpriteRenderer.color = Color.red;
+        //Color32[] Colors;
+        //Colors = new Color32[4];
+        //Colors[0] = new Color32(255, 0, 0, 255);
+        //Colors[1] = new Color32(0, 255, 0, 255);
+        //Colors[2] = new Color32(255, 0, 0, 255);
+        //Colors[3] = new Color32(0, 0, 0, 255);
+        //a.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
     }
     public void ClearRanks()
     {
