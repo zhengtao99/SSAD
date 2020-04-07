@@ -39,7 +39,7 @@ namespace Assets.Scripts
                 try
                 {
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
-                    GameManager.Instance.WorldUI();
+                    GameManager.Instance.ModePage();
                 }
                 catch(Exception)
                 {
