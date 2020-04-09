@@ -10,19 +10,58 @@ using Assets.Model;
 
 namespace Assets.Scripts
 {
+    /// <summary>
+    /// Contains all methods Learnable Mobile will use to retrieve or to update the database through Learnable Manage System's self-created API.
+    /// </summary>
     class ConnectionManager
     {
         //static string Domain = "https://localhost:44365"; //ZT host
+
+        /// <summary>
+        /// A variable to store the domain's name that the Leanrnable Mobile will be using to update or retrieve students' records.
+        /// </summary>
         static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
+        /// <summary>
+        /// A variable to store the student's identity upon successfully login.
+        /// </summary>
         public static User user;
-        public static List<Question> Questions;
-        public static List<Topic> Topics;
+
+        /// <summary>
+        /// A variable to store the world the student has selected.
+        /// </summary>
         public static List<World> Worlds;
+       
+        /// <summary>
+        /// A variable list to store the list of topics the subject contains the student has selected.
+        /// </summary>
+        public static List<Topic> Topics;
+
+        /// <summary>
+        /// A variable to store the retrieved questions according to a specific world and topic.
+        /// </summary>
+        public static List<Question> Questions;
+
+        /// <summary>
+        /// A variable list to store the list of available stages that has questions created by the teachers.
+        /// </summary>
         public static List<AvailableStage> AvailableStages;
+
+        /// <summary>
+        /// A variable list to store the list of high scores for the subject selected.
+        /// </summary>
         public static List<Highscore> Highscores;
 
+        /// <summary>
+        /// A variable to store the choice of retrieving students records by world or topic.
+        /// </summary>
         public static string Category;
+
+        /// <summary>
+        /// To authenticate the player after they enter their username and password.
+        /// </summary>
+        /// <param name="username">Username input.</param>
+        /// <param name="password">Password input.</param>
         public static IEnumerator Login(string username, string password)
         {
             GameManager.Instance.ShowLoading();
@@ -48,9 +87,14 @@ namespace Assets.Scripts
             }
             
         }
+
+        /// <summary>
+        /// To retrieve respective questions from datbase based on player selected topic and difficulty level.
+        /// </summary>
+        /// <param name="topicId">Player's selected topic.</param>
+        /// <param name="stage">Player's selected diffculty stage between 1 to 10.</param>
         public static IEnumerator GetQuestions(int topicId, int stage)
         {
-   
             GameManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/questions/" + topicId + "/" + stage);
             yield return www.SendWebRequest();
@@ -60,6 +104,11 @@ namespace Assets.Scripts
             GameManager.Instance.HideLoading();
             GameManager.Instance.Ready();       
         }
+
+        /// <summary>
+        /// To get the topics available for the world/subject the player has selected.
+        /// </summary>
+        /// <param name="WorldId">Player's selected world.</param>
         public static IEnumerator GetTopic(int WorldId)
         {
             GameManager.Instance.ShowLoading();
@@ -72,6 +121,10 @@ namespace Assets.Scripts
             GameManager.Instance.sectionUI();
             GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("section")).First().GetComponent<SectionController>().StartSectionPage();
         }
+
+        /// <summary>
+        /// To get the world/subject available in the game.
+        /// </summary>
         public static IEnumerator GetWorld()
         {
             GameManager.Instance.ShowLoading();
@@ -83,6 +136,12 @@ namespace Assets.Scripts
             GameManager.Instance.HideLoading();
             GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("world")).First().GetComponent<WorldController>().StartWorldPage();
         }
+
+        /// <summary>
+        /// To get all the unlocked stages based on topic selected and the player's identity.
+        /// </summary>
+        /// <param name="TopicId">Player's selected topic</param>
+        /// <param name="UserId">Player's user id.</param>
         public static IEnumerator GetAvailableStages(int TopicId, int UserId)
         { 
             GameManager.Instance.ShowLoading();
@@ -99,16 +158,40 @@ namespace Assets.Scripts
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();
         }
+
+        /// <summary>
+        /// To update player's new highscore into database, the score obtained after clearing a stage for a topic.  
+        /// </summary>
+        /// <param name="UserId">Player's user id.</param>
+        /// <param name="TopicId">Player's selected topic.</param>
+        /// <param name="Stage">Player's selected stage.</param>
+        /// <param name="Score">Player's score for the stage.</param>
+        /// <param name="IsCleared">A check to verify if stage has been cleared.</param>
         public static IEnumerator UpdateHighscore(int UserId, int TopicId, int Stage, int Score, bool IsCleared)
         {
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/highscore/" + UserId + "/" + TopicId + "/" + Stage + "/" + Score + "/" + IsCleared);
             yield return www.SendWebRequest();
         }
+
+        /// <summary>
+        /// To update player's performance to database for analysis done at Learnable Management System.  
+        /// </summary>
+        /// <param name="UserId">Player's user id.</param>
+        /// <param name="QnsId">The question answered.</param>
+        /// <param name="AnsId">Player's selected answer.</param>
+        /// <param name="Speed">Time for player to answer the question.</param>
         public IEnumerator SaveAnalytics(int UserId, int QnsId, int AnsId, TimeSpan Speed)
         {
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Convert.ToInt32(Speed.TotalMilliseconds));
             yield return www.SendWebRequest();
         }
+
+        /// <summary>
+        /// To retrieve player's accumulated score for the world or topic selected.
+        /// </summary>
+        /// <param name="Id">Player's selected world or topic id.</param>
+        /// <param name="UserId">Player's user id.</param>
+        /// <param name="category">Player's selected world or topic.</param>
         public IEnumerator GetCurrentUserScore(int Id, int UserId, string category)
         {
             Category = category;
@@ -124,6 +207,13 @@ namespace Assets.Scripts
             GameObject.Find("LeaderboardPage").GetComponent<RankListController>().SetLabels();
             GameObject.Find("LeaderboardPage").GetComponent<RankListController>().SetCurrentPlayerRank(highscore);
         }
+
+        /// <summary>
+        /// To retrieve a list of players that matches the player's search input.
+        /// </summary>
+        /// <param name="id">Player's selected world or topic id.</param>
+        /// <param name="Search">Player's input in search box.</param>
+        /// <param name="Filter">Player's selected world or topic.</param>
         public IEnumerator GetHighscore(int id, string Search, string Filter)
         {          
             bool firstLoad = false;
