@@ -7,12 +7,21 @@ using Assets.Scripts;
 using Assets.Model;
 using System.Linq;
 
+/// <summary>
+/// The class holds all the methods to control the scroll view in the leaderboard page.
+/// </summary>
 public class RankListController : MonoBehaviour
 {
+    /// <summary>
+    /// A variable to hold the basic layout of a leaderboard entry.
+    /// </summary>
     [SerializeField]
     private GameObject rankTemplate;
+
+    /// <summary>
+    /// A variable to hold the current player's rank in a particular world or topic
+    /// </summary>
     public GameObject currentPlayerRank;
-    public GameObject a;
 
     private List<GameObject> ranks = new List<GameObject>();
     public void WorldSearch()
@@ -21,7 +30,7 @@ public class RankListController : MonoBehaviour
         var tb = GameObject.Find("LeaderboardPage").GetComponentsInChildren<Button>().Where(z => z.name == "Subject").First()
             .GetComponentsInChildren<TextMeshProUGUI>().Where(z => z.name == "Label").First();
         ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.GetCurrentUserScore(WorldController.currentWorld.Id, ConnectionManager.user.Id,"Worlds"));
+        StartCoroutine(cm.GetCurrentUserScore(WorldController.currentWorld.Id, ConnectionManager.user.Id, "Worlds"));
     }
     public void TopicSearch()
     {
@@ -29,7 +38,7 @@ public class RankListController : MonoBehaviour
         var tb = GameObject.Find("LeaderboardPage").GetComponentsInChildren<Button>().Where(z => z.name == "Subject").First()
             .GetComponentsInChildren<TextMeshProUGUI>().Where(z => z.name == "Label").First();
         ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.GetCurrentUserScore(SectionController.currentTopic.Id, ConnectionManager.user.Id,"Topics"));
+        StartCoroutine(cm.GetCurrentUserScore(SectionController.currentTopic.Id, ConnectionManager.user.Id, "Topics"));
     }
     public void SetLabels()
     {
@@ -43,11 +52,11 @@ public class RankListController : MonoBehaviour
     public void Search()
     {
         ConnectionManager.Highscores = new List<Highscore>();
-        var tb = GameObject.Find("SearchBox").GetComponentsInChildren<TextMeshProUGUI>().Where(z=>z.name=="Text").First();
+        var tb = GameObject.Find("SearchBox").GetComponentsInChildren<TextMeshProUGUI>().Where(z => z.name == "Text").First();
         ConnectionManager cm = new ConnectionManager();
         string text = tb.text;
         int id = 0;
-        if(ConnectionManager.Category == "Topics")
+        if (ConnectionManager.Category == "Topics")
         {
             id = SectionController.currentTopic.Id;
         }
@@ -55,11 +64,11 @@ public class RankListController : MonoBehaviour
         {
             id = WorldController.currentWorld.Id;
         }
-        StartCoroutine(cm.GetHighscore(id, text.Remove(text.Count()-1, 1),""));
+        StartCoroutine(cm.GetHighscore(id, text.Remove(text.Count() - 1, 1), ""));
     }
     public void AddRank(int id, string Search, string Filter, Highscore highscore, string category)
     {
-        
+
         StopAllCoroutines();
         ConnectionManager cm = new ConnectionManager();
         GameObject rank = Instantiate(rankTemplate) as GameObject;
@@ -75,29 +84,21 @@ public class RankListController : MonoBehaviour
         TextMeshProUGUI levelText = rank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         levelText.text = "LV. " + highscore.Stage.ToString();
         TextMeshProUGUI scoreText = rank.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        scoreText.text = highscore.TotalScore.ToString() ;
+        scoreText.text = highscore.TotalScore.ToString();
 
         //Push into list
         rank.transform.SetParent(rankTemplate.transform.parent, false);
         ranks.Add(rank.gameObject);
-        StartCoroutine(cm.GetHighscore(id, Search, Filter));        
-        
-        a = GameObject.Find("bird_idle_f01");
+        StartCoroutine(cm.GetHighscore(id, Search, Filter));
+
         SpriteRenderer m_SpriteRenderer;
 
         m_SpriteRenderer = GameObject.Find("bird_idle_f01").GetComponent<SpriteRenderer>();
         m_SpriteRenderer.color = Color.red;
-        //Color32[] Colors;
-        //Colors = new Color32[4];
-        //Colors[0] = new Color32(255, 0, 0, 255);
-        //Colors[1] = new Color32(0, 255, 0, 255);
-        //Colors[2] = new Color32(255, 0, 0, 255);
-        //Colors[3] = new Color32(0, 0, 0, 255);
-        //a.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
     }
     public void ClearRanks()
     {
-        foreach(var rank in ranks)
+        foreach (var rank in ranks)
         {
             Destroy(rank);
         }

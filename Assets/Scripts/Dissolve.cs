@@ -4,14 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// The entity class for dissolving material that contains the attributes and behaviour for a given game object to dissolve.
+/// </summary>
 public class Dissolve : MonoBehaviour
 {
+    /// <summary>
+    /// A variable contain the initial object's material and the text material.
+    /// </summary>
     Material material, textMaterial;
 
+    /// <summary>
+    /// A variable that contains a boolean to check if the object is dissolving.
+    /// </summary>
     bool isDissolving = false;
+
+    /// <summary>
+    /// A variable that contains a boolean to check if the object has dissolved
+    /// </summary>
     bool dissolved;
+
+    /// <summary>
+    /// A variable that contains the visibility of the object.
+    /// </summary>
     float visible;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// The method will be called when the dissolve material is enabled and the object will starts to dissolve.
+    /// </summary>
     void OnEnable()
     {
         //Finds all the material of the object to manipulate with animation
@@ -33,13 +53,18 @@ public class Dissolve : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method will be called when the dissolve material is disabled and the object recover to it's original state.
+    /// </summary>
     private void OnDisable()
     {
         dissolved = false;
         visible = 0f;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// The method is called once per frame and it will constantly check if the object is full dissolved. If so, the object will be disabled.
+    /// </summary>
     void Update() 
         {
         //Animate till fade >= 1f (Means object is fully visible)

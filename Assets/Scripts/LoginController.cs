@@ -5,11 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
+/// <summary>
+/// The controller class holds all the methods neccessary to authenticate a player at the login page.
+/// </summary
 public class LoginController : MonoBehaviour
 {
 
-   
+    /// <summary>
+    /// A variable that holds the login page game object.
+    /// </summary
     public static GameObject loginPage;
+
+    /// <summary>
+    /// The method is called when the player selected login, it will proceed to verify the players username and password against the database.
+    /// </summary
     public void Submit()
     {
         FindObjectOfType<SoundManager>().Play("MajorButton");
@@ -20,6 +29,10 @@ public class LoginController : MonoBehaviour
 
         StartCoroutine(ConnectionManager.Login(username, password));
     }
+
+    /// <summary>
+    /// The method is responsible for the changing to world page on successful login.
+    /// </summary
     public static void Result(bool result)
     {
         if(result)
@@ -32,7 +45,11 @@ public class LoginController : MonoBehaviour
             message.enabled = true;
         }
     }
-    public  void ClearText()
+
+    /// <summary>
+    /// The method is responsible for clearing all check boxes on unsuccessful login.
+    /// </summary
+    public void ClearText()
     {
         var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
         message.enabled = false;

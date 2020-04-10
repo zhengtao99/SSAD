@@ -70,7 +70,7 @@
      <Compile Include="Assets\Scripts\AttackController.cs" />
      <Compile Include="Assets\Scripts\AvatarChangeColor.cs" />
      <Compile Include="Assets\Scripts\Brickwall.cs" />
-     <Compile Include="Assets\Scripts\ChestPopUp.cs" />
+     <Compile Include="Assets\Scripts\ChestPopUpController.cs" />
      <Compile Include="Assets\Scripts\ConnectionManager.cs" />
      <Compile Include="Assets\Scripts\Dissolve.cs" />
      <Compile Include="Assets\Scripts\Fireball.cs" />
@@ -85,7 +85,6 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ProfileController.cs" />
      <Compile Include="Assets\Scripts\QAManager.cs" />
-     <Compile Include="Assets\Scripts\RankController.cs" />
      <Compile Include="Assets\Scripts\RankListController.cs" />
      <Compile Include="Assets\Scripts\SectionController.cs" />
      <Compile Include="Assets\Scripts\Sound.cs" />
@@ -157,6 +156,9 @@
  <Reference Include="Unity.RenderPipelines.Universal.Shaders">
  <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.multiplayer-hlapi.Editor">
+ <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -181,6 +183,9 @@
  <Reference Include="Unity.Timeline">
  <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
+ <Reference Include="com.unity.multiplayer-weaver.Editor">
+ <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
@@ -201,6 +206,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+ <HintPath>C:/Users/Yuanchao/Documents/GitHub/SSAD/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.0a17/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

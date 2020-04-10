@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq;
 using Assets.Scripts;
 
+
 public class MazeGenerator : MonoBehaviour
 {
     public static MazeGenerator Instance;

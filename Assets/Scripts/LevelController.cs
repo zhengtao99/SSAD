@@ -6,51 +6,113 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// The class holds all the methods for responsible for the interactions between player and the level page.
+/// </summary>
 public class LevelController : MonoBehaviour
 {
+    /// <summary>
+    /// An instance controller variable created to allow other game object's controller to make use of the methods defined here.
+    /// </summary>
     public static LevelController Instance;
+
+    /// <summary>
+    /// A variable that contains a personalised canvas game object to display animation on the level page. 
+    /// </summary>
     public GameObject canvas;
+
+    /// <summary>
+    /// A variable that contains the sprite to show that the level is locked. 
+    /// </summary>
     public Sprite lockedImg;
+
+    /// <summary>
+    /// A variable that contains the sprite to show that the level has been unlocked.
+    /// </summary>
     public Sprite unlockedImg;
+
+    /// <summary>
+    /// A variable that contains the scale to manipulate the flag scale.
+    /// </summary>
     public Vector3 flagScale;
+
+    /// <summary>
+    /// A variable that contains a list of level buttons.
+    /// </summary>
     private List<GameObject> levelButtons = new List<GameObject>();
+
+    /// <summary>
+    /// A variable that contains a list of flags for cleared levels.
+    /// </summary>
     private List<GameObject> flags = new List<GameObject>();
+
+    /// <summary>
+    /// A variable that contains initial position of all 0.
+    /// </summary>
     private Vector3 temp = new Vector3(0, 0, 0);
 
-    //Last completed level
+    /// <summary>
+    /// A variable that contains the last completed level.
+    /// </summary>
     private int lastCompletedLevel = 2; //0 if haven't completed any
 
-    //public SpriteRenderer unlockedLevelBoard;
-    //public SpriteRenderer completedLevelBoard;
-
+    /// <summary>
+    /// A variable that contains unlocked level pop up game object.
+    /// </summary>
     public GameObject UnlockedLevelPopUp;
+
+    /// <summary>
+    /// A variable that contains completed level pop up game object.
+    /// </summary>
     public GameObject CompletedLevelPopUp;
+
+    /// <summary>
+    /// A variable that contains lose level pop up game object.
+    /// </summary>
     public GameObject LoseLevelPopUp;
+
+    /// <summary>
+    /// A variable that contains win level pop up game object.
+    /// </summary>
     public GameObject WinLevelPopUp;
+
+    /// <summary>
+    /// A variable that contains chosen level initialized to -1 when no level is chosen.
+    /// </summary>
     public static int chosenLevel = -1;
+
+    /// <summary>
+    /// A variable that contains a boolean to check if level completed.
+    /// </summary>
     private bool win = false;
 
+    /// <summary>
+    /// The method that is called to initialize at the start of the game to iniialize the level controller instance.
+    /// </summary>
     void Awake()
     {
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+    /// <summary>
+    /// The method to get last completed level.
+    /// </summary>
     public int getLastCompletedLevel()
     {
         return lastCompletedLevel;
     }
 
+    /// <summary>
+    /// The method to get player's chosen level.
+    /// </summary>
     public int getChosenLevel()
     {
         return chosenLevel;
     }
 
+    /// <summary>
+    /// The method to set the level page with available levels.
+    /// </summary>
     public void SetAvailableStages()
     {
         foreach (Transform child in canvas.transform)
@@ -97,6 +159,10 @@ public class LevelController : MonoBehaviour
 
         }
     }
+
+    /// <summary>
+    /// The method that will call SetAvailableStages() everytime the level page is enabled.
+    /// </summary>
     void OnEnable()
     {
         SetAvailableStages();
@@ -126,16 +192,25 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method that will set the boolean variable win to true on game win.
+    /// </summary>
     public void setWin(bool value)
     {
         win = value;
     }
 
+    /// <summary>
+    /// The method that will get the boolean variable win.
+    /// </summary>
     public bool getWin()
     {
         return win;
     }
 
+    /// <summary>
+    /// The method will manipulate the level page to open new levels on player win.
+    /// </summary>
     public void openLevel()
     {
         if (EventSystem.current.currentSelectedGameObject != null)
@@ -168,12 +243,18 @@ public class LevelController : MonoBehaviour
         PlayerPrefs.SetInt("chosenLevel", chosenLevel);
     }
 
+    /// <summary>
+    /// The method that will close all the popups and return to the level page.
+    /// </summary>
     public void closeLevelPopUp()
     {
         enableAllLevelBtns();
         GameManager.Instance.levelUI();
     }
 
+    /// <summary>
+    /// The method that will display the game over pop up.
+    /// </summary>
     public void GameOverPopUp(int value)
     {
         SpriteRenderer loseLevelBoard = LoseLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "lose_level_board").First();
@@ -185,6 +266,9 @@ public class LevelController : MonoBehaviour
         GameManager.Instance.EnterGameOver();
     }
 
+    /// <summary>
+    /// The method that will display the win game pop up.
+    /// </summary>
     public void WinPopUp(int value)
     {
         SpriteRenderer winLevelBoard = WinLevelPopUp.GetComponentsInChildren<SpriteRenderer>().Where(z => z.name == "win_level_board").First();
@@ -196,6 +280,9 @@ public class LevelController : MonoBehaviour
         GameManager.Instance.EnterGameWin();
     }
 
+    /// <summary>
+    /// The method that will move players to a new level on level completion.
+    /// </summary>
     public void completeLevel()
     {
         //Increase the completed levels
@@ -208,6 +295,9 @@ public class LevelController : MonoBehaviour
         FindObjectOfType<SoundManager>().Play("NextLevel");
     }
 
+    /// <summary>
+    /// The method that will show the animation of unlocking a new level when players completes a level.
+    /// </summary>
     public void unlockLevel()
     {
         if (lastCompletedLevel <= 9)
@@ -229,6 +319,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method that will change a level button to allow players to select it when the level is unlocked.
+    /// </summary>
     public void wakeupBtn()
     {
         GameObject nextUnlockedLevelButton = levelButtons[lastCompletedLevel];
@@ -245,6 +338,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method that will set all unlocked level buttons as active.
+    /// </summary>
     public void enableAllLevelBtns()
     {
         for (int i = 0; i < 10; i++)
@@ -255,6 +351,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method that will set all unlocked level buttons as inactive.
+    /// </summary>
     public void disableAllLevelBtns()
     {
         for (int i = 0; i < 10; i++)
@@ -265,6 +364,9 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method will check if there are new levels completed and creates a flag on newly completed levels.
+    /// </summary>
     // Update is called once per frame
     void Update()
     {

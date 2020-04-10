@@ -3,43 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+/// <summary>
+/// The class contains all the methods manipulate the minions. The controller will be attached onto the minions in order to control them.
+/// </summary>
 public class MinionController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /// <summary>
+    /// A variable to hold the rigidbody2D component on the minion.
+    /// </summary>
     private Rigidbody2D rb;
+
+    /// <summary>
+    /// A variable hold and manipulate the movement speed of minions.
+    /// </summary>
     public float speed;
+
+    /// <summary>
+    /// A variable to hold and control the direction the minion is facing.
+    /// </summary>
     private Vector2 moveInput;
+
+    /// <summary>
+    /// A variable to hold a boolean value to check if the game is paused, this is used to restrict movements of minions during a game pause.
+    /// </summary>
     public bool isPause = false;
+
+    /// <summary>
+    /// A variable to hold the delay to regulate the movement calculation interval for the minions. To ensure a steady flow of movements shown the GUI.
+    /// </summary>
     float delay = 0;
 
+    /// <summary>
+    /// A variable to hold the attack effect game object.
+    /// </summary>
     public GameObject attackEffect;
+
+    /// <summary>
+    /// A variable to hold the fire ball game object.
+    /// </summary>
     public GameObject fireball;
+
+    /// <summary>
+    /// A variable to hold the freeze effect game object.
+    /// </summary>
     public GameObject freeze;
+
+    /// <summary>
+    /// A variable to hold the alert effect game object.
+    /// </summary>
     public GameObject alert;
+
+    /// <summary>
+    /// A boolean variable to control the firing, the firing will stop when it is true.
+    /// </summary>
     public bool stopFiring = false;
 
+    /// <summary>
+    /// The method is called at the start of the game, to get the minion's rigidbody and set the minion's movement.
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         moveInput = new Vector2(1, 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Minion fire FOR TESTING
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            StartCoroutine(Fire());
-        }
-
-        //Freeze minions FOR TESTING
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            StartCoroutine(FreezeMinions());
-        }
-    }
-
+    /// <summary>
+    /// The method is called once per frame to move the minions throughout the entire game.
+    /// </summary>
     private void FixedUpdate()
     {
         if (delay > 0)
@@ -68,26 +98,43 @@ public class MinionController : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// The method is used to generate fire balls shooting out of minions.
+    /// </summary>
     public void IFire()
     {
         StartCoroutine(Fire());
     }
 
+
+    /// <summary>
+    /// The method is used to call FreezeMinion() method to freeze the minions' movement.
+    /// </summary>
     public void IFreezeMinions()
     {
         StartCoroutine(FreezeMinions());
     }
 
+
+    /// <summary>
+    /// The method is used to call SlowDownMinion() method to slow down the minions' movement.
+    /// </summary>
     public void ISlowDownMinion()
     {
         StartCoroutine(SlowDownMinion());
     }
 
+    /// <summary>
+    /// The method is used to call SpeedUpMinion() method to speed up the minions' movement.
+    /// </summary>
     public void ISpeedUpMinion()
     {
         StartCoroutine(SpeedUpMinion());
     }
 
+    /// <summary>
+    /// The method performs the actual slowing down of minions for 10 seconds.
+    /// </summary>
     IEnumerator SlowDownMinion()
     {
         speed = 1;
@@ -95,12 +142,19 @@ public class MinionController : MonoBehaviour
         speed = 3;
     }
 
+    /// <summary>
+    /// The method performs the actual speeding up of minions for 10 seconds.
+    /// </summary>
     IEnumerator SpeedUpMinion()
     {
         speed = 5;
         yield return new WaitForSeconds(10.0f);
         speed = 3;
     }
+
+    /// <summary>
+    /// The method performs the actual freezing of minions for 5 seconds then unfreeze them.
+    /// </summary>
     IEnumerator FreezeMinions()
     {
         FindObjectOfType<SoundManager>().Play("Freeze");
@@ -124,6 +178,9 @@ public class MinionController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The method holds the logic to create the fireball attacks.
+    /// </summary>
     IEnumerator Fire()
     {
         Vector3 offset = new Vector3(0.4f, 1, 0);
@@ -152,10 +209,12 @@ public class MinionController : MonoBehaviour
                 yield return new WaitForSeconds(3.0f);
             }
         }
-
-        //yield return null;
+        
     }
 
+    /// <summary>
+    /// The method performs effect generated from the fireball attack.
+    /// </summary>
     IEnumerator activateEffect2()
     {
         Vector3 offset = new Vector3(0, 0.2f, 0);
@@ -167,6 +226,9 @@ public class MinionController : MonoBehaviour
             GameObject.Destroy(a);
     }
 
+    /// <summary>
+    /// The method is responsible for manipulating minions' movement in cases where the minion touches a wall, to prevent the minion from moving out of the maze.
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Wall")
