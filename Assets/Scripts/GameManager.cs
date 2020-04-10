@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     GameObject initialPlayState;
 
-    int chosenLevel;
+    int chosenLevel=0;
 
     void Start()
     {
@@ -131,20 +131,7 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.GameOver:
 
-                //if (chosenLevel > 4 && chosenLevel < 8)
-                //{
-                //    FindObjectOfType<SoundManager>().Pause("MediumStage");
-                //}
-
-                //else if (chosenLevel > 7)
-                //{
-                //    FindObjectOfType<SoundManager>().Pause("HardStage");
-                //}
-                //else
-                //{
-                //    FindObjectOfType<SoundManager>().Pause("EasyStage");
-                //}
-                FindObjectOfType<SoundManager>().Pause("EasyStage");
+                //FindObjectOfType<SoundManager>().Pause("EasyStage");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -163,22 +150,22 @@ public class GameManager : MonoBehaviour
                 modePage.SetActive(false);
                 break;
             case PageState.Play:
+                chosenLevel = LevelController.Instance.getChosenLevel();
+                if (chosenLevel > 4 && chosenLevel < 8)
+                {
+                    FindObjectOfType<SoundManager>().Play("MediumStage");
+                }
 
-                //if (chosenLevel > 4 && chosenLevel < 8)
-                //{
-                //    FindObjectOfType<SoundManager>().Play("MediumStage");
-                //}
-
-                //else if (chosenLevel > 7)
-                //{
-                //    FindObjectOfType<SoundManager>().Play("HardStage");
-                //}
-                //else
-                //{
-                //    FindObjectOfType<SoundManager>().Play("EasyStage");
-                //}
-                FindObjectOfType<SoundManager>().Play("EasyStage");
-                FindObjectOfType<SoundManager>().Pause("Lobby");
+                else if (chosenLevel > 7)
+                {
+                    FindObjectOfType<SoundManager>().Play("HardStage");
+                }
+                else
+                {
+                    FindObjectOfType<SoundManager>().Play("EasyStage");
+                }
+                //FindObjectOfType<SoundManager>().Play("EasyStage");
+                FindObjectOfType<SoundManager>().Stop("Lobby");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -290,6 +277,21 @@ public class GameManager : MonoBehaviour
                 modePage.SetActive(false);
                 break;
             case PageState.LevelUI:
+                if (chosenLevel != 0)
+                    if (chosenLevel > 4 && chosenLevel < 8)
+                    {
+                        FindObjectOfType<SoundManager>().Stop("MediumStage");
+                    }
+
+                    else if (chosenLevel > 7)
+                    {
+                        FindObjectOfType<SoundManager>().Stop("HardStage");
+                    }
+                    else
+                    {
+                        FindObjectOfType<SoundManager>().Stop("EasyStage");
+                    }
+                FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -380,6 +382,7 @@ public class GameManager : MonoBehaviour
                 modePage.SetActive(false);
                 break;
             case PageState.ModePage:
+                FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(false);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
@@ -419,6 +422,20 @@ public class GameManager : MonoBehaviour
 
     //activated when play button is hit
     public void StartGame() {
+        if (chosenLevel !=0)
+            if (chosenLevel > 4 && chosenLevel < 8)
+            {
+                FindObjectOfType<SoundManager>().Stop("MediumStage");
+            }
+
+            else if (chosenLevel > 7)
+            {
+                FindObjectOfType<SoundManager>().Stop("HardStage");
+            }
+            else
+            {
+                FindObjectOfType<SoundManager>().Stop("EasyStage");
+            }
         FindObjectOfType<SoundManager>().Play("MajorButton");
 
         /*

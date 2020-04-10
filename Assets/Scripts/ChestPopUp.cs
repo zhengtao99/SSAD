@@ -94,7 +94,7 @@ public class ChestPopUp : MonoBehaviour
         {
             PauseGame();
             FindObjectOfType<SoundManager>().Play("ChestOpening");
-            CreateOpenedChest.OpenedChestInstance.CreateOpenedChests(transform.position.x,
+            MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
             transform.position.y, transform.position.z);
             gameObject.SetActive(false);
             Invoke("delayPopUp", 1.5f);
