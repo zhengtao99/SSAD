@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateOpenedChest : MonoBehaviour
+public class MiniChestController : MonoBehaviour
 {
-    public static CreateOpenedChest OpenedChestInstance;
+    public static MiniChestController OpenedChestInstance;
     public GameObject openedChest;
 
     // Start is called before the first frame update

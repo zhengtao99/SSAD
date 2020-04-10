@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
 
     private void EndGame(bool win)
     {
-        CreateOpenedChest.OpenedChestInstance.CloseOpenedChest();
+        MiniChestController.OpenedChestInstance.CloseOpenedChest();
         PauseGame();
 
         var topic = SectionController.currentTopic;
