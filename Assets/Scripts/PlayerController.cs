@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Level is: " + chosenLevel);
 
         moveInput = new Vector2(1, 1);
-
-        direction = 4;
     }
 
     void Update()
@@ -156,26 +154,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Finish all chestboxs and coins");
             EndGame(true);
         }
-
-        //Move by keyboard
-        /*
-        {
-            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (Input.GetAxisRaw("Horizontal") == 1)
-            {
-                //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
-                this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-            }
-            else if (Input.GetAxisRaw("Horizontal") == -1)
-            {
-                //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
-                this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-            }
-
-            moveVelocity = moveInput.normalized * speed;
-        }
-        */
-
     }
 
     private void FixedUpdate()
