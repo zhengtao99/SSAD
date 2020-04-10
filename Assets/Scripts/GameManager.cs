@@ -1,5 +1,6 @@
 ﻿using Assets.Model;
 using Assets.Scripts;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject loading;
+    public GameObject invitation;
     public GameObject loginPage;
     public GameObject profilePage;
     public GameObject readyPage;
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject leaderboardPage;
     public GameObject multiPlayerPage;
     public GameObject modePage;
+    public GameObject onlinePlayerListingsPage;
     public Text scoreText;
     GameObject initialPlayState;
 
@@ -53,7 +56,8 @@ public class GameManager : MonoBehaviour
         GameWin,
         LeaderboardPage,
         MultiplayerPage,
-        ModePage
+        ModePage,
+        OnlinePlayerListingsPage
     }
 
     bool gameOver = true; //Initially not start game
@@ -91,6 +95,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.Login:
                 FindObjectOfType<SoundManager>().Play("GameLaunch");
@@ -110,6 +115,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.Ready:
                 profilePage.SetActive(false);
@@ -128,6 +134,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.GameOver:
 
@@ -148,6 +155,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.Play:
                 chosenLevel = LevelController.Instance.getChosenLevel();
@@ -182,6 +190,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
                 profilePage.SetActive(false);
@@ -200,6 +209,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.WorldUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -219,6 +229,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.SectionUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -238,6 +249,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.LeaderboardPage:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -257,6 +269,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(true);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.QuestionPopUp:
                 profilePage.SetActive(false);
@@ -275,6 +288,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.LevelUI:
                 if (chosenLevel != 0)
@@ -308,6 +322,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.UnlockedLevelPopUp:
                 profilePage.SetActive(false);
@@ -326,6 +341,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.CompletedLevelPopUp:
                 profilePage.SetActive(false);
@@ -344,6 +360,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.GameWin:
                 profilePage.SetActive(false);
@@ -362,6 +379,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.MultiplayerPage:
                 profilePage.SetActive(false);
@@ -380,6 +398,7 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(true);
                 modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(false);
                 break;
             case PageState.ModePage:
                 FindObjectOfType<SoundManager>().Play("Lobby");
@@ -399,6 +418,26 @@ public class GameManager : MonoBehaviour
                 leaderboardPage.SetActive(false);
                 multiPlayerPage.SetActive(false);
                 modePage.SetActive(true);
+                onlinePlayerListingsPage.SetActive(false);
+                break;
+            case PageState.OnlinePlayerListingsPage:
+                profilePage.SetActive(false);
+                loginPage.SetActive(false);
+                readyPage.SetActive(false);
+                gameOverPage.SetActive(false);
+                playPage.SetActive(false);
+                worldPage.SetActive(false);
+                sectionPage.SetActive(false);
+                chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                levelPage.SetActive(false);
+                unlockedLevelPopUp.SetActive(false);
+                completedLevelPopUp.SetActive(false);
+                winLevelPopUp.SetActive(false);
+                leaderboardPage.SetActive(false);
+                multiPlayerPage.SetActive(false);
+                modePage.SetActive(false);
+                onlinePlayerListingsPage.SetActive(true);
                 break;
         }
     }
@@ -499,6 +538,16 @@ public class GameManager : MonoBehaviour
     {
         loading.SetActive(false);
     }
+
+    public void ShowInvitation()
+    {
+        invitation.SetActive(true);
+    }
+    public void HideInvitation()
+    {
+        invitation.SetActive(false);
+    }
+
     public void EnterGameOver()
     {
         SetPageState(PageState.GameOver);
@@ -527,5 +576,13 @@ public class GameManager : MonoBehaviour
     public void ModePage()
     {
         SetPageState(PageState.ModePage);
+    }
+
+    public void OnlinePlayerListingsUI()
+    {
+        //Intentionally leave room to see available rooms
+        PhotonNetwork.LeaveRoom(true);
+
+        SetPageState(PageState.OnlinePlayerListingsPage);
     }
 }

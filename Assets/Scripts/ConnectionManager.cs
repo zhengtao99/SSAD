@@ -7,6 +7,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 using Assets.Model;
+using Photon.Realtime;
+using Photon.Pun;
 
 namespace Assets.Scripts
 {
@@ -78,6 +80,8 @@ namespace Assets.Scripts
                 try
                 {
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
+
+                    RoomController.Instance.CreateRoom(username);
                     GameManager.Instance.ModePage();
                 }
                 catch(Exception)
@@ -87,6 +91,65 @@ namespace Assets.Scripts
             }
             
         }
+
+        /*
+        public static void CreateRoom()
+        {
+            if (!PhotonNetwork.IsConnected) //if not connected
+                return;
+
+            //CreateRoom
+            //JoinOrCreateRoom
+            RoomOptions options = new RoomOptions();
+            options.BroadcastPropsChangeToAll = true; //broadcast CustomProperties
+            options.PublishUserId = true;
+            options.MaxPlayers = 2;  //max players: 2
+
+            //If exist room -> join, otherwise create
+            PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.LocalPlayer.NickName, options, TypedLobby.Default);
+        }
+
+        public override void OnCreatedRoom()
+        {
+            Debug.Log("Created room successfully");
+        }
+        */
+
+        /*
+        private static void ConnectToPhoton(string nickname)
+        {
+            Debug.Log("Connecting to server...");
+
+            PhotonNetwork.NickName = nickname;
+            PhotonNetwork.GameVersion = "0.0.0";
+
+            PhotonNetwork.ConnectUsingSettings();  //connect by photon app id
+        }
+
+        public override void OnConnectedToMaster() //When connect to photon
+        {
+            Debug.Log("Connected to server");
+
+            //Print nickname of LocalPlayer
+            Debug.Log("Nickname: " + PhotonNetwork.LocalPlayer.NickName); //print nickname
+
+            if (!PhotonNetwork.InLobby)
+                PhotonNetwork.JoinLobby();
+        }
+
+        public override void OnDisconnected(DisconnectCause cause)  //When disconnect to photon
+        {
+            Debug.Log("Disconnected from server for reason: " + cause.ToString());
+        }
+
+        
+        public override void OnJoinedLobby()
+        {
+            Debug.Log("hello");
+            GameManager.Instance.ModePage();
+        }
+        */
+
 
         /// <summary>
         /// To retrieve respective questions from datbase based on player selected topic and difficulty level.
