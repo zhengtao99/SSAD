@@ -7,12 +7,21 @@ using Assets.Scripts;
 using Assets.Model;
 using System.Linq;
 
+/// <summary>
+/// The class holds all the methods to control the scroll view in the leaderboard page.
+/// </summary>
 public class RankListController : MonoBehaviour
 {
+    /// <summary>
+    /// A variable to hold the basic layout of a leaderboard entry.
+    /// </summary>
     [SerializeField]
     private GameObject rankTemplate;
+
+    /// <summary>
+    /// A variable to hold the current player's rank in a particular world or topic
+    /// </summary>
     public GameObject currentPlayerRank;
-    public GameObject a;
 
     private List<GameObject> ranks = new List<GameObject>();
     public void WorldSearch()
@@ -82,18 +91,10 @@ public class RankListController : MonoBehaviour
         ranks.Add(rank.gameObject);
         StartCoroutine(cm.GetHighscore(id, Search, Filter));        
         
-        a = GameObject.Find("bird_idle_f01");
         SpriteRenderer m_SpriteRenderer;
 
         m_SpriteRenderer = GameObject.Find("bird_idle_f01").GetComponent<SpriteRenderer>();
         m_SpriteRenderer.color = Color.red;
-        //Color32[] Colors;
-        //Colors = new Color32[4];
-        //Colors[0] = new Color32(255, 0, 0, 255);
-        //Colors[1] = new Color32(0, 255, 0, 255);
-        //Colors[2] = new Color32(255, 0, 0, 255);
-        //Colors[3] = new Color32(0, 0, 0, 255);
-        //a.GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
     }
     public void ClearRanks()
     {

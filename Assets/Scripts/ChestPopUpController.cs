@@ -5,12 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Contains all methods required to perform the Chest animation when the player touches a chest in the game.
 /// </summary>
-public class ChestPopUp : MonoBehaviour
+public class ChestPopUpController : MonoBehaviour
 {
     /// <summary>
     /// Creates the instance to allow other GameObjects' scripts to access the methods here.
     /// </summary>
-    public static ChestPopUp Instance;
+    public static ChestPopUpController Instance;
 
     /// <summary>
     /// A variable to store all minion gameobjects that will be manipulated perform chest animation.
