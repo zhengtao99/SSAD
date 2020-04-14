@@ -28,7 +28,7 @@ public class QAManager : MonoBehaviour
     void OnEnable()
     {
         if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
-            PopulateQuestion();
+            //PopulateQuestion();
             //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
             startTime = DateTime.Now;
@@ -66,7 +66,6 @@ public class QAManager : MonoBehaviour
 
     public void PopulateQuestion()
     {
-       
         qnText.text = "Qn: " + "The question will be retrieved here. Loading....";
         var questions = ConnectionManager.Questions;
        
@@ -103,13 +102,21 @@ public class QAManager : MonoBehaviour
         bool isCorrect = true;
         DisableButtons();
 
-        if (answerID == 1)
+        if (true)
         {
             correct = 1;
             PlayerPrefs.SetInt("correct", correct);
             //Debug.Log("set correct is true, check actual correct: " +correct);
             TurnGreen();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
+            Debug.Log(ChestPopUp.Instance.isMultiplayerMode);
+            if (!ChestPopUp.Instance.isMultiplayerMode)
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
+
+            else
+            {
+                Debug.Log("Hello Im here");
+                MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().ScoreUpdate(20);
+            }
         }
 
         else
@@ -151,7 +158,7 @@ public class QAManager : MonoBehaviour
         colors.selectedColor = Color.green;
         colors.disabledColor = Color.green;
         pressedButton.colors = colors;
-        playerController.increaseCorrectAns();
+        //playerController.increaseCorrectAns();
         /*
         correctAns += 1;
         if (correctAns == 4)

@@ -13,6 +13,7 @@ public class MultiplayerSceneManager : MonoBehaviour
     public GameObject playPage;
     public GameObject chestPopUpPage;
     public GameObject questionPopUpPage;
+    public GameObject gameOverPopUpPage;
 
     GameObject initialPlayState;
     
@@ -24,7 +25,8 @@ public class MultiplayerSceneManager : MonoBehaviour
         MultiplayerMatch,
         Play,
         ChestPopUp,
-        QuestionPopUp
+        QuestionPopUp,
+        GameOverPopUp
     }
 
     void Awake()
@@ -74,6 +76,13 @@ public class MultiplayerSceneManager : MonoBehaviour
                 chestPopUpPage.SetActive(true);
                 questionPopUpPage.SetActive(true);
                 break;
+            case PageState.GameOverPopUp:
+                multiplayerMatch.SetActive(false);
+                playPage.SetActive(true);
+                chestPopUpPage.SetActive(false);
+                questionPopUpPage.SetActive(false);
+                gameOverPopUpPage.SetActive(true);
+                break;
         }
     }
 
@@ -121,6 +130,11 @@ public class MultiplayerSceneManager : MonoBehaviour
     public void MultiplayerMatchingUI()
     {
         SetPageState(PageState.MultiplayerMatch);
+    }
+
+    public void GameOverPopUp()
+    {
+        SetPageState(PageState.GameOverPopUp);
     }
 
     private void CreatePlayer()

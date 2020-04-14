@@ -78,7 +78,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         {
             GameManager.Instance.HideInvitation();
             //GameManager.Instance.multiPlayer();
-            PhotonNetwork.LoadLevel(1); //Load scene index 1: MultiplayerScene
+            PhotonNetwork.LoadLevel(2); //Load scene index 1: MultiplayerScene
         }
     }
 
@@ -140,5 +140,28 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         GameObject[] heartArr = GameObject.FindGameObjectsWithTag("Heart_player" + playerNumber.ToString());
         Destroy(heartArr[countLife]);
+    }
+
+    public void MiniChestUpdateOtherSide(float x, float y, float z)
+    {
+        base.photonView.RPC("RPC_MiniChestUpdateOtherSide", RpcTarget.Others, x, y, z);
+    }
+
+    [PunRPC]
+    private void RPC_MiniChestUpdateOtherSide(float x, float y, float z)
+    {
+        MiniChestController.OpenedChestInstance.CreateOpenedChests(x,y,z);
+    }
+
+    public void GameOverPopUp()
+    {
+        MultiplayerSceneManager.Instance.GameOverPopUp();
+        base.photonView.RPC("RPC_GameOverPopUp", RpcTarget.Others);
+    }
+
+    [PunRPC]
+    private void RPC_GameOverPopUp()
+    {
+        MultiplayerSceneManager.Instance.GameOverPopUp();
     }
 }

@@ -143,6 +143,8 @@ public class MyPlayerController : MonoBehaviour
             explosion.transform.position = new Vector2(transform.position.x, transform.position.y + .3f);
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
+            PauseGame();
+            RoomController.Instance.GameOverPopUp();
         }
         else
         {

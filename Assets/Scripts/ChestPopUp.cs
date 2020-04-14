@@ -157,17 +157,22 @@ public class ChestPopUp : MonoBehaviour
 
         else
         {
-            if (other.gameObject == MultiplayerSceneManager.Instance.myPlayer && !isOpened)
-            {
-                PauseGame();
-                FindObjectOfType<SoundManager>().Play("ChestOpening");
-                MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
-                transform.position.y, transform.position.z);
+            if (other.tag == "Player" && !isOpened) {
+                if (other.gameObject == MultiplayerSceneManager.Instance.myPlayer && !isOpened)
+                {
+                    PauseGame();
+                    FindObjectOfType<SoundManager>().Play("ChestOpening");
+                    MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
+                    transform.position.y, transform.position.z);
+                    RoomController.Instance.MiniChestUpdateOtherSide(transform.position.x,
+                    transform.position.y, transform.position.z);
+
+                    Invoke("delayPopUp", 1.5f);
+                    //Invoke("ResumeGame",1f);
+                    isOpened = true;
+
+                }
                 gameObject.SetActive(false);
-                Invoke("delayPopUp", 1.5f);
-                //Invoke("ResumeGame",1f);
-                isOpened = true;
-               
             }
         }
     }

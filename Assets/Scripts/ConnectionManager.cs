@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using Assets.Model;
 using Photon.Realtime;
 using Photon.Pun;
@@ -66,10 +67,10 @@ namespace Assets.Scripts
         /// <param name="password">Password input.</param>
         public static IEnumerator Login(string username, string password)
         {
-            GameManager.Instance.ShowLoading();
+            LoginManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/login/" + username + "/" + password);
              yield return www.SendWebRequest();
-            GameManager.Instance.HideLoading();
+            LoginManager.Instance.HideLoading();
             try
             {
                 bool result = bool.Parse(www.downloadHandler.text);
@@ -82,7 +83,7 @@ namespace Assets.Scripts
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
 
                     RoomController.Instance.CreateRoom(username);
-                    GameManager.Instance.ModePage();
+                    SceneManager.LoadScene(1);
                 }
                 catch(Exception)
                 {

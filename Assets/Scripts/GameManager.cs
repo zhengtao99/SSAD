@@ -68,12 +68,12 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Instance = this;
-        SetPageState(PageState.Login);
-
+        SetPageState(PageState.ModePage);
+        //PhotonNetwork.AutomaticallySyncScene = true;
         //Ensure initialPlayState (playPage clone) is disabled
         playPage.SetActive(false);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);
-
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public void SetPageState(PageState state) {
@@ -402,7 +402,7 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.ModePage:
                 FindObjectOfType<SoundManager>().Play("Lobby");
-                profilePage.SetActive(false);
+                profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);
                 gameOverPage.SetActive(false);

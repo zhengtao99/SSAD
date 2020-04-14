@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\JoyStickController.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\LoginController.cs" />
+     <Compile Include="Assets\Scripts\LoginManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameSettings.cs" />
      <Compile Include="Assets\Scripts\Managers\MasterManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SingletonScriptableObject.cs" />
@@ -97,6 +98,7 @@
      <Compile Include="Assets\Scripts\MazeGenerator.cs" />
      <Compile Include="Assets\Scripts\MiniChestController.cs" />
      <Compile Include="Assets\Scripts\MinionController.cs" />
+     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiPlayerResultController.cs" />
      <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiplayerSceneManager.cs" />
      <Compile Include="Assets\Scripts\Multiplayer Scripts\MyPlayerController.cs" />
      <Compile Include="Assets\Scripts\Multiplayer Scripts\PhotonPlayerController.cs" />
