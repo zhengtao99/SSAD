@@ -51,6 +51,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks //inherit MonoBehavio
 
     private void GetCurrentRoomPlayers()
     {
+        //Check before get current room players
         if (!PhotonNetwork.IsConnected)
             return;
         if (PhotonNetwork.CurrentRoom == null || PhotonNetwork.CurrentRoom.Players == null)

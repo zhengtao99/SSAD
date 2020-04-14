@@ -9,6 +9,9 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
     {
         Debug.Log("Connecting to server...");
 
+        //Sync for both players when load scene LoadLevel
+        PhotonNetwork.AutomaticallySyncScene = true;
+
         //get NickName
         PhotonNetwork.NickName = MasterManager.GameSettings.NickName; 
         //Get GameVersion

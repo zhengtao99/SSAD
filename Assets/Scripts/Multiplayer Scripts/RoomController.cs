@@ -2,7 +2,9 @@
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomController : MonoBehaviourPunCallbacks
 {
@@ -73,7 +75,11 @@ public class RoomController : MonoBehaviourPunCallbacks
     public void OnClickAcceptInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
+        {
             GameManager.Instance.HideInvitation();
+            //GameManager.Instance.multiPlayer();
+            PhotonNetwork.LoadLevel(1); //Load scene index 1: MultiplayerScene
+        }
     }
 
     public void OnClickCancelInvitation()
@@ -92,5 +98,47 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         Debug.Log("Force leave room");
         LeaveRoom();
+    }
+
+    public void ScoreUpdateOtherSide(int score)
+    {
+        int playerNumber;
+        if (!PhotonNetwork.IsMasterClient)  //player 1
+        {
+            playerNumber = 1;
+        } else
+        {
+            playerNumber = 2;
+        }
+        base.photonView.RPC("RPC_ScoreUpdateOtherSide", RpcTarget.Others, playerNumber, PhotonNetwork.NickName, score);
+    }
+
+    [PunRPC]
+    private void RPC_ScoreUpdateOtherSide(int playerNumber, string nickname, int score)
+    {
+        var mazePage = MultiplayerSceneManager.Instance.playPage;
+        Text scoreText = mazePage.GetComponentsInChildren<Text>().Where(z => z.name == "ScoreText_Player" + playerNumber.ToString()).First();
+        scoreText.text = nickname + "\n" + score.ToString();
+    }
+
+    public void LifeUpdateOtherSide(int countLife)
+    {
+        int playerNumber;
+        if (!PhotonNetwork.IsMasterClient)  //player 1
+        {
+            playerNumber = 1;
+        }
+        else
+        {
+            playerNumber = 2;
+        }
+        base.photonView.RPC("RPC_LifeUpdateOtherSide", RpcTarget.Others, playerNumber, countLife);
+    }
+
+    [PunRPC]
+    private void RPC_LifeUpdateOtherSide(int playerNumber, int countLife)
+    {
+        GameObject[] heartArr = GameObject.FindGameObjectsWithTag("Heart_player" + playerNumber.ToString());
+        Destroy(heartArr[countLife]);
     }
 }

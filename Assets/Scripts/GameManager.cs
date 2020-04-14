@@ -466,7 +466,6 @@ public class GameManager : MonoBehaviour
             {
                 FindObjectOfType<SoundManager>().Stop("MediumStage");
             }
-
             else if (chosenLevel > 7)
             {
                 FindObjectOfType<SoundManager>().Stop("HardStage");

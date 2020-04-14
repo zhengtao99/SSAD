@@ -4,9 +4,14 @@ using UnityEngine;
 using System.Text;
 using System.Linq;
 using Assets.Scripts;
+using Photon.Pun;
+using System.IO;
 
 public class MazeGenerator : MonoBehaviour
 {
+    private PhotonView PV;
+    public bool isMultiplayerMode;
+
     public static MazeGenerator Instance;
     public GameObject BrickPrefab; 
     public GameObject CoinPrefab; 
@@ -237,9 +242,14 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-		GenerateMaze(); 
-        int chosenLevel = LevelController.Instance.getChosenLevel();
-        SetWalls_SetBackground(chosenLevel);     
+        PV = GetComponent<PhotonView>();
+
+        GenerateMaze();
+        if (!isMultiplayerMode)
+        {
+            int chosenLevel = LevelController.Instance.getChosenLevel();
+            SetWalls_SetBackground(chosenLevel);
+        } 
     }
     
     /*
@@ -295,7 +305,7 @@ public class MazeGenerator : MonoBehaviour
         for (int i = 0; i < minionCells.Length; i++)
         {
             Cell minion = (Cell)minionCells[i];
-            mark[minion.x, minion.y] = 3;  //chest
+            mark[minion.x, minion.y] = 3;  //minion
         }
 
         for (int x = 0; x < col / 2; x++)
@@ -309,52 +319,105 @@ public class MazeGenerator : MonoBehaviour
         DFS_Backtracking(new Cell(0, 0));
         BreakWall(1);
 
-        //Player
-        mark[col / 2, row / 2] = 4;
+        
+        if (!isMultiplayerMode)
+            mark[col / 2, row / 2] = 4;   //Player
+        else
+        {
+            //Empty space for 2 players
+            mark[3, 3] = 5;
+            mark[col - 4, row - 4] = 5;
+        }
+        
 
         PlaceObjects();
     }
     void PlaceObjects() {
-        for (int x = 0 ; x < col ; x++) {
-            for (int y = 0 ; y < row ; y++) {
-                GameObject gameObject = null;
-                GameObject minion = null;
-                switch (mark[x, y]) {
-                    case 0:
-                        gameObject = Instantiate(BrickPrefab) as GameObject;
-                        break;
-                    case 1:
-                        gameObject = Instantiate(CoinPrefab) as GameObject;
-                        break;
-                    case 2:
-                        gameObject = Instantiate(ChestPrefab) as GameObject;
-                        break;
-                    case 3:
-                        gameObject = Instantiate(CoinPrefab) as GameObject;
-                        minion = Instantiate(MinionPrefab) as GameObject;
-                        break;
-                    case 4:
-                        gameObject = Instantiate(PlayerPrefab) as GameObject;
-                        break;
+        
+        if (!isMultiplayerMode)
+        {
+            for (int x = 0; x < col; x++)
+            {
+                for (int y = 0; y < row; y++)
+                {
+                    GameObject gameObject = null;
+                    GameObject minion = null;
+                    switch (mark[x, y])
+                    {
+                        case 0:
+                            gameObject = Instantiate(BrickPrefab) as GameObject;
+                            break;
+                        case 1:
+                            gameObject = Instantiate(CoinPrefab) as GameObject;
+                            break;
+                        case 2:
+                            gameObject = Instantiate(ChestPrefab) as GameObject;
+                            break;
+                        case 3:
+                            gameObject = Instantiate(CoinPrefab) as GameObject;
+                            minion = Instantiate(MinionPrefab) as GameObject;
+                            break;
+                        case 4:
+                            gameObject = Instantiate(PlayerPrefab) as GameObject;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (gameObject != null)
+                    {
+                        Transform t = gameObject.transform;
+
+                        //t is set a parent of whatever object the script is attached to
+                        t.SetParent(transform);
+
+                        Vector3 pos = new Vector3(x, -y, 0);
+
+                        //Set position for t
+                        t.position = mazePos + pos;
+
+                        if (minion != null)
+                        {
+                            t = minion.transform;
+                            t.SetParent(transform);
+                            pos = new Vector3(x, -y, 0);
+
+                            //Set position for t
+                            t.position = mazePos + pos;
+                        }
+                    }
                 }
-                
-                Transform t = gameObject.transform;
-
-                //t is set a parent of whatever object the script is attached to
-                t.SetParent(transform);
-
-                Vector3 pos = new Vector3(x, -y, 0);
-
-                //Set position for t
-                t.position =  mazePos + pos;
-
-                if (minion != null) {
-                    t = minion.transform;
-                    t.SetParent(transform);
-                    pos = new Vector3(x, -y, 0);
-
-                    //Set position for t
-                    t.position =  mazePos + pos;
+            }
+        } 
+        else if (PhotonNetwork.IsMasterClient && PV.IsMine)
+        {
+            for (int x = 0; x < col; x++)
+            {
+                for (int y = 0; y < row; y++)
+                {
+                    Vector3 pos = new Vector3(x, -y, 0);
+                    switch (mark[x, y])
+                    {
+                        case 0:
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Brick_wall_m"),
+                                 mazePos + pos, Quaternion.identity, 0);   //Brick
+                            break;
+                        case 1:
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "coin_m"),
+                                mazePos + pos, Quaternion.identity, 0);   //coin
+                            break;
+                        case 2:
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "chest_box_m"),
+                                mazePos + pos, Quaternion.identity, 0);   //chest box
+                            break;
+                        case 3:
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "coin_m"),
+                                mazePos + pos, Quaternion.identity, 0);   //coin
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Furry_m"),
+                                    mazePos + pos, Quaternion.identity, 0);   //minion
+                            break;
+                        default:
+                            break;
+                    }    
                 }
             }
         }

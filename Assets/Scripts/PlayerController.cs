@@ -6,9 +6,11 @@ using System;
 using Assets.Scripts;
 using UnityEngine.Networking;
 using System.Linq;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
+
     public GameObject glow;
     public GameObject deadEffect;
     private GameObject[] heartArr;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+
         explosionRef = Resources.Load("PlayerExplosion");
 
         coinsCnt = 0;
@@ -53,6 +56,8 @@ public class PlayerController : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody2D>();
+        Debug.Log("rb: " + rb);
+        
 
         //var mazePage = GameObject.FindGameObjectsWithTag("Page").Where(z => z.name.ToLower().Contains("maze")).First();
         var mazePage = GameManager.Instance.playPage;
@@ -159,27 +164,27 @@ public class PlayerController : MonoBehaviour
 
         //Move by keyboard
         /*
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (Input.GetAxisRaw("Horizontal") == 1)
         {
-            moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if (Input.GetAxisRaw("Horizontal") == 1)
-            {
-                //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
-                this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-            }
-            else if (Input.GetAxisRaw("Horizontal") == -1)
-            {
-                //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
-                this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-            }
-
-            moveVelocity = moveInput.normalized * speed;
+            //this.transform.localScale = new Vector3(23.74183f, 23.74183f, 1f);  //localScale
+            this.transform.localScale = new Vector3(Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
         }
+        else if (Input.GetAxisRaw("Horizontal") == -1)
+        {
+            //this.transform.localScale = new Vector3(-23.74183f, 23.74183f, 1f);  //localScale
+            this.transform.localScale = new Vector3(-Math.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+        }
+
+        moveVelocity = moveInput.normalized * speed;
         */
+
 
     }
 
     private void FixedUpdate()
     {
+
         if (isPause)
         {
             rb.MovePosition(rb.position);
@@ -189,6 +194,7 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {

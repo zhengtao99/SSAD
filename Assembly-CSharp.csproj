@@ -52,9 +52,6 @@
     <UnityVersion>2020.1.0a17</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity 2020.1.0a17\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -105,6 +102,10 @@
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\MiniChestController.cs" />
     <Compile Include="Assets\Scripts\MinionController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiplayerSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\MyPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\PhotonPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\RoomController.cs" />
     <Compile Include="Assets\Scripts\OnlinePlayerListing.cs" />
     <Compile Include="Assets\Scripts\OnlinePlayerListingsController.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\CreateRoomMenu.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\PhotonTest\PhotonTestManager.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\PlayerListing.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\PlayerListingMenu.cs" />
+    <Compile Include="Assets\Scripts\PhotonTest\RaiseEventExample.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\RandomCustomPropertyGenerator.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\RoomListing.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\RoomListingMenu.cs" />
@@ -122,7 +124,6 @@
     <Compile Include="Assets\Scripts\QAManager.cs" />
     <Compile Include="Assets\Scripts\RankController.cs" />
     <Compile Include="Assets\Scripts\RankListController.cs" />
-    <Compile Include="Assets\Scripts\RoomController.cs" />
     <Compile Include="Assets\Scripts\SectionController.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
@@ -443,6 +444,12 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:\Program Files\Unity 2020.1.0a17\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets\Photon\PhotonLibs\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity 2020.1.0a17\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
