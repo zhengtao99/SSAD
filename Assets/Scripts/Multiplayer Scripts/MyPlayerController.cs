@@ -31,6 +31,8 @@ public class MyPlayerController : MonoBehaviour
     private GameObject[] minions;
     bool isFreeze;
 
+    public bool isPause = false;
+
     //public Text txt;
     // Update is called once per frame
     private void Start()
@@ -79,7 +81,16 @@ public class MyPlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (PV.IsMine)
-            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        {
+            if (isPause)
+            {
+                rb.MovePosition(rb.position);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -155,5 +166,27 @@ public class MyPlayerController : MonoBehaviour
 
         isInjured = false;
         yield return null;
+    }
+
+    public void ResumeGame()
+    {
+        foreach (GameObject minion in minions)
+        {
+
+            minion.GetComponent<MinionController>().isPause = false;
+
+        }
+        if (PV.IsMine)
+            isPause = false;
+    }
+
+    void PauseGame()
+    {
+        foreach (GameObject minion in minions)
+        {
+            minion.GetComponent<MinionController>().isPause = true;
+        }
+        if (PV.IsMine)
+            isPause = true;
     }
 }

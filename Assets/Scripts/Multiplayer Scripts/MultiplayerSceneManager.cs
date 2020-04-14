@@ -15,6 +15,8 @@ public class MultiplayerSceneManager : MonoBehaviour
     public GameObject questionPopUpPage;
 
     GameObject initialPlayState;
+    
+    public GameObject myPlayer;
 
     public enum PageState
     {

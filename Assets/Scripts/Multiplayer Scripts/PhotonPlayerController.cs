@@ -40,6 +40,8 @@ public class PhotonPlayerController : MonoBehaviour
         {
             myPlayer = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player_m"),
                 t_player.position, t_player.rotation, 0);
+            MultiplayerSceneManager.Instance.myPlayer = myPlayer;
+
             PhotonNetwork.Instantiate(Path.Combine("Prefabs", livesPrefabName),
                 t_lives.position, t_lives.rotation, 0);
         }

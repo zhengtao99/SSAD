@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class ChestPopUp : MonoBehaviour
 {
+    public bool isMultiplayerMode;
+
     /// <summary>
     /// Creates the instance to allow other GameObjects' scripts to access the methods here.
     /// </summary>
@@ -27,6 +29,7 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     private bool isOpened = false;
 
+
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -40,16 +43,32 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     void PauseGame()
     {
-        minions = GameObject.FindGameObjectsWithTag("Minion");
-
-        foreach (GameObject minion in minions)
+        if (!isMultiplayerMode)
         {
+            minions = GameObject.FindGameObjectsWithTag("Minion");
 
-            minion.GetComponent<MinionController>().isPause = true;
+            foreach (GameObject minion in minions)
+            {
 
+                minion.GetComponent<MinionController>().isPause = true;
+
+            }
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = true;
+            GameManager.Instance.QuestionPopUp();
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = true;
-        GameManager.Instance.QuestionPopUp();
+        else
+        {
+            minions = GameObject.FindGameObjectsWithTag("Minion");
+
+            foreach (GameObject minion in minions)
+            {
+
+                minion.GetComponent<MinionController>().isPause = true;
+
+            }
+            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = true;
+            MultiplayerSceneManager.Instance.QuestionPopUp();
+        }
     }
 
     /// <summary>
@@ -57,31 +76,61 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     public void ResumeGame()
     {
-        minions = GameObject.FindGameObjectsWithTag("Minion");
-
-        foreach (GameObject minion in minions)
+        if (!isMultiplayerMode)
         {
+            minions = GameObject.FindGameObjectsWithTag("Minion");
 
-            minion.GetComponent<MinionController>().isPause = false;
+            foreach (GameObject minion in minions)
+            {
 
+                minion.GetComponent<MinionController>().isPause = false;
+
+            }
+            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = false;
+
+            //invoke attack
+            int correct = PlayerPrefs.GetInt("correct");
+            if (correct == 1)
+            {
+                //Debug.Log("check correct is true, check actual correct:" + correct);
+                PAttack();
+            }
+
+            else if (correct == 0)
+            {
+                //Debug.Log("check correct is false, check actual correct:" + correct);
+                MAttack();
+            }
+
+            GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
-
-        //invoke attack
-        int correct = PlayerPrefs.GetInt("correct");
-        if (correct == 1)
+        else
         {
-            //Debug.Log("check correct is true, check actual correct:" + correct);
-            PAttack();
-        }
+            minions = GameObject.FindGameObjectsWithTag("Minion");
 
-        else if (correct == 0)
-        {
-            //Debug.Log("check correct is false, check actual correct:" + correct);
-            MAttack();
-        }
+            foreach (GameObject minion in minions)
+            {
 
-        GameManager.Instance.SetPageState(GameManager.PageState.Play);
+                minion.GetComponent<MinionController>().isPause = false;
+
+            }
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
+
+            //invoke attack
+            int correct = PlayerPrefs.GetInt("correct");
+            if (correct == 1)
+            {
+                //Debug.Log("check correct is true, check actual correct:" + correct);
+                PAttack();
+            }
+            else if (correct == 0)
+            {
+                //Debug.Log("check correct is false, check actual correct:" + correct);
+                MAttack();
+            }
+
+            MultiplayerSceneManager.Instance.SetPageState(MultiplayerSceneManager.PageState.Play);
+        }
     }
 
     /// <summary>
@@ -101,7 +150,8 @@ public class ChestPopUp : MonoBehaviour
             //Invoke("ResumeGame",1f);
             isOpened = true;
 
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().Push();
+            if (!isMultiplayerMode)
+                GameObject.FindWithTag("Player").GetComponent<PlayerController>().Push();
         }
     }
 
@@ -110,7 +160,10 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     void delayPopUp()
     {
-        GameManager.Instance.QuestionPopUp();
+        if (!isMultiplayerMode)
+            GameManager.Instance.QuestionPopUp();
+        else
+            MultiplayerSceneManager.Instance.QuestionPopUp();
     }
 
     /// <summary>
@@ -118,8 +171,8 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     public void PAttack()
     {
-        //Debug.Log("activate PAttack");
-        GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
+        if (!isMultiplayerMode)
+            GameObject.FindWithTag("Player").GetComponent<AttackController>().PlayerAttack();
     }
 
     /// <summary>
@@ -127,7 +180,7 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     public void MAttack()
     {
-        //Debug.Log("activate MAttack");
-        GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
+        if (!isMultiplayerMode) 
+            GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 }
