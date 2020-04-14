@@ -1,4 +1,5 @@
-﻿using Photon.Pun;       //import 
+﻿using Assets.Scripts;
+using Photon.Pun;       //import 
 using Photon.Realtime;  //import 
 using UnityEngine;
 
@@ -35,5 +36,11 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
     {
         Debug.Log("Disconnected from server for reason: " + cause.ToString());
         
+    }
+
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+        RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
     }
 }

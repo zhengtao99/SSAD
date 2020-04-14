@@ -45,7 +45,7 @@ public class MultiPlayerResultController : MonoBehaviour
     // Update is called once per frame
     public void CloseMultiplayerResultPopUp()
     {
-        //PhotonNetwork.AutomaticallySyncScene = false;
+        PhotonNetwork.AutomaticallySyncScene = false;
         SceneManager.LoadScene(1);
     }
 }
