@@ -86,7 +86,7 @@ public class ChestPopUp : MonoBehaviour
                 minion.GetComponent<MinionController>().isPause = false;
 
             }
-            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
 
             //invoke attack
             int correct = PlayerPrefs.GetInt("correct");
@@ -114,7 +114,7 @@ public class ChestPopUp : MonoBehaviour
                 minion.GetComponent<MinionController>().isPause = false;
 
             }
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isPause = false;
+            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = false;
 
             //invoke attack
             int correct = PlayerPrefs.GetInt("correct");
@@ -139,19 +139,36 @@ public class ChestPopUp : MonoBehaviour
     /// <param name="other">The collided game object</param>
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player" && !isOpened)
+        if (!isMultiplayerMode)
         {
-            PauseGame();
-            FindObjectOfType<SoundManager>().Play("ChestOpening");
-            MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
-            transform.position.y, transform.position.z);
-            gameObject.SetActive(false);
-            Invoke("delayPopUp", 1.5f);
-            //Invoke("ResumeGame",1f);
-            isOpened = true;
-
-            if (!isMultiplayerMode)
+            if (other.tag == "Player" && !isOpened)
+            {
+                PauseGame();
+                FindObjectOfType<SoundManager>().Play("ChestOpening");
+                MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
+                transform.position.y, transform.position.z);
+                gameObject.SetActive(false);
+                Invoke("delayPopUp", 1.5f);
+                //Invoke("ResumeGame",1f);
+                isOpened = true;
                 GameObject.FindWithTag("Player").GetComponent<PlayerController>().Push();
+            }
+        }
+
+        else
+        {
+            if (other.gameObject == MultiplayerSceneManager.Instance.myPlayer && !isOpened)
+            {
+                PauseGame();
+                FindObjectOfType<SoundManager>().Play("ChestOpening");
+                MiniChestController.OpenedChestInstance.CreateOpenedChests(transform.position.x,
+                transform.position.y, transform.position.z);
+                gameObject.SetActive(false);
+                Invoke("delayPopUp", 1.5f);
+                //Invoke("ResumeGame",1f);
+                isOpened = true;
+               
+            }
         }
     }
 
