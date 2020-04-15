@@ -57,23 +57,24 @@ public class RoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom(true);
     }
 
-    public void SendInvitation()
+    public void SendInvitation(string senderName)
     {
         Debug.Log("In SendInvitation");
         if (!PhotonNetwork.IsMasterClient)
         {
             Debug.Log("Call RPC_ShowInvitation");
             //Client makes a call to master (RpcTarget.MasterClient) to execute RPC_ChangeReadyState on master
-            base.photonView.RPC("RPC_ShowInvitation", RpcTarget.MasterClient);
+            base.photonView.RPC("RPC_ShowInvitation", RpcTarget.MasterClient, senderName);
         }
 
     }
 
     [PunRPC]
-    private void RPC_ShowInvitation()
+    private void RPC_ShowInvitation(string senderName)
     {
         Debug.Log("In RPC_ShowInvitation");
-        GameManager.Instance.ShowInvitation();
+        GameManager.Instance.ShowInvitation(senderName);
+
     }
 
     public void OnClickAcceptInvitation()

@@ -21,6 +21,7 @@ public class OnlinePlayerListingsController : MonoBehaviourPunCallbacks
         Instance = this;
     }
 
+    /*
     //Change view to CurrentRoom
     public override void OnJoinedRoom()
     {
@@ -30,6 +31,7 @@ public class OnlinePlayerListingsController : MonoBehaviourPunCallbacks
         _content.DestroyChildren();
         _listings.Clear();
     }
+    */
 
     //RoomInfo from Photon.Realtime
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
