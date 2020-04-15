@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoomController : MonoBehaviourPunCallbacks
@@ -16,7 +17,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         Instance = this;
     }
 
-    public void CreateRoom(string username)
+    public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)  //if not connected 
         {
@@ -24,7 +25,7 @@ public class RoomController : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.NickName = username;
+        //PhotonNetwork.NickName = username;
         Debug.Log("PhotonNetwork.NickName: " + PhotonNetwork.NickName);
         Debug.Log("Creating a room...");
 
@@ -36,7 +37,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         options.MaxPlayers = 2;  //max players: 2
 
         //If exist room -> join, otherwise create
-        PhotonNetwork.JoinOrCreateRoom(username, options, TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
@@ -159,13 +160,8 @@ public class RoomController : MonoBehaviourPunCallbacks
     public void GameOverPopUp()
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
+        StartCoroutine(CloseGameOverPopUp());
         base.photonView.RPC("RPC_GameOverPopUp", RpcTarget.Others);
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Thread.Sleep(6 * 1000); //time in milliseconds
-            PhotonNetwork.LoadLevel(1);
-        }
     }
 
     [PunRPC]
@@ -173,10 +169,12 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Thread.Sleep(6 * 1000); //time in milliseconds
-            PhotonNetwork.LoadLevel(1);
-        }
+        StartCoroutine(CloseGameOverPopUp());
+    }
+
+    IEnumerator CloseGameOverPopUp()
+    {
+        yield return new WaitForSeconds(4.0f);
+        SceneManager.LoadScene(1); //Go back ModePage
     }
 }

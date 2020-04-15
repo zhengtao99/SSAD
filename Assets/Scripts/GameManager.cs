@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject multiPlayerPage;
     public GameObject modePage;
     public GameObject onlinePlayerListingsPage;
+    public GameObject warningInModePage;
     public Text scoreText;
     GameObject initialPlayState;
 
@@ -404,6 +405,7 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.ModePage:
                 FindObjectOfType<SoundManager>().Play("Lobby");
+                warningInModePage.SetActive(false);
                 profilePage.SetActive(true);
                 loginPage.SetActive(false);
                 readyPage.SetActive(false);

@@ -26,13 +26,14 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
             PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
 
             PhotonNetwork.ConnectUsingSettings();  //connect by photon app id
-        } 
+        }
         else
         {
-            if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName) //In other player's room
+            //if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName) //In other player's room
+            if (PhotonNetwork.CurrentRoom != null)
             {
                 RoomController.Instance.LeaveRoom();
-                RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
+                //RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
             }
         }
     }
@@ -46,11 +47,14 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
 
         if (!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();
+
     }
 
     public override void OnDisconnected(DisconnectCause cause)  //When disconnect to photon
     {
-        Debug.Log("Disconnected from server for reason: " + cause.ToString());     
+        Debug.Log("Disconnected from server for reason: " + cause.ToString());
+        GameManager.Instance.warningInModePage.SetActive(true);
+        GameManager.Instance.HideLoading();
     }
 
     public override void OnJoinedLobby()
@@ -58,7 +62,7 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
         if (isFirstTime)
         {
             base.OnJoinedLobby();
-            RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
+            RoomController.Instance.CreateRoom();
             isFirstTime = false;
         }
     }
