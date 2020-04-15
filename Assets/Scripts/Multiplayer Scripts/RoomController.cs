@@ -24,7 +24,7 @@ public class RoomController : MonoBehaviourPunCallbacks
             Debug.Log("PhotonNetwork is not connected");
             return;
         }
-
+        GameManager.Instance.ShowLoading();
         //PhotonNetwork.NickName = username;
         Debug.Log("PhotonNetwork.NickName: " + PhotonNetwork.NickName);
         Debug.Log("Creating a room...");
@@ -37,7 +37,8 @@ public class RoomController : MonoBehaviourPunCallbacks
         options.MaxPlayers = 2;  //max players: 2
 
         //If exist room -> join, otherwise create
-        PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
+        //PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
+        PhotonNetwork.CreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
@@ -49,6 +50,7 @@ public class RoomController : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Room creation failed: " + message.ToString());
+        CreateRoom();
     }
 
     public void LeaveRoom()
@@ -59,10 +61,8 @@ public class RoomController : MonoBehaviourPunCallbacks
 
     public void SendInvitation(string senderName)
     {
-        Debug.Log("In SendInvitation");
         if (!PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("Call RPC_ShowInvitation");
             //Client makes a call to master (RpcTarget.MasterClient) to execute RPC_ChangeReadyState on master
             base.photonView.RPC("RPC_ShowInvitation", RpcTarget.MasterClient, senderName);
         }
@@ -72,9 +72,7 @@ public class RoomController : MonoBehaviourPunCallbacks
     [PunRPC]
     private void RPC_ShowInvitation(string senderName)
     {
-        Debug.Log("In RPC_ShowInvitation");
         GameManager.Instance.ShowInvitation(senderName);
-
     }
 
     public void OnClickAcceptInvitation()
@@ -90,7 +88,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         }
     }
 
-    public void OnClickCancelInvitation()
+    public void OnClickDeclineInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -105,7 +103,25 @@ public class RoomController : MonoBehaviourPunCallbacks
     private void RPC_ForceLeaveRoom()
     {
         Debug.Log("Force leave room");
+        GameManager.Instance.HideWaitingBoard();
         LeaveRoom();
+    }
+
+    public void OnClickCancelInvitation()
+    {
+        GameManager.Instance.HideWaitingBoard();
+
+        //Hide invitation on the other side
+        base.photonView.RPC("RPC_HideInvitation", RpcTarget.Others);
+
+        //Then leave the room
+        LeaveRoom();
+    }
+
+    [PunRPC]
+    private void RPC_HideInvitation()
+    {
+        GameManager.Instance.HideInvitation();
     }
 
     public void ScoreUpdateOtherSide(int score)

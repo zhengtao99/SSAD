@@ -411,7 +411,7 @@ public class PlayerController : MonoBehaviour
         lifeBox.enabled = false;
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         foreach (GameObject minion in minions)
         {

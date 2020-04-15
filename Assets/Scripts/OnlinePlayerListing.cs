@@ -18,22 +18,21 @@ public class OnlinePlayerListing : MonoBehaviourPunCallbacks
         RoomInfo = roomInfo;
         _name.text = RoomInfo.Name;
     }
-    
-    
+
+    //Click battle_button on OnlinePlayerListing
     public void OnClickSendInvitaion()
     {
-        //Join the room by its name
         PhotonNetwork.JoinRoom(RoomInfo.Name);
         joinedRoom = true;
-        //InvitationController.Instance.SendInvitation();
-        //OnlinePlayerListingsController.Instance.SendInvitation();
     }
 
-    
     public override void OnJoinedRoom()
     {
         if (PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName)
+        {
             RoomController.Instance.SendInvitation(PhotonNetwork.NickName);
+            GameManager.Instance.ShowWaitingBoard();
+        }
     }
     
 
