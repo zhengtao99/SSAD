@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class RoomController : MonoBehaviourPunCallbacks
 {
     public static RoomController Instance;
-
+    int count = 0;
     private void Awake()
     {
         Instance = this;
@@ -43,14 +43,17 @@ public class RoomController : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
+        count = 0;
         Debug.Log("Created room successfully");
         GameManager.Instance.HideLoading();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
+        count++;
         Debug.Log("Room creation failed: " + message.ToString());
-        CreateRoom();
+        if (count <= 2)  //allow to try to re-create room 2 times only
+            CreateRoom();
     }
 
     public void LeaveRoom()
@@ -79,14 +82,27 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameManager.Instance.HideInvitation();
+            GameManager.Instance.MultiplayerMatchUI();
+            base.photonView.RPC("RPC_ShowMultiplayerMatchOtherSide", RpcTarget.Others);
 
-            //Set room with IsOpen and IsVisible
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
+            Invoke("LoadMultiplayerScene", 2f);
         }
     }
+
+    [PunRPC]
+    private void RPC_ShowMultiplayerMatchOtherSide()
+    {
+        GameManager.Instance.HideWaitingBoard();
+        GameManager.Instance.MultiplayerMatchUI();
+    }
+
+    public void LoadMultiplayerScene()
+    {
+        //Set room with IsOpen and IsVisible
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
+    } 
 
     public void OnClickDeclineInvitation()
     {

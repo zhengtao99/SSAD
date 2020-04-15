@@ -99,12 +99,12 @@
     <Compile Include="Assets\Scripts\Managers\GameSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\MasterManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SingletonScriptableObject.cs" />
-    <Compile Include="Assets\Scripts\MatchPlayer.cs" />
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\MiniChestController.cs" />
     <Compile Include="Assets\Scripts\MinionController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiPlayerResultController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiplayerSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\MutiplayerMatchController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MyPlayerController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\PhotonPlayerController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\RoomController.cs" />

@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<SoundManager>().Play("CharacterDeath");
 
-            if (correctAns >= 4)
+            if (correctAns >= 4)  //Answer correctly 4 questions to win
             {
                 win = true;
             }
@@ -345,7 +345,8 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            EndGame(LevelController.Instance.getWin());
+            //EndGame(LevelController.Instance.getWin());
+            EndGame(win);
 
             //StartCoroutine(passWin(win));
         }
@@ -382,6 +383,7 @@ public class PlayerController : MonoBehaviour
 
         if (chosenLevel == lastCompletedLevel + 1)
         {
+            LevelController.Instance.unlockNewLevel = win;
             StartCoroutine(ConnectionManager.UpdateHighscore(user.Id, topic.Id, level, score, win));
         }
         else
@@ -428,21 +430,22 @@ public class PlayerController : MonoBehaviour
         levelBox.enabled = true;
         Invoke("hideLevelBox", 2f);
 
-        LevelController.Instance.setWin(true);
+        LevelController.Instance.unlockNewLevel = true;
     }
 
+    
     public void increaseCorrectAns()
     {
         int chosenLevel = LevelController.Instance.getChosenLevel();
         int lastCompletedLevel = LevelController.Instance.getLastCompletedLevel();
 
         correctAns += 1;
-        if (correctAns == 3 && chosenLevel == lastCompletedLevel + 1)
+        if (correctAns == 4 && chosenLevel == lastCompletedLevel + 1)
         { 
             openNewLevel();
-            LevelController.Instance.setWin(true);
         }
     }
+    
 
     public void hideLevelBox()
     {
