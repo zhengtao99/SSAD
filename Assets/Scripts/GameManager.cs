@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
     void Awake() {
         Instance = this;
         SetPageState(PageState.ModePage);
+
         PhotonNetwork.AutomaticallySyncScene = true;
+
         //Ensure initialPlayState (playPage clone) is disabled
         playPage.SetActive(false);
         initialPlayState = Instantiate(playPage, playPage.transform.parent);

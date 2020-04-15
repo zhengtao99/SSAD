@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class RoomController : MonoBehaviourPunCallbacks
 
         PhotonNetwork.NickName = username;
         Debug.Log("PhotonNetwork.NickName: " + PhotonNetwork.NickName);
+        Debug.Log("Creating a room...");
 
         //CreateRoom
         //JoinOrCreateRoom
@@ -40,6 +42,7 @@ public class RoomController : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully");
+        GameManager.Instance.HideLoading();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -157,11 +160,23 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
         base.photonView.RPC("RPC_GameOverPopUp", RpcTarget.Others);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Thread.Sleep(6 * 1000); //time in milliseconds
+            PhotonNetwork.LoadLevel(1);
+        }
     }
 
     [PunRPC]
     private void RPC_GameOverPopUp()
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Thread.Sleep(6 * 1000); //time in milliseconds
+            PhotonNetwork.LoadLevel(1);
+        }
     }
 }

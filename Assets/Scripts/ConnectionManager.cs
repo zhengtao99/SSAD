@@ -82,7 +82,7 @@ namespace Assets.Scripts
                 {
                     user = JsonUtility.FromJson<User>(www.downloadHandler.text);
 
-                    RoomController.Instance.CreateRoom(username);
+                    //RoomController.Instance.CreateRoom(username);
                     SceneManager.LoadScene(1);
                 }
                 catch(Exception)

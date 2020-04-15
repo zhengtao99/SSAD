@@ -32,7 +32,8 @@ public class OnlinePlayerListing : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom()
     {
-        RoomController.Instance.SendInvitation();
+        if (PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName)
+            RoomController.Instance.SendInvitation();
     }
     
 

@@ -42,10 +42,11 @@ public class MultiPlayerResultController : MonoBehaviour
         }
     }
 
+    /*
     // Update is called once per frame
     public void CloseMultiplayerResultPopUp()
     {
-        PhotonNetwork.AutomaticallySyncScene = false;
-        SceneManager.LoadScene(1);
+        PhotonNetwork.LoadLevel(1);
     }
+    */
 }

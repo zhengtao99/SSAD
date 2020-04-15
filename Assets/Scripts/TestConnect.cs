@@ -5,20 +5,36 @@ using UnityEngine;
 
 public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPunCallbacks
 {
+    private bool isFirstTime = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Connecting to server...");
+        if (!PhotonNetwork.IsConnected)
+        {
+            GameManager.Instance.ShowLoading();
+            Debug.Log("Connecting to server...");
 
-        //Sync for both players when load scene LoadLevel
-        PhotonNetwork.AutomaticallySyncScene = true;
+            //Sync for both players when load scene LoadLevel
+            PhotonNetwork.AutomaticallySyncScene = true;
 
-        //get NickName
-        PhotonNetwork.NickName = MasterManager.GameSettings.NickName; 
-        //Get GameVersion
-        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
+            //get NickName
+            //PhotonNetwork.NickName = MasterManager.GameSettings.NickName; 
+            PhotonNetwork.NickName = ConnectionManager.user.FirstName;
 
-        PhotonNetwork.ConnectUsingSettings();  //connect by photon app id
+            //Get GameVersion
+            PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
+
+            PhotonNetwork.ConnectUsingSettings();  //connect by photon app id
+        } 
+        else
+        {
+            if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName) //In other player's room
+            {
+                RoomController.Instance.LeaveRoom();
+                RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
+            }
+        }
     }
 
     public override void OnConnectedToMaster() //When connect to photon
@@ -34,13 +50,16 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
 
     public override void OnDisconnected(DisconnectCause cause)  //When disconnect to photon
     {
-        Debug.Log("Disconnected from server for reason: " + cause.ToString());
-        
+        Debug.Log("Disconnected from server for reason: " + cause.ToString());     
     }
 
     public override void OnJoinedLobby()
     {
-        base.OnJoinedLobby();
-        RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
+        if (isFirstTime)
+        {
+            base.OnJoinedLobby();
+            RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
+            isFirstTime = false;
+        }
     }
 }
