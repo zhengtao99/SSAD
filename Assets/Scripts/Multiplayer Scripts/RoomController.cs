@@ -81,8 +81,11 @@ public class RoomController : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             GameManager.Instance.HideInvitation();
-            //GameManager.Instance.multiPlayer();
-            PhotonNetwork.LoadLevel(2); //Load scene index 1: MultiplayerScene
+
+            //Set room with IsOpen and IsVisible
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
         }
     }
 
