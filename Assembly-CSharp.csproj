@@ -106,11 +106,12 @@
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiplayerSceneManager.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MutiplayerMatchController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MyPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\OnlinePlayerListing.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\OnlinePlayerListingsController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\PhotonPlayerController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\RoomController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\TestConnect.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\WaitingBoardController.cs" />
-    <Compile Include="Assets\Scripts\OnlinePlayerListing.cs" />
-    <Compile Include="Assets\Scripts\OnlinePlayerListingsController.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\CreateRoomMenu.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\LeaveRoomMenu.cs" />
     <Compile Include="Assets\Scripts\PhotonTest\PhotonTestManager.cs" />
@@ -130,7 +131,6 @@
     <Compile Include="Assets\Scripts\SectionController.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\TestConnect.cs" />
     <Compile Include="Assets\Scripts\WorldController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
