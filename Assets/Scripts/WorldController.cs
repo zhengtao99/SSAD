@@ -21,8 +21,9 @@ public class WorldController : MonoBehaviour
     private bool right = false;
     private Vector3 lastImgDest;
 
-    private Vector3 currentImgDest = new Vector3(2.1f, 0, 0);
-    private Vector3 scaleFactor = new Vector3(0.025f, 0.025f, 0.025f);
+    //private Vector3 currentImgDest = new Vector3(2.1f, 0, 0);
+    private Vector3 currentImgDest = new Vector3(1.2f, 0, 0);
+    private Vector3 scaleFactor = new Vector3(0.05f, 0.05f, 0.05f);
     private Vector3 leftEnd = new Vector3(-5f, 0, 0);
     private Vector3 rightEnd = new Vector3(7.5f, 0, 0);
     // Start is called before the first frame update
