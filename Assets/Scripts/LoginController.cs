@@ -12,6 +12,12 @@ public class LoginController : MonoBehaviourPunCallbacks
     private static string nickname = "";
    
     public static GameObject loginPage;
+
+    void Start()
+    {
+        FindObjectOfType<SoundManager>().Play("GameLaunch");
+    }
+
     public void Submit()
     {
         FindObjectOfType<SoundManager>().Play("MajorButton");

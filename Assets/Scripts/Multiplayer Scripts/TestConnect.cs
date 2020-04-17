@@ -47,6 +47,7 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
 
         if (!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();
+        
 
     }
 
@@ -57,13 +58,17 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
         GameManager.Instance.HideLoading();
     }
 
+    
     public override void OnJoinedLobby()
     {
+        Debug.Log("OnJoinedLobby");
         if (isFirstTime)
         {
+            Debug.Log("First time: OnJoinedLobby");
             base.OnJoinedLobby();
             RoomController.Instance.CreateRoom();
             isFirstTime = false;
         }
     }
+    
 }
