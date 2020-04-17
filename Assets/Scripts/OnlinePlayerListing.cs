@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OnlinePlayerListing : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private Text _text;  //Text of RoomListing
+    private Text _name;  //Text of RoomListing
 
     private bool joinedRoom = false;
 
@@ -16,7 +16,7 @@ public class OnlinePlayerListing : MonoBehaviourPunCallbacks
     public void SetRoomInfo(RoomInfo roomInfo) //set text for RoomListing
     {
         RoomInfo = roomInfo;
-        _text.text = RoomInfo.Name;
+        _name.text = RoomInfo.Name;
     }
     
     

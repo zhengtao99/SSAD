@@ -38,8 +38,22 @@ public class PhotonPlayerController : MonoBehaviour
 
         if (PV.IsMine)
         {
-            myPlayer = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player_m"),
-                t_player.position, t_player.rotation, 0);
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                myPlayer = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player_em"),
+                    t_player.position, t_player.rotation, 0);
+            }
+            else
+            {
+                myPlayer = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Player_m"),
+                    t_player.position, t_player.rotation, 0);
+            }
+            
+            JoyStickMulController.Instance.player = myPlayer;
+
+            JoyStickMulController.Instance.playerController = myPlayer.GetComponent<MyPlayerController>();
+
             MultiplayerSceneManager.Instance.myPlayer = myPlayer;
 
             PhotonNetwork.Instantiate(Path.Combine("Prefabs", livesPrefabName),

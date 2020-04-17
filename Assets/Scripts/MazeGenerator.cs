@@ -71,7 +71,9 @@ public class MazeGenerator : MonoBehaviour
             new Cell(1, 7),
             new Cell(7, 1),
             new Cell(col - 2, 5),
-            new Cell(9, row - 2)
+            new Cell(9, row - 2),
+            new Cell(3, 3),
+            new Cell(7,3)
         };
     }
     public bool CheckCell(Cell cell) {
@@ -390,6 +392,7 @@ public class MazeGenerator : MonoBehaviour
         } 
         else if (PhotonNetwork.IsMasterClient && PV.IsMine)
         {
+            int counter = 0;
             for (int x = 0; x < col; x++)
             {
                 for (int y = 0; y < row; y++)
@@ -410,10 +413,22 @@ public class MazeGenerator : MonoBehaviour
                                 mazePos + pos, Quaternion.identity, 0);   //chest box
                             break;
                         case 3:
-                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "coin_m"),
-                                mazePos + pos, Quaternion.identity, 0);   //coin
-                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Furry_m"),
-                                    mazePos + pos, Quaternion.identity, 0);   //minion
+                            if (counter < 3)
+                            {
+                                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "coin_m"),
+                                        mazePos + pos, Quaternion.identity, 0);   //coin
+                                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Furry_em"),
+                                        mazePos + pos, Quaternion.identity, 0);   //minion
+                                counter += 1;
+                            }
+                            else
+                            {
+                                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "coin_m"),
+                                        mazePos + pos, Quaternion.identity, 0);   //coin
+                                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "Furry_m"),
+                                        mazePos + pos, Quaternion.identity, 0);   //minion
+                                counter += 1;
+                            }
                             break;
                         default:
                             break;
