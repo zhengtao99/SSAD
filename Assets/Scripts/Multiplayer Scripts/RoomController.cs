@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class RoomController : MonoBehaviourPunCallbacks
 {
     public static RoomController Instance;
-
+    int count = 0;
     private void Awake()
     {
         Instance = this;
@@ -24,7 +24,7 @@ public class RoomController : MonoBehaviourPunCallbacks
             Debug.Log("PhotonNetwork is not connected");
             return;
         }
-
+        GameManager.Instance.ShowLoading();
         //PhotonNetwork.NickName = username;
         Debug.Log("PhotonNetwork.NickName: " + PhotonNetwork.NickName);
         Debug.Log("Creating a room...");
@@ -37,18 +37,23 @@ public class RoomController : MonoBehaviourPunCallbacks
         options.MaxPlayers = 2;  //max players: 2
 
         //If exist room -> join, otherwise create
-        PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
+        //PhotonNetwork.JoinOrCreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
+        PhotonNetwork.CreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
     }
 
     public override void OnCreatedRoom()
     {
+        count = 0;
         Debug.Log("Created room successfully");
         GameManager.Instance.HideLoading();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
+        count++;
         Debug.Log("Room creation failed: " + message.ToString());
+        if (count <= 2)  //allow to try to re-create room 2 times only
+            CreateRoom();
     }
 
     public void LeaveRoom()
@@ -57,39 +62,49 @@ public class RoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom(true);
     }
 
-    public void SendInvitation()
+    public void SendInvitation(string senderName)
     {
-        Debug.Log("In SendInvitation");
         if (!PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("Call RPC_ShowInvitation");
             //Client makes a call to master (RpcTarget.MasterClient) to execute RPC_ChangeReadyState on master
-            base.photonView.RPC("RPC_ShowInvitation", RpcTarget.MasterClient);
+            base.photonView.RPC("RPC_ShowInvitation", RpcTarget.MasterClient, senderName);
         }
 
     }
 
     [PunRPC]
-    private void RPC_ShowInvitation()
+    private void RPC_ShowInvitation(string senderName)
     {
-        Debug.Log("In RPC_ShowInvitation");
-        GameManager.Instance.ShowInvitation();
+        GameManager.Instance.ShowInvitation(senderName);
     }
 
     public void OnClickAcceptInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameManager.Instance.HideInvitation();
+            GameManager.Instance.MultiplayerMatchUI();
+            base.photonView.RPC("RPC_ShowMultiplayerMatchOtherSide", RpcTarget.Others);
 
-            //Set room with IsOpen and IsVisible
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
+            Invoke("LoadMultiplayerScene", 2f);
         }
     }
 
-    public void OnClickCancelInvitation()
+    [PunRPC]
+    private void RPC_ShowMultiplayerMatchOtherSide()
+    {
+        GameManager.Instance.HideWaitingBoard();
+        GameManager.Instance.MultiplayerMatchUI();
+    }
+
+    public void LoadMultiplayerScene()
+    {
+        //Set room with IsOpen and IsVisible
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
+    } 
+
+    public void OnClickDeclineInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -104,7 +119,25 @@ public class RoomController : MonoBehaviourPunCallbacks
     private void RPC_ForceLeaveRoom()
     {
         Debug.Log("Force leave room");
+        GameManager.Instance.HideWaitingBoard();
         LeaveRoom();
+    }
+
+    public void OnClickCancelInvitation()
+    {
+        GameManager.Instance.HideWaitingBoard();
+
+        //Hide invitation on the other side
+        base.photonView.RPC("RPC_HideInvitation", RpcTarget.Others);
+
+        //Then leave the room
+        LeaveRoom();
+    }
+
+    [PunRPC]
+    private void RPC_HideInvitation()
+    {
+        GameManager.Instance.HideInvitation();
     }
 
     public void ScoreUpdateOtherSide(int score)

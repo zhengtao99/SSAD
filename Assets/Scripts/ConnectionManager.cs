@@ -166,7 +166,8 @@ namespace Assets.Scripts
             var questionCollection = JsonUtility.FromJson<QuestionCollection>(json);          
             Questions = questionCollection.Questions;
             GameManager.Instance.HideLoading();
-            GameManager.Instance.Ready();       
+            GameManager.Instance.createNewGame();
+            GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
 
         /// <summary>

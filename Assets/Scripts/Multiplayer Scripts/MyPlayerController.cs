@@ -41,6 +41,9 @@ public class MyPlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         
         var mazePage = MultiplayerSceneManager.Instance.playPage;
+        if (mazePage == null)
+            return;
+
         if (!PhotonNetwork.IsMasterClient)
         {
             //Debug.Log("player 1");

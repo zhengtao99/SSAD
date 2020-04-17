@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using Assets.Model;
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ public class LevelController : MonoBehaviour
     public GameObject LoseLevelPopUp;
     public GameObject WinLevelPopUp;
     public static int chosenLevel = -1;
-    private bool win = false;
+    public bool unlockNewLevel = false;
 
     void Awake()
     {
@@ -61,7 +62,9 @@ public class LevelController : MonoBehaviour
                 flags.Add(child.gameObject);
         }
         var stages = ConnectionManager.AvailableStages;
+
         lastCompletedLevel = stages.Where(z=>z.isAvailable).OrderByDescending(z=>z.Stage).Select(z=>z.Stage).FirstOrDefault();
+        
 
         //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
         for (int i = 0; i < 10; i++)
@@ -99,41 +102,24 @@ public class LevelController : MonoBehaviour
     }
     void OnEnable()
     {
-        SetAvailableStages();
-        //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
-        /*
-        for (int i = 0; i < 10; i++)
+        if (unlockNewLevel)
         {
-            GameObject levelButton = levelButtons[i];
-            Animator ani = levelButton.GetComponent<Animator>();
-            Image img = levelButton.GetComponent<Image>();
-            Button btn = levelButton.GetComponent<Button>();
-            SpriteRenderer spriteRenderer = levelButton.GetComponent<SpriteRenderer>();
-
-            ani.enabled = false;
-            if (img != null && btn != null)
-            {
-                btn.enabled = true;
-                img.enabled = true;
-                spriteRenderer.enabled = false;
-            }
+            completeLevel();
         }
-        */
+        else  //first time or not growing flag if already set
+        {
+            Debug.Log("SetAvailableStages");
+            SetAvailableStages();
+        }
+
+        unlockNewLevel = false;
+        /*
         if (win)
         {
             completeLevel();
             win = false;
         }
-    }
-
-    public void setWin(bool value)
-    {
-        win = value;
-    }
-
-    public bool getWin()
-    {
-        return win;
+        */
     }
 
     public void openLevel()
@@ -225,12 +211,15 @@ public class LevelController : MonoBehaviour
                 img.enabled = false;
             }
             ani.enabled = true;
+
             Invoke("wakeupBtn", 1f);
         }
     }
 
     public void wakeupBtn()
     {
+        enableAllLevelBtns();
+
         GameObject nextUnlockedLevelButton = levelButtons[lastCompletedLevel];
         Image img = nextUnlockedLevelButton.GetComponent<Image>();
         Button btn = nextUnlockedLevelButton.GetComponent<Button>();

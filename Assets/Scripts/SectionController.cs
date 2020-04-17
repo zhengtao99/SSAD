@@ -20,10 +20,10 @@ public class SectionController : MonoBehaviour
     private bool right = false;
     private Vector3 lastImgDest;
 
-    private Vector3 currentImgDest = new Vector3(7.62f, -1.18f, 0);
-    private Vector3 scaleFactor = new Vector3(0.06f, 0.06f, 0.06f);
-    private Vector3 leftEnd = new Vector3(2.5f, 0, 0);
-    private Vector3 rightEnd = new Vector3(10.5f, 0, 0);
+    private Vector3 currentImgDest = new Vector3(10.2f, -1.18f, 0);
+    private Vector3 scaleFactor = new Vector3(0.1f, 0.1f, 0.1f);
+    private Vector3 leftEnd = new Vector3(4f, 0, 0);
+    private Vector3 rightEnd = new Vector3(15f, 0, 0);
     public static Topic currentTopic;
     // Start is called before the first frame update
     void Start()
