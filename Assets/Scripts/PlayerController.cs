@@ -10,12 +10,13 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
+
     public GameObject glow;
     public GameObject deadEffect;
     private GameObject[] heartArr;
     public bool isGlowing = false;
-    public float glowTime = 10.0f; //Change this variable to increase the player shield time
-    public bool isInjured = false; //When player is attacked by minion/fireball
+    public float glowTime = 5.0f;
+    public bool isInjured = false;
     private UnityEngine.Object explosionRef;
 
     private GameObject[] minions;
