@@ -1,4 +1,5 @@
-﻿using Photon.Pun;
+﻿using Assets.Scripts;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,7 +45,6 @@ public class RoomController : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         count = 0;
-        Debug.Log("Created room successfully");
         GameManager.Instance.HideLoading();
     }
 
@@ -84,16 +84,16 @@ public class RoomController : MonoBehaviourPunCallbacks
         {
             GameManager.Instance.MultiplayerMatchUI();
             base.photonView.RPC("RPC_ShowMultiplayerMatchOtherSide", RpcTarget.Others);
-
-            Invoke("LoadMultiplayerScene", 2f);
+            ConnectionManager cm = new ConnectionManager();
+            StartCoroutine(cm.GetRandomQuestions("Invitee"));
         }
     }
 
     [PunRPC]
     private void RPC_ShowMultiplayerMatchOtherSide()
     {
-        GameManager.Instance.HideWaitingBoard();
-        GameManager.Instance.MultiplayerMatchUI();
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.GetRandomQuestions("Inviter"));
     }
 
     public void LoadMultiplayerScene()
@@ -101,7 +101,9 @@ public class RoomController : MonoBehaviourPunCallbacks
         //Set room with IsOpen and IsVisible
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
+       
         PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
+
     } 
 
     public void OnClickDeclineInvitation()
