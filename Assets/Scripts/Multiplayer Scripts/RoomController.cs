@@ -196,8 +196,10 @@ public class RoomController : MonoBehaviourPunCallbacks
     public void GameOverPopUp()
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
-        StartCoroutine(CloseGameOverPopUp());
         base.photonView.RPC("RPC_GameOverPopUp", RpcTarget.Others);
+
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(CloseGameOverPopUp());
     }
 
     [PunRPC]
@@ -205,12 +207,13 @@ public class RoomController : MonoBehaviourPunCallbacks
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
 
-        StartCoroutine(CloseGameOverPopUp());
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(CloseGameOverPopUp());
     }
 
     IEnumerator CloseGameOverPopUp()
     {
         yield return new WaitForSeconds(4.0f);
-        SceneManager.LoadScene(1); //Go back ModePage
+        PhotonNetwork.LoadLevel(1); //Go back ModePage
     }
 }

@@ -72,8 +72,8 @@ public class MazeGenerator : MonoBehaviour
             new Cell(7, 1),
             new Cell(col - 2, 5),
             new Cell(9, row - 2),
-            new Cell(3, 3),
-            new Cell(7,7)
+            new Cell(5, 5),
+            new Cell(7,9)
         };
     }
     public bool CheckCell(Cell cell) {

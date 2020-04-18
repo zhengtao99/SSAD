@@ -157,7 +157,8 @@ public class ChestPopUp : MonoBehaviour
 
         else
         {
-            if (other.tag == "Player" && !isOpened) {
+            if (other.tag == "Player" && !isOpened)
+            {
                 if (other.gameObject == MultiplayerSceneManager.Instance.myPlayer && !isOpened)
                 {
                     PauseGame();
@@ -202,7 +203,7 @@ public class ChestPopUp : MonoBehaviour
     /// </summary>
     public void MAttack()
     {
-        if (!isMultiplayerMode) 
+        if (!isMultiplayerMode)
             GameObject.FindWithTag("Player").GetComponent<AttackController>().MinionAttack();
     }
 }
