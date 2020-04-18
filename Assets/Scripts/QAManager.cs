@@ -30,9 +30,8 @@ public class QAManager : MonoBehaviour
     void OnEnable()
     {
         if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
-            //if (!isMultiplayerMode)
-            //    PopulateQuestion();
-            Debug.Log("hereherehere");
+            if (!isMultiplayerMode)
+                PopulateQuestion();
             //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
             startTime = DateTime.Now;

@@ -72,7 +72,7 @@ public class MazeGenerator : MonoBehaviour
             new Cell(7, 1),
             new Cell(col - 2, 5),
             new Cell(9, row - 2),
-            new Cell(5, 5),
+            new Cell(3, 3),
             new Cell(7,7)
         };
     }
@@ -299,7 +299,6 @@ public class MazeGenerator : MonoBehaviour
                     mark[x, y] = 0;  //brick
             }
         }
-        
         for (int i = 0; i < chestCells.Length; i++)
         {
             Cell chest = (Cell)chestCells[i];
@@ -310,7 +309,6 @@ public class MazeGenerator : MonoBehaviour
             Cell minion = (Cell)minionCells[i];
             mark[minion.x, minion.y] = 3;  //minion
         }
-        
 
         for (int x = 0; x < col / 2; x++)
         {
@@ -323,6 +321,7 @@ public class MazeGenerator : MonoBehaviour
         DFS_Backtracking(new Cell(0, 0));
         BreakWall(1);
 
+        
         if (!isMultiplayerMode)
             mark[col / 2, row / 2] = 4;   //Player
         else
