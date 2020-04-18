@@ -18,7 +18,7 @@ public class ChestPopUp : MonoBehaviour
     /// A variable to store all minion gameobjects that will be manipulated perform chest animation.
     /// </summary>
     private GameObject[] minions;
-
+    private GameObject[] redMinions;
     /// <summary>
     /// A variable to get the rigidbody component of the current chest gameobject to detect gameobject collisions, the chest animation's activation point.
     /// </summary>
@@ -59,11 +59,18 @@ public class ChestPopUp : MonoBehaviour
         else
         {
             minions = GameObject.FindGameObjectsWithTag("Minion");
-
+            redMinions = GameObject.FindGameObjectsWithTag("Red");
             foreach (GameObject minion in minions)
             {
 
                 minion.GetComponent<MinionController>().isPause = true;
+
+            }
+
+            foreach (GameObject red in redMinions)
+            {
+
+                red.GetComponent<MinionController>().isPause = true;
 
             }
             MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = true;
@@ -107,6 +114,7 @@ public class ChestPopUp : MonoBehaviour
         else
         {
             minions = GameObject.FindGameObjectsWithTag("Minion");
+            redMinions = GameObject.FindGameObjectsWithTag("Red");
 
             foreach (GameObject minion in minions)
             {
@@ -114,6 +122,14 @@ public class ChestPopUp : MonoBehaviour
                 minion.GetComponent<MinionController>().isPause = false;
 
             }
+
+            foreach (GameObject red in redMinions)
+            {
+
+                red.GetComponent<MinionController>().isPause = false;
+
+            }
+
             MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = false;
 
             //invoke attack
