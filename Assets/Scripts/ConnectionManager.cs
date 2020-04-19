@@ -169,6 +169,25 @@ namespace Assets.Scripts
             GameManager.Instance.createNewGame();
             GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
+        public IEnumerator GetRandomQuestions(string Player)
+        {
+            GameManager.Instance.ShowLoading();
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/questions/random");
+            yield return www.SendWebRequest();
+            string json = "{\"Questions\":" + www.downloadHandler.text + "}";
+            var questionCollection = JsonUtility.FromJson<QuestionCollection>(json);
+            Questions = questionCollection.Questions;
+            Debug.Log("Got question: " + Questions.Count());
+            if (Player == "Invitee")
+            {
+                GameObject.Find("Canvas").GetComponent<RoomController>().LoadMultiplayerScene();
+            }
+            if(Player == "Inviter")
+            {
+                GameManager.Instance.HideWaitingBoard();
+                GameManager.Instance.MultiplayerMatchUI();
+            }
+        }
 
         /// <summary>
         /// To get the topics available for the world/subject the player has selected.

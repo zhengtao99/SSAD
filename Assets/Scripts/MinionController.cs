@@ -59,7 +59,6 @@ public class MinionController : MonoBehaviour
         Vector2 moveVelocity = moveInput.normalized * speed;
         if (isPause)
         {
-            Debug.Log("ok");
             rb.MovePosition(rb.position);
         }
         else
