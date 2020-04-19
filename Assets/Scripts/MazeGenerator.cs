@@ -72,7 +72,7 @@ public class MazeGenerator : MonoBehaviour
             new Cell(7, 1),
             new Cell(col - 2, 5),
             new Cell(9, row - 2),
-            new Cell(5, 5),
+            new Cell(9, 11),
             new Cell(7,9)
         };
     }

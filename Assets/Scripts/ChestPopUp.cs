@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 /// <summary>
 /// Contains all methods required to perform the Chest animation when the player touches a chest in the game.
 /// </summary>
@@ -58,26 +58,53 @@ public class ChestPopUp : MonoBehaviour
         }
         else
         {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                minions = GameObject.FindGameObjectsWithTag("Minion");
+                foreach (GameObject minion in minions)
+                {
+
+                    minion.GetComponent<MinionController>().isPause = true;
+
+                }
+            }
+            else
+            {
+                redMinions = GameObject.FindGameObjectsWithTag("Red");
+                foreach (GameObject red in redMinions)
+                {
+                    red.GetComponent<MinionController>().isPause = true;
+                    Debug.Log(red.GetComponent<MinionController>().isPause);
+                }
+            }
+
+            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = true;
+            MultiplayerSceneManager.Instance.QuestionPopUp();
+        }
+    }
+
+    void PauseMinions()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
             minions = GameObject.FindGameObjectsWithTag("Minion");
-            redMinions = GameObject.FindGameObjectsWithTag("Red");
             foreach (GameObject minion in minions)
             {
 
                 minion.GetComponent<MinionController>().isPause = true;
 
             }
-
+        }
+        else
+        {
+            redMinions = GameObject.FindGameObjectsWithTag("Red");
             foreach (GameObject red in redMinions)
             {
-
                 red.GetComponent<MinionController>().isPause = true;
-
+                Debug.Log(red.GetComponent<MinionController>().isPause);
             }
-            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = true;
-            MultiplayerSceneManager.Instance.QuestionPopUp();
         }
     }
-
     /// <summary>
     /// To resume the game when the player is done answering a question, unfreezes minions and player movements
     /// </summary>
@@ -114,8 +141,6 @@ public class ChestPopUp : MonoBehaviour
         else
         {
             minions = GameObject.FindGameObjectsWithTag("Minion");
-            redMinions = GameObject.FindGameObjectsWithTag("Red");
-
             foreach (GameObject minion in minions)
             {
 
@@ -123,13 +148,11 @@ public class ChestPopUp : MonoBehaviour
 
             }
 
+            redMinions = GameObject.FindGameObjectsWithTag("Red");
             foreach (GameObject red in redMinions)
             {
-
                 red.GetComponent<MinionController>().isPause = false;
-
             }
-
             MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().isPause = false;
 
             //invoke attack
@@ -188,6 +211,10 @@ public class ChestPopUp : MonoBehaviour
                     //Invoke("ResumeGame",1f);
                     isOpened = true;
 
+                }
+                else if (!isOpened)
+                {
+                    PauseMinions();
                 }
                 gameObject.SetActive(false);
             }
