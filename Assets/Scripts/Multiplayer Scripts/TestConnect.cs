@@ -43,6 +43,7 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
         Debug.Log("Connected to server");
 
         //Print nickname of LocalPlayer
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName); //print nickname
 
         if (!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();

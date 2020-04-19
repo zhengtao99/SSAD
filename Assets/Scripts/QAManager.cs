@@ -30,7 +30,7 @@ public class QAManager : MonoBehaviour
     void OnEnable()
     {
         if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
-            //if (!isMultiplayerMode)
+            if (!isMultiplayerMode)
                 PopulateQuestion();
             //continueButton = GameObject.Find("Continue");
             continueButton.SetActive(false);
@@ -71,6 +71,7 @@ public class QAManager : MonoBehaviour
     {
         qnText.text = "Qn: " + "The question will be retrieved here. Loading....";
         var questions = ConnectionManager.Questions;
+       
         int randomNumber = UnityEngine.Random.Range(0, questions.Count);
         var question = questions[randomNumber];
         questionID = question.Id;
@@ -105,31 +106,43 @@ public class QAManager : MonoBehaviour
         DisableButtons();
         bool condition;
 
-        if (answerID == 1)
+        if (!isMultiplayerMode)
         {
-            correct = 1;
-            PlayerPrefs.SetInt("correct", correct);
-            //Debug.Log("set correct is true, check actual correct: " +correct);
-            TurnGreen();
-            if (!ChestPopUp.Instance.isMultiplayerMode)
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
+            if (answerID == 1)
+            {
+                correct = 1;
+                PlayerPrefs.SetInt("correct", correct);
+                //Debug.Log("set correct is true, check actual correct: " +correct);
+                TurnGreen();
+                Debug.Log(ChestPopUp.Instance.isMultiplayerMode);
+                if (!ChestPopUp.Instance.isMultiplayerMode)
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ScoreUpdate(20);
+
+                else
+                {
+                    Debug.Log("Hello Im here");
+                    MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().ScoreUpdate(20);
+                }
+            }
 
             else
             {
-                MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().ScoreUpdate(20);
+                correct = 0;
+                PlayerPrefs.SetInt("correct", correct);
+                //Debug.Log("set correct is false, check actual correct: " + correct);
+                TurnRed();
             }
+            ConnectionManager cm = new ConnectionManager();
+            StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
+            continueButton.SetActive(true);
         }
-
         else
         {
-            correct = 0;
-            PlayerPrefs.SetInt("correct", correct);
-            //Debug.Log("set correct is false, check actual correct: " + correct);
-            TurnRed();
+            TurnGreen();
+            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().ScoreUpdate(20);
+            continueButton.SetActive(true);
         }
-        ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
-        continueButton.SetActive(true);
+
         
     }
 

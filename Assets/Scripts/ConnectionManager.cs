@@ -18,12 +18,12 @@ namespace Assets.Scripts
     /// </summary>
     class ConnectionManager
     {
-        static string Domain = "https://localhost:44365"; //ZT host
+        //static string Domain = "https://localhost:44365"; //ZT host
 
         /// <summary>
         /// A variable to store the domain's name that the Leanrnable Mobile will be using to update or retrieve students' records.
         /// </summary>
-        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         /// <summary>
         /// A variable to store the student's identity upon successfully login.
@@ -168,25 +168,6 @@ namespace Assets.Scripts
             GameManager.Instance.HideLoading();
             GameManager.Instance.createNewGame();
             GameManager.Instance.SetPageState(GameManager.PageState.Play);
-        }
-        public IEnumerator GetRandomQuestions(string Player)
-        {
-            GameManager.Instance.ShowLoading();
-            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/questions/random");
-            yield return www.SendWebRequest();
-            string json = "{\"Questions\":" + www.downloadHandler.text + "}";
-            var questionCollection = JsonUtility.FromJson<QuestionCollection>(json);
-            Questions = questionCollection.Questions;
-            Debug.Log("Got question: " + Questions.Count());
-            if (Player == "Invitee")
-            {
-                GameObject.Find("Canvas").GetComponent<RoomController>().LoadMultiplayerScene();
-            }
-            if(Player == "Inviter")
-            {
-                GameManager.Instance.HideWaitingBoard();
-                GameManager.Instance.MultiplayerMatchUI();
-            }
         }
 
         /// <summary>
