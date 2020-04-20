@@ -14,4 +14,19 @@ public class ProfileController : MonoBehaviour
         var usernameText = profilePage.GetComponentsInChildren<Text>().Where(z => z.name.ToLower().Contains("username")).First();
         usernameText.text = ConnectionManager.user.FirstName + " " + ConnectionManager.user.LastName;
     }
+    public void ProfileCLick()
+    {
+        if (GameManager.Instance.btnLogout.active == true)
+        {
+            GameManager.Instance.btnLogout.SetActive(false);
+        }
+        else
+        {
+            GameManager.Instance.btnLogout.SetActive(true);
+        }
+    }
+    public void Logout()
+    {
+        GameManager.Instance.Logout();
+    }
 }

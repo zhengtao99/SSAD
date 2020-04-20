@@ -4,6 +4,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
     public Text InvitationText;
     public GameObject waitingBoard;
     public GameObject mutiplayerMatchPage;
-
+    public GameObject btnLogout;
     public string invitationSender;
 
     public Text scoreText;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         chosenLevel = PlayerPrefs.GetInt("chosenLevel");
+        btnLogout.SetActive(false);
     }
 
     public enum PageState {
@@ -525,7 +527,14 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
+    public void GlobalClick()
+    {
+        Debug.Log("test");
+    }
+    public void Logout()
+    {
+        SceneManager.LoadScene("Login");
+    }
     //activated when replay button is hit
     public void WorldUI() {
         StartCoroutine(ConnectionManager.GetWorld());
