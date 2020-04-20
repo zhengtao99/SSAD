@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject deadEffect;
     private GameObject[] heartArr;
     public bool isGlowing = false;
-    public float glowTime = 5.0f;
+    public float glowTime = 10.0f;
     public bool isInjured = false;
     private UnityEngine.Object explosionRef;
 
