@@ -44,6 +44,7 @@ public class RoomController : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
+        Debug.Log("Created room successfully");
         count = 0;
         GameManager.Instance.HideLoading();
     }
