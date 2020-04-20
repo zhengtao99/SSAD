@@ -15,7 +15,7 @@ public class WorldController : MonoBehaviour
     public int currentPage;
     public static World currentWorld;
     private string currentWorldName;
-    private float speed = 20.0f;
+    private float speed = 500.0f;
     private bool moveCurrent = false;
     private bool moveLast = false;
     private bool right = false;
@@ -23,9 +23,9 @@ public class WorldController : MonoBehaviour
 
     //private Vector3 currentImgDest = new Vector3(2.1f, 0, 0);
     private Vector3 currentImgDest = new Vector3(1.2f, 0, 0);
-    private Vector3 scaleFactor = new Vector3(0.05f, 0.05f, 0.05f);
-    private Vector3 leftEnd = new Vector3(-5f, 0, 0);
-    private Vector3 rightEnd = new Vector3(7.5f, 0, 0);
+    private Vector3 scaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
+    private Vector3 leftEnd = new Vector3(-200f, 0, 0);
+    private Vector3 rightEnd = new Vector3(200f, 0, 0);
     // Start is called before the first frame update
     private string[] worlds;
     void Start()
@@ -42,8 +42,8 @@ public class WorldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
 
+        //Debug.Log(Input.mousePosition.x);
         if (lastImg && (Mathf.Abs(lastImg.transform.localPosition.x - lastImgDest.x) == 0))
         {
             Destroy(lastImg);
