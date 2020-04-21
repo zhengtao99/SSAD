@@ -32,6 +32,7 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
             //if (PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.Name != PhotonNetwork.NickName) //In other player's room
             if (PhotonNetwork.CurrentRoom != null)
             {
+                PhotonNetwork.NickName = ConnectionManager.user.FirstName;
                 RoomController.Instance.LeaveRoom();
                 //RoomController.Instance.CreateRoom(ConnectionManager.user.FirstName);
             }

@@ -103,7 +103,7 @@ public class JoyStickMulController : MonoBehaviour
     private bool inThreshold()
     {
         Vector3 pz = Camera.main.WorldToScreenPoint(outerCircle.transform.position);
-        if (xCoord > pz.x - 150 && xCoord < pz.x + 150 && yCoord > pz.y - 150 && yCoord < pz.y + 150)
+        if (xCoord > pz.x - 160 && xCoord < pz.x + 160 && yCoord > pz.y - 160 && yCoord < pz.y + 160)
         {
             return true;
         }

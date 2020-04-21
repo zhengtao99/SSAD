@@ -264,10 +264,16 @@ namespace Assets.Scripts
         /// <param name="Speed">Time for player to answer the question.</param>
         public IEnumerator SaveAnalytics(int UserId, int QnsId, int AnsId, TimeSpan Speed)
         {
-            GameManager.Instance.ShowLoading();//
+            if (!GameObject.Find("QuestionPopUpPage").GetComponent<QAManager>().isMultiplayerMode)
+                GameManager.Instance.ShowLoading();
+            else
+                MultiplayerSceneManager.Instance.ShowLoading();
             UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/analytics/" + UserId + "/" + QnsId + "/" + AnsId + "/" + Convert.ToInt32(Speed.TotalMilliseconds));
             yield return www.SendWebRequest();
-            GameManager.Instance.HideLoading();
+            if (!GameObject.Find("QuestionPopUpPage").GetComponent<QAManager>().isMultiplayerMode)
+                GameManager.Instance.HideLoading();
+            else
+                MultiplayerSceneManager.Instance.HideLoading();
             GameObject.Find("QuestionPopUpPage").GetComponent<QAManager>().continueButton.SetActive(true);
             if (AnsId != 1)
             {
