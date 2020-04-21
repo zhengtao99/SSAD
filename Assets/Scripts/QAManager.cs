@@ -8,8 +8,9 @@ using UnityEngine.UI;
 
 public class QAManager : MonoBehaviour
 {
+    public static QAManager Instance; //
     private GameObject player;
-    private PlayerController playerController;
+    public PlayerController playerController;
     public GameObject topLeftButton;
     public GameObject topRightButton;
     public GameObject bottomLeftButton;
@@ -19,7 +20,7 @@ public class QAManager : MonoBehaviour
     public Text qnText;
     private Text ansText = null;
     private int answerID;
-    public static ColorBlock originalColors;
+    public  ColorBlock originalColors =  ColorBlock.defaultColorBlock;
     private static DateTime startTime;
     public static int questionID;
     public int correct;
@@ -27,12 +28,23 @@ public class QAManager : MonoBehaviour
     public bool isMultiplayerMode;
 
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        Instance = this;
+    }
     void OnEnable()
     {
         if (transform.name.Replace("(Clone)", "") == "QuestionPopUpPage"){
             //if (!isMultiplayerMode)
                 PopulateQuestion();
             //continueButton = GameObject.Find("Continue");
+            if (originalColors == ColorBlock.defaultColorBlock)
+            {
+                Debug.Log("Is Default");
+                originalColors = pressedButton.colors;
+            }
+            EnableButtons();
             continueButton.SetActive(false);
             startTime = DateTime.Now;
         }
@@ -87,7 +99,7 @@ public class QAManager : MonoBehaviour
 
         }
     }
-    void EnableButtons()
+    public void EnableButtons()
     {
         GameObject[] buttons = GameObject.FindGameObjectsWithTag("AnswerButton");
         foreach (GameObject button in buttons)
@@ -124,13 +136,12 @@ public class QAManager : MonoBehaviour
         {
             correct = 0;
             PlayerPrefs.SetInt("correct", correct);
-            //Debug.Log("set correct is false, check actual correct: " + correct);
             TurnRed();
         }
         ConnectionManager cm = new ConnectionManager();
-        StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
-        continueButton.SetActive(true);
-        
+        StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime)); //Easy
+        //continueButton.SetActive(true);
+
     }
 
     public void ResumeGame()
@@ -144,15 +155,19 @@ public class QAManager : MonoBehaviour
     public void TurnRed()
     {
         originalColors = pressedButton.colors;
+        Debug.Log(pressedButton.colors);
         this.GetComponentInChildren<Text>().color = Color.white; 
         ColorBlock colors = pressedButton.colors;
         colors.selectedColor = Color.red;
         colors.disabledColor = Color.red;
         pressedButton.colors = colors;
-        if (!isMultiplayerMode)
-            playerController.LifeUpdate();
-        else
-            MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().LifeUpdate();
+
+        //ConnectionManager cm = new ConnectionManager();
+        //StartCoroutine(cm.SaveAnalytics(ConnectionManager.user.Id, questionID, answerID, DateTime.Now - startTime));
+        //if (!isMultiplayerMode)
+        //    playerController.LifeUpdate();
+        //else
+        //    MultiplayerSceneManager.Instance.myPlayer.GetComponent<MyPlayerController>().LifeUpdate();
     }
 
     public void TurnGreen()
