@@ -73,22 +73,12 @@ namespace Assets.Scripts
             LoginManager.Instance.HideLoading();
             try
             {
-                bool result = bool.Parse(www.downloadHandler.text);
-                LoginController.Result(result);
+                user = JsonUtility.FromJson<User>(www.downloadHandler.text);
+                SceneManager.LoadScene(1);         
             }
             catch(Exception)
             {
-                try
-                {
-                    user = JsonUtility.FromJson<User>(www.downloadHandler.text);
-
-                    //RoomController.Instance.CreateRoom(username);
-                    SceneManager.LoadScene(1);
-                }
-                catch(Exception)
-                {
-                   
-                }
+                LoginController.Result(www.downloadHandler.text.Replace("\"",""));
             }
             
         }

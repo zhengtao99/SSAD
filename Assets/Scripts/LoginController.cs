@@ -27,19 +27,13 @@ public class LoginController : MonoBehaviourPunCallbacks
         nickname = username;
         StartCoroutine(ConnectionManager.Login(username, password));
     }
-    public static void Result(bool result)
+    public static void Result(string result)
     {
-        if(result)
-        {
-            Debug.Log("result: " + result);
-            //ConnectToPhoton(nickname);
-            GameManager.Instance.WorldUI();
-        }
-        else
-        {
-            var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
-            message.enabled = true;
-        }
+        
+        var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
+        message.enabled = true;
+        message.text = result;
+
     }
     public void ClearText()
     {
