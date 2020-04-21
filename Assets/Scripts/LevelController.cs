@@ -65,10 +65,12 @@ public class LevelController : MonoBehaviour
         }
         var clearedStages = ConnectionManager.ClearedStages;
         var availableStages = ConnectionManager.AvailableStages.OrderBy(z=>z.Stage).ToList();
-        if (clearedStages.Count() > 0)
+        if (clearedStages.Where(z => z.IsCleared).Count() > 0)
         {
-            lastCompletedLevel = clearedStages.Where(z => z.IsCleared).Select(z => z.Stage).Max();
+          
+                 lastCompletedLevel = clearedStages.Select(z => z.Stage).Max();
         }
+
         for (int i = 0; i < 10; i++)
         {
             GameObject levelButton = levelButtons[i];
