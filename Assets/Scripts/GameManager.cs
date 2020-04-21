@@ -611,7 +611,13 @@ public class GameManager : MonoBehaviour
     public void loadLevelUI()
     {
         User user = ConnectionManager.user;
-        StartCoroutine(ConnectionManager.GetAvailableStages(SectionController.currentTopic.Id, user.Id));
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.GetAvailableStages(SectionController.currentTopic.Id));
+    }
+    public void loadClearedStages(int TopicId)
+    {
+        ConnectionManager cm = new ConnectionManager();
+        StartCoroutine(cm.GetClearedStages(TopicId));
     }
 
     public void popUpUnlockedLevelBoard()

@@ -9,9 +9,7 @@ namespace Assets.Model
     [Serializable]
     public class AvailableStage
     {
-        public int Stage;
-        public int Amount;
-        public bool isAvailable;
-        public bool IsCleared;
+        public int Stage;     
+        public bool IsAvailable;
     }
 }

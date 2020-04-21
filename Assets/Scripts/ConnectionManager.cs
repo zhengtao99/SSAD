@@ -44,7 +44,7 @@ namespace Assets.Scripts
         /// A variable to store the retrieved questions according to a specific world and topic.
         /// </summary>
         public static List<Question> Questions;
-
+        public static List<ClearedStage> ClearedStages;
         /// <summary>
         /// A variable list to store the list of available stages that has questions created by the teachers.
         /// </summary>
@@ -226,20 +226,27 @@ namespace Assets.Scripts
         /// </summary>
         /// <param name="TopicId">Player's selected topic</param>
         /// <param name="UserId">Player's user id.</param>
-        public static IEnumerator GetAvailableStages(int TopicId, int UserId)
+        public IEnumerator GetAvailableStages(int TopicId)
         { 
             GameManager.Instance.ShowLoading();
-            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + UserId);
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId );
 
             yield return www.SendWebRequest();         
             string json = "{\"AvailableStages\":" + www.downloadHandler.text + "}";           
             var stageCollection = JsonUtility.FromJson<AvailableStageCollection>(json);
             AvailableStages = stageCollection.AvailableStages;
-            foreach(var x in AvailableStages)
-            {
-                Debug.Log(x.Stage + ":Available " + x.isAvailable);
-                Debug.Log(x.Stage + ":Cleared " + x.IsCleared);
-            }
+            GameManager.Instance.loadClearedStages(TopicId);
+        }
+        public IEnumerator GetClearedStages(int TopicId)
+        {
+            Debug.Log("in");
+            GameManager.Instance.ShowLoading();
+            UnityWebRequest www = UnityWebRequest.Get(Domain + "/api/stages/" + TopicId + "/" + user.Id);
+
+            yield return www.SendWebRequest();
+            string json = "{\"ClearedStages\":" + www.downloadHandler.text + "}";
+            var stageCollection = JsonUtility.FromJson<ClearedStageCollection>(json);
+            ClearedStages = stageCollection.ClearedStages;
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();
         }

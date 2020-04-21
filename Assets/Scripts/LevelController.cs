@@ -13,13 +13,14 @@ public class LevelController : MonoBehaviour
     public GameObject canvas;
     public Sprite lockedImg;
     public Sprite unlockedImg;
+    public Sprite unavailableImg;
     public Vector3 flagScale;
     private List<GameObject> levelButtons = new List<GameObject>();
     private List<GameObject> flags = new List<GameObject>();
     private Vector3 temp = new Vector3(0, 0, 0);
 
     //Last completed level
-    private int lastCompletedLevel = 2; //0 if haven't completed any
+    private int lastCompletedLevel = 0; //0 if haven't completed any
 
     //public SpriteRenderer unlockedLevelBoard;
     //public SpriteRenderer completedLevelBoard;
@@ -54,6 +55,7 @@ public class LevelController : MonoBehaviour
 
     public void SetAvailableStages()
     {
+        lastCompletedLevel = 0;
         foreach (Transform child in canvas.transform)
         {
             if (child.tag == "LevelButton")
@@ -61,12 +63,12 @@ public class LevelController : MonoBehaviour
             if (child.tag == "Flag")
                 flags.Add(child.gameObject);
         }
-        var stages = ConnectionManager.AvailableStages;
-
-        lastCompletedLevel = stages.Where(z=>z.IsCleared).OrderByDescending(z=>z.Stage).Select(z=>z.Stage).FirstOrDefault();
-        
-
-        //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);
+        var clearedStages = ConnectionManager.ClearedStages;
+        var availableStages = ConnectionManager.AvailableStages.OrderBy(z=>z.Stage).ToList();
+        if (clearedStages.Count() > 0)
+        {
+            lastCompletedLevel = clearedStages.Where(z => z.IsCleared).Select(z => z.Stage).Max();
+        }
         for (int i = 0; i < 10; i++)
         {
             GameObject levelButton = levelButtons[i];
@@ -98,6 +100,13 @@ public class LevelController : MonoBehaviour
                 flag.transform.localScale = new Vector3(0, 0, 0);
             }
 
+            if (availableStages[i].IsAvailable == false)
+            {
+                btn.enabled = false;
+                img.sprite = unavailableImg;
+            }
+
+
         }
     }
     void OnEnable()
@@ -108,7 +117,6 @@ public class LevelController : MonoBehaviour
         }
         else  //first time or not growing flag if already set
         {
-            Debug.Log("SetAvailableStages");
             SetAvailableStages();
         }
 
@@ -140,7 +148,7 @@ public class LevelController : MonoBehaviour
                 disableAllLevelBtns();
                 GameManager.Instance.popUpUCompletedLevelBoard();
                 var ScoreText = CompletedLevelPopUp.GetComponentsInChildren<Text>().First();
-                ScoreText.text = ConnectionManager.AvailableStages.Where(z => z.Stage == chosenLevel).First().Amount.ToString();
+                ScoreText.text = ConnectionManager.ClearedStages.Where(z => z.Stage == chosenLevel).First().Score.ToString();
             } 
             else if (chosenLevel == lastCompletedLevel + 1)
             {
@@ -253,6 +261,7 @@ public class LevelController : MonoBehaviour
             btn.enabled = false;
         }
     }
+
 
     // Update is called once per frame
     void Update()
