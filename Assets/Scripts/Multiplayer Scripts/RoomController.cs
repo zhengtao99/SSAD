@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Multiplayer_Scripts;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -112,7 +113,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             GameManager.Instance.HideInvitation();
-
+   
             //Force the other player to leave the room
             base.photonView.RPC("RPC_ForceLeaveRoom", RpcTarget.Others);
         }
@@ -124,6 +125,10 @@ public class RoomController : MonoBehaviourPunCallbacks
         Debug.Log("Force leave room");
         GameManager.Instance.HideWaitingBoard();
         LeaveRoom();
+        GameManager.Instance.invitation.SetActive(true);
+        GameObject.Find("Invitation").GetComponent<InvitationController>().Hide();
+        GameManager.Instance.InvitationText.text = PhotonNetwork.NickName + " has declined your invitation.";
+        Invoke("RPC_HideInvitation", 2f);
     }
 
     public void OnClickCancelInvitation()
@@ -132,14 +137,14 @@ public class RoomController : MonoBehaviourPunCallbacks
 
         //Hide invitation on the other side
         base.photonView.RPC("RPC_HideInvitation", RpcTarget.Others);
-
+        
         //Then leave the room
         LeaveRoom();
     }
 
     [PunRPC]
     private void RPC_HideInvitation()
-    {
+    { 
         GameManager.Instance.HideInvitation();
     }
 

@@ -1,5 +1,6 @@
 ﻿using Assets.Model;
 using Assets.Scripts;
+using Assets.Scripts.Multiplayer_Scripts;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -638,6 +639,7 @@ public class GameManager : MonoBehaviour
 
         invitationSender = senderName;
         invitation.SetActive(true);
+        GameObject.Find("Invitation").GetComponent<InvitationController>().Show();
         InvitationText.text = senderName + ": Hi there! Want to start a battle with me?";
     }
     public void HideInvitation()

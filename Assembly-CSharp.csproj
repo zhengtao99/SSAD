@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\MiniChestController.cs" />
     <Compile Include="Assets\Scripts\MinionController.cs" />
+    <Compile Include="Assets\Scripts\Multiplayer Scripts\InvitationController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\JoyStickMulController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiPlayerResultController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer Scripts\MultiplayerSceneManager.cs" />
