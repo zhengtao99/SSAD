@@ -63,7 +63,7 @@ public class LevelController : MonoBehaviour
         }
         var stages = ConnectionManager.AvailableStages;
 
-        lastCompletedLevel = stages.Where(z=>z.isAvailable).OrderByDescending(z=>z.Stage).Select(z=>z.Stage).FirstOrDefault();
+        lastCompletedLevel = stages.Where(z=>z.IsCleared).OrderByDescending(z=>z.Stage).Select(z=>z.Stage).FirstOrDefault();
         
 
         //Debug.Log("lastCompletedLevel: " + lastCompletedLevel);

@@ -18,12 +18,12 @@ namespace Assets.Scripts
     /// </summary>
     class ConnectionManager
     {
-        //static string Domain = "https://localhost:44365"; //ZT host
+        static string Domain = "https://localhost:44365"; //ZT host
 
         /// <summary>
         /// A variable to store the domain's name that the Leanrnable Mobile will be using to update or retrieve students' records.
         /// </summary>
-        static string Domain = "https://learnablems20200220070049.azurewebsites.net";
+        //static string Domain = "https://learnablems20200220070049.azurewebsites.net";
 
         /// <summary>
         /// A variable to store the student's identity upon successfully login.
@@ -237,7 +237,8 @@ namespace Assets.Scripts
             AvailableStages = stageCollection.AvailableStages;
             foreach(var x in AvailableStages)
             {
-                Debug.Log(x.Stage + ": " + x.isAvailable);
+                Debug.Log(x.Stage + ":Available " + x.isAvailable);
+                Debug.Log(x.Stage + ":Cleared " + x.IsCleared);
             }
             GameManager.Instance.HideLoading();
             GameManager.Instance.levelUI();

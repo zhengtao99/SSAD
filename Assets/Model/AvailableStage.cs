@@ -12,5 +12,6 @@ namespace Assets.Model
         public int Stage;
         public int Amount;
         public bool isAvailable;
+        public bool IsCleared;
     }
 }
