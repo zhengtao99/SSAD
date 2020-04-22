@@ -6,14 +6,12 @@ ScriptsOnlyBuild:
     - AvatarChangeColor
     - Brickwall
     - ChestPopUp
-    - CreateRoomMenu
     - Dissolve
     - Fireball
     - GameManager
     - GameSettings
     - JoyStickController
     - JoyStickMulController
-    - LeaveRoomMenu
     - LevelController
     - LoginController
     - LoginManager
@@ -31,15 +29,12 @@ ScriptsOnlyBuild:
     - PhotonTestManager
     - PlayerController
     - PlayerListing
-    - PlayerListingMenu
     - ProfileController
     - QAManager
-    - RandomCustomPropertyGenerator
     - RankListController
     - ReadyController
     - RoomController
     - RoomListing
-    - RoomListingMenu
     - SectionController
     - SingletonReferences
     - SoundManager
@@ -196,8 +191,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 11792}
     - Class: 114
@@ -441,22 +434,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 111
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11716}
-    - Class: 114
-      Script: {instanceID: 11728}
-    - Class: 114
-      Script: {instanceID: 11744}
     - Class: 114
       Script: {instanceID: 11754}
     - Class: 114
       Script: {instanceID: 11796}
-    - Class: 114
-      Script: {instanceID: 11814}
-    - Class: 114
-      Script: {instanceID: 11850}
     - Class: 114
       Script: {instanceID: 11866}
     - Class: 114
@@ -480,25 +463,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12280}
     - Class: 114
-      Script: {instanceID: 12304}
-    - Class: 114
       Script: {instanceID: 12468}
     - Class: 114
       Script: {instanceID: 12522}
     - Class: 114
-      Script: {instanceID: 12540}
-    - Class: 114
-      Script: {instanceID: 12562}
-    - Class: 114
-      Script: {instanceID: 12564}
-    - Class: 114
       Script: {instanceID: 12624}
     - Class: 114
       Script: {instanceID: 12640}
-    - Class: 114
-      Script: {instanceID: 12730}
-    - Class: 114
-      Script: {instanceID: 12782}
     - Class: 114
       Script: {instanceID: 12890}
     - Class: 114
@@ -506,13 +477,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12942}
     - Class: 114
-      Script: {instanceID: 13090}
-    - Class: 114
       Script: {instanceID: 13174}
     - Class: 114
       Script: {instanceID: 13222}
-    - Class: 114
-      Script: {instanceID: 13286}
     - Class: 114
       Script: {instanceID: 13320}
     - Class: 114
@@ -532,29 +499,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14416}
     - Class: 114
-      Script: {instanceID: 14596}
-    - Class: 114
-      Script: {instanceID: 14650}
-    - Class: 114
-      Script: {instanceID: 14778}
-    - Class: 114
       Script: {instanceID: 14914}
     - Class: 114
       Script: {instanceID: 15010}
     - Class: 114
-      Script: {instanceID: 15152}
-    - Class: 114
       Script: {instanceID: 15288}
     - Class: 114
-      Script: {instanceID: 15300}
-    - Class: 114
-      Script: {instanceID: 15308}
-    - Class: 114
       Script: {instanceID: 15376}
-    - Class: 114
-      Script: {instanceID: 15526}
-    - Class: 114
-      Script: {instanceID: 15722}
     - Class: 114
       Script: {instanceID: 16060}
     - Class: 114
@@ -562,9 +513,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16224}
     - Class: 114
-      Script: {instanceID: 16248}
-    - Class: 114
-      Script: {instanceID: 33802}
+      Script: {instanceID: 24396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -581,13 +530,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    - Class: 156049354
-      Script: {instanceID: 0}
-    - Class: 483693784
-      Script: {instanceID: 0}
     - Class: 850595691
-      Script: {instanceID: 0}
-    - Class: 1839735485
       Script: {instanceID: 0}
     Assets/Scenes/Save1.unity:
     - Class: 1
@@ -626,8 +569,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
-    - Class: 111
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11716}
     - Class: 114
@@ -638,10 +579,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11754}
     - Class: 114
       Script: {instanceID: 11796}
-    - Class: 114
-      Script: {instanceID: 11814}
-    - Class: 114
-      Script: {instanceID: 11850}
     - Class: 114
       Script: {instanceID: 11866}
     - Class: 114
@@ -671,17 +608,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12562}
-    - Class: 114
-      Script: {instanceID: 12564}
-    - Class: 114
       Script: {instanceID: 12624}
     - Class: 114
       Script: {instanceID: 12640}
     - Class: 114
       Script: {instanceID: 12730}
-    - Class: 114
-      Script: {instanceID: 12782}
     - Class: 114
       Script: {instanceID: 12890}
     - Class: 114
@@ -694,8 +625,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13090}
     - Class: 114
       Script: {instanceID: 13174}
-    - Class: 114
-      Script: {instanceID: 13222}
     - Class: 114
       Script: {instanceID: 13286}
     - Class: 114
@@ -723,8 +652,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14416}
     - Class: 114
-      Script: {instanceID: 14596}
-    - Class: 114
       Script: {instanceID: 14650}
     - Class: 114
       Script: {instanceID: 14778}
@@ -736,10 +663,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15152}
     - Class: 114
       Script: {instanceID: 15288}
-    - Class: 114
-      Script: {instanceID: 15300}
-    - Class: 114
-      Script: {instanceID: 15308}
     - Class: 114
       Script: {instanceID: 15376}
     - Class: 114
@@ -772,13 +695,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    - Class: 156049354
-      Script: {instanceID: 0}
-    - Class: 483693784
-      Script: {instanceID: 0}
     - Class: 850595691
-      Script: {instanceID: 0}
-    - Class: 1839735485
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -2253,7 +2170,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerPanel
   - hash:
       serializedVersion: 2
-      Hash: 19d8e3597adb43db56b21d3a9591b970
+      Hash: 5166509c9a7f06137b362ea26a0d1d9a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -3060,4 +2977,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Login.unity
   - Assets/Scenes/Save1.unity
   - Assets/Scenes/MultiplayerScene.unity
-  playerPath: D:/AY 19-20 (sem 2)/CZ3003 - Software System Analysis & Design/Labs/Build/BirdGame15.apk
+  playerPath: C:/Users/Yuanchao/Desktop/Build16.apk
