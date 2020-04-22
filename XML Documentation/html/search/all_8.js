@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['ifire_111',['IFire',['../class_minion_controller.html#ab727ce8c228867a2884da83e6e00c290',1,'MinionController']]],
+  ['ifreezeminions_112',['IFreezeMinions',['../class_minion_controller.html#a2eb1ef90d327254024a6c2408627e0a9',1,'MinionController']]],
+  ['images_113',['images',['../class_section_controller.html#a10f1752891c791d488dbc877433d9eaa',1,'SectionController.images()'],['../class_world_controller.html#a99f842e199d00c49a73625c39a604566',1,'WorldController.images()']]],
+  ['increasecorrectans_114',['increaseCorrectAns',['../class_player_controller.html#a7db9b03648a7df75897268efe3800061',1,'PlayerController']]],
+  ['initialplaystate_115',['initialPlayState',['../class_game_manager.html#a1ee345f91daefe4ecce616120b5ae3bd',1,'GameManager']]],
+  ['instance_116',['Instance',['../class_chest_pop_up_controller.html#ad33bdca1dcfb739caee921cd930c3010',1,'ChestPopUpController.Instance()'],['../class_game_manager.html#ad3e717f4fb0f378b969f4457de81f23e',1,'GameManager.Instance()'],['../class_level_controller.html#ad9f4cc10c29beaf8d9dfea26a91ebfa4',1,'LevelController.Instance()'],['../class_login_manager.html#a186ef22a8baef21e9719396c78a0286f',1,'LoginManager.Instance()'],['../class_maze_generator.html#a89843ba37c86167500b91bd2e25f33c0',1,'MazeGenerator.Instance()'],['../class_q_a_manager.html#a723e8ad00a6232a557128b022c1181d0',1,'QAManager.Instance()']]],
+  ['inthreshold_117',['inThreshold',['../class_joy_stick_controller.html#a1b1741528ba667c1e31fc98043075281',1,'JoyStickController']]],
+  ['invitation_118',['invitation',['../class_game_manager.html#a26d9fef9d98b91adf0e5106833afa0d6',1,'GameManager']]],
+  ['invitationsender_119',['invitationSender',['../class_game_manager.html#a3bb63d0e7caed835438b1ba939ed828a',1,'GameManager']]],
+  ['invitationtext_120',['InvitationText',['../class_game_manager.html#a550945bb9217b18feaec524fbd1f575d',1,'GameManager']]],
+  ['isdissolving_121',['isDissolving',['../class_dissolve.html#af6d1f396a68a1bec6271de04920a5f99',1,'Dissolve']]],
+  ['isfreeze_122',['isFreeze',['../class_player_controller.html#af320002d626be04376bd45f0d250331f',1,'PlayerController']]],
+  ['isglowing_123',['isGlowing',['../class_player_controller.html#a9e495cb18629b6b936ffc8be354175c1',1,'PlayerController']]],
+  ['isinjured_124',['isInjured',['../class_player_controller.html#ab5e678ad4856011331a0ed5f87d13c74',1,'PlayerController']]],
+  ['islowdownminion_125',['ISlowDownMinion',['../class_minion_controller.html#af5629f3dd9f905bb04ddf2ff09c27d60',1,'MinionController']]],
+  ['ismultiplayermode_126',['isMultiplayerMode',['../class_maze_generator.html#a830a68870bd13c80a9ef2bf29ebc1e9b',1,'MazeGenerator.isMultiplayerMode()'],['../class_q_a_manager.html#aee521ff519206130b5c217f77d550bc6',1,'QAManager.isMultiplayerMode()']]],
+  ['isopened_127',['isOpened',['../class_chest_pop_up_controller.html#a6298d8cbd0f25b2c5b4f0cb7fb01703e',1,'ChestPopUpController']]],
+  ['ispause_128',['isPause',['../class_minion_controller.html#af641f1f50e801da2041a326cb73cf483',1,'MinionController.isPause()'],['../class_player_controller.html#aec5b458773488021ee37771f49338d1d',1,'PlayerController.isPause()']]],
+  ['ispeedupminion_129',['ISpeedUpMinion',['../class_minion_controller.html#a64ff8af22c72e5bbd312838d3f54e2f9',1,'MinionController']]],
+  ['istartglow_130',['IStartGlow',['../class_player_controller.html#a193f4495470f1ac3d9be23a16fd15bdc',1,'PlayerController']]]
+];

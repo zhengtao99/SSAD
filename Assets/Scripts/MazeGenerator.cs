@@ -7,37 +7,112 @@ using Assets.Scripts;
 using Photon.Pun;
 using System.IO;
 
+/// <summary>
+/// This generator class holds all the methods neccessary to dynamically generate a maze environment with bricks, minions and player.
+/// </summary>
 public class MazeGenerator : MonoBehaviour
 {
+    /// <summary>
+    /// A PhotonView variable that will hold the other image of the maze. It is used in multiplayer gameplay mode.
+    /// </summary>
     private PhotonView PV;
+
+    /// <summary>
+    /// A boolean variable that will help to determine is player in in multiplayer mode.
+    /// </summary>
     public bool isMultiplayerMode;
 
+    /// <summary>
+    /// A variable that holds the MazeGenerator instance that will allow other scrips to access the methods defined in this class.
+    /// </summary>
     public static MazeGenerator Instance;
-    public GameObject BrickPrefab; 
-    public GameObject CoinPrefab; 
+
+    /// <summary>
+    /// A variable that holds the brick prefab game object.
+    /// </summary>
+    public GameObject BrickPrefab;
+
+    /// <summary>
+    /// A variable that holds the coin prefab game object.
+    /// </summary>
+    public GameObject CoinPrefab;
+
+    /// <summary>
+    /// A variable that holds the chest prefab game object.
+    /// </summary>
     public GameObject ChestPrefab;
+
+    /// <summary>
+    /// A variable that holds the player prefab game object.
+    /// </summary>
     public GameObject PlayerPrefab;
+
+    /// <summary>
+    /// A variable that holds the minion prefab game object.
+    /// </summary>
     public GameObject MinionPrefab;
+
+    /// <summary>
+    /// A variable that holds the game background sprite renderer object.
+    /// </summary>
     public SpriteRenderer GameBackground;
-    public Vector3 mazePos; //positon of maze
+
+    /// <summary>
+    /// A variable that holds the x,y and z coordinates positon of maze.
+    /// </summary>
+    public Vector3 mazePos;
+
+    /// <summary>
+    /// A variable that holds maze row index.
+    /// </summary>
     public int row; //An odd number
+
+    /// <summary>
+    /// A variable that holds maze column index.
+    /// </summary>
     public int col; //An odd number
+
+    /// <summary>
+    /// A variable that holds number of coins in the maze.
+    /// </summary>
     private int numOfCoins = 85; //Fix number of coins
+
+    /// <summary>
+    /// A variable that holds the max score attainable by gathering all the coins and chest boxes.
+    /// </summary>
     private int maxScore = 85 * 10 + 6 * 30;
 
     //For coins(not real): real index (odd x, odd y)
+    /// <summary>
+    /// An array of booleans variable that will help to determine whether each position in the 50x50 maze is visited.
+    /// </summary>
     public bool[,] visited = new bool[50, 50]; //[x][y]
 
     //Full maze
     //0: brick, 1: coin, 2: chest, 3: minion, 4: player
+    /// <summary>
+    /// A array of booleans variable that will help to determine whether each position in the 50x50 maze is marked.
+    /// </summary>
     public int[,] mark = new int[50, 50]; //[x][y]
 
+    /// <summary>
+    /// A variable counter.
+    /// </summary>
     public int count = 0;
 
+    /// <summary>
+    /// An array of chest occupied cells.
+    /// </summary>
     public Cell[] chestCells;
 
+    /// <summary>
+    /// An array of minion occupied cells.
+    /// </summary
     public Cell[] minionCells;
 
+    /// <summary>
+    /// An internal data structure to store the attributes of a cell such as the x and y coordinate.
+    /// </summary>
     public struct Cell {
         public int x;  //column
         public int y;  //row
@@ -48,6 +123,9 @@ public class MazeGenerator : MonoBehaviour
         }
     };
 
+    /// <summary>
+    /// This method is used to instantiate the MazeGenerator instance.
+    /// </summary>
     void Awake()
     {
         Instance = this;
@@ -58,6 +136,9 @@ public class MazeGenerator : MonoBehaviour
         return maxScore;
     }
 
+    /// <summary>
+    /// This method is used to fixed the positions of minions and chest in their cell arrays.
+    /// </summary>
     public void fixChestMinion() {
         chestCells = new Cell[]{
             new Cell(1, 1),
@@ -76,6 +157,10 @@ public class MazeGenerator : MonoBehaviour
             new Cell(7,9)
         };
     }
+
+    /// <summary>
+    /// This method is used to check if the cell is occupied.
+    /// </summary>
     public bool CheckCell(Cell cell) {
         if (cell.x < 0 || cell.y < 0 || cell.x > col / 2 - 1 || cell.y > row / 2 - 1) {
             return false;
@@ -83,7 +168,10 @@ public class MazeGenerator : MonoBehaviour
         return true;
     }
 
-    
+    /// <summary>
+    /// This method is used to check there are neighbouring cells.
+    /// </summary>
+    /// <param name="cell">A cell structure that represents a position in the maze.</param>
     public Cell CheckNeighbors(Cell cell) {
         ArrayList neighbors = new ArrayList();
         
@@ -116,7 +204,15 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// A stack variable used to keep track on the cells to return to on DFS and Backtracking algorithm used to generator the maze environment. 
+    /// </summary>
     public ArrayList stack = new ArrayList();
+
+    /// <summary>
+    /// This method is used along with all the methods defined above to create the maze environment using DFS and backtracking algorithm to dynamically generate the maze environment.
+    /// </summary>
+    /// <param name="cur">The current cell position.</param>
     public void DFS_Backtracking(Cell cur) {
         //Use algorithm on coins array then change to real index by (2x+1, 2y+1)
         
@@ -158,6 +254,10 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method is used to strategically break walls and place the minions or coins into the maze environment.
+    /// </summary>
+    /// <param name="time">A time variable to keep track of number of times the wall is broken.</param>
     public void BreakWall(int time) {
         //For each even row: break a brick that between 2 bricks
         for (int y = 2 ; y < row - 1; y += 2) {
@@ -219,6 +319,10 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method is used to set the theme of the walls and background based on player's chosen level.
+    /// </summary>
+    /// <param name="chosenLevel">Player's selected difficulty level.</param>
     public void SetWalls_SetBackground(int chosenLevel)
     {
         int id;
@@ -242,6 +346,9 @@ public class MazeGenerator : MonoBehaviour
 
     // Start is called before the first frame update
 
+    /// <summary>
+    /// This method is called before the first frame update, to initialize the maze environment with walls and background, if it is a multiplayer game, photonview will be generated to create a copy of the maze environment.
+    /// </summary>
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -253,19 +360,10 @@ public class MazeGenerator : MonoBehaviour
             SetWalls_SetBackground(chosenLevel);
         } 
     }
-    
-    /*
-    private void OnEnable()
-    {
-        GenerateMaze();
-    }
-    */
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// This method is called to destroy the maze after every game ends.
+    /// </summary>
     void DestroyMaze()
     {
       var components =   GameObject.FindGameObjectsWithTag("Page").Where(z => z.name == "PlayPage").First().GetComponents<Component>();
@@ -277,6 +375,11 @@ public class MazeGenerator : MonoBehaviour
             }
         }
     }
+
+
+    /// <summary>
+    /// This method is called generate the maze environment everytime the player's presses on the play button.
+    /// </summary>
     void GenerateMaze()
     {
         fixChestMinion();
@@ -334,6 +437,10 @@ public class MazeGenerator : MonoBehaviour
 
         PlaceObjects();
     }
+
+    /// <summary>
+    /// This method is called to place all the objects in the maze such as bricks, coins, chestboxes, minions that will be created using the different methods defined in this class.
+    /// </summary>
     void PlaceObjects() {
         
         if (!isMultiplayerMode)

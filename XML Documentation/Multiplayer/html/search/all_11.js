@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['score_110',['Score',['../class_my_player_controller.html#a4958978744d42a43995adb95d689ac53',1,'MyPlayerController.Score()'],['../class_my_player_controller.html#a91d0cdc435eb634a4e0175bfdc10dba1',1,'MyPlayerController.score()']]],
+  ['scoreupdate_111',['ScoreUpdate',['../class_my_player_controller.html#aa7a4cc6d10f7c9cb606a790aa3f663cd',1,'MyPlayerController']]],
+  ['scoreupdateotherside_112',['ScoreUpdateOtherSide',['../class_room_controller.html#a38e192c2aaec91277efefd27488d51b3',1,'RoomController']]],
+  ['sendinvitation_113',['SendInvitation',['../class_room_controller.html#ac988287bd37217ef3cb804b9f8aacd9e',1,'RoomController']]],
+  ['setpagestate_114',['SetPageState',['../class_multiplayer_scene_manager.html#ad6f358061ae8b8581c0c0f627962adad',1,'MultiplayerSceneManager']]],
+  ['setroominfo_115',['SetRoomInfo',['../class_online_player_listing.html#a6d8fdc697a46ab565bfd1499e6020133',1,'OnlinePlayerListing']]],
+  ['setwaitingtext_116',['setWaitingText',['../class_waiting_board_controller.html#ac16d26c5d10e6d9e3d6c07fd07fc9125',1,'WaitingBoardController']]],
+  ['show_117',['Show',['../class_assets_1_1_scripts_1_1_multiplayer___scripts_1_1_invitation_controller.html#ad4df27398b68e19d1b6164efbe3ba920',1,'Assets::Scripts::Multiplayer_Scripts::InvitationController']]],
+  ['showloading_118',['ShowLoading',['../class_multiplayer_scene_manager.html#af300cc8da35151cc4f76e41e1e4fd54a',1,'MultiplayerSceneManager']]],
+  ['spawnlivespoint_5f1_119',['spawnLivesPoint_1',['../class_photon_player_controller.html#a7cc86cb7d8a8928bc662cd5149bea3e7',1,'PhotonPlayerController']]],
+  ['spawnlivespoint_5f2_120',['spawnLivesPoint_2',['../class_photon_player_controller.html#a69f9a01f4de344321e21e945f04bb6d5',1,'PhotonPlayerController']]],
+  ['spawnpoint_5f1_121',['spawnPoint_1',['../class_photon_player_controller.html#a7782fc58225e83b46867efbd276a824d',1,'PhotonPlayerController']]],
+  ['spawnpoint_5f2_122',['spawnPoint_2',['../class_photon_player_controller.html#a385383ec0a9bdf291cdae01f4bf28cd7',1,'PhotonPlayerController']]],
+  ['speed_123',['speed',['../class_joy_stick_mul_controller.html#aea3c2b6c2f35425b050769899c5ccdad',1,'JoyStickMulController.speed()'],['../class_my_player_controller.html#a36b6f54c37f3eb77a2f82b326a80bede',1,'MyPlayerController.speed()']]],
+  ['start_124',['Start',['../class_joy_stick_mul_controller.html#a6fca39470abc9666a7a4d8043a6e9197',1,'JoyStickMulController.Start()'],['../class_mutiplayer_match_controller.html#a71845eb24d71cd484182de6ea8a4f946',1,'MutiplayerMatchController.Start()'],['../class_my_player_controller.html#ac415250939ffd71935dd0a72a8db6419',1,'MyPlayerController.Start()'],['../class_photon_player_controller.html#a35abc995f9d4d80ff8a2b3d36f27f19a',1,'PhotonPlayerController.Start()'],['../class_test_connect.html#aedc926205d7adcbbea297fac2c077283',1,'TestConnect.Start()']]],
+  ['startgame_125',['StartGame',['../class_multiplayer_scene_manager.html#a83bedf9ce3c6cff0e9f30b0c25a16189',1,'MultiplayerSceneManager']]],
+  ['stopmove_126',['stopMove',['../class_my_player_controller.html#a5a87f9b8d37291fab5641592392e78f4',1,'MyPlayerController']]],
+  ['stopsettingwaitingtext_127',['stopSettingWaitingText',['../class_waiting_board_controller.html#a71b4ad34e493741cfb82bc1ba7c2b590',1,'WaitingBoardController']]]
+];

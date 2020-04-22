@@ -1,0 +1,188 @@
+\hypertarget{class_rank_list_controller}{}\doxysection{Rank\+List\+Controller Class Reference}
+\label{class_rank_list_controller}\index{RankListController@{RankListController}}
+
+
+This controller class holds all the methods to control the scroll view in the leaderboard page.  
+
+
+Inheritance diagram for Rank\+List\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rank_list_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_rank_list_controller_a66978b573e011370af82020b3838f845}{World\+Search}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to filter the leaderboard based on the selected world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_a3a4ded7d9b08e617168135b438ba9f16}{Topic\+Search}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to filter the leaderboard based on the selected topic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_acb68842106de11289cb60541d5108ae0}{Set\+Labels}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set the filter button text component in the leaderboard page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_ab115f9012c90d127c2f9cbaf083a766c}{Search}} ()
+\begin{DoxyCompactList}\small\item\em This method is called when the player search for a name in the leaderboard page, the rank entries will be filtered to display matching entries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_ae40fa27adc1dac310cdeb3d2a5dd78b2}{Add\+Rank}} (int id, string \mbox{\hyperlink{class_rank_list_controller_ab115f9012c90d127c2f9cbaf083a766c}{Search}}, string Filter, Highscore highscore, string category)
+\begin{DoxyCompactList}\small\item\em This method is called to add a rank entry into the leaderboard page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_a0d6db3d6ad99cbec2baf51d0b69911b5}{Clear\+Ranks}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to clear the leaderboard off entries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rank_list_controller_aa64871cdbf467b386c652fee296a19c3}{Set\+Current\+Player\+Rank}} (Highscore highscore)
+\begin{DoxyCompactList}\small\item\em This method is called to set the current player\textquotesingle{}s leaderboard entry in the leaderboard page. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_rank_list_controller_a578c1f43b23ef63bf1e8b0d7854987ad}{current\+Player\+Rank}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the current player\textquotesingle{}s rank in a particular world or topic. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_rank_list_controller_ad544f2a834b68a3a8ccce4e8bdfb5c82}{a}}
+\begin{DoxyCompactList}\small\item\em A temporary variable game object that will be used for comparison. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_rank_list_controller_a6338d959cdb1dd304654e233b6404c52}{rank\+Template}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the basic layout of a leaderboard entry. \end{DoxyCompactList}\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_rank_list_controller_a4e7ef952bb474560a76754536d29189f}{ranks}} = new List$<$Game\+Object$>$()
+\begin{DoxyCompactList}\small\item\em A list of rank entry game objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds all the methods to control the scroll view in the leaderboard page. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rank_list_controller_ae40fa27adc1dac310cdeb3d2a5dd78b2}\label{class_rank_list_controller_ae40fa27adc1dac310cdeb3d2a5dd78b2}} 
+\index{RankListController@{RankListController}!AddRank@{AddRank}}
+\index{AddRank@{AddRank}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{AddRank()}{AddRank()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Add\+Rank (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{Search,  }\item[{string}]{Filter,  }\item[{Highscore}]{highscore,  }\item[{string}]{category }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to add a rank entry into the leaderboard page. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Rank entry number.\\
+\hline
+{\em Search} & Player\textquotesingle{}s search input.\\
+\hline
+{\em Filter} & Player\textquotesingle{}s selected filter.\\
+\hline
+{\em highscore} & Player\textquotesingle{}s highscore\\
+\hline
+{\em category} & Current Topic selected\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rank_list_controller_a0d6db3d6ad99cbec2baf51d0b69911b5}\label{class_rank_list_controller_a0d6db3d6ad99cbec2baf51d0b69911b5}} 
+\index{RankListController@{RankListController}!ClearRanks@{ClearRanks}}
+\index{ClearRanks@{ClearRanks}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{ClearRanks()}{ClearRanks()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Clear\+Ranks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to clear the leaderboard off entries. 
+
+\mbox{\Hypertarget{class_rank_list_controller_ab115f9012c90d127c2f9cbaf083a766c}\label{class_rank_list_controller_ab115f9012c90d127c2f9cbaf083a766c}} 
+\index{RankListController@{RankListController}!Search@{Search}}
+\index{Search@{Search}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{Search()}{Search()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called when the player search for a name in the leaderboard page, the rank entries will be filtered to display matching entries. 
+
+\mbox{\Hypertarget{class_rank_list_controller_aa64871cdbf467b386c652fee296a19c3}\label{class_rank_list_controller_aa64871cdbf467b386c652fee296a19c3}} 
+\index{RankListController@{RankListController}!SetCurrentPlayerRank@{SetCurrentPlayerRank}}
+\index{SetCurrentPlayerRank@{SetCurrentPlayerRank}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{SetCurrentPlayerRank()}{SetCurrentPlayerRank()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Set\+Current\+Player\+Rank (\begin{DoxyParamCaption}\item[{Highscore}]{highscore }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the current player\textquotesingle{}s leaderboard entry in the leaderboard page. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em highscore} & Player\textquotesingle{}s highscore for a selected topic or world.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_rank_list_controller_acb68842106de11289cb60541d5108ae0}\label{class_rank_list_controller_acb68842106de11289cb60541d5108ae0}} 
+\index{RankListController@{RankListController}!SetLabels@{SetLabels}}
+\index{SetLabels@{SetLabels}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{SetLabels()}{SetLabels()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Set\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set the filter button text component in the leaderboard page. 
+
+\mbox{\Hypertarget{class_rank_list_controller_a3a4ded7d9b08e617168135b438ba9f16}\label{class_rank_list_controller_a3a4ded7d9b08e617168135b438ba9f16}} 
+\index{RankListController@{RankListController}!TopicSearch@{TopicSearch}}
+\index{TopicSearch@{TopicSearch}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{TopicSearch()}{TopicSearch()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+Topic\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to filter the leaderboard based on the selected topic. 
+
+\mbox{\Hypertarget{class_rank_list_controller_a66978b573e011370af82020b3838f845}\label{class_rank_list_controller_a66978b573e011370af82020b3838f845}} 
+\index{RankListController@{RankListController}!WorldSearch@{WorldSearch}}
+\index{WorldSearch@{WorldSearch}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{WorldSearch()}{WorldSearch()}}
+{\footnotesize\ttfamily void Rank\+List\+Controller.\+World\+Search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to filter the leaderboard based on the selected world. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_rank_list_controller_ad544f2a834b68a3a8ccce4e8bdfb5c82}\label{class_rank_list_controller_ad544f2a834b68a3a8ccce4e8bdfb5c82}} 
+\index{RankListController@{RankListController}!a@{a}}
+\index{a@{a}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{a}{a}}
+{\footnotesize\ttfamily Game\+Object Rank\+List\+Controller.\+a}
+
+
+
+A temporary variable game object that will be used for comparison. 
+
+\mbox{\Hypertarget{class_rank_list_controller_a578c1f43b23ef63bf1e8b0d7854987ad}\label{class_rank_list_controller_a578c1f43b23ef63bf1e8b0d7854987ad}} 
+\index{RankListController@{RankListController}!currentPlayerRank@{currentPlayerRank}}
+\index{currentPlayerRank@{currentPlayerRank}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{currentPlayerRank}{currentPlayerRank}}
+{\footnotesize\ttfamily Game\+Object Rank\+List\+Controller.\+current\+Player\+Rank}
+
+
+
+A variable to hold the current player\textquotesingle{}s rank in a particular world or topic. 
+
+\mbox{\Hypertarget{class_rank_list_controller_a4e7ef952bb474560a76754536d29189f}\label{class_rank_list_controller_a4e7ef952bb474560a76754536d29189f}} 
+\index{RankListController@{RankListController}!ranks@{ranks}}
+\index{ranks@{ranks}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{ranks}{ranks}}
+{\footnotesize\ttfamily List$<$Game\+Object$>$ Rank\+List\+Controller.\+ranks = new List$<$Game\+Object$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A list of rank entry game objects. 
+
+\mbox{\Hypertarget{class_rank_list_controller_a6338d959cdb1dd304654e233b6404c52}\label{class_rank_list_controller_a6338d959cdb1dd304654e233b6404c52}} 
+\index{RankListController@{RankListController}!rankTemplate@{rankTemplate}}
+\index{rankTemplate@{rankTemplate}!RankListController@{RankListController}}
+\doxysubsubsection{\texorpdfstring{rankTemplate}{rankTemplate}}
+{\footnotesize\ttfamily Game\+Object Rank\+List\+Controller.\+rank\+Template\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to hold the basic layout of a leaderboard entry. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Rank\+List\+Controller.\+cs\end{DoxyCompactItemize}

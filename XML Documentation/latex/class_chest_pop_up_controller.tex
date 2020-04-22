@@ -1,0 +1,208 @@
+\hypertarget{class_chest_pop_up_controller}{}\doxysection{Chest\+Pop\+Up\+Controller Class Reference}
+\label{class_chest_pop_up_controller}\index{ChestPopUpController@{ChestPopUpController}}
+
+
+This controller class contains all methods required to perform the Chest animation when the player touches a chest in the game.  
+
+
+Inheritance diagram for Chest\+Pop\+Up\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_chest_pop_up_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_a2325e073586d6475331f36124d931ca0}{Resume\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to resume the game when the player is done answering a question, unfreezes minions and player movements \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_aa24ae56d7200167f4336ff6ab7dd50a0}{P\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em Ths method is used to give the player a buff on resume game, when the player answered a question correctly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_aa70a5f63f704f1cad5f1d60506ed9dc2}{M\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to give the minions a buff on resume game, when the playe answered a question wrongly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_chest_pop_up_controller_a2ab6c9898dd34426bf4c65dcf26236ae}\label{class_chest_pop_up_controller_a2ab6c9898dd34426bf4c65dcf26236ae}} 
+bool {\bfseries is\+Multiplayer\+Mode}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_chest_pop_up_controller}{Chest\+Pop\+Up\+Controller}} \mbox{\hyperlink{class_chest_pop_up_controller_ad33bdca1dcfb739caee921cd930c3010}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable that stores the controller class instance, it will allow other Game\+Objects\textquotesingle{} scripts to access the methods here. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_a331819505bc45d740806947520b9c2c7}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Start is called before the first frame update, it is used to instantiate this controller class instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_ac7c44f2d3163a1e65710e015860aab80}{Pause\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to pause the game when the player is answering a question, freezes minions and player movements \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_a7cf7145f8fb1cac183ac735826aa4fe0}{Pause\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to freeze the minions in multiplayer gameplay when the player is answering a question. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_aa456809c94646a1da4302a29cd9b6522}{On\+Trigger\+Stay2D}} (Collider2D other)
+\begin{DoxyCompactList}\small\item\em This method is used to detect collisions between player and chestbox which activates chest animation and Question pop-\/ups. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chest_pop_up_controller_a0444d03b52f2510349145121e09c70f3}{delay\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to delay the question pop ups and allow the chest to finishing animating. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_chest_pop_up_controller_a7fb7f57cabdc3e925235503779d6e329}{minions}}
+\begin{DoxyCompactList}\small\item\em A variable to store all minion gameobjects that will be manipulated to perform the chest animation during gameplay. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_chest_pop_up_controller_a5b6d06672be20b88c0c69ff49c6c1044}{red\+Minions}}
+\begin{DoxyCompactList}\small\item\em A variable to store all minion gameobjects that will be used in the multiplayer scene. \end{DoxyCompactList}\item 
+Rigidbody2D \mbox{\hyperlink{class_chest_pop_up_controller_a0963cdea03f57c72555cb5d9208432fc}{rb}}
+\begin{DoxyCompactList}\small\item\em A variable that stores the rigidbody component of the current chest gameobject to detect gameobject collisions, the chest animation\textquotesingle{}s activation point. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_chest_pop_up_controller_a6298d8cbd0f25b2c5b4f0cb7fb01703e}{is\+Opened}} = false
+\begin{DoxyCompactList}\small\item\em A boolean variable used to control the closing of all the chest in cases where players dies and game has to be replayed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class contains all methods required to perform the Chest animation when the player touches a chest in the game. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_chest_pop_up_controller_a0444d03b52f2510349145121e09c70f3}\label{class_chest_pop_up_controller_a0444d03b52f2510349145121e09c70f3}} 
+\index{ChestPopUpController@{ChestPopUpController}!delayPopUp@{delayPopUp}}
+\index{delayPopUp@{delayPopUp}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{delayPopUp()}{delayPopUp()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+delay\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to delay the question pop ups and allow the chest to finishing animating. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_aa70a5f63f704f1cad5f1d60506ed9dc2}\label{class_chest_pop_up_controller_aa70a5f63f704f1cad5f1d60506ed9dc2}} 
+\index{ChestPopUpController@{ChestPopUpController}!MAttack@{MAttack}}
+\index{MAttack@{MAttack}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{MAttack()}{MAttack()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+M\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to give the minions a buff on resume game, when the playe answered a question wrongly. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_aa456809c94646a1da4302a29cd9b6522}\label{class_chest_pop_up_controller_aa456809c94646a1da4302a29cd9b6522}} 
+\index{ChestPopUpController@{ChestPopUpController}!OnTriggerStay2D@{OnTriggerStay2D}}
+\index{OnTriggerStay2D@{OnTriggerStay2D}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{OnTriggerStay2D()}{OnTriggerStay2D()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+On\+Trigger\+Stay2D (\begin{DoxyParamCaption}\item[{Collider2D}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to detect collisions between player and chestbox which activates chest animation and Question pop-\/ups. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The collided game object\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_chest_pop_up_controller_aa24ae56d7200167f4336ff6ab7dd50a0}\label{class_chest_pop_up_controller_aa24ae56d7200167f4336ff6ab7dd50a0}} 
+\index{ChestPopUpController@{ChestPopUpController}!PAttack@{PAttack}}
+\index{PAttack@{PAttack}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{PAttack()}{PAttack()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+P\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ths method is used to give the player a buff on resume game, when the player answered a question correctly. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_ac7c44f2d3163a1e65710e015860aab80}\label{class_chest_pop_up_controller_ac7c44f2d3163a1e65710e015860aab80}} 
+\index{ChestPopUpController@{ChestPopUpController}!PauseGame@{PauseGame}}
+\index{PauseGame@{PauseGame}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{PauseGame()}{PauseGame()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+Pause\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to pause the game when the player is answering a question, freezes minions and player movements 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a7cf7145f8fb1cac183ac735826aa4fe0}\label{class_chest_pop_up_controller_a7cf7145f8fb1cac183ac735826aa4fe0}} 
+\index{ChestPopUpController@{ChestPopUpController}!PauseMinions@{PauseMinions}}
+\index{PauseMinions@{PauseMinions}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{PauseMinions()}{PauseMinions()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+Pause\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to freeze the minions in multiplayer gameplay when the player is answering a question. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a2325e073586d6475331f36124d931ca0}\label{class_chest_pop_up_controller_a2325e073586d6475331f36124d931ca0}} 
+\index{ChestPopUpController@{ChestPopUpController}!ResumeGame@{ResumeGame}}
+\index{ResumeGame@{ResumeGame}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{ResumeGame()}{ResumeGame()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+Resume\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to resume the game when the player is done answering a question, unfreezes minions and player movements 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a331819505bc45d740806947520b9c2c7}\label{class_chest_pop_up_controller_a331819505bc45d740806947520b9c2c7}} 
+\index{ChestPopUpController@{ChestPopUpController}!Start@{Start}}
+\index{Start@{Start}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Chest\+Pop\+Up\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Start is called before the first frame update, it is used to instantiate this controller class instance. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_chest_pop_up_controller_ad33bdca1dcfb739caee921cd930c3010}\label{class_chest_pop_up_controller_ad33bdca1dcfb739caee921cd930c3010}} 
+\index{ChestPopUpController@{ChestPopUpController}!Instance@{Instance}}
+\index{Instance@{Instance}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_chest_pop_up_controller}{Chest\+Pop\+Up\+Controller}} Chest\+Pop\+Up\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that stores the controller class instance, it will allow other Game\+Objects\textquotesingle{} scripts to access the methods here. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a6298d8cbd0f25b2c5b4f0cb7fb01703e}\label{class_chest_pop_up_controller_a6298d8cbd0f25b2c5b4f0cb7fb01703e}} 
+\index{ChestPopUpController@{ChestPopUpController}!isOpened@{isOpened}}
+\index{isOpened@{isOpened}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{isOpened}{isOpened}}
+{\footnotesize\ttfamily bool Chest\+Pop\+Up\+Controller.\+is\+Opened = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A boolean variable used to control the closing of all the chest in cases where players dies and game has to be replayed. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a7fb7f57cabdc3e925235503779d6e329}\label{class_chest_pop_up_controller_a7fb7f57cabdc3e925235503779d6e329}} 
+\index{ChestPopUpController@{ChestPopUpController}!minions@{minions}}
+\index{minions@{minions}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{minions}{minions}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Chest\+Pop\+Up\+Controller.\+minions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to store all minion gameobjects that will be manipulated to perform the chest animation during gameplay. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a0963cdea03f57c72555cb5d9208432fc}\label{class_chest_pop_up_controller_a0963cdea03f57c72555cb5d9208432fc}} 
+\index{ChestPopUpController@{ChestPopUpController}!rb@{rb}}
+\index{rb@{rb}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{rb}{rb}}
+{\footnotesize\ttfamily Rigidbody2D Chest\+Pop\+Up\+Controller.\+rb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that stores the rigidbody component of the current chest gameobject to detect gameobject collisions, the chest animation\textquotesingle{}s activation point. 
+
+\mbox{\Hypertarget{class_chest_pop_up_controller_a5b6d06672be20b88c0c69ff49c6c1044}\label{class_chest_pop_up_controller_a5b6d06672be20b88c0c69ff49c6c1044}} 
+\index{ChestPopUpController@{ChestPopUpController}!redMinions@{redMinions}}
+\index{redMinions@{redMinions}!ChestPopUpController@{ChestPopUpController}}
+\doxysubsubsection{\texorpdfstring{redMinions}{redMinions}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Chest\+Pop\+Up\+Controller.\+red\+Minions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to store all minion gameobjects that will be used in the multiplayer scene. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Chest\+Pop\+Up\+Controller.\+cs\end{DoxyCompactItemize}

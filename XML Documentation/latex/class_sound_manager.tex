@@ -1,0 +1,113 @@
+\hypertarget{class_sound_manager}{}\doxysection{Sound\+Manager Class Reference}
+\label{class_sound_manager}\index{SoundManager@{SoundManager}}
+
+
+This manager class holds all the methods related to playing, pausing or stopping a audio clip in the game.  
+
+
+Inheritance diagram for Sound\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sound_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sound_manager_a26446eb58164636c02e749e8491e28ab}{Play}} (string name)
+\begin{DoxyCompactList}\small\item\em This method is responsible to play the audio clip for a given audio clip name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_a47ab6bbd1466a365f9ea6086fbd1bc79}{Pause}} (string name)
+\begin{DoxyCompactList}\small\item\em This method is responsible to pause the audio clip whenever neccessary. The next \mbox{\hyperlink{class_sound_manager_a26446eb58164636c02e749e8491e28ab}{Play()}} on this audio track will resume from the point it is paused. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_a35a35bef376e4754339f4761043dff17}{Stop}} (string name)
+\begin{DoxyCompactList}\small\item\em This method responsible to stop the audio clip from playing whenever neccessary. The next \mbox{\hyperlink{class_sound_manager_a26446eb58164636c02e749e8491e28ab}{Play()}} on this audio track will start from the beginning of the audio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sound}{Sound}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_sound_manager_aefb37d6e1b606209c0009aff3c0358ae}{sounds}}
+\begin{DoxyCompactList}\small\item\em An array that holds the list of sound clips used throughout the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sound_manager_a06a8d04a0f9ce5d140b5308a4adb9073}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method is called everytime when the Game Launches, the \mbox{\hyperlink{class_sound_manager_a06a8d04a0f9ce5d140b5308a4adb9073}{Awake()}} method focuses on waking up all the sound clips and prepare to play them throughout the game. The Audio clips\textquotesingle{} volume, pitch and loop are initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This manager class holds all the methods related to playing, pausing or stopping a audio clip in the game. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_manager_a06a8d04a0f9ce5d140b5308a4adb9073}\label{class_sound_manager_a06a8d04a0f9ce5d140b5308a4adb9073}} 
+\index{SoundManager@{SoundManager}!Awake@{Awake}}
+\index{Awake@{Awake}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Sound\+Manager.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called everytime when the Game Launches, the \mbox{\hyperlink{class_sound_manager_a06a8d04a0f9ce5d140b5308a4adb9073}{Awake()}} method focuses on waking up all the sound clips and prepare to play them throughout the game. The Audio clips\textquotesingle{} volume, pitch and loop are initialized. 
+
+\mbox{\Hypertarget{class_sound_manager_a47ab6bbd1466a365f9ea6086fbd1bc79}\label{class_sound_manager_a47ab6bbd1466a365f9ea6086fbd1bc79}} 
+\index{SoundManager@{SoundManager}!Pause@{Pause}}
+\index{Pause@{Pause}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily void Sound\+Manager.\+Pause (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible to pause the audio clip whenever neccessary. The next \mbox{\hyperlink{class_sound_manager_a26446eb58164636c02e749e8491e28ab}{Play()}} on this audio track will resume from the point it is paused. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the audio clip.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_manager_a26446eb58164636c02e749e8491e28ab}\label{class_sound_manager_a26446eb58164636c02e749e8491e28ab}} 
+\index{SoundManager@{SoundManager}!Play@{Play}}
+\index{Play@{Play}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily void Sound\+Manager.\+Play (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible to play the audio clip for a given audio clip name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the audio clip.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_manager_a35a35bef376e4754339f4761043dff17}\label{class_sound_manager_a35a35bef376e4754339f4761043dff17}} 
+\index{SoundManager@{SoundManager}!Stop@{Stop}}
+\index{Stop@{Stop}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Sound\+Manager.\+Stop (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method responsible to stop the audio clip from playing whenever neccessary. The next \mbox{\hyperlink{class_sound_manager_a26446eb58164636c02e749e8491e28ab}{Play()}} on this audio track will start from the beginning of the audio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the audio clip.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sound_manager_aefb37d6e1b606209c0009aff3c0358ae}\label{class_sound_manager_aefb37d6e1b606209c0009aff3c0358ae}} 
+\index{SoundManager@{SoundManager}!sounds@{sounds}}
+\index{sounds@{sounds}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{sounds}{sounds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sound}{Sound}} \mbox{[}$\,$\mbox{]} Sound\+Manager.\+sounds}
+
+
+
+An array that holds the list of sound clips used throughout the game. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Sound\+Manager.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,218 @@
+\hypertarget{class_joy_stick_controller}{}\doxysection{Joy\+Stick\+Controller Class Reference}
+\label{class_joy_stick_controller}\index{JoyStickController@{JoyStickController}}
+
+
+This controller class holds all the methods that allows the player to control the avatar movements through a on screen joystick display.  
+
+
+Inheritance diagram for Joy\+Stick\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_joy_stick_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_joy_stick_controller_a428383784fb782cbdc85c7c9419b267c}{speed}} = 5.\+0f
+\begin{DoxyCompactList}\small\item\em A variable that contains the player\textquotesingle{}s speed initialized to 5. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_joy_stick_controller_a6149c8957fb1d3b154e9b444c48ffc7d}{circle}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the button game object that the player will be using to provide input. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_joy_stick_controller_a620d976b72923201e49ce257dbcb0ea9}{outer\+Circle}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the border which the button must reside in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_joy_stick_controller_ac21e31d452e49753da28b9a5487a5e66}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it will find the player, player controller as well as initializing the button game objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame, it will detect the position of the taps/clicks that the user is performing on the screen and move the button accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_joy_stick_controller_a1f1eaafdb03197193026e684b84bb783}{Fixed\+Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called together with \mbox{\hyperlink{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}{Update()}}, with the information gathered from \mbox{\hyperlink{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}{Update()}}, it will manipulate the player to move left or right using player controller. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_joy_stick_controller_a1b1741528ba667c1e31fc98043075281}{in\+Threshold}} ()
+\begin{DoxyCompactList}\small\item\em This method will check if the button is within the border at the specified position, if it is moving outside of the border, the button will be stopped. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_joy_stick_controller_abab1c69cf68b385f695c685900ea7257}{player\+Controller}}
+\begin{DoxyCompactList}\small\item\em A variable holding a player controller that will be used to manipulate the player\textquotesingle{}s movement in the maze. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_joy_stick_controller_a9d43825847c88528ad762155c001c529}{player}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the player game object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_joy_stick_controller_abe90d52e0ae19b219542c637df3d5350}{touch\+Start}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean that will be used detect is player\textquotesingle{}s finger is on screen touching the joystick button. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_joy_stick_controller_a1b573e954c312e4688c159bbfa20c3e6}{pointA}}
+\begin{DoxyCompactList}\small\item\em A variable that specifies the player\textquotesingle{}s initial position. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_joy_stick_controller_a5638cc8b99277ab95ddee4ab91bd6db8}{pointB}}
+\begin{DoxyCompactList}\small\item\em A variable that specifies the player\textquotesingle{}s next position based on the joystick\textquotesingle{}s movement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_joy_stick_controller_a1e8c9c0e7fdc1370e188a19eb4769f83}{x\+Coord}}
+\begin{DoxyCompactList}\small\item\em A variable that contains x coordinate. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_joy_stick_controller_a2310be85f1d54e06e91feae6b9691a4c}{y\+Coord}}
+\begin{DoxyCompactList}\small\item\em A variable that contains y coordinate. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_joy_stick_controller_aa9f20fa8e73b8c4d5623fa3c381addf6}{direction}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the direction that the player is moving towards. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds all the methods that allows the player to control the avatar movements through a on screen joystick display. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_joy_stick_controller_a1f1eaafdb03197193026e684b84bb783}\label{class_joy_stick_controller_a1f1eaafdb03197193026e684b84bb783}} 
+\index{JoyStickController@{JoyStickController}!FixedUpdate@{FixedUpdate}}
+\index{FixedUpdate@{FixedUpdate}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{FixedUpdate()}{FixedUpdate()}}
+{\footnotesize\ttfamily void Joy\+Stick\+Controller.\+Fixed\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called together with \mbox{\hyperlink{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}{Update()}}, with the information gathered from \mbox{\hyperlink{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}{Update()}}, it will manipulate the player to move left or right using player controller. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a1b1741528ba667c1e31fc98043075281}\label{class_joy_stick_controller_a1b1741528ba667c1e31fc98043075281}} 
+\index{JoyStickController@{JoyStickController}!inThreshold@{inThreshold}}
+\index{inThreshold@{inThreshold}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{inThreshold()}{inThreshold()}}
+{\footnotesize\ttfamily bool Joy\+Stick\+Controller.\+in\+Threshold (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method will check if the button is within the border at the specified position, if it is moving outside of the border, the button will be stopped. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_ac21e31d452e49753da28b9a5487a5e66}\label{class_joy_stick_controller_ac21e31d452e49753da28b9a5487a5e66}} 
+\index{JoyStickController@{JoyStickController}!Start@{Start}}
+\index{Start@{Start}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Joy\+Stick\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it will find the player, player controller as well as initializing the button game objects. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}\label{class_joy_stick_controller_af60e99dca227283cee1dda45f0e2489d}} 
+\index{JoyStickController@{JoyStickController}!Update@{Update}}
+\index{Update@{Update}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Joy\+Stick\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame, it will detect the position of the taps/clicks that the user is performing on the screen and move the button accordingly. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_joy_stick_controller_a6149c8957fb1d3b154e9b444c48ffc7d}\label{class_joy_stick_controller_a6149c8957fb1d3b154e9b444c48ffc7d}} 
+\index{JoyStickController@{JoyStickController}!circle@{circle}}
+\index{circle@{circle}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{circle}{circle}}
+{\footnotesize\ttfamily Game\+Object Joy\+Stick\+Controller.\+circle}
+
+
+
+A variable that contains the button game object that the player will be using to provide input. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_aa9f20fa8e73b8c4d5623fa3c381addf6}\label{class_joy_stick_controller_aa9f20fa8e73b8c4d5623fa3c381addf6}} 
+\index{JoyStickController@{JoyStickController}!direction@{direction}}
+\index{direction@{direction}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily Vector2 Joy\+Stick\+Controller.\+direction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the direction that the player is moving towards. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a620d976b72923201e49ce257dbcb0ea9}\label{class_joy_stick_controller_a620d976b72923201e49ce257dbcb0ea9}} 
+\index{JoyStickController@{JoyStickController}!outerCircle@{outerCircle}}
+\index{outerCircle@{outerCircle}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{outerCircle}{outerCircle}}
+{\footnotesize\ttfamily Game\+Object Joy\+Stick\+Controller.\+outer\+Circle}
+
+
+
+A variable that contains the border which the button must reside in. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a9d43825847c88528ad762155c001c529}\label{class_joy_stick_controller_a9d43825847c88528ad762155c001c529}} 
+\index{JoyStickController@{JoyStickController}!player@{player}}
+\index{player@{player}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily Game\+Object Joy\+Stick\+Controller.\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the player game object. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_abab1c69cf68b385f695c685900ea7257}\label{class_joy_stick_controller_abab1c69cf68b385f695c685900ea7257}} 
+\index{JoyStickController@{JoyStickController}!playerController@{playerController}}
+\index{playerController@{playerController}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{playerController}{playerController}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Joy\+Stick\+Controller.\+player\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable holding a player controller that will be used to manipulate the player\textquotesingle{}s movement in the maze. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a1b573e954c312e4688c159bbfa20c3e6}\label{class_joy_stick_controller_a1b573e954c312e4688c159bbfa20c3e6}} 
+\index{JoyStickController@{JoyStickController}!pointA@{pointA}}
+\index{pointA@{pointA}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{pointA}{pointA}}
+{\footnotesize\ttfamily Vector2 Joy\+Stick\+Controller.\+pointA\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that specifies the player\textquotesingle{}s initial position. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a5638cc8b99277ab95ddee4ab91bd6db8}\label{class_joy_stick_controller_a5638cc8b99277ab95ddee4ab91bd6db8}} 
+\index{JoyStickController@{JoyStickController}!pointB@{pointB}}
+\index{pointB@{pointB}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{pointB}{pointB}}
+{\footnotesize\ttfamily Vector2 Joy\+Stick\+Controller.\+pointB\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that specifies the player\textquotesingle{}s next position based on the joystick\textquotesingle{}s movement. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a428383784fb782cbdc85c7c9419b267c}\label{class_joy_stick_controller_a428383784fb782cbdc85c7c9419b267c}} 
+\index{JoyStickController@{JoyStickController}!speed@{speed}}
+\index{speed@{speed}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Joy\+Stick\+Controller.\+speed = 5.\+0f}
+
+
+
+A variable that contains the player\textquotesingle{}s speed initialized to 5. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_abe90d52e0ae19b219542c637df3d5350}\label{class_joy_stick_controller_abe90d52e0ae19b219542c637df3d5350}} 
+\index{JoyStickController@{JoyStickController}!touchStart@{touchStart}}
+\index{touchStart@{touchStart}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{touchStart}{touchStart}}
+{\footnotesize\ttfamily bool Joy\+Stick\+Controller.\+touch\+Start = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean that will be used detect is player\textquotesingle{}s finger is on screen touching the joystick button. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a1e8c9c0e7fdc1370e188a19eb4769f83}\label{class_joy_stick_controller_a1e8c9c0e7fdc1370e188a19eb4769f83}} 
+\index{JoyStickController@{JoyStickController}!xCoord@{xCoord}}
+\index{xCoord@{xCoord}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{xCoord}{xCoord}}
+{\footnotesize\ttfamily float Joy\+Stick\+Controller.\+x\+Coord\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains x coordinate. 
+
+\mbox{\Hypertarget{class_joy_stick_controller_a2310be85f1d54e06e91feae6b9691a4c}\label{class_joy_stick_controller_a2310be85f1d54e06e91feae6b9691a4c}} 
+\index{JoyStickController@{JoyStickController}!yCoord@{yCoord}}
+\index{yCoord@{yCoord}!JoyStickController@{JoyStickController}}
+\doxysubsubsection{\texorpdfstring{yCoord}{yCoord}}
+{\footnotesize\ttfamily float Joy\+Stick\+Controller.\+y\+Coord\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains y coordinate. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Joy\+Stick\+Controller.\+cs\end{DoxyCompactItemize}

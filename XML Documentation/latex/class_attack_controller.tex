@@ -1,0 +1,170 @@
+\hypertarget{class_attack_controller}{}\doxysection{Attack\+Controller Class Reference}
+\label{class_attack_controller}\index{AttackController@{AttackController}}
+
+
+The controller class contains all the methods to generate the various attacks that will be given to the player a a reward or to penalize them.  
+
+
+Inheritance diagram for Attack\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_attack_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible for giving players abilities to slow, freeze or to kill the minions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}{Minion\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible for giving minions abilities to speed up themselves or to launch fire ball attack in four directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_attack_controller_a553e7eda2ba70b713133f5c28a3fe53d}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it is to gather all the minions and get the difficulty level selected by the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_a6d6c04ea6df082da79f79a104affa6da}{Freeze\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}} method, it is used to freeze the minions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_abee494c338b2660edd24480485299dcf}{Slow\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}} method, it is used slow down the minions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_a32ac1054f1f67051db681ad1a3cdab3f}{Player\+Glow}} ()
+\begin{DoxyCompactList}\small\item\em This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}}, it is used to enable players to be able to kill minions in a certain amount of time period. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_a6f736857da11c7587864de151060e420}{Speed\+Up\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method is used in \mbox{\hyperlink{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}{Minion\+Attack()}} method, it is used to speed up the minions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_attack_controller_a067206d1acb3c9c1f9a2425d65bc394f}{Fire\+Ball\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em The is used in the \mbox{\hyperlink{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}{Minion\+Attack()}} method, it it used by minions to launch fire ball attacks in four directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_attack_controller_a3f7be4a555d558b98cae2496570df1d9}{minions}}
+\begin{DoxyCompactList}\small\item\em A variable list holding all four minions in the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_attack_controller_a7b2c98168dd47782c1f1b767c3330b30}{chosen\+Level}}
+\begin{DoxyCompactList}\small\item\em A variable holding the player\textquotesingle{}s selected difficulty level. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_attack_controller_ac47295b88e39be178681e8ba3fe26828}{rn}}
+\begin{DoxyCompactList}\small\item\em A variable holding a random number generated and is used to randomly pick out an attack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The controller class contains all the methods to generate the various attacks that will be given to the player a a reward or to penalize them. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_attack_controller_a067206d1acb3c9c1f9a2425d65bc394f}\label{class_attack_controller_a067206d1acb3c9c1f9a2425d65bc394f}} 
+\index{AttackController@{AttackController}!FireBallAttack@{FireBallAttack}}
+\index{FireBallAttack@{FireBallAttack}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{FireBallAttack()}{FireBallAttack()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Fire\+Ball\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+The is used in the \mbox{\hyperlink{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}{Minion\+Attack()}} method, it it used by minions to launch fire ball attacks in four directions. 
+
+\mbox{\Hypertarget{class_attack_controller_a6d6c04ea6df082da79f79a104affa6da}\label{class_attack_controller_a6d6c04ea6df082da79f79a104affa6da}} 
+\index{AttackController@{AttackController}!FreezeMinions@{FreezeMinions}}
+\index{FreezeMinions@{FreezeMinions}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{FreezeMinions()}{FreezeMinions()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Freeze\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}} method, it is used to freeze the minions. 
+
+\mbox{\Hypertarget{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}\label{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}} 
+\index{AttackController@{AttackController}!MinionAttack@{MinionAttack}}
+\index{MinionAttack@{MinionAttack}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{MinionAttack()}{MinionAttack()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Minion\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible for giving minions abilities to speed up themselves or to launch fire ball attack in four directions. 
+
+\mbox{\Hypertarget{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}\label{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}} 
+\index{AttackController@{AttackController}!PlayerAttack@{PlayerAttack}}
+\index{PlayerAttack@{PlayerAttack}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{PlayerAttack()}{PlayerAttack()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Player\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible for giving players abilities to slow, freeze or to kill the minions. 
+
+\mbox{\Hypertarget{class_attack_controller_a32ac1054f1f67051db681ad1a3cdab3f}\label{class_attack_controller_a32ac1054f1f67051db681ad1a3cdab3f}} 
+\index{AttackController@{AttackController}!PlayerGlow@{PlayerGlow}}
+\index{PlayerGlow@{PlayerGlow}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{PlayerGlow()}{PlayerGlow()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Player\+Glow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}}, it is used to enable players to be able to kill minions in a certain amount of time period. 
+
+\mbox{\Hypertarget{class_attack_controller_abee494c338b2660edd24480485299dcf}\label{class_attack_controller_abee494c338b2660edd24480485299dcf}} 
+\index{AttackController@{AttackController}!SlowMinions@{SlowMinions}}
+\index{SlowMinions@{SlowMinions}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{SlowMinions()}{SlowMinions()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Slow\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used in \mbox{\hyperlink{class_attack_controller_a19e77c4d0520feab5d084bd81161f352}{Player\+Attack()}} method, it is used slow down the minions. 
+
+\mbox{\Hypertarget{class_attack_controller_a6f736857da11c7587864de151060e420}\label{class_attack_controller_a6f736857da11c7587864de151060e420}} 
+\index{AttackController@{AttackController}!SpeedUpMinions@{SpeedUpMinions}}
+\index{SpeedUpMinions@{SpeedUpMinions}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{SpeedUpMinions()}{SpeedUpMinions()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Speed\+Up\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used in \mbox{\hyperlink{class_attack_controller_a14085514ea50a48e3f76623ae9ca8b41}{Minion\+Attack()}} method, it is used to speed up the minions. 
+
+\mbox{\Hypertarget{class_attack_controller_a553e7eda2ba70b713133f5c28a3fe53d}\label{class_attack_controller_a553e7eda2ba70b713133f5c28a3fe53d}} 
+\index{AttackController@{AttackController}!Start@{Start}}
+\index{Start@{Start}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Attack\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it is to gather all the minions and get the difficulty level selected by the player. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_attack_controller_a7b2c98168dd47782c1f1b767c3330b30}\label{class_attack_controller_a7b2c98168dd47782c1f1b767c3330b30}} 
+\index{AttackController@{AttackController}!chosenLevel@{chosenLevel}}
+\index{chosenLevel@{chosenLevel}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{chosenLevel}{chosenLevel}}
+{\footnotesize\ttfamily int Attack\+Controller.\+chosen\+Level\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable holding the player\textquotesingle{}s selected difficulty level. 
+
+\mbox{\Hypertarget{class_attack_controller_a3f7be4a555d558b98cae2496570df1d9}\label{class_attack_controller_a3f7be4a555d558b98cae2496570df1d9}} 
+\index{AttackController@{AttackController}!minions@{minions}}
+\index{minions@{minions}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{minions}{minions}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Attack\+Controller.\+minions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable list holding all four minions in the maze. 
+
+\mbox{\Hypertarget{class_attack_controller_ac47295b88e39be178681e8ba3fe26828}\label{class_attack_controller_ac47295b88e39be178681e8ba3fe26828}} 
+\index{AttackController@{AttackController}!rn@{rn}}
+\index{rn@{rn}!AttackController@{AttackController}}
+\doxysubsubsection{\texorpdfstring{rn}{rn}}
+{\footnotesize\ttfamily int Attack\+Controller.\+rn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable holding a random number generated and is used to randomly pick out an attack. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Attack\+Controller.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,297 @@
+\hypertarget{class_multiplayer_scene_manager}{}\doxysection{Multiplayer\+Scene\+Manager Class Reference}
+\label{class_multiplayer_scene_manager}\index{MultiplayerSceneManager@{MultiplayerSceneManager}}
+
+
+This class is the main controller for all the activities throughout the entire multiplayer gameplay mode. This controller is responsible for coordinating the other sub controllers as well as providing the main methods to navigate between different pages.  
+
+
+Inheritance diagram for Multiplayer\+Scene\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_multiplayer_scene_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}{Page\+State}} \{ \newline
+{\bfseries None}, 
+{\bfseries Multiplayer\+Match}, 
+{\bfseries Play}, 
+{\bfseries Chest\+Pop\+Up}, 
+\newline
+{\bfseries Question\+Pop\+Up}, 
+{\bfseries Game\+Over\+Pop\+Up}
+ \}
+\begin{DoxyCompactList}\small\item\em A group of constants representing the different page states that the multiplayer game can be in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_ad6f358061ae8b8581c0c0f627962adad}{Set\+Page\+State}} (\mbox{\hyperlink{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}{Page\+State}} state)
+\begin{DoxyCompactList}\small\item\em This method is used to display the different pages based on the page request passed by the other public methods in the class, this will allow the players to navigate between different pages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_afecdd7547f92a128c6c3f46e67c804e9}{create\+New\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create a new game, initialize the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_a83bedf9ce3c6cff0e9f30b0c25a16189}{Start\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is called whenever player selects to play a game, the relevant world, topic and level selected details will be passed to the play game to generate the maze environment accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_afa2a0160a9304875a23bfbf7445a6720}{Chest\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called create the chest pop up animation when the player touches a chest in the maze environment while playing the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_a3f152c5cbf0d355a25cfb559c379c624}{Question\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the question pop up once the player touches a chest in the maze environment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_multiplayer_scene_manager_af300cc8da35151cc4f76e41e1e4fd54a}\label{class_multiplayer_scene_manager_af300cc8da35151cc4f76e41e1e4fd54a}} 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_af300cc8da35151cc4f76e41e1e4fd54a}{Show\+Loading}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display loading page. $<$/summary \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_multiplayer_scene_manager_afbd44da25c971e7fd682837deac41dfa}\label{class_multiplayer_scene_manager_afbd44da25c971e7fd682837deac41dfa}} 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_afbd44da25c971e7fd682837deac41dfa}{Hide\+Loading}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to hide loading page. $<$/summary \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_a12f5d5624677bea87eacd13f180a866c}{Multiplayer\+Matching\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display multiplayer match up page for both players. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_a84e9487533d64c8b16c00181c4debe4f}{Game\+Over\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display game over pop up page for both players. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_a1749ac34d8752a3c1b1ff34cf0f19256}{loading}}
+\begin{DoxyCompactList}\small\item\em A variable that contains loading game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_a56659a8b09e0aa519e44b37ce16ffc11}{multiplayer\+Match}}
+\begin{DoxyCompactList}\small\item\em A variable that contains multiplayer page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_ad743756ec9e6291ae01edb701b79e3a7}{play\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains play page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_ab6675f19bfbe11d9d4274bc9832c60b4}{chest\+Pop\+Up\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains chest pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_a63529b19eea60afdfc8aafff454ba727}{question\+Pop\+Up\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains question pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_aa8e4dc292c1d28c04705039f10ca98e4}{game\+Over\+Pop\+Up\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains game over pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_adfc9f53006e4b2f4d6f253708b9df0b8}{my\+Player}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current player game object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_multiplayer_scene_manager}{Multiplayer\+Scene\+Manager}} \mbox{\hyperlink{class_multiplayer_scene_manager_a1bb861c0ed1e2c47bc24d6d114b3f732}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an instance of \mbox{\hyperlink{class_multiplayer_scene_manager}{Multiplayer\+Scene\+Manager}} that allows other game object\textquotesingle{}s controllers to access the methods defined in this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_ab80d32c343c6ac98ceb6c45953744a01}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before Start() to initialize the Game\+Manager instance, display multiplayer maze environment and create player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multiplayer_scene_manager_a1ecd5cb760dc5d81fa32b600baf51268}{Create\+Player}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to create a player network controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_multiplayer_scene_manager_a6442dab45d288a75b4a7c259e5593111}{initial\+Play\+State}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the initial page state after the player selected multiplayer mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is the main controller for all the activities throughout the entire multiplayer gameplay mode. This controller is responsible for coordinating the other sub controllers as well as providing the main methods to navigate between different pages. 
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}\label{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!PageState@{PageState}}
+\index{PageState@{PageState}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{PageState}{PageState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}{Multiplayer\+Scene\+Manager.\+Page\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+A group of constants representing the different page states that the multiplayer game can be in. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_multiplayer_scene_manager_ab80d32c343c6ac98ceb6c45953744a01}\label{class_multiplayer_scene_manager_ab80d32c343c6ac98ceb6c45953744a01}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!Awake@{Awake}}
+\index{Awake@{Awake}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before Start() to initialize the Game\+Manager instance, display multiplayer maze environment and create player. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_afa2a0160a9304875a23bfbf7445a6720}\label{class_multiplayer_scene_manager_afa2a0160a9304875a23bfbf7445a6720}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!ChestPopUp@{ChestPopUp}}
+\index{ChestPopUp@{ChestPopUp}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{ChestPopUp()}{ChestPopUp()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Chest\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called create the chest pop up animation when the player touches a chest in the maze environment while playing the game. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_afecdd7547f92a128c6c3f46e67c804e9}\label{class_multiplayer_scene_manager_afecdd7547f92a128c6c3f46e67c804e9}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!createNewGame@{createNewGame}}
+\index{createNewGame@{createNewGame}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{createNewGame()}{createNewGame()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+create\+New\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to create a new game, initialize the maze environment. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a1ecd5cb760dc5d81fa32b600baf51268}\label{class_multiplayer_scene_manager_a1ecd5cb760dc5d81fa32b600baf51268}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!CreatePlayer@{CreatePlayer}}
+\index{CreatePlayer@{CreatePlayer}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{CreatePlayer()}{CreatePlayer()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Create\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to create a player network controller. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a84e9487533d64c8b16c00181c4debe4f}\label{class_multiplayer_scene_manager_a84e9487533d64c8b16c00181c4debe4f}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!GameOverPopUp@{GameOverPopUp}}
+\index{GameOverPopUp@{GameOverPopUp}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{GameOverPopUp()}{GameOverPopUp()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Game\+Over\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display game over pop up page for both players. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a12f5d5624677bea87eacd13f180a866c}\label{class_multiplayer_scene_manager_a12f5d5624677bea87eacd13f180a866c}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!MultiplayerMatchingUI@{MultiplayerMatchingUI}}
+\index{MultiplayerMatchingUI@{MultiplayerMatchingUI}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{MultiplayerMatchingUI()}{MultiplayerMatchingUI()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Multiplayer\+Matching\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display multiplayer match up page for both players. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a3f152c5cbf0d355a25cfb559c379c624}\label{class_multiplayer_scene_manager_a3f152c5cbf0d355a25cfb559c379c624}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!QuestionPopUp@{QuestionPopUp}}
+\index{QuestionPopUp@{QuestionPopUp}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{QuestionPopUp()}{QuestionPopUp()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Question\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the question pop up once the player touches a chest in the maze environment. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_ad6f358061ae8b8581c0c0f627962adad}\label{class_multiplayer_scene_manager_ad6f358061ae8b8581c0c0f627962adad}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!SetPageState@{SetPageState}}
+\index{SetPageState@{SetPageState}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{SetPageState()}{SetPageState()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Set\+Page\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_multiplayer_scene_manager_ada1899083fc6f41d4169500030579ae4}{Page\+State}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to display the different pages based on the page request passed by the other public methods in the class, this will allow the players to navigate between different pages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The player\textquotesingle{}s selected page state.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a83bedf9ce3c6cff0e9f30b0c25a16189}\label{class_multiplayer_scene_manager_a83bedf9ce3c6cff0e9f30b0c25a16189}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!StartGame@{StartGame}}
+\index{StartGame@{StartGame}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{StartGame()}{StartGame()}}
+{\footnotesize\ttfamily void Multiplayer\+Scene\+Manager.\+Start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called whenever player selects to play a game, the relevant world, topic and level selected details will be passed to the play game to generate the maze environment accordingly. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_multiplayer_scene_manager_ab6675f19bfbe11d9d4274bc9832c60b4}\label{class_multiplayer_scene_manager_ab6675f19bfbe11d9d4274bc9832c60b4}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!chestPopUpPage@{chestPopUpPage}}
+\index{chestPopUpPage@{chestPopUpPage}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{chestPopUpPage}{chestPopUpPage}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+chest\+Pop\+Up\+Page}
+
+
+
+A variable that contains chest pop up page game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_aa8e4dc292c1d28c04705039f10ca98e4}\label{class_multiplayer_scene_manager_aa8e4dc292c1d28c04705039f10ca98e4}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!gameOverPopUpPage@{gameOverPopUpPage}}
+\index{gameOverPopUpPage@{gameOverPopUpPage}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{gameOverPopUpPage}{gameOverPopUpPage}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+game\+Over\+Pop\+Up\+Page}
+
+
+
+A variable that contains game over pop up page game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a6442dab45d288a75b4a7c259e5593111}\label{class_multiplayer_scene_manager_a6442dab45d288a75b4a7c259e5593111}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!initialPlayState@{initialPlayState}}
+\index{initialPlayState@{initialPlayState}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{initialPlayState}{initialPlayState}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+initial\+Play\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the initial page state after the player selected multiplayer mode. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a1bb861c0ed1e2c47bc24d6d114b3f732}\label{class_multiplayer_scene_manager_a1bb861c0ed1e2c47bc24d6d114b3f732}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!Instance@{Instance}}
+\index{Instance@{Instance}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_multiplayer_scene_manager}{Multiplayer\+Scene\+Manager}} Multiplayer\+Scene\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains an instance of \mbox{\hyperlink{class_multiplayer_scene_manager}{Multiplayer\+Scene\+Manager}} that allows other game object\textquotesingle{}s controllers to access the methods defined in this class. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a1749ac34d8752a3c1b1ff34cf0f19256}\label{class_multiplayer_scene_manager_a1749ac34d8752a3c1b1ff34cf0f19256}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!loading@{loading}}
+\index{loading@{loading}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{loading}{loading}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+loading}
+
+
+
+A variable that contains loading game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a56659a8b09e0aa519e44b37ce16ffc11}\label{class_multiplayer_scene_manager_a56659a8b09e0aa519e44b37ce16ffc11}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!multiplayerMatch@{multiplayerMatch}}
+\index{multiplayerMatch@{multiplayerMatch}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{multiplayerMatch}{multiplayerMatch}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+multiplayer\+Match}
+
+
+
+A variable that contains multiplayer page game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_adfc9f53006e4b2f4d6f253708b9df0b8}\label{class_multiplayer_scene_manager_adfc9f53006e4b2f4d6f253708b9df0b8}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!myPlayer@{myPlayer}}
+\index{myPlayer@{myPlayer}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{myPlayer}{myPlayer}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+my\+Player}
+
+
+
+A variable that contains the current player game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_ad743756ec9e6291ae01edb701b79e3a7}\label{class_multiplayer_scene_manager_ad743756ec9e6291ae01edb701b79e3a7}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!playPage@{playPage}}
+\index{playPage@{playPage}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{playPage}{playPage}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+play\+Page}
+
+
+
+A variable that contains play page game object. 
+
+\mbox{\Hypertarget{class_multiplayer_scene_manager_a63529b19eea60afdfc8aafff454ba727}\label{class_multiplayer_scene_manager_a63529b19eea60afdfc8aafff454ba727}} 
+\index{MultiplayerSceneManager@{MultiplayerSceneManager}!questionPopUpPage@{questionPopUpPage}}
+\index{questionPopUpPage@{questionPopUpPage}!MultiplayerSceneManager@{MultiplayerSceneManager}}
+\doxysubsubsection{\texorpdfstring{questionPopUpPage}{questionPopUpPage}}
+{\footnotesize\ttfamily Game\+Object Multiplayer\+Scene\+Manager.\+question\+Pop\+Up\+Page}
+
+
+
+A variable that contains question pop up page game object. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/\+Multiplayer Scripts/Multiplayer\+Scene\+Manager.\+cs\end{DoxyCompactItemize}

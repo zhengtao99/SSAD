@@ -8,33 +8,98 @@ using UnityEngine.Networking;
 using System.Linq;
 using Photon.Pun;
 
+/// <summary>
+/// This controller class  holds the methods responsible for the player's movements, score and life updates in the game.
+/// </summary>
 public class MyPlayerController : MonoBehaviour
 {
+    /// <summary>
+    /// A PhotonView variable that will hold the other image of the maze. It is used in multiplayer gameplay mode.
+    /// </summary>
     private PhotonView PV;
 
+    /// <summary>
+    /// A delegate variable used to detect player events. 
+    /// </summary>
     public delegate void PlayerDelegate(int value);
+
+    /// <summary>
+    /// A event variable that will receive the delegate notification when player dies.
+    /// </summary>
     public static event PlayerDelegate OnPlayerDied;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// A variable that contains the player's rigidbody2D component used to detect collisions.
+    /// </summary>
     private Rigidbody2D rb;
+
+    /// <summary>
+    /// A variable that contains the player's move velocity.
+    /// </summary>
     private Vector2 moveVelocity;
+
+    /// <summary>
+    /// A variable that contains player's speed.
+    /// </summary>
     public float speed;
 
+    /// <summary>
+    /// A variable that contains player's score accumulated in the one game run.
+    /// </summary>
     public int Score = 0;
+
+    /// <summary>
+    /// A variable that contains my score text.
+    /// </summary>
     private Text myScoreText;
+
+    /// <summary>
+    /// A variable that contains score.
+    /// </summary>
     int score = 0;
 
+    /// <summary>
+    /// A variable that contains the heart array.
+    /// </summary>
     private GameObject[] heartArr;
+
+    /// <summary>
+    /// A variable that contains player's lives count initialized to 3.
+    /// </summary>
     private int countLife = 3;
+    /// <summary>
+    /// A variable that contains unity defined explosion effect game object.
+    /// </summary>
     private UnityEngine.Object explosionRef;
+
+    /// <summary>
+    /// A variable that contains a boolean to check if the player has collided with minions or answered a question wrongly, this is used to decrease the player's lives accordingly.
+    /// </summary>
     public bool isInjured = false;
+
+    /// <summary>
+    /// A variable that contains an array of minion gameobjects.
+    /// </summary>
     private GameObject[] minions;
+
+    /// <summary>
+    /// A variable that contains boolean to check if player is freezed to restrict the player's movement in the maze.
+    /// </summary>
     bool isFreeze;
 
+    /// <summary>
+    /// A variable that contains a boolean to check if the game is paused, it is used to restrict the player's movement is the game is paused.
+    /// </summary>
     public bool isPause = false;
+
+    /// <summary>
+    /// A variable that contains player's facing direction.
+    /// </summary>
     private int direction;
-    //public Text txt;
-    // Update is called once per frame
+
+    /// <summary>
+    /// This method is called to initialize all of the parameters in the myplayer controller to set up the initial game play environment.
+    /// </summary>
     private void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -65,6 +130,9 @@ public class MyPlayerController : MonoBehaviour
         direction = 4;
     }
 
+    /// <summary>
+    /// This method is called once per frame to update the player's moveInput according to the input received from the joystick manipulation.
+    /// </summary>
     void Update()
     {
         if (PV.IsMine)
@@ -109,6 +177,11 @@ public class MyPlayerController : MonoBehaviour
             //moveVelocity = moveInput.normalized * speed;
         }
     }
+
+
+    /// <summary>
+    /// This method is called one per frame to move the player rigidbody2D component according to the moveInput
+    /// </summary>
     private void FixedUpdate()
     {
         if (PV.IsMine)
@@ -123,6 +196,13 @@ public class MyPlayerController : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// <para>
+    /// This method is called on collision and it will check if the collided game object is a coin or minion and does the manipulation accordingly. 
+    /// Coin will increase the player's points and minion will decrease the player's lives.
+    /// </para>
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Coin")
@@ -175,6 +255,9 @@ public class MyPlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method is called to update the player's score on coin accumulated as well as the number of questions answered correctly.
+    /// </summary>
     public void ScoreUpdate(int point = 10)
     {
         score += point;
@@ -182,6 +265,9 @@ public class MyPlayerController : MonoBehaviour
         RoomController.Instance.ScoreUpdateOtherSide(score);
     }
 
+    /// <summary>
+    /// This method is called to update the player's lives remaining in the game.
+    /// </summary>
     public void LifeUpdate()
     {
         countLife -= 1;
@@ -206,6 +292,9 @@ public class MyPlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method is called once the player touches a minion, it will display the hurt effect.
+    /// </summary>
     IEnumerator hit()
     {
         FindObjectOfType<SoundManager>().Play("CharacterHit");
@@ -224,6 +313,9 @@ public class MyPlayerController : MonoBehaviour
         yield return null;
     }
 
+    /// <summary>
+    /// This method is called to resume game play. ALlow minions and player to move again.
+    /// </summary>
     public void ResumeGame()
     {
         foreach (GameObject minion in minions)
@@ -236,6 +328,9 @@ public class MyPlayerController : MonoBehaviour
             isPause = false;
     }
 
+    /// <summary>
+    /// This method is called to pause game play, restricting minions and player's movement.
+    /// </summary>
     void PauseGame()
     {
         foreach (GameObject minion in minions)
@@ -246,26 +341,41 @@ public class MyPlayerController : MonoBehaviour
             isPause = true;
     }
 
+    /// <summary>
+    /// This method is called to set the direction = 1, pointing to left.
+    /// </summary>
     public void moveLeft()
     {
         direction = 1;
     }
 
+    /// <summary>
+    /// This method is called to set the direction = 0, pointing to right.
+    /// </summary>
     public void moveRight()
     {
         direction = 0;
     }
 
+    /// <summary>
+    /// This method is called to set the direction = 2, pointing to up.
+    /// </summary>
     public void moveUp()
     {
         direction = 2;
     }
 
+    /// <summary>
+    /// This method is called to set the direction = 3, pointing to down.
+    /// </summary>
     public void moveDown()
     {
         direction = 3;
     }
 
+    /// <summary>
+    /// This method is called to set the direction = -1, pointing to no directions.
+    /// </summary>
     public void stopMove()
     {
         direction = -1;

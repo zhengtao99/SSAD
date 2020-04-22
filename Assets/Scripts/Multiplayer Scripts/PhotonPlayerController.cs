@@ -6,17 +6,44 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This controller class holds the method to generate two views for the players to play in the same maze environment.
+/// </summary>
 public class PhotonPlayerController : MonoBehaviour
 {
+    /// <summary>
+    /// A PhotonView variable to store a copy of the maze environment.
+    /// </summary>
     private PhotonView PV;
+
+    /// <summary>
+    /// A variable that holds the spawn point for player 1.
+    /// </summary>
     public Transform spawnPoint_1;
+
+    /// <summary>
+    /// A variable that holds the spawn point for player 2.
+    /// </summary>
     public Transform spawnPoint_2;
+
+    /// <summary>
+    /// A variable that holds the spawn life points for player 1.
+    /// </summary>
     public Transform spawnLivesPoint_1;
+
+    /// <summary>
+    /// A variable that holds the spawn life points for player 1.
+    /// </summary>
     public Transform spawnLivesPoint_2;
 
+    /// <summary>
+    /// A variable that holds the current player in the game client
+    /// </summary>
     public GameObject myPlayer;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// This method is called before the first frame update, it will instantiate the copy of the maze environment, spawns the players and start their lives. The players are differentiate by master and slave game clients.
+    /// </summary>
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -61,9 +88,4 @@ public class PhotonPlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

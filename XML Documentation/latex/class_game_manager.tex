@@ -1,0 +1,827 @@
+\hypertarget{class_game_manager}{}\doxysection{Game\+Manager Class Reference}
+\label{class_game_manager}\index{GameManager@{GameManager}}
+
+
+This class is the main controller for all the activities throughout the entire Learnable Mobile Game Application. This controller is responsible for coordinating the other sub controllers as well as providing the main methods to navigate between different pages.  
+
+
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}{Page\+State}} \{ \newline
+{\bfseries None}, 
+{\bfseries Profile}, 
+{\bfseries Ready}, 
+{\bfseries Play}, 
+\newline
+{\bfseries Game\+Over}, 
+{\bfseries Chest\+Pop\+Up}, 
+{\bfseries World\+UI}, 
+{\bfseries Section\+UI}, 
+\newline
+{\bfseries Question\+Pop\+Up}, 
+{\bfseries Level\+UI}, 
+{\bfseries Unlocked\+Level\+Pop\+Up}, 
+{\bfseries Completed\+Level\+Pop\+Up}, 
+\newline
+{\bfseries Game\+Win}, 
+{\bfseries Leaderboard\+Page}, 
+{\bfseries Multiplayer\+Page}, 
+{\bfseries Mode\+Page}, 
+\newline
+{\bfseries Online\+Player\+Listings\+Page}, 
+{\bfseries Multiplayer\+Match\+Page}
+ \}
+\begin{DoxyCompactList}\small\item\em A group of constants representing the different page states that the game can be in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_abde27e642c6ea3faa9fcb186f949159f}{Set\+Page\+State}} (\mbox{\hyperlink{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}{Page\+State}} state)
+\begin{DoxyCompactList}\small\item\em This private method is used to display the different pages based on the page request passed by the other public methods in the class, this will allow the players to navigate between different pages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a77313870794e0b4ea1bc779136dbbf04}{Logout}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to perform player logout. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_manager_aacacec46807cbb338c459be7ba493638}\label{class_game_manager_aacacec46807cbb338c459be7ba493638}} 
+void {\bfseries World\+UI} ()
+\item 
+void \mbox{\hyperlink{class_game_manager_a347967e19539988245a0eb6fa8bb2220}{create\+New\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create a new game, initialize the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a9193c24424f6a10c7d9df407264ed4fa}{Start\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is called whenever player selects to play a game, the relevant world, topic and level selected details will be passed to the play game to generate the maze environment accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ac2938a230f8d02be04e5a75f77eb0737}{Chest\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called create the chest pop up animation when the player touches a chest in the maze environment while playing the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_acdfa594787b081b56d986fa149a0cc05}{section\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to navigate the player to the ready page, where he/she can select topics to play the game in for specific worlds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ad046a402d9bf23404ada34cf860a0f6f}{world\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to navigate the player to the world page after successful login. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ac31c4316e844c26eaae414238991c913}{Question\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the question pop up once the player touches a chest in the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a24858d0c07a13c437d67f5ba549a92d1}{level\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to navigate the player to level selection page after selecting a topic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a2931eaa80e34420abf1a1c398ba73347}{load\+Level\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called display a loading page while the system proceeds to retrieve the available levels for a topic selected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a5bf1e712499a0871714d63637a1419e1}{load\+Cleared\+Stages}} (int Topic\+Id)
+\begin{DoxyCompactList}\small\item\em This method is called to load the cleared stages based on topic selected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a4517f2839809ce3c7891656adcbde594}{pop\+Up\+Unlocked\+Level\+Board}} ()
+\begin{DoxyCompactList}\small\item\em This method is called display unlocked level pop up for player\textquotesingle{}s selected level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ab6b2a84c66641e0dd64241b44c8694ee}{pop\+Up\+U\+Completed\+Level\+Board}} ()
+\begin{DoxyCompactList}\small\item\em This method is called display completed level pop up for player\textquotesingle{}s selected level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ac5dd01f0bb54258b327b0a40f4d5c489}{Show\+Loading}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display loading page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ab41affe0ca6be0295a6a9c9be20b3813}{Hide\+Loading}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to disable loading page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ab4cd702e5cc221bb82f2aaddafaed3c7}{Show\+Invitation}} (string sender\+Name)
+\begin{DoxyCompactList}\small\item\em This method is called to display the invitation on the other player\textquotesingle{}s screen once the current player selects to send invitiation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ae0abdeedb0fef30abc3a1f3e49945dfe}{Hide\+Invitation}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to remove the invitation on the oplayer\textquotesingle{}s screen on accept or decline invitation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_afa8a15f040eb34f5a8f940e2da593de0}{Show\+Waiting\+Board}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display waiting board when the current player sends an invitation, the player will be waiting for a response. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a853ebf22be5b241c1e9704a62d1e7714}{Hide\+Waiting\+Board}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to remove the waiting waiting board once the receiving player accepts or declines the invitation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a5c1286c435251688b7879fc5195deb21}{Enter\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the game over pop up page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a3bad9e5a6e21e19f97e8e71fb06ddf8a}{Enter\+Game\+Win}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the game win pop up page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ac35445febacea79a607734e5cf49df9f}{View\+Leaderboard}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the leaderboard page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a6c216d41b4f0ad24db83a71a5a2d6c67}{Ready}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the topic selection page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_ae3e0b7f8cbaaf7d87740cd8674136a60}{multi\+Player}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the multiplayer page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_af7f35b86a4829ad4dd121f912a139a41}{Mode\+Page}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display the mode selection page between single or multiplayer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_acb97cb8c7d993d862807586997e28af1}{Online\+Player\+Listings\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display online player listing page for the player that will be sending the invitation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a020d81f4e625f879bc6359e8ccc1f6dd}{Multiplayer\+Match\+UI}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to display multiplayer match up page for both players. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a1882ee28221aee6ff5978cb3be5f642d}{loading}}
+\begin{DoxyCompactList}\small\item\em A variable that contains loading game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a26d9fef9d98b91adf0e5106833afa0d6}{invitation}}
+\begin{DoxyCompactList}\small\item\em A variable that contains inivitation page game object used in multiplayer gamemode. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_aefb67a1c6132b52d61b7a28ed996f34e}{profile\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains profile page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_ad8165da9319ea1a6649666e01e492613}{ready\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains ready page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a38a0d02b3f50d5bda9e3a500fa8d8f26}{start\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains start page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_ab074f1900166c492588f475bcf86cd75}{play\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains play page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a30c88d072af58a7005747c0d510468c1}{game\+Over\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains game over page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_ad1074e4b3fcea41253248ec22f36677f}{chest\+Pop\+Up\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains chest pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a25f733bb3526c507638764077debdbb8}{world\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains world page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a4b23a8ca44805fa65a3ee89aed5ac80e}{section\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains section/topic page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a5e32178c98dbad8de305a7c13e25f466}{question\+Pop\+Up\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains question pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a30cc7bf83daaa8763ee11708ce178bda}{level\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains level page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a880ea31c0de2dc614d5e73d00f4ef9aa}{unlocked\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains unlocked level pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_ac52d8af13d925781c219b6a1e89ab629}{completed\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains completed level pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a1c08c42acddd84f51f1a74df68f23fbf}{win\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains win level pop up page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a3d57a36667222a957fcbcd61527a4139}{leaderboard\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains leaderboard page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a7ef97cf39773bc06a19a27185a3eb478}{multi\+Player\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains multiplayer page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a1a8940b9613af268f45caca57df995f0}{mode\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains mode page game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_acafc4ba9de87949b2ddbda251b5fb906}{online\+Player\+Listings\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains online player listing page used in multiplayer gameplay. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_af26a1a8c68bd9c4a15e452f72515cc57}{warning\+In\+Mode\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains warning page. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_game_manager_a550945bb9217b18feaec524fbd1f575d}{Invitation\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the text in the invitation game object that is used in multiplayer gameplay. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_ab8b86637ee3ce8e10fbb7ff02cf372ed}{waiting\+Board}}
+\begin{DoxyCompactList}\small\item\em A variable that contains waiting board that is used in multiplayer gameplay. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_acf9e67bb2a11fcf694f7930b5061ca2e}{mutiplayer\+Match\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains multiplayer match up page used in multiplayer gameplay. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a61977800801c848063c88f9488b656bf}{btn\+Logout}}
+\begin{DoxyCompactList}\small\item\em A variable that logout button game object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_game_manager_a3bb63d0e7caed835438b1ba939ed828a}{invitation\+Sender}}
+\begin{DoxyCompactList}\small\item\em A variable that will be used to store the identity of the player that sents the invitation. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_game_manager_a398d163978e15786ef9cea1be1c877d9}{score\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the score text UI object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} \mbox{\hyperlink{class_game_manager_ad3e717f4fb0f378b969f4457de81f23e}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an instance of \mbox{\hyperlink{class_game_manager}{Game\+Manager}} that allows other game object\textquotesingle{}s controllers to access the methods defined in this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_game_manager_a220de93aa04e6a8ade1f942362ab0606}{Game\+Over}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em This method is used to retrieve the value of game\+Over variable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_a5ccfacd027ad08eeb4ff1f25a7f59c98}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it is used to initialize the chosen\+Level variable as well as setting the logout button as inactive. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_manager_a2959177ee51ac31badbf8b1bc8f7f637}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before \mbox{\hyperlink{class_game_manager_a5ccfacd027ad08eeb4ff1f25a7f59c98}{Start()}} to initialize the \mbox{\hyperlink{class_game_manager}{Game\+Manager}} instance, display login page on game launch and set play page to false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_game_manager_a1ee345f91daefe4ecce616120b5ae3bd}{initial\+Play\+State}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the initial page state after the player has login to the game client. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_manager_a0a627951bc0185004d560561efe3ce18}{chosen\+Level}} =0
+\begin{DoxyCompactList}\small\item\em A variable that contains the player\textquotesingle{}s select level of difficulty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_manager_a9485ac4fa69d5415e0ed614177a4c8f1}{game\+Over}} = true
+\begin{DoxyCompactList}\small\item\em A variable that contains the boolean to check if the game is still ongoing. If it is not, it will be true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is the main controller for all the activities throughout the entire Learnable Mobile Game Application. This controller is responsible for coordinating the other sub controllers as well as providing the main methods to navigate between different pages. 
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}\label{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}} 
+\index{GameManager@{GameManager}!PageState@{PageState}}
+\index{PageState@{PageState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{PageState}{PageState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}{Game\+Manager.\+Page\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+A group of constants representing the different page states that the game can be in. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_manager_a2959177ee51ac31badbf8b1bc8f7f637}\label{class_game_manager_a2959177ee51ac31badbf8b1bc8f7f637}} 
+\index{GameManager@{GameManager}!Awake@{Awake}}
+\index{Awake@{Awake}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before \mbox{\hyperlink{class_game_manager_a5ccfacd027ad08eeb4ff1f25a7f59c98}{Start()}} to initialize the \mbox{\hyperlink{class_game_manager}{Game\+Manager}} instance, display login page on game launch and set play page to false. 
+
+\mbox{\Hypertarget{class_game_manager_ac2938a230f8d02be04e5a75f77eb0737}\label{class_game_manager_ac2938a230f8d02be04e5a75f77eb0737}} 
+\index{GameManager@{GameManager}!ChestPopUp@{ChestPopUp}}
+\index{ChestPopUp@{ChestPopUp}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ChestPopUp()}{ChestPopUp()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Chest\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called create the chest pop up animation when the player touches a chest in the maze environment while playing the game. 
+
+\mbox{\Hypertarget{class_game_manager_a347967e19539988245a0eb6fa8bb2220}\label{class_game_manager_a347967e19539988245a0eb6fa8bb2220}} 
+\index{GameManager@{GameManager}!createNewGame@{createNewGame}}
+\index{createNewGame@{createNewGame}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{createNewGame()}{createNewGame()}}
+{\footnotesize\ttfamily void Game\+Manager.\+create\+New\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to create a new game, initialize the maze environment. 
+
+\mbox{\Hypertarget{class_game_manager_a5c1286c435251688b7879fc5195deb21}\label{class_game_manager_a5c1286c435251688b7879fc5195deb21}} 
+\index{GameManager@{GameManager}!EnterGameOver@{EnterGameOver}}
+\index{EnterGameOver@{EnterGameOver}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{EnterGameOver()}{EnterGameOver()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Enter\+Game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the game over pop up page. 
+
+\mbox{\Hypertarget{class_game_manager_a3bad9e5a6e21e19f97e8e71fb06ddf8a}\label{class_game_manager_a3bad9e5a6e21e19f97e8e71fb06ddf8a}} 
+\index{GameManager@{GameManager}!EnterGameWin@{EnterGameWin}}
+\index{EnterGameWin@{EnterGameWin}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{EnterGameWin()}{EnterGameWin()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Enter\+Game\+Win (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the game win pop up page. 
+
+\mbox{\Hypertarget{class_game_manager_ae0abdeedb0fef30abc3a1f3e49945dfe}\label{class_game_manager_ae0abdeedb0fef30abc3a1f3e49945dfe}} 
+\index{GameManager@{GameManager}!HideInvitation@{HideInvitation}}
+\index{HideInvitation@{HideInvitation}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{HideInvitation()}{HideInvitation()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Hide\+Invitation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to remove the invitation on the oplayer\textquotesingle{}s screen on accept or decline invitation 
+
+\mbox{\Hypertarget{class_game_manager_ab41affe0ca6be0295a6a9c9be20b3813}\label{class_game_manager_ab41affe0ca6be0295a6a9c9be20b3813}} 
+\index{GameManager@{GameManager}!HideLoading@{HideLoading}}
+\index{HideLoading@{HideLoading}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{HideLoading()}{HideLoading()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Hide\+Loading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to disable loading page. 
+
+\mbox{\Hypertarget{class_game_manager_a853ebf22be5b241c1e9704a62d1e7714}\label{class_game_manager_a853ebf22be5b241c1e9704a62d1e7714}} 
+\index{GameManager@{GameManager}!HideWaitingBoard@{HideWaitingBoard}}
+\index{HideWaitingBoard@{HideWaitingBoard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{HideWaitingBoard()}{HideWaitingBoard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Hide\+Waiting\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to remove the waiting waiting board once the receiving player accepts or declines the invitation. 
+
+\mbox{\Hypertarget{class_game_manager_a24858d0c07a13c437d67f5ba549a92d1}\label{class_game_manager_a24858d0c07a13c437d67f5ba549a92d1}} 
+\index{GameManager@{GameManager}!levelUI@{levelUI}}
+\index{levelUI@{levelUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{levelUI()}{levelUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+level\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to navigate the player to level selection page after selecting a topic. 
+
+\mbox{\Hypertarget{class_game_manager_a5bf1e712499a0871714d63637a1419e1}\label{class_game_manager_a5bf1e712499a0871714d63637a1419e1}} 
+\index{GameManager@{GameManager}!loadClearedStages@{loadClearedStages}}
+\index{loadClearedStages@{loadClearedStages}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{loadClearedStages()}{loadClearedStages()}}
+{\footnotesize\ttfamily void Game\+Manager.\+load\+Cleared\+Stages (\begin{DoxyParamCaption}\item[{int}]{Topic\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to load the cleared stages based on topic selected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Topic\+Id} & Player\textquotesingle{}s selected topic id.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_manager_a2931eaa80e34420abf1a1c398ba73347}\label{class_game_manager_a2931eaa80e34420abf1a1c398ba73347}} 
+\index{GameManager@{GameManager}!loadLevelUI@{loadLevelUI}}
+\index{loadLevelUI@{loadLevelUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{loadLevelUI()}{loadLevelUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+load\+Level\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called display a loading page while the system proceeds to retrieve the available levels for a topic selected. 
+
+\mbox{\Hypertarget{class_game_manager_a77313870794e0b4ea1bc779136dbbf04}\label{class_game_manager_a77313870794e0b4ea1bc779136dbbf04}} 
+\index{GameManager@{GameManager}!Logout@{Logout}}
+\index{Logout@{Logout}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Logout()}{Logout()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to perform player logout. 
+
+\mbox{\Hypertarget{class_game_manager_af7f35b86a4829ad4dd121f912a139a41}\label{class_game_manager_af7f35b86a4829ad4dd121f912a139a41}} 
+\index{GameManager@{GameManager}!ModePage@{ModePage}}
+\index{ModePage@{ModePage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ModePage()}{ModePage()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Mode\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the mode selection page between single or multiplayer. 
+
+\mbox{\Hypertarget{class_game_manager_ae3e0b7f8cbaaf7d87740cd8674136a60}\label{class_game_manager_ae3e0b7f8cbaaf7d87740cd8674136a60}} 
+\index{GameManager@{GameManager}!multiPlayer@{multiPlayer}}
+\index{multiPlayer@{multiPlayer}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{multiPlayer()}{multiPlayer()}}
+{\footnotesize\ttfamily void Game\+Manager.\+multi\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the multiplayer page. 
+
+\mbox{\Hypertarget{class_game_manager_a020d81f4e625f879bc6359e8ccc1f6dd}\label{class_game_manager_a020d81f4e625f879bc6359e8ccc1f6dd}} 
+\index{GameManager@{GameManager}!MultiplayerMatchUI@{MultiplayerMatchUI}}
+\index{MultiplayerMatchUI@{MultiplayerMatchUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{MultiplayerMatchUI()}{MultiplayerMatchUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Multiplayer\+Match\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display multiplayer match up page for both players. 
+
+\mbox{\Hypertarget{class_game_manager_acb97cb8c7d993d862807586997e28af1}\label{class_game_manager_acb97cb8c7d993d862807586997e28af1}} 
+\index{GameManager@{GameManager}!OnlinePlayerListingsUI@{OnlinePlayerListingsUI}}
+\index{OnlinePlayerListingsUI@{OnlinePlayerListingsUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{OnlinePlayerListingsUI()}{OnlinePlayerListingsUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Online\+Player\+Listings\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display online player listing page for the player that will be sending the invitation. 
+
+\mbox{\Hypertarget{class_game_manager_ab6b2a84c66641e0dd64241b44c8694ee}\label{class_game_manager_ab6b2a84c66641e0dd64241b44c8694ee}} 
+\index{GameManager@{GameManager}!popUpUCompletedLevelBoard@{popUpUCompletedLevelBoard}}
+\index{popUpUCompletedLevelBoard@{popUpUCompletedLevelBoard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{popUpUCompletedLevelBoard()}{popUpUCompletedLevelBoard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+pop\+Up\+U\+Completed\+Level\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called display completed level pop up for player\textquotesingle{}s selected level. 
+
+\mbox{\Hypertarget{class_game_manager_a4517f2839809ce3c7891656adcbde594}\label{class_game_manager_a4517f2839809ce3c7891656adcbde594}} 
+\index{GameManager@{GameManager}!popUpUnlockedLevelBoard@{popUpUnlockedLevelBoard}}
+\index{popUpUnlockedLevelBoard@{popUpUnlockedLevelBoard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{popUpUnlockedLevelBoard()}{popUpUnlockedLevelBoard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+pop\+Up\+Unlocked\+Level\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called display unlocked level pop up for player\textquotesingle{}s selected level. 
+
+\mbox{\Hypertarget{class_game_manager_ac31c4316e844c26eaae414238991c913}\label{class_game_manager_ac31c4316e844c26eaae414238991c913}} 
+\index{GameManager@{GameManager}!QuestionPopUp@{QuestionPopUp}}
+\index{QuestionPopUp@{QuestionPopUp}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{QuestionPopUp()}{QuestionPopUp()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Question\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the question pop up once the player touches a chest in the maze environment. 
+
+\mbox{\Hypertarget{class_game_manager_a6c216d41b4f0ad24db83a71a5a2d6c67}\label{class_game_manager_a6c216d41b4f0ad24db83a71a5a2d6c67}} 
+\index{GameManager@{GameManager}!Ready@{Ready}}
+\index{Ready@{Ready}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Ready()}{Ready()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the topic selection page. 
+
+\mbox{\Hypertarget{class_game_manager_acdfa594787b081b56d986fa149a0cc05}\label{class_game_manager_acdfa594787b081b56d986fa149a0cc05}} 
+\index{GameManager@{GameManager}!sectionUI@{sectionUI}}
+\index{sectionUI@{sectionUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{sectionUI()}{sectionUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+section\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to navigate the player to the ready page, where he/she can select topics to play the game in for specific worlds. 
+
+\mbox{\Hypertarget{class_game_manager_abde27e642c6ea3faa9fcb186f949159f}\label{class_game_manager_abde27e642c6ea3faa9fcb186f949159f}} 
+\index{GameManager@{GameManager}!SetPageState@{SetPageState}}
+\index{SetPageState@{SetPageState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SetPageState()}{SetPageState()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Set\+Page\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_manager_acee1d1ab076b1c8d8e9bbd9f1b1a280e}{Page\+State}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This private method is used to display the different pages based on the page request passed by the other public methods in the class, this will allow the players to navigate between different pages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The player\textquotesingle{}s selected page state.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_manager_ab4cd702e5cc221bb82f2aaddafaed3c7}\label{class_game_manager_ab4cd702e5cc221bb82f2aaddafaed3c7}} 
+\index{GameManager@{GameManager}!ShowInvitation@{ShowInvitation}}
+\index{ShowInvitation@{ShowInvitation}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ShowInvitation()}{ShowInvitation()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Show\+Invitation (\begin{DoxyParamCaption}\item[{string}]{sender\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the invitation on the other player\textquotesingle{}s screen once the current player selects to send invitiation. 
+
+\mbox{\Hypertarget{class_game_manager_ac5dd01f0bb54258b327b0a40f4d5c489}\label{class_game_manager_ac5dd01f0bb54258b327b0a40f4d5c489}} 
+\index{GameManager@{GameManager}!ShowLoading@{ShowLoading}}
+\index{ShowLoading@{ShowLoading}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ShowLoading()}{ShowLoading()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Show\+Loading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display loading page. 
+
+\mbox{\Hypertarget{class_game_manager_afa8a15f040eb34f5a8f940e2da593de0}\label{class_game_manager_afa8a15f040eb34f5a8f940e2da593de0}} 
+\index{GameManager@{GameManager}!ShowWaitingBoard@{ShowWaitingBoard}}
+\index{ShowWaitingBoard@{ShowWaitingBoard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ShowWaitingBoard()}{ShowWaitingBoard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Show\+Waiting\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display waiting board when the current player sends an invitation, the player will be waiting for a response. 
+
+\mbox{\Hypertarget{class_game_manager_a5ccfacd027ad08eeb4ff1f25a7f59c98}\label{class_game_manager_a5ccfacd027ad08eeb4ff1f25a7f59c98}} 
+\index{GameManager@{GameManager}!Start@{Start}}
+\index{Start@{Start}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it is used to initialize the chosen\+Level variable as well as setting the logout button as inactive. 
+
+\mbox{\Hypertarget{class_game_manager_a9193c24424f6a10c7d9df407264ed4fa}\label{class_game_manager_a9193c24424f6a10c7d9df407264ed4fa}} 
+\index{GameManager@{GameManager}!StartGame@{StartGame}}
+\index{StartGame@{StartGame}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{StartGame()}{StartGame()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called whenever player selects to play a game, the relevant world, topic and level selected details will be passed to the play game to generate the maze environment accordingly. 
+
+\mbox{\Hypertarget{class_game_manager_ac35445febacea79a607734e5cf49df9f}\label{class_game_manager_ac35445febacea79a607734e5cf49df9f}} 
+\index{GameManager@{GameManager}!ViewLeaderboard@{ViewLeaderboard}}
+\index{ViewLeaderboard@{ViewLeaderboard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{ViewLeaderboard()}{ViewLeaderboard()}}
+{\footnotesize\ttfamily void Game\+Manager.\+View\+Leaderboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to display the leaderboard page. 
+
+\mbox{\Hypertarget{class_game_manager_ad046a402d9bf23404ada34cf860a0f6f}\label{class_game_manager_ad046a402d9bf23404ada34cf860a0f6f}} 
+\index{GameManager@{GameManager}!worldUI@{worldUI}}
+\index{worldUI@{worldUI}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{worldUI()}{worldUI()}}
+{\footnotesize\ttfamily void Game\+Manager.\+world\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to navigate the player to the world page after successful login. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_manager_a61977800801c848063c88f9488b656bf}\label{class_game_manager_a61977800801c848063c88f9488b656bf}} 
+\index{GameManager@{GameManager}!btnLogout@{btnLogout}}
+\index{btnLogout@{btnLogout}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{btnLogout}{btnLogout}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+btn\+Logout}
+
+
+
+A variable that logout button game object. 
+
+\mbox{\Hypertarget{class_game_manager_ad1074e4b3fcea41253248ec22f36677f}\label{class_game_manager_ad1074e4b3fcea41253248ec22f36677f}} 
+\index{GameManager@{GameManager}!chestPopUpPage@{chestPopUpPage}}
+\index{chestPopUpPage@{chestPopUpPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{chestPopUpPage}{chestPopUpPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+chest\+Pop\+Up\+Page}
+
+
+
+A variable that contains chest pop up page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a0a627951bc0185004d560561efe3ce18}\label{class_game_manager_a0a627951bc0185004d560561efe3ce18}} 
+\index{GameManager@{GameManager}!chosenLevel@{chosenLevel}}
+\index{chosenLevel@{chosenLevel}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{chosenLevel}{chosenLevel}}
+{\footnotesize\ttfamily int Game\+Manager.\+chosen\+Level =0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the player\textquotesingle{}s select level of difficulty. 
+
+\mbox{\Hypertarget{class_game_manager_ac52d8af13d925781c219b6a1e89ab629}\label{class_game_manager_ac52d8af13d925781c219b6a1e89ab629}} 
+\index{GameManager@{GameManager}!completedLevelPopUp@{completedLevelPopUp}}
+\index{completedLevelPopUp@{completedLevelPopUp}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{completedLevelPopUp}{completedLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+completed\+Level\+Pop\+Up}
+
+
+
+A variable that contains completed level pop up page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a9485ac4fa69d5415e0ed614177a4c8f1}\label{class_game_manager_a9485ac4fa69d5415e0ed614177a4c8f1}} 
+\index{GameManager@{GameManager}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{gameOver}{gameOver}}
+{\footnotesize\ttfamily bool Game\+Manager.\+game\+Over = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the boolean to check if the game is still ongoing. If it is not, it will be true. 
+
+\mbox{\Hypertarget{class_game_manager_a30c88d072af58a7005747c0d510468c1}\label{class_game_manager_a30c88d072af58a7005747c0d510468c1}} 
+\index{GameManager@{GameManager}!gameOverPage@{gameOverPage}}
+\index{gameOverPage@{gameOverPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{gameOverPage}{gameOverPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+game\+Over\+Page}
+
+
+
+A variable that contains game over page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a1ee345f91daefe4ecce616120b5ae3bd}\label{class_game_manager_a1ee345f91daefe4ecce616120b5ae3bd}} 
+\index{GameManager@{GameManager}!initialPlayState@{initialPlayState}}
+\index{initialPlayState@{initialPlayState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{initialPlayState}{initialPlayState}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+initial\+Play\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the initial page state after the player has login to the game client. 
+
+\mbox{\Hypertarget{class_game_manager_ad3e717f4fb0f378b969f4457de81f23e}\label{class_game_manager_ad3e717f4fb0f378b969f4457de81f23e}} 
+\index{GameManager@{GameManager}!Instance@{Instance}}
+\index{Instance@{Instance}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_manager}{Game\+Manager}} Game\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains an instance of \mbox{\hyperlink{class_game_manager}{Game\+Manager}} that allows other game object\textquotesingle{}s controllers to access the methods defined in this class. 
+
+\mbox{\Hypertarget{class_game_manager_a26d9fef9d98b91adf0e5106833afa0d6}\label{class_game_manager_a26d9fef9d98b91adf0e5106833afa0d6}} 
+\index{GameManager@{GameManager}!invitation@{invitation}}
+\index{invitation@{invitation}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{invitation}{invitation}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+invitation}
+
+
+
+A variable that contains inivitation page game object used in multiplayer gamemode. 
+
+\mbox{\Hypertarget{class_game_manager_a3bb63d0e7caed835438b1ba939ed828a}\label{class_game_manager_a3bb63d0e7caed835438b1ba939ed828a}} 
+\index{GameManager@{GameManager}!invitationSender@{invitationSender}}
+\index{invitationSender@{invitationSender}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{invitationSender}{invitationSender}}
+{\footnotesize\ttfamily string Game\+Manager.\+invitation\+Sender}
+
+
+
+A variable that will be used to store the identity of the player that sents the invitation. 
+
+\mbox{\Hypertarget{class_game_manager_a550945bb9217b18feaec524fbd1f575d}\label{class_game_manager_a550945bb9217b18feaec524fbd1f575d}} 
+\index{GameManager@{GameManager}!InvitationText@{InvitationText}}
+\index{InvitationText@{InvitationText}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{InvitationText}{InvitationText}}
+{\footnotesize\ttfamily Text Game\+Manager.\+Invitation\+Text}
+
+
+
+A variable that contains the text in the invitation game object that is used in multiplayer gameplay. 
+
+\mbox{\Hypertarget{class_game_manager_a3d57a36667222a957fcbcd61527a4139}\label{class_game_manager_a3d57a36667222a957fcbcd61527a4139}} 
+\index{GameManager@{GameManager}!leaderboardPage@{leaderboardPage}}
+\index{leaderboardPage@{leaderboardPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{leaderboardPage}{leaderboardPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+leaderboard\+Page}
+
+
+
+A variable that contains leaderboard page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a30cc7bf83daaa8763ee11708ce178bda}\label{class_game_manager_a30cc7bf83daaa8763ee11708ce178bda}} 
+\index{GameManager@{GameManager}!levelPage@{levelPage}}
+\index{levelPage@{levelPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{levelPage}{levelPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+level\+Page}
+
+
+
+A variable that contains level page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a1882ee28221aee6ff5978cb3be5f642d}\label{class_game_manager_a1882ee28221aee6ff5978cb3be5f642d}} 
+\index{GameManager@{GameManager}!loading@{loading}}
+\index{loading@{loading}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{loading}{loading}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+loading}
+
+
+
+A variable that contains loading game object. 
+
+\mbox{\Hypertarget{class_game_manager_a1a8940b9613af268f45caca57df995f0}\label{class_game_manager_a1a8940b9613af268f45caca57df995f0}} 
+\index{GameManager@{GameManager}!modePage@{modePage}}
+\index{modePage@{modePage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{modePage}{modePage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+mode\+Page}
+
+
+
+A variable that contains mode page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a7ef97cf39773bc06a19a27185a3eb478}\label{class_game_manager_a7ef97cf39773bc06a19a27185a3eb478}} 
+\index{GameManager@{GameManager}!multiPlayerPage@{multiPlayerPage}}
+\index{multiPlayerPage@{multiPlayerPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{multiPlayerPage}{multiPlayerPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+multi\+Player\+Page}
+
+
+
+A variable that contains multiplayer page game object. 
+
+\mbox{\Hypertarget{class_game_manager_acf9e67bb2a11fcf694f7930b5061ca2e}\label{class_game_manager_acf9e67bb2a11fcf694f7930b5061ca2e}} 
+\index{GameManager@{GameManager}!mutiplayerMatchPage@{mutiplayerMatchPage}}
+\index{mutiplayerMatchPage@{mutiplayerMatchPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{mutiplayerMatchPage}{mutiplayerMatchPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+mutiplayer\+Match\+Page}
+
+
+
+A variable that contains multiplayer match up page used in multiplayer gameplay. 
+
+\mbox{\Hypertarget{class_game_manager_acafc4ba9de87949b2ddbda251b5fb906}\label{class_game_manager_acafc4ba9de87949b2ddbda251b5fb906}} 
+\index{GameManager@{GameManager}!onlinePlayerListingsPage@{onlinePlayerListingsPage}}
+\index{onlinePlayerListingsPage@{onlinePlayerListingsPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{onlinePlayerListingsPage}{onlinePlayerListingsPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+online\+Player\+Listings\+Page}
+
+
+
+A variable that contains online player listing page used in multiplayer gameplay. 
+
+\mbox{\Hypertarget{class_game_manager_ab074f1900166c492588f475bcf86cd75}\label{class_game_manager_ab074f1900166c492588f475bcf86cd75}} 
+\index{GameManager@{GameManager}!playPage@{playPage}}
+\index{playPage@{playPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{playPage}{playPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+play\+Page}
+
+
+
+A variable that contains play page game object. 
+
+\mbox{\Hypertarget{class_game_manager_aefb67a1c6132b52d61b7a28ed996f34e}\label{class_game_manager_aefb67a1c6132b52d61b7a28ed996f34e}} 
+\index{GameManager@{GameManager}!profilePage@{profilePage}}
+\index{profilePage@{profilePage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{profilePage}{profilePage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+profile\+Page}
+
+
+
+A variable that contains profile page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a5e32178c98dbad8de305a7c13e25f466}\label{class_game_manager_a5e32178c98dbad8de305a7c13e25f466}} 
+\index{GameManager@{GameManager}!questionPopUpPage@{questionPopUpPage}}
+\index{questionPopUpPage@{questionPopUpPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{questionPopUpPage}{questionPopUpPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+question\+Pop\+Up\+Page}
+
+
+
+A variable that contains question pop up page game object. 
+
+\mbox{\Hypertarget{class_game_manager_ad8165da9319ea1a6649666e01e492613}\label{class_game_manager_ad8165da9319ea1a6649666e01e492613}} 
+\index{GameManager@{GameManager}!readyPage@{readyPage}}
+\index{readyPage@{readyPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{readyPage}{readyPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+ready\+Page}
+
+
+
+A variable that contains ready page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a398d163978e15786ef9cea1be1c877d9}\label{class_game_manager_a398d163978e15786ef9cea1be1c877d9}} 
+\index{GameManager@{GameManager}!scoreText@{scoreText}}
+\index{scoreText@{scoreText}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{scoreText}{scoreText}}
+{\footnotesize\ttfamily Text Game\+Manager.\+score\+Text}
+
+
+
+A variable that contains the score text UI object. 
+
+\mbox{\Hypertarget{class_game_manager_a4b23a8ca44805fa65a3ee89aed5ac80e}\label{class_game_manager_a4b23a8ca44805fa65a3ee89aed5ac80e}} 
+\index{GameManager@{GameManager}!sectionPage@{sectionPage}}
+\index{sectionPage@{sectionPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{sectionPage}{sectionPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+section\+Page}
+
+
+
+A variable that contains section/topic page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a38a0d02b3f50d5bda9e3a500fa8d8f26}\label{class_game_manager_a38a0d02b3f50d5bda9e3a500fa8d8f26}} 
+\index{GameManager@{GameManager}!startPage@{startPage}}
+\index{startPage@{startPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{startPage}{startPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+start\+Page}
+
+
+
+A variable that contains start page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a880ea31c0de2dc614d5e73d00f4ef9aa}\label{class_game_manager_a880ea31c0de2dc614d5e73d00f4ef9aa}} 
+\index{GameManager@{GameManager}!unlockedLevelPopUp@{unlockedLevelPopUp}}
+\index{unlockedLevelPopUp@{unlockedLevelPopUp}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{unlockedLevelPopUp}{unlockedLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+unlocked\+Level\+Pop\+Up}
+
+
+
+A variable that contains unlocked level pop up page game object. 
+
+\mbox{\Hypertarget{class_game_manager_ab8b86637ee3ce8e10fbb7ff02cf372ed}\label{class_game_manager_ab8b86637ee3ce8e10fbb7ff02cf372ed}} 
+\index{GameManager@{GameManager}!waitingBoard@{waitingBoard}}
+\index{waitingBoard@{waitingBoard}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{waitingBoard}{waitingBoard}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+waiting\+Board}
+
+
+
+A variable that contains waiting board that is used in multiplayer gameplay. 
+
+\mbox{\Hypertarget{class_game_manager_af26a1a8c68bd9c4a15e452f72515cc57}\label{class_game_manager_af26a1a8c68bd9c4a15e452f72515cc57}} 
+\index{GameManager@{GameManager}!warningInModePage@{warningInModePage}}
+\index{warningInModePage@{warningInModePage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{warningInModePage}{warningInModePage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+warning\+In\+Mode\+Page}
+
+
+
+A variable that contains warning page. 
+
+\mbox{\Hypertarget{class_game_manager_a1c08c42acddd84f51f1a74df68f23fbf}\label{class_game_manager_a1c08c42acddd84f51f1a74df68f23fbf}} 
+\index{GameManager@{GameManager}!winLevelPopUp@{winLevelPopUp}}
+\index{winLevelPopUp@{winLevelPopUp}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{winLevelPopUp}{winLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+win\+Level\+Pop\+Up}
+
+
+
+A variable that contains win level pop up page game object. 
+
+\mbox{\Hypertarget{class_game_manager_a25f733bb3526c507638764077debdbb8}\label{class_game_manager_a25f733bb3526c507638764077debdbb8}} 
+\index{GameManager@{GameManager}!worldPage@{worldPage}}
+\index{worldPage@{worldPage}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{worldPage}{worldPage}}
+{\footnotesize\ttfamily Game\+Object Game\+Manager.\+world\+Page}
+
+
+
+A variable that contains world page game object. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_game_manager_a220de93aa04e6a8ade1f942362ab0606}\label{class_game_manager_a220de93aa04e6a8ade1f942362ab0606}} 
+\index{GameManager@{GameManager}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{GameOver}{GameOver}}
+{\footnotesize\ttfamily bool Game\+Manager.\+Game\+Over\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+This method is used to retrieve the value of game\+Over variable 
+
+\begin{DoxyReturn}{Returns}
+Boolean value in game over variable. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Game\+Manager.\+cs\end{DoxyCompactItemize}

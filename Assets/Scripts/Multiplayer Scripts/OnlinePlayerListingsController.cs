@@ -4,18 +4,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This controller class holds the method to model the behaviour of the online player listing page.
+/// </summary>
 public class OnlinePlayerListingsController : MonoBehaviourPunCallbacks
 {
+    /// <summary>
+    /// A variable that holds OnlinePlayerListingsController instance.
+    /// </summary>
     public static OnlinePlayerListingsController Instance;
 
     [SerializeField]
+    /// <summary>
+    /// A variable that holds the scroll view.
+    /// </summary>
     private Transform _content;  //content of scroll view
+
     [SerializeField]
+    /// <summary>
+    /// A variable that holds current script.
+    /// </summary>
     private OnlinePlayerListing _onlinePlayerListing; //from OnlinePlayerListing.cs of OnlinePlayerListing
 
-    //Store list of OnlinePlayerListing objects
+    /// <summary>
+    /// A variable that holds the list of online players.
+    /// </summary>
     private List<OnlinePlayerListing> _listings = new List<OnlinePlayerListing>();
 
+    /// <summary>
+    /// This method is used to instantiate OnlinePlayerListingsController instance to allow other scripts to access the methods define in this class.
+    /// </summary>
     void Awake()
     {
         Instance = this;
@@ -33,7 +51,9 @@ public class OnlinePlayerListingsController : MonoBehaviourPunCallbacks
     }
     */
 
-    //RoomInfo from Photon.Realtime
+    /// <summary>
+    /// This method is used to update the online player listing at real time.
+    /// </summary>
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         foreach (RoomInfo info in roomList)

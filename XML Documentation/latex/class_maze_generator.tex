@@ -1,0 +1,435 @@
+\hypertarget{class_maze_generator}{}\doxysection{Maze\+Generator Class Reference}
+\label{class_maze_generator}\index{MazeGenerator@{MazeGenerator}}
+
+
+This generator class holds all the methods neccessary to dynamically generate a maze environment with bricks, minions and player.  
+
+
+Inheritance diagram for Maze\+Generator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_maze_generator}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}
+\begin{DoxyCompactList}\small\item\em An internal data structure to store the attributes of a cell such as the x and y coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_maze_generator_a151228a938b21cdb897efed12f79ad75}\label{class_maze_generator_a151228a938b21cdb897efed12f79ad75}} 
+int {\bfseries get\+Max\+Score} ()
+\item 
+void \mbox{\hyperlink{class_maze_generator_a397bdafbbfed867c25b2a83ca89c5dc0}{fix\+Chest\+Minion}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to fixed the positions of minions and chest in their cell arrays. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_maze_generator_a5d13fb7902a491431999a406886afbd8}{Check\+Cell}} (\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} cell)
+\begin{DoxyCompactList}\small\item\em This method is used to check if the cell is occupied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} \mbox{\hyperlink{class_maze_generator_a6e6a3eb6ff8c0f81f8340a0a35bad71b}{Check\+Neighbors}} (\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} cell)
+\begin{DoxyCompactList}\small\item\em This method is used to check there are neighbouring cells. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_ad396d385e68d1c0166fba2f1538d0acd}{D\+F\+S\+\_\+\+Backtracking}} (\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} cur)
+\begin{DoxyCompactList}\small\item\em This method is used along with all the methods defined above to create the maze environment using D\+FS and backtracking algorithm to dynamically generate the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_a9e676577f38a5c4265ce5311f2b7da60}{Break\+Wall}} (int time)
+\begin{DoxyCompactList}\small\item\em This method is used to strategically break walls and place the minions or coins into the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_a7a6ca100196134ad6210730e3b194c7f}{Set\+Walls\+\_\+\+Set\+Background}} (int chosen\+Level)
+\begin{DoxyCompactList}\small\item\em This method is used to set the theme of the walls and background based on player\textquotesingle{}s chosen level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_maze_generator_a830a68870bd13c80a9ef2bf29ebc1e9b}{is\+Multiplayer\+Mode}}
+\begin{DoxyCompactList}\small\item\em A boolean variable that will help to determine is player in in multiplayer mode. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_maze_generator_a955b1b9ba8bd2094e78b5d57590bc438}{Brick\+Prefab}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the brick prefab game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_maze_generator_acd6fbceb3980baa203002e536a522c3d}{Coin\+Prefab}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the coin prefab game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_maze_generator_aa83b97e24c5da2c1e9d73802d3fef35d}{Chest\+Prefab}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the chest prefab game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_maze_generator_ab31d5d48c778ac51e5f6cd68383c858a}{Player\+Prefab}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the player prefab game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_maze_generator_ab3c78fe58ca70f87b37ef57f57026699}{Minion\+Prefab}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the minion prefab game object. \end{DoxyCompactList}\item 
+Sprite\+Renderer \mbox{\hyperlink{class_maze_generator_a24b173225c80f9dc122bfcba54d455c7}{Game\+Background}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the game background sprite renderer object. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_maze_generator_a10b8d4aebf5840361de78b281d655d3d}{maze\+Pos}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the x,y and z coordinates positon of maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_generator_ae6242a0648fea77ca738ea04145162da}{row}}
+\begin{DoxyCompactList}\small\item\em A variable that holds maze row index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_generator_a0b37c37a5e47f58c3ee3b0a59104b3f9}{col}}
+\begin{DoxyCompactList}\small\item\em A variable that holds maze column index. \end{DoxyCompactList}\item 
+bool\mbox{[},\mbox{]} \mbox{\hyperlink{class_maze_generator_ab2264b8ef1b42050a6e7ab2af08a91ce}{visited}} = new bool\mbox{[}50, 50\mbox{]}
+\begin{DoxyCompactList}\small\item\em An array of booleans variable that will help to determine whether each position in the 50x50 maze is visited. \end{DoxyCompactList}\item 
+int\mbox{[},\mbox{]} \mbox{\hyperlink{class_maze_generator_ae5595ba2cb06e122ee655d19c9242a84}{mark}} = new int\mbox{[}50, 50\mbox{]}
+\begin{DoxyCompactList}\small\item\em A array of booleans variable that will help to determine whether each position in the 50x50 maze is marked. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_generator_a500c3ea4be61142178a2fe81b8497ff0}{count}} = 0
+\begin{DoxyCompactList}\small\item\em A variable counter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_maze_generator_ae84f272c5aed7dca16f609f7dbef04a2}{chest\+Cells}}
+\begin{DoxyCompactList}\small\item\em An array of chest occupied cells. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_maze_generator_aa952aeceb12c4fbd8f7c5fcd4730c70f}\label{class_maze_generator_aa952aeceb12c4fbd8f7c5fcd4730c70f}} 
+\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_maze_generator_aa952aeceb12c4fbd8f7c5fcd4730c70f}{minion\+Cells}}
+\begin{DoxyCompactList}\small\item\em An array of minion occupied cells. $<$/summary \end{DoxyCompactList}\item 
+Array\+List \mbox{\hyperlink{class_maze_generator_a802581f0761f00e5692100837d082970}{stack}} = new Array\+List()
+\begin{DoxyCompactList}\small\item\em A stack variable used to keep track on the cells to return to on D\+FS and Backtracking algorithm used to generator the maze environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} \mbox{\hyperlink{class_maze_generator_a89843ba37c86167500b91bd2e25f33c0}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} instance that will allow other scrips to access the methods defined in this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_maze_generator_ae37e4e793879525bcfd264c1308edbed}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to instantiate the \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_a10b655da2f8620e8fa580010857e9519}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, to initialize the maze environment with walls and background, if it is a multiplayer game, photonview will be generated to create a copy of the maze environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_aa238c308b2e0fe049fc53cec04fd56a1}{Destroy\+Maze}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to destroy the maze after every game ends. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_a659a4b2020bc6babd91f861fb91a0bb8}{Generate\+Maze}} ()
+\begin{DoxyCompactList}\small\item\em This method is called generate the maze environment everytime the player\textquotesingle{}s presses on the play button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_generator_acb76570fbab0365dd68de2cbfeff30d0}{Place\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to place all the objects in the maze such as bricks, coins, chestboxes, minions that will be created using the different methods defined in this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Photon\+View \mbox{\hyperlink{class_maze_generator_ad23ff326078ca87abc97782c10316793}{PV}}
+\begin{DoxyCompactList}\small\item\em A Photon\+View variable that will hold the other image of the maze. It is used in multiplayer gameplay mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_generator_a4f11bf1becf7f57ad7bec58ce365a486}{num\+Of\+Coins}} = 85
+\begin{DoxyCompactList}\small\item\em A variable that holds number of coins in the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_generator_a67f9ce76a4b3ac5a3a057931b056ec4f}{max\+Score}} = 85 $\ast$ 10 + 6 $\ast$ 30
+\begin{DoxyCompactList}\small\item\em A variable that holds the max score attainable by gathering all the coins and chest boxes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This generator class holds all the methods neccessary to dynamically generate a maze environment with bricks, minions and player. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_maze_generator_ae37e4e793879525bcfd264c1308edbed}\label{class_maze_generator_ae37e4e793879525bcfd264c1308edbed}} 
+\index{MazeGenerator@{MazeGenerator}!Awake@{Awake}}
+\index{Awake@{Awake}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to instantiate the \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} instance. 
+
+\mbox{\Hypertarget{class_maze_generator_a9e676577f38a5c4265ce5311f2b7da60}\label{class_maze_generator_a9e676577f38a5c4265ce5311f2b7da60}} 
+\index{MazeGenerator@{MazeGenerator}!BreakWall@{BreakWall}}
+\index{BreakWall@{BreakWall}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{BreakWall()}{BreakWall()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Break\+Wall (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to strategically break walls and place the minions or coins into the maze environment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & A time variable to keep track of number of times the wall is broken.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_maze_generator_a5d13fb7902a491431999a406886afbd8}\label{class_maze_generator_a5d13fb7902a491431999a406886afbd8}} 
+\index{MazeGenerator@{MazeGenerator}!CheckCell@{CheckCell}}
+\index{CheckCell@{CheckCell}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{CheckCell()}{CheckCell()}}
+{\footnotesize\ttfamily bool Maze\+Generator.\+Check\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}}]{cell }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to check if the cell is occupied. 
+
+\mbox{\Hypertarget{class_maze_generator_a6e6a3eb6ff8c0f81f8340a0a35bad71b}\label{class_maze_generator_a6e6a3eb6ff8c0f81f8340a0a35bad71b}} 
+\index{MazeGenerator@{MazeGenerator}!CheckNeighbors@{CheckNeighbors}}
+\index{CheckNeighbors@{CheckNeighbors}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{CheckNeighbors()}{CheckNeighbors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} Maze\+Generator.\+Check\+Neighbors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}}]{cell }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to check there are neighbouring cells. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell} & A cell structure that represents a position in the maze.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_maze_generator_aa238c308b2e0fe049fc53cec04fd56a1}\label{class_maze_generator_aa238c308b2e0fe049fc53cec04fd56a1}} 
+\index{MazeGenerator@{MazeGenerator}!DestroyMaze@{DestroyMaze}}
+\index{DestroyMaze@{DestroyMaze}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{DestroyMaze()}{DestroyMaze()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Destroy\+Maze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to destroy the maze after every game ends. 
+
+\mbox{\Hypertarget{class_maze_generator_ad396d385e68d1c0166fba2f1538d0acd}\label{class_maze_generator_ad396d385e68d1c0166fba2f1538d0acd}} 
+\index{MazeGenerator@{MazeGenerator}!DFS\_Backtracking@{DFS\_Backtracking}}
+\index{DFS\_Backtracking@{DFS\_Backtracking}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{DFS\_Backtracking()}{DFS\_Backtracking()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+D\+F\+S\+\_\+\+Backtracking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}}}]{cur }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used along with all the methods defined above to create the maze environment using D\+FS and backtracking algorithm to dynamically generate the maze environment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cur} & The current cell position.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_maze_generator_a397bdafbbfed867c25b2a83ca89c5dc0}\label{class_maze_generator_a397bdafbbfed867c25b2a83ca89c5dc0}} 
+\index{MazeGenerator@{MazeGenerator}!fixChestMinion@{fixChestMinion}}
+\index{fixChestMinion@{fixChestMinion}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{fixChestMinion()}{fixChestMinion()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+fix\+Chest\+Minion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to fixed the positions of minions and chest in their cell arrays. 
+
+\mbox{\Hypertarget{class_maze_generator_a659a4b2020bc6babd91f861fb91a0bb8}\label{class_maze_generator_a659a4b2020bc6babd91f861fb91a0bb8}} 
+\index{MazeGenerator@{MazeGenerator}!GenerateMaze@{GenerateMaze}}
+\index{GenerateMaze@{GenerateMaze}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{GenerateMaze()}{GenerateMaze()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Generate\+Maze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called generate the maze environment everytime the player\textquotesingle{}s presses on the play button. 
+
+\mbox{\Hypertarget{class_maze_generator_acb76570fbab0365dd68de2cbfeff30d0}\label{class_maze_generator_acb76570fbab0365dd68de2cbfeff30d0}} 
+\index{MazeGenerator@{MazeGenerator}!PlaceObjects@{PlaceObjects}}
+\index{PlaceObjects@{PlaceObjects}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{PlaceObjects()}{PlaceObjects()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Place\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to place all the objects in the maze such as bricks, coins, chestboxes, minions that will be created using the different methods defined in this class. 
+
+\mbox{\Hypertarget{class_maze_generator_a7a6ca100196134ad6210730e3b194c7f}\label{class_maze_generator_a7a6ca100196134ad6210730e3b194c7f}} 
+\index{MazeGenerator@{MazeGenerator}!SetWalls\_SetBackground@{SetWalls\_SetBackground}}
+\index{SetWalls\_SetBackground@{SetWalls\_SetBackground}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{SetWalls\_SetBackground()}{SetWalls\_SetBackground()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Set\+Walls\+\_\+\+Set\+Background (\begin{DoxyParamCaption}\item[{int}]{chosen\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set the theme of the walls and background based on player\textquotesingle{}s chosen level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chosen\+Level} & Player\textquotesingle{}s selected difficulty level.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_maze_generator_a10b655da2f8620e8fa580010857e9519}\label{class_maze_generator_a10b655da2f8620e8fa580010857e9519}} 
+\index{MazeGenerator@{MazeGenerator}!Start@{Start}}
+\index{Start@{Start}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Maze\+Generator.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, to initialize the maze environment with walls and background, if it is a multiplayer game, photonview will be generated to create a copy of the maze environment. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_maze_generator_a955b1b9ba8bd2094e78b5d57590bc438}\label{class_maze_generator_a955b1b9ba8bd2094e78b5d57590bc438}} 
+\index{MazeGenerator@{MazeGenerator}!BrickPrefab@{BrickPrefab}}
+\index{BrickPrefab@{BrickPrefab}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{BrickPrefab}{BrickPrefab}}
+{\footnotesize\ttfamily Game\+Object Maze\+Generator.\+Brick\+Prefab}
+
+
+
+A variable that holds the brick prefab game object. 
+
+\mbox{\Hypertarget{class_maze_generator_ae84f272c5aed7dca16f609f7dbef04a2}\label{class_maze_generator_ae84f272c5aed7dca16f609f7dbef04a2}} 
+\index{MazeGenerator@{MazeGenerator}!chestCells@{chestCells}}
+\index{chestCells@{chestCells}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{chestCells}{chestCells}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_maze_generator_1_1_cell}{Cell}} \mbox{[}$\,$\mbox{]} Maze\+Generator.\+chest\+Cells}
+
+
+
+An array of chest occupied cells. 
+
+\mbox{\Hypertarget{class_maze_generator_aa83b97e24c5da2c1e9d73802d3fef35d}\label{class_maze_generator_aa83b97e24c5da2c1e9d73802d3fef35d}} 
+\index{MazeGenerator@{MazeGenerator}!ChestPrefab@{ChestPrefab}}
+\index{ChestPrefab@{ChestPrefab}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{ChestPrefab}{ChestPrefab}}
+{\footnotesize\ttfamily Game\+Object Maze\+Generator.\+Chest\+Prefab}
+
+
+
+A variable that holds the chest prefab game object. 
+
+\mbox{\Hypertarget{class_maze_generator_acd6fbceb3980baa203002e536a522c3d}\label{class_maze_generator_acd6fbceb3980baa203002e536a522c3d}} 
+\index{MazeGenerator@{MazeGenerator}!CoinPrefab@{CoinPrefab}}
+\index{CoinPrefab@{CoinPrefab}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{CoinPrefab}{CoinPrefab}}
+{\footnotesize\ttfamily Game\+Object Maze\+Generator.\+Coin\+Prefab}
+
+
+
+A variable that holds the coin prefab game object. 
+
+\mbox{\Hypertarget{class_maze_generator_a0b37c37a5e47f58c3ee3b0a59104b3f9}\label{class_maze_generator_a0b37c37a5e47f58c3ee3b0a59104b3f9}} 
+\index{MazeGenerator@{MazeGenerator}!col@{col}}
+\index{col@{col}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{col}{col}}
+{\footnotesize\ttfamily int Maze\+Generator.\+col}
+
+
+
+A variable that holds maze column index. 
+
+\mbox{\Hypertarget{class_maze_generator_a500c3ea4be61142178a2fe81b8497ff0}\label{class_maze_generator_a500c3ea4be61142178a2fe81b8497ff0}} 
+\index{MazeGenerator@{MazeGenerator}!count@{count}}
+\index{count@{count}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int Maze\+Generator.\+count = 0}
+
+
+
+A variable counter. 
+
+\mbox{\Hypertarget{class_maze_generator_a24b173225c80f9dc122bfcba54d455c7}\label{class_maze_generator_a24b173225c80f9dc122bfcba54d455c7}} 
+\index{MazeGenerator@{MazeGenerator}!GameBackground@{GameBackground}}
+\index{GameBackground@{GameBackground}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{GameBackground}{GameBackground}}
+{\footnotesize\ttfamily Sprite\+Renderer Maze\+Generator.\+Game\+Background}
+
+
+
+A variable that holds the game background sprite renderer object. 
+
+\mbox{\Hypertarget{class_maze_generator_a89843ba37c86167500b91bd2e25f33c0}\label{class_maze_generator_a89843ba37c86167500b91bd2e25f33c0}} 
+\index{MazeGenerator@{MazeGenerator}!Instance@{Instance}}
+\index{Instance@{Instance}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} Maze\+Generator.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that holds the \mbox{\hyperlink{class_maze_generator}{Maze\+Generator}} instance that will allow other scrips to access the methods defined in this class. 
+
+\mbox{\Hypertarget{class_maze_generator_a830a68870bd13c80a9ef2bf29ebc1e9b}\label{class_maze_generator_a830a68870bd13c80a9ef2bf29ebc1e9b}} 
+\index{MazeGenerator@{MazeGenerator}!isMultiplayerMode@{isMultiplayerMode}}
+\index{isMultiplayerMode@{isMultiplayerMode}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{isMultiplayerMode}{isMultiplayerMode}}
+{\footnotesize\ttfamily bool Maze\+Generator.\+is\+Multiplayer\+Mode}
+
+
+
+A boolean variable that will help to determine is player in in multiplayer mode. 
+
+\mbox{\Hypertarget{class_maze_generator_ae5595ba2cb06e122ee655d19c9242a84}\label{class_maze_generator_ae5595ba2cb06e122ee655d19c9242a84}} 
+\index{MazeGenerator@{MazeGenerator}!mark@{mark}}
+\index{mark@{mark}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{mark}{mark}}
+{\footnotesize\ttfamily int \mbox{[},\mbox{]} Maze\+Generator.\+mark = new int\mbox{[}50, 50\mbox{]}}
+
+
+
+A array of booleans variable that will help to determine whether each position in the 50x50 maze is marked. 
+
+\mbox{\Hypertarget{class_maze_generator_a67f9ce76a4b3ac5a3a057931b056ec4f}\label{class_maze_generator_a67f9ce76a4b3ac5a3a057931b056ec4f}} 
+\index{MazeGenerator@{MazeGenerator}!maxScore@{maxScore}}
+\index{maxScore@{maxScore}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{maxScore}{maxScore}}
+{\footnotesize\ttfamily int Maze\+Generator.\+max\+Score = 85 $\ast$ 10 + 6 $\ast$ 30\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that holds the max score attainable by gathering all the coins and chest boxes. 
+
+\mbox{\Hypertarget{class_maze_generator_a10b8d4aebf5840361de78b281d655d3d}\label{class_maze_generator_a10b8d4aebf5840361de78b281d655d3d}} 
+\index{MazeGenerator@{MazeGenerator}!mazePos@{mazePos}}
+\index{mazePos@{mazePos}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{mazePos}{mazePos}}
+{\footnotesize\ttfamily Vector3 Maze\+Generator.\+maze\+Pos}
+
+
+
+A variable that holds the x,y and z coordinates positon of maze. 
+
+\mbox{\Hypertarget{class_maze_generator_ab3c78fe58ca70f87b37ef57f57026699}\label{class_maze_generator_ab3c78fe58ca70f87b37ef57f57026699}} 
+\index{MazeGenerator@{MazeGenerator}!MinionPrefab@{MinionPrefab}}
+\index{MinionPrefab@{MinionPrefab}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{MinionPrefab}{MinionPrefab}}
+{\footnotesize\ttfamily Game\+Object Maze\+Generator.\+Minion\+Prefab}
+
+
+
+A variable that holds the minion prefab game object. 
+
+\mbox{\Hypertarget{class_maze_generator_a4f11bf1becf7f57ad7bec58ce365a486}\label{class_maze_generator_a4f11bf1becf7f57ad7bec58ce365a486}} 
+\index{MazeGenerator@{MazeGenerator}!numOfCoins@{numOfCoins}}
+\index{numOfCoins@{numOfCoins}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{numOfCoins}{numOfCoins}}
+{\footnotesize\ttfamily int Maze\+Generator.\+num\+Of\+Coins = 85\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that holds number of coins in the maze. 
+
+\mbox{\Hypertarget{class_maze_generator_ab31d5d48c778ac51e5f6cd68383c858a}\label{class_maze_generator_ab31d5d48c778ac51e5f6cd68383c858a}} 
+\index{MazeGenerator@{MazeGenerator}!PlayerPrefab@{PlayerPrefab}}
+\index{PlayerPrefab@{PlayerPrefab}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{PlayerPrefab}{PlayerPrefab}}
+{\footnotesize\ttfamily Game\+Object Maze\+Generator.\+Player\+Prefab}
+
+
+
+A variable that holds the player prefab game object. 
+
+\mbox{\Hypertarget{class_maze_generator_ad23ff326078ca87abc97782c10316793}\label{class_maze_generator_ad23ff326078ca87abc97782c10316793}} 
+\index{MazeGenerator@{MazeGenerator}!PV@{PV}}
+\index{PV@{PV}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{PV}{PV}}
+{\footnotesize\ttfamily Photon\+View Maze\+Generator.\+PV\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A Photon\+View variable that will hold the other image of the maze. It is used in multiplayer gameplay mode. 
+
+\mbox{\Hypertarget{class_maze_generator_ae6242a0648fea77ca738ea04145162da}\label{class_maze_generator_ae6242a0648fea77ca738ea04145162da}} 
+\index{MazeGenerator@{MazeGenerator}!row@{row}}
+\index{row@{row}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily int Maze\+Generator.\+row}
+
+
+
+A variable that holds maze row index. 
+
+\mbox{\Hypertarget{class_maze_generator_a802581f0761f00e5692100837d082970}\label{class_maze_generator_a802581f0761f00e5692100837d082970}} 
+\index{MazeGenerator@{MazeGenerator}!stack@{stack}}
+\index{stack@{stack}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{stack}{stack}}
+{\footnotesize\ttfamily Array\+List Maze\+Generator.\+stack = new Array\+List()}
+
+
+
+A stack variable used to keep track on the cells to return to on D\+FS and Backtracking algorithm used to generator the maze environment. 
+
+\mbox{\Hypertarget{class_maze_generator_ab2264b8ef1b42050a6e7ab2af08a91ce}\label{class_maze_generator_ab2264b8ef1b42050a6e7ab2af08a91ce}} 
+\index{MazeGenerator@{MazeGenerator}!visited@{visited}}
+\index{visited@{visited}!MazeGenerator@{MazeGenerator}}
+\doxysubsubsection{\texorpdfstring{visited}{visited}}
+{\footnotesize\ttfamily bool \mbox{[},\mbox{]} Maze\+Generator.\+visited = new bool\mbox{[}50, 50\mbox{]}}
+
+
+
+An array of booleans variable that will help to determine whether each position in the 50x50 maze is visited. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Maze\+Generator.\+cs\end{DoxyCompactItemize}

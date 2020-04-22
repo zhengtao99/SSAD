@@ -1,0 +1,305 @@
+\hypertarget{class_world_controller}{}\doxysection{World\+Controller Class Reference}
+\label{class_world_controller}\index{WorldController@{WorldController}}
+
+
+This class holds all the methods to manipulate the world page display.  
+
+
+Inheritance diagram for World\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_world_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_world_controller_a75e8727c42dbf463752fd0cb02b9f281}{Set\+Current\+Page}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set default world and congifuring the world\textquotesingle{}s neighbouring worlds, it will be used to perform the animation of switching worlds when needed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_controller_ab4a60cf88b6f65d6026923a2defd5c39}{On\+Click\+Back}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to perform the switching world animation when the left button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_controller_a0c2fbd92e6668d34825630bf5f888e9c}{On\+Click\+Forward}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to perform the switching world animation when the right button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_controller_a735cf8797ab77ebdbf2a50f67f1c8af1}{On\+Click\+Continue}} ()
+\begin{DoxyCompactList}\small\item\em This method is used move the player to the topic page when the continue button is selected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_controller_adf3c8d973b99655b4b607a0a06127568}{Start\+World\+Page}} ()
+\begin{DoxyCompactList}\small\item\em This method is used display the initial world page with all the default game objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_world_controller_a04cf6148b98e0bcbe88b0a8533ba985d}{subject}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the subject name. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_world_controller_a99f842e199d00c49a73625c39a604566}{images}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of world images for various subjects. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_world_controller_a7befda49e0cd2fa8e6b77913ed073f18}{current\+Page}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current page. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static World \mbox{\hyperlink{class_world_controller_adb69cf9c2b331c4362f306ab708218c1}{current\+World}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current world object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_world_controller_a75c2c9eb9749acbc48ba5d74d101f3ba}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it is responsible to initialize the default world image in the display. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_controller_a49e0ab7298c54391f0765e40a598dbb3}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame, it is responsible to detect if player choses to change world and perform the world image manipulation/animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_world_controller_a682cc471e5872a6e606eae8a82930b3e}{current\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current world image. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_world_controller_a3d9b5edcc27170c5e9fc427beff374f1}{last\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the previous world image \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_world_controller_a55390dffa626c3b4a8634638a11005dc}{current\+World\+Name}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the name of current world chosen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_controller_af5952bbb6da291d5c73c78dfa6689262}\label{class_world_controller_af5952bbb6da291d5c73c78dfa6689262}} 
+float \mbox{\hyperlink{class_world_controller_af5952bbb6da291d5c73c78dfa6689262}{speed}} = 500.\+0f
+\begin{DoxyCompactList}\small\item\em A variable that contains speed of world images switching. $<$/summary \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_controller_a7ea06bb000e22615e1fc265994422037}{move\+Current}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected the next world. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_controller_ae0c990ff7f9e43cf47be52f85b433528}{move\+Last}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected the previous world. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_world_controller_a1f2221cdc0362eb1a5d4967eaeee5a6d}{right}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected to the right arrow. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_world_controller_a549782f8239af7e3040f8ee1b54b0235}{last\+Img\+Dest}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the previous image destination location. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_controller_ad32311650f535c15ca8580d36dba96ee}\label{class_world_controller_ad32311650f535c15ca8580d36dba96ee}} 
+Vector3 \mbox{\hyperlink{class_world_controller_ad32311650f535c15ca8580d36dba96ee}{current\+Img\+Dest}} = new Vector3(1.\+2f, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains the current image destination location. $<$/summary \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_controller_a457cf077b9c95b31114bab812de3ec7f}\label{class_world_controller_a457cf077b9c95b31114bab812de3ec7f}} 
+Vector3 \mbox{\hyperlink{class_world_controller_a457cf077b9c95b31114bab812de3ec7f}{scale\+Factor}} = new Vector3(0.\+5f, 0.\+5f, 0.\+5f)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale the current to previous image size. $<$/summary \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_world_controller_a3e1b5284e06f66dd68addb2b0694a547}{left\+End}} = new Vector3(-\/200f, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale image to the left. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_world_controller_abff6f190eea4b4ae8f4a91d8285f2ae8}{right\+End}} = new Vector3(200f, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale image to the right. \end{DoxyCompactList}\item 
+string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_world_controller_a51295e67a133b655e176e38debc8051f}{worlds}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of world names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class holds all the methods to manipulate the world page display. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_controller_ab4a60cf88b6f65d6026923a2defd5c39}\label{class_world_controller_ab4a60cf88b6f65d6026923a2defd5c39}} 
+\index{WorldController@{WorldController}!OnClickBack@{OnClickBack}}
+\index{OnClickBack@{OnClickBack}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{OnClickBack()}{OnClickBack()}}
+{\footnotesize\ttfamily void World\+Controller.\+On\+Click\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to perform the switching world animation when the left button is clicked. 
+
+\mbox{\Hypertarget{class_world_controller_a735cf8797ab77ebdbf2a50f67f1c8af1}\label{class_world_controller_a735cf8797ab77ebdbf2a50f67f1c8af1}} 
+\index{WorldController@{WorldController}!OnClickContinue@{OnClickContinue}}
+\index{OnClickContinue@{OnClickContinue}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{OnClickContinue()}{OnClickContinue()}}
+{\footnotesize\ttfamily void World\+Controller.\+On\+Click\+Continue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used move the player to the topic page when the continue button is selected. 
+
+\mbox{\Hypertarget{class_world_controller_a0c2fbd92e6668d34825630bf5f888e9c}\label{class_world_controller_a0c2fbd92e6668d34825630bf5f888e9c}} 
+\index{WorldController@{WorldController}!OnClickForward@{OnClickForward}}
+\index{OnClickForward@{OnClickForward}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{OnClickForward()}{OnClickForward()}}
+{\footnotesize\ttfamily void World\+Controller.\+On\+Click\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to perform the switching world animation when the right button is clicked. 
+
+\mbox{\Hypertarget{class_world_controller_a75e8727c42dbf463752fd0cb02b9f281}\label{class_world_controller_a75e8727c42dbf463752fd0cb02b9f281}} 
+\index{WorldController@{WorldController}!SetCurrentPage@{SetCurrentPage}}
+\index{SetCurrentPage@{SetCurrentPage}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{SetCurrentPage()}{SetCurrentPage()}}
+{\footnotesize\ttfamily void World\+Controller.\+Set\+Current\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set default world and congifuring the world\textquotesingle{}s neighbouring worlds, it will be used to perform the animation of switching worlds when needed. 
+
+\mbox{\Hypertarget{class_world_controller_a75c2c9eb9749acbc48ba5d74d101f3ba}\label{class_world_controller_a75c2c9eb9749acbc48ba5d74d101f3ba}} 
+\index{WorldController@{WorldController}!Start@{Start}}
+\index{Start@{Start}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void World\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it is responsible to initialize the default world image in the display. 
+
+\mbox{\Hypertarget{class_world_controller_adf3c8d973b99655b4b607a0a06127568}\label{class_world_controller_adf3c8d973b99655b4b607a0a06127568}} 
+\index{WorldController@{WorldController}!StartWorldPage@{StartWorldPage}}
+\index{StartWorldPage@{StartWorldPage}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{StartWorldPage()}{StartWorldPage()}}
+{\footnotesize\ttfamily void World\+Controller.\+Start\+World\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used display the initial world page with all the default game objects. 
+
+\mbox{\Hypertarget{class_world_controller_a49e0ab7298c54391f0765e40a598dbb3}\label{class_world_controller_a49e0ab7298c54391f0765e40a598dbb3}} 
+\index{WorldController@{WorldController}!Update@{Update}}
+\index{Update@{Update}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void World\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame, it is responsible to detect if player choses to change world and perform the world image manipulation/animation. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_world_controller_a682cc471e5872a6e606eae8a82930b3e}\label{class_world_controller_a682cc471e5872a6e606eae8a82930b3e}} 
+\index{WorldController@{WorldController}!currentImg@{currentImg}}
+\index{currentImg@{currentImg}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{currentImg}{currentImg}}
+{\footnotesize\ttfamily Game\+Object World\+Controller.\+current\+Img\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the current world image. 
+
+\mbox{\Hypertarget{class_world_controller_a7befda49e0cd2fa8e6b77913ed073f18}\label{class_world_controller_a7befda49e0cd2fa8e6b77913ed073f18}} 
+\index{WorldController@{WorldController}!currentPage@{currentPage}}
+\index{currentPage@{currentPage}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{currentPage}{currentPage}}
+{\footnotesize\ttfamily int World\+Controller.\+current\+Page}
+
+
+
+A variable that contains the current page. 
+
+\mbox{\Hypertarget{class_world_controller_adb69cf9c2b331c4362f306ab708218c1}\label{class_world_controller_adb69cf9c2b331c4362f306ab708218c1}} 
+\index{WorldController@{WorldController}!currentWorld@{currentWorld}}
+\index{currentWorld@{currentWorld}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{currentWorld}{currentWorld}}
+{\footnotesize\ttfamily World World\+Controller.\+current\+World\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains the current world object. 
+
+\mbox{\Hypertarget{class_world_controller_a55390dffa626c3b4a8634638a11005dc}\label{class_world_controller_a55390dffa626c3b4a8634638a11005dc}} 
+\index{WorldController@{WorldController}!currentWorldName@{currentWorldName}}
+\index{currentWorldName@{currentWorldName}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{currentWorldName}{currentWorldName}}
+{\footnotesize\ttfamily string World\+Controller.\+current\+World\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the name of current world chosen. 
+
+\mbox{\Hypertarget{class_world_controller_a99f842e199d00c49a73625c39a604566}\label{class_world_controller_a99f842e199d00c49a73625c39a604566}} 
+\index{WorldController@{WorldController}!images@{images}}
+\index{images@{images}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{images}{images}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} World\+Controller.\+images}
+
+
+
+A variable that contains an array of world images for various subjects. 
+
+\mbox{\Hypertarget{class_world_controller_a3d9b5edcc27170c5e9fc427beff374f1}\label{class_world_controller_a3d9b5edcc27170c5e9fc427beff374f1}} 
+\index{WorldController@{WorldController}!lastImg@{lastImg}}
+\index{lastImg@{lastImg}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{lastImg}{lastImg}}
+{\footnotesize\ttfamily Game\+Object World\+Controller.\+last\+Img\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the previous world image 
+
+\mbox{\Hypertarget{class_world_controller_a549782f8239af7e3040f8ee1b54b0235}\label{class_world_controller_a549782f8239af7e3040f8ee1b54b0235}} 
+\index{WorldController@{WorldController}!lastImgDest@{lastImgDest}}
+\index{lastImgDest@{lastImgDest}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{lastImgDest}{lastImgDest}}
+{\footnotesize\ttfamily Vector3 World\+Controller.\+last\+Img\+Dest\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the previous image destination location. 
+
+\mbox{\Hypertarget{class_world_controller_a3e1b5284e06f66dd68addb2b0694a547}\label{class_world_controller_a3e1b5284e06f66dd68addb2b0694a547}} 
+\index{WorldController@{WorldController}!leftEnd@{leftEnd}}
+\index{leftEnd@{leftEnd}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{leftEnd}{leftEnd}}
+{\footnotesize\ttfamily Vector3 World\+Controller.\+left\+End = new Vector3(-\/200f, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains scale to scale image to the left. 
+
+\mbox{\Hypertarget{class_world_controller_a7ea06bb000e22615e1fc265994422037}\label{class_world_controller_a7ea06bb000e22615e1fc265994422037}} 
+\index{WorldController@{WorldController}!moveCurrent@{moveCurrent}}
+\index{moveCurrent@{moveCurrent}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{moveCurrent}{moveCurrent}}
+{\footnotesize\ttfamily bool World\+Controller.\+move\+Current = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected the next world. 
+
+\mbox{\Hypertarget{class_world_controller_ae0c990ff7f9e43cf47be52f85b433528}\label{class_world_controller_ae0c990ff7f9e43cf47be52f85b433528}} 
+\index{WorldController@{WorldController}!moveLast@{moveLast}}
+\index{moveLast@{moveLast}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{moveLast}{moveLast}}
+{\footnotesize\ttfamily bool World\+Controller.\+move\+Last = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected the previous world. 
+
+\mbox{\Hypertarget{class_world_controller_a1f2221cdc0362eb1a5d4967eaeee5a6d}\label{class_world_controller_a1f2221cdc0362eb1a5d4967eaeee5a6d}} 
+\index{WorldController@{WorldController}!right@{right}}
+\index{right@{right}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily bool World\+Controller.\+right = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected to the right arrow. 
+
+\mbox{\Hypertarget{class_world_controller_abff6f190eea4b4ae8f4a91d8285f2ae8}\label{class_world_controller_abff6f190eea4b4ae8f4a91d8285f2ae8}} 
+\index{WorldController@{WorldController}!rightEnd@{rightEnd}}
+\index{rightEnd@{rightEnd}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{rightEnd}{rightEnd}}
+{\footnotesize\ttfamily Vector3 World\+Controller.\+right\+End = new Vector3(200f, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains scale to scale image to the right. 
+
+\mbox{\Hypertarget{class_world_controller_a04cf6148b98e0bcbe88b0a8533ba985d}\label{class_world_controller_a04cf6148b98e0bcbe88b0a8533ba985d}} 
+\index{WorldController@{WorldController}!subject@{subject}}
+\index{subject@{subject}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{subject}{subject}}
+{\footnotesize\ttfamily Text World\+Controller.\+subject}
+
+
+
+A variable that contains the subject name. 
+
+\mbox{\Hypertarget{class_world_controller_a51295e67a133b655e176e38debc8051f}\label{class_world_controller_a51295e67a133b655e176e38debc8051f}} 
+\index{WorldController@{WorldController}!worlds@{worlds}}
+\index{worlds@{worlds}!WorldController@{WorldController}}
+\doxysubsubsection{\texorpdfstring{worlds}{worlds}}
+{\footnotesize\ttfamily string \mbox{[}$\,$\mbox{]} World\+Controller.\+worlds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains an array of world names. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/World\+Controller.\+cs\end{DoxyCompactItemize}

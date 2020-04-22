@@ -1,0 +1,132 @@
+\hypertarget{class_online_player_listing}{}\doxysection{Online\+Player\+Listing Class Reference}
+\label{class_online_player_listing}\index{OnlinePlayerListing@{OnlinePlayerListing}}
+
+
+This entity class contains the attributes and behaviour of a online player listing page.  
+
+
+Inheritance diagram for Online\+Player\+Listing\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_online_player_listing}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_online_player_listing_a6d8fdc697a46ab565bfd1499e6020133}{Set\+Room\+Info}} (\mbox{\hyperlink{class_online_player_listing_a3bd30f8b291ee9a8dc5f7b7ad633afb1}{Room\+Info}} room\+Info)
+\begin{DoxyCompactList}\small\item\em The method is used to set room text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_online_player_listing_a7bbe1d434e10492f577e3de5a79ec2f6}{On\+Click\+Send\+Invitaion}} ()
+\begin{DoxyCompactList}\small\item\em This method is used send invitation on click battle button in the online player listing page. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_online_player_listing_a8f02d005fabfecf7f57a037a6ab82cb4}{On\+Joined\+Room}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to detect if the players are not in the online player listing page, they will be able to receive the invitations. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_online_player_listing_a2731aa3e24e041bf109ad77768936122}{On\+Join\+Room\+Failed}} (short return\+Code, string message)
+\begin{DoxyCompactList}\small\item\em This method will return an error message is the game client fails to join the photon network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Room\+Info \mbox{\hyperlink{class_online_player_listing_a3bd30f8b291ee9a8dc5f7b7ad633afb1}{Room\+Info}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, private set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The method is used at realtime to join photonnetwork or to retrieve the number of players in the list at real time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_online_player_listing_aa1f4fb80690fb9d951731263de83f40d}{\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em A Text object in the listing page. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_online_player_listing_af3155094aa0494609ca7a49d54c8d0e9}{joined\+Room}} = false
+\begin{DoxyCompactList}\small\item\em A boolean variable to check if the player has entered the room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This entity class contains the attributes and behaviour of a online player listing page. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_online_player_listing_a7bbe1d434e10492f577e3de5a79ec2f6}\label{class_online_player_listing_a7bbe1d434e10492f577e3de5a79ec2f6}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!OnClickSendInvitaion@{OnClickSendInvitaion}}
+\index{OnClickSendInvitaion@{OnClickSendInvitaion}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{OnClickSendInvitaion()}{OnClickSendInvitaion()}}
+{\footnotesize\ttfamily void Online\+Player\+Listing.\+On\+Click\+Send\+Invitaion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used send invitation on click battle button in the online player listing page. 
+
+\mbox{\Hypertarget{class_online_player_listing_a8f02d005fabfecf7f57a037a6ab82cb4}\label{class_online_player_listing_a8f02d005fabfecf7f57a037a6ab82cb4}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!OnJoinedRoom@{OnJoinedRoom}}
+\index{OnJoinedRoom@{OnJoinedRoom}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{OnJoinedRoom()}{OnJoinedRoom()}}
+{\footnotesize\ttfamily override void Online\+Player\+Listing.\+On\+Joined\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to detect if the players are not in the online player listing page, they will be able to receive the invitations. 
+
+\mbox{\Hypertarget{class_online_player_listing_a2731aa3e24e041bf109ad77768936122}\label{class_online_player_listing_a2731aa3e24e041bf109ad77768936122}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!OnJoinRoomFailed@{OnJoinRoomFailed}}
+\index{OnJoinRoomFailed@{OnJoinRoomFailed}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{OnJoinRoomFailed()}{OnJoinRoomFailed()}}
+{\footnotesize\ttfamily override void Online\+Player\+Listing.\+On\+Join\+Room\+Failed (\begin{DoxyParamCaption}\item[{short}]{return\+Code,  }\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method will return an error message is the game client fails to join the photon network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The return message\\
+\hline
+{\em return\+Code} & The return error code\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_online_player_listing_a6d8fdc697a46ab565bfd1499e6020133}\label{class_online_player_listing_a6d8fdc697a46ab565bfd1499e6020133}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!SetRoomInfo@{SetRoomInfo}}
+\index{SetRoomInfo@{SetRoomInfo}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{SetRoomInfo()}{SetRoomInfo()}}
+{\footnotesize\ttfamily void Online\+Player\+Listing.\+Set\+Room\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_online_player_listing_a3bd30f8b291ee9a8dc5f7b7ad633afb1}{Room\+Info}}}]{room\+Info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The method is used to set room text. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_online_player_listing_aa1f4fb80690fb9d951731263de83f40d}\label{class_online_player_listing_aa1f4fb80690fb9d951731263de83f40d}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!\_name@{\_name}}
+\index{\_name@{\_name}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{\_name}{\_name}}
+{\footnotesize\ttfamily Text Online\+Player\+Listing.\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A Text object in the listing page. 
+
+\mbox{\Hypertarget{class_online_player_listing_af3155094aa0494609ca7a49d54c8d0e9}\label{class_online_player_listing_af3155094aa0494609ca7a49d54c8d0e9}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!joinedRoom@{joinedRoom}}
+\index{joinedRoom@{joinedRoom}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{joinedRoom}{joinedRoom}}
+{\footnotesize\ttfamily bool Online\+Player\+Listing.\+joined\+Room = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A boolean variable to check if the player has entered the room. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_online_player_listing_a3bd30f8b291ee9a8dc5f7b7ad633afb1}\label{class_online_player_listing_a3bd30f8b291ee9a8dc5f7b7ad633afb1}} 
+\index{OnlinePlayerListing@{OnlinePlayerListing}!RoomInfo@{RoomInfo}}
+\index{RoomInfo@{RoomInfo}!OnlinePlayerListing@{OnlinePlayerListing}}
+\doxysubsubsection{\texorpdfstring{RoomInfo}{RoomInfo}}
+{\footnotesize\ttfamily Room\+Info Online\+Player\+Listing.\+Room\+Info\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [private set]}}
+
+
+
+The method is used at realtime to join photonnetwork or to retrieve the number of players in the list at real time. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/\+Multiplayer Scripts/Online\+Player\+Listing.\+cs\end{DoxyCompactItemize}

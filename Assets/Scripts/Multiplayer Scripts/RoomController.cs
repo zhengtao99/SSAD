@@ -10,15 +10,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// This controller class holds the methods with photonnetwork connections, as well as the different ways of handling inivitations between 2 players.
+/// </summary>
 public class RoomController : MonoBehaviourPunCallbacks
 {
+
+    /// <summary>
+    /// A variable holding the RoomController Instance.
+    /// </summary>
     public static RoomController Instance;
+
+    /// <summary>
+    /// A counter variable.
+    /// </summary>
     int count = 0;
+
+    /// <summary>
+    /// This method is used to instantiate RoomController instance to allow other scripts to access the methods define in this class.
+    /// </summary>
     private void Awake()
     {
         Instance = this;
     }
 
+    /// <summary>
+    /// This method is used to create a connection into the photon network.
+    /// </summary>
     public void CreateRoom()
     {
         if (!PhotonNetwork.IsConnected)  //if not connected 
@@ -43,6 +61,9 @@ public class RoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(PhotonNetwork.NickName, options, TypedLobby.Default);
     }
 
+    /// <summary>
+    /// This method is used to display successful message when the player's game client creates a room.
+    /// </summary>
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully");
@@ -50,6 +71,9 @@ public class RoomController : MonoBehaviourPunCallbacks
         GameManager.Instance.HideLoading();
     }
 
+    /// <summary>
+    /// This method is used to display error message when the player's game client fails to create a room.
+    /// </summary>
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         count++;
@@ -58,12 +82,19 @@ public class RoomController : MonoBehaviourPunCallbacks
             CreateRoom();
     }
 
+    /// <summary>
+    /// This method is used to leave the photon network.
+    /// </summary>
     public void LeaveRoom()
     {
         //Intentionally leave room: true
         PhotonNetwork.LeaveRoom(true);
     }
 
+    /// <summary>
+    /// This method is used to send the invitation request using RPC_ShowInvitation() method.
+    /// </summary>
+    /// <param name="senderName">The master/sender player's name</param>
     public void SendInvitation(string senderName)
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -75,11 +106,18 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used show invitation request.
+    /// </summary>
+    /// <param name="senderName">The master/sender player's name</param>
     private void RPC_ShowInvitation(string senderName)
     {
         GameManager.Instance.ShowInvitation(senderName);
     }
 
+    /// <summary>
+    /// This method is used to accept the invitation request using RPC_ShowMultiplayerMatchOtherSide() method.
+    /// </summary>
     public void OnClickAcceptInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -92,12 +130,18 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to display Match up screen.
+    /// </summary>
     private void RPC_ShowMultiplayerMatchOtherSide()
     {
         ConnectionManager cm = new ConnectionManager();
         StartCoroutine(cm.GetRandomQuestions("Inviter"));
     }
 
+    /// <summary>
+    /// This method is used to go into multiplayer maze environment
+    /// </summary>
     public void LoadMultiplayerScene()
     {
         //Set room with IsOpen and IsVisible
@@ -106,8 +150,11 @@ public class RoomController : MonoBehaviourPunCallbacks
        
         PhotonNetwork.LoadLevel(2); //Load scene index 2: MultiplayerScene
 
-    } 
+    }
 
+    /// <summary>
+    /// This method is used to reject the invitation request using RPC_ForceLeaveRoom() method.
+    /// </summary>
     public void OnClickDeclineInvitation()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -120,6 +167,9 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used when an invitation has been rejected, waiting board will be closed and a reject message will be shown.
+    /// </summary>
     private void RPC_ForceLeaveRoom()
     {
         Debug.Log("Force leave room");
@@ -131,6 +181,9 @@ public class RoomController : MonoBehaviourPunCallbacks
         Invoke("RPC_HideInvitation", 2f);
     }
 
+    /// <summary>
+    /// This method is used to cancel invitation on the opponent side using RPC_HideInvitation() method.
+    /// </summary>
     public void OnClickCancelInvitation()
     {
         GameManager.Instance.HideWaitingBoard();
@@ -143,11 +196,17 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to hide game invitation.
+    /// </summary>
     private void RPC_HideInvitation()
     { 
         GameManager.Instance.HideInvitation();
     }
 
+    /// <summary>
+    /// This method is used to update current player score at the opponent side using RPC_ScoreUpdateOtherSide() method.
+    /// </summary>
     public void ScoreUpdateOtherSide(int score)
     {
         int playerNumber;
@@ -162,6 +221,9 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to update player scores.
+    /// </summary>
     private void RPC_ScoreUpdateOtherSide(int playerNumber, string nickname, int score)
     {
         var mazePage = MultiplayerSceneManager.Instance.playPage;
@@ -169,6 +231,9 @@ public class RoomController : MonoBehaviourPunCallbacks
         scoreText.text = nickname + "\n" + score.ToString();
     }
 
+    /// <summary>
+    /// This method is used to update current player live at the opponent side using RPC_LifeUpdateOtherSide() method.
+    /// </summary>
     public void LifeUpdateOtherSide(int countLife)
     {
         int playerNumber;
@@ -184,23 +249,35 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to update player lives.
+    /// </summary>
     private void RPC_LifeUpdateOtherSide(int playerNumber, int countLife)
     {
         GameObject[] heartArr = GameObject.FindGameObjectsWithTag("Heart_player" + playerNumber.ToString());
         Destroy(heartArr[countLife]);
     }
 
+    /// <summary>
+    /// This method is used to open the mini chest at the slave side using RPC_MiniChestUpdateotherSide() method.
+    /// </summary>
     public void MiniChestUpdateOtherSide(float x, float y, float z)
     {
         base.photonView.RPC("RPC_MiniChestUpdateOtherSide", RpcTarget.Others, x, y, z);
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to open the mini chest.
+    /// </summary>
     private void RPC_MiniChestUpdateOtherSide(float x, float y, float z)
     {
         MiniChestController.OpenedChestInstance.CreateOpenedChests(x,y,z);
     }
 
+    /// <summary>
+    /// This method is used to create game over pop up at both master and slave sides using RPC_GameOverPopUp() method.
+    /// </summary>
     public void GameOverPopUp()
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
@@ -211,6 +288,9 @@ public class RoomController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    /// <summary>
+    /// This method is used to create game over pop up.
+    /// </summary>
     private void RPC_GameOverPopUp()
     {
         MultiplayerSceneManager.Instance.GameOverPopUp();
@@ -219,6 +299,9 @@ public class RoomController : MonoBehaviourPunCallbacks
             StartCoroutine(CloseGameOverPopUp());
     }
 
+    /// <summary>
+    /// This method is used to close game over pop up after 4 seconds.
+    /// </summary>
     IEnumerator CloseGameOverPopUp()
     {
         yield return new WaitForSeconds(4.0f);

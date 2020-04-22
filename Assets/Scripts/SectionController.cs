@@ -6,31 +6,95 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This controller class holds all the methods pertaining to the animations and functions in the section/topic selection page.
+/// </summary>
 public class SectionController : MonoBehaviour
 {
+    /// <summary>
+    /// A variable that contains the section/topic name.
+    /// </summary>
     public Text sectionTxt;
+
+    /// <summary>
+    /// A variable that contains an array of the section/topic game objects.
+    /// </summary>
     public GameObject[] images;
+
+    /// <summary>
+    /// A variable that contains the current section/topic game object.
+    /// </summary>
     private GameObject currentImg;
+
+    /// <summary>
+    /// A variable that contains the previous section/topic game object.
+    /// </summary>
     private GameObject lastImg;
+
+    /// <summary>
+    /// A variable that contains page number representing the index of the topics selected.
+    /// </summary>
     private int currentPage = 0;
+
+    /// <summary>
+    /// A variable that contains an array of section/topic names.
+    /// </summary>
     static string[] sections;
+
+    /// <summary>
+    /// A variable that contains speed which controls the animation's movement.
+    /// </summary>
     private float speed = 500.0f;
+
+    /// <summary>
+    /// A variable that contains a boolean to detect if the player selected the next topic.
+    /// </summary>
     private bool moveCurrent = false;
+
+    /// <summary>
+    /// A variable that contains a boolean to detect if the player selected the previous topic.
+    /// </summary>
     private bool moveLast = false;
+
+    /// <summary>
+    /// A variable that contains a boolean to detect if the player selected to the right arrow.
+    /// </summary>
     private bool right = false;
+
+    /// <summary>
+    /// A variable that contains the previous image destination location.
+    /// </summary>
     private Vector3 lastImgDest;
 
+    /// <summary>
+    /// A variable that contains the current image destination location.
+    /// </summary>
     private Vector3 currentImgDest = new Vector3(300f, 0, 0);
-    private Vector3 scaleFactor = new Vector3(0.8f, 0.8f, 0.8f);
-    private Vector3 leftEnd = new Vector3(150, 0, 0);
-    private Vector3 rightEnd = new Vector3(450f, 0, 0);
-    public static Topic currentTopic;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-    // Update is called once per frame
+    /// <summary>
+    /// A variable that contains scale to scale the current to previous image size.
+    /// </summary>
+    private Vector3 scaleFactor = new Vector3(0.8f, 0.8f, 0.8f);
+    
+    /// <summary>
+    /// A variable that contains scale to scale image to the left.
+    /// </summary>
+    private Vector3 leftEnd = new Vector3(150, 0, 0);
+    
+    /// <summary>
+    /// A variable that contains scale to scale image to the right.
+    /// </summary>
+    private Vector3 rightEnd = new Vector3(450f, 0, 0);
+
+    /// <summary>
+    /// A variable that contains the current topic selected.
+    /// </summary>
+    public static Topic currentTopic;
+
+
+    /// <summary>
+    /// This method is called once per frame, it is responsible to detect if player choses to change world and perform the section/topic game object manipulation/animation.
+    /// </summary>
     void Update()
     {
 
@@ -58,6 +122,9 @@ public class SectionController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This method is used to set default topic and congifuring the topic's neighbouring topics, it will be used to perform the animation of switching topics when needed.
+    /// </summary>
     public void SetCurrentPage()
     {
         sectionTxt.text = sections[this.currentPage];
@@ -80,6 +147,9 @@ public class SectionController : MonoBehaviour
         moveLast = true;
     }
 
+    /// <summary>
+    /// This method is used to perform the switching topic animation when the left button is clicked.
+    /// </summary>
     public void OnClickBack()
     {
         FindObjectOfType<SoundManager>().Play("MinorButton");
@@ -102,6 +172,9 @@ public class SectionController : MonoBehaviour
         SetCurrentPage();
     }
 
+    /// <summary>
+    /// This method is used to perform the switching topic animation when the right button is clicked.
+    /// </summary>
     public void OnClickForward()
     {
         FindObjectOfType<SoundManager>().Play("MinorButton");
@@ -114,15 +187,10 @@ public class SectionController : MonoBehaviour
         lastImgDest = rightEnd;
         SetCurrentPage();
     }
-    /*
-    public void StartGame()
-    {
-        FindObjectOfType<SoundManager>().Play("MajorButton");
-        User user = ConnectionManager.user;
-        StartCoroutine(ConnectionManager.GetAvailableStages(currentTopic.Id, user.Id));
-        //StartCoroutine(ConnectionManager.GetTopicHighscore(currentTopic.Id, "", ""));
-    }
-    */
+
+    /// <summary>
+    /// This method is used navigate the player to the leaderboard page.
+    /// </summary>
     public void ViewLeaderboard()
     {
         FindObjectOfType<SoundManager>().Play("MajorButton");
@@ -131,6 +199,9 @@ public class SectionController : MonoBehaviour
         StartCoroutine(cm.GetCurrentUserScore(currentTopic.Id, ConnectionManager.user.Id,"Topics"));
     }
 
+    /// <summary>
+    /// This method is used display the initial section page with all the default game objects.
+    /// </summary>
     public void StartSectionPage()
     {
         this.currentPage = 0;

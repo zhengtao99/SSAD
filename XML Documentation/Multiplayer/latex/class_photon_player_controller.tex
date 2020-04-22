@@ -1,0 +1,122 @@
+\hypertarget{class_photon_player_controller}{}\doxysection{Photon\+Player\+Controller Class Reference}
+\label{class_photon_player_controller}\index{PhotonPlayerController@{PhotonPlayerController}}
+
+
+This controller class holds the method to generate two views for the players to play in the same maze environment.  
+
+
+Inheritance diagram for Photon\+Player\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_photon_player_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Transform \mbox{\hyperlink{class_photon_player_controller_a7782fc58225e83b46867efbd276a824d}{spawn\+Point\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the spawn point for player 1. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_photon_player_controller_a385383ec0a9bdf291cdae01f4bf28cd7}{spawn\+Point\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the spawn point for player 2. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_photon_player_controller_a7cc86cb7d8a8928bc662cd5149bea3e7}{spawn\+Lives\+Point\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the spawn life points for player 1. \end{DoxyCompactList}\item 
+Transform \mbox{\hyperlink{class_photon_player_controller_a69f9a01f4de344321e21e945f04bb6d5}{spawn\+Lives\+Point\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the spawn life points for player 1. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_photon_player_controller_aa6440eccc37886f4c8fa79f0ed6c459e}{my\+Player}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the current player in the game client \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_photon_player_controller_a35abc995f9d4d80ff8a2b3d36f27f19a}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it will instantiate the copy of the maze environment, spawns the players and start their lives. The players are differentiate by master and slave game clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Photon\+View \mbox{\hyperlink{class_photon_player_controller_aeffac3de824a1247a36481c22d04abd0}{PV}}
+\begin{DoxyCompactList}\small\item\em A Photon\+View variable to store a copy of the maze environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds the method to generate two views for the players to play in the same maze environment. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_photon_player_controller_a35abc995f9d4d80ff8a2b3d36f27f19a}\label{class_photon_player_controller_a35abc995f9d4d80ff8a2b3d36f27f19a}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!Start@{Start}}
+\index{Start@{Start}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Photon\+Player\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it will instantiate the copy of the maze environment, spawns the players and start their lives. The players are differentiate by master and slave game clients. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_photon_player_controller_aa6440eccc37886f4c8fa79f0ed6c459e}\label{class_photon_player_controller_aa6440eccc37886f4c8fa79f0ed6c459e}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!myPlayer@{myPlayer}}
+\index{myPlayer@{myPlayer}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{myPlayer}{myPlayer}}
+{\footnotesize\ttfamily Game\+Object Photon\+Player\+Controller.\+my\+Player}
+
+
+
+A variable that holds the current player in the game client 
+
+\mbox{\Hypertarget{class_photon_player_controller_aeffac3de824a1247a36481c22d04abd0}\label{class_photon_player_controller_aeffac3de824a1247a36481c22d04abd0}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!PV@{PV}}
+\index{PV@{PV}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{PV}{PV}}
+{\footnotesize\ttfamily Photon\+View Photon\+Player\+Controller.\+PV\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A Photon\+View variable to store a copy of the maze environment. 
+
+\mbox{\Hypertarget{class_photon_player_controller_a7cc86cb7d8a8928bc662cd5149bea3e7}\label{class_photon_player_controller_a7cc86cb7d8a8928bc662cd5149bea3e7}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!spawnLivesPoint\_1@{spawnLivesPoint\_1}}
+\index{spawnLivesPoint\_1@{spawnLivesPoint\_1}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{spawnLivesPoint\_1}{spawnLivesPoint\_1}}
+{\footnotesize\ttfamily Transform Photon\+Player\+Controller.\+spawn\+Lives\+Point\+\_\+1}
+
+
+
+A variable that holds the spawn life points for player 1. 
+
+\mbox{\Hypertarget{class_photon_player_controller_a69f9a01f4de344321e21e945f04bb6d5}\label{class_photon_player_controller_a69f9a01f4de344321e21e945f04bb6d5}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!spawnLivesPoint\_2@{spawnLivesPoint\_2}}
+\index{spawnLivesPoint\_2@{spawnLivesPoint\_2}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{spawnLivesPoint\_2}{spawnLivesPoint\_2}}
+{\footnotesize\ttfamily Transform Photon\+Player\+Controller.\+spawn\+Lives\+Point\+\_\+2}
+
+
+
+A variable that holds the spawn life points for player 1. 
+
+\mbox{\Hypertarget{class_photon_player_controller_a7782fc58225e83b46867efbd276a824d}\label{class_photon_player_controller_a7782fc58225e83b46867efbd276a824d}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!spawnPoint\_1@{spawnPoint\_1}}
+\index{spawnPoint\_1@{spawnPoint\_1}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{spawnPoint\_1}{spawnPoint\_1}}
+{\footnotesize\ttfamily Transform Photon\+Player\+Controller.\+spawn\+Point\+\_\+1}
+
+
+
+A variable that holds the spawn point for player 1. 
+
+\mbox{\Hypertarget{class_photon_player_controller_a385383ec0a9bdf291cdae01f4bf28cd7}\label{class_photon_player_controller_a385383ec0a9bdf291cdae01f4bf28cd7}} 
+\index{PhotonPlayerController@{PhotonPlayerController}!spawnPoint\_2@{spawnPoint\_2}}
+\index{spawnPoint\_2@{spawnPoint\_2}!PhotonPlayerController@{PhotonPlayerController}}
+\doxysubsubsection{\texorpdfstring{spawnPoint\_2}{spawnPoint\_2}}
+{\footnotesize\ttfamily Transform Photon\+Player\+Controller.\+spawn\+Point\+\_\+2}
+
+
+
+A variable that holds the spawn point for player 2. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/\+Multiplayer Scripts/Photon\+Player\+Controller.\+cs\end{DoxyCompactItemize}

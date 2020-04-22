@@ -1,0 +1,376 @@
+\hypertarget{class_q_a_manager}{}\doxysection{Q\+A\+Manager Class Reference}
+\label{class_q_a_manager}\index{QAManager@{QAManager}}
+
+
+This manager class is responsible for displaying of questions, managing the interactions between players and the game, as well as giving out rewards or penalties for every question answered.  
+
+
+Inheritance diagram for Q\+A\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_q_a_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_a_manager_a0f60c3975df0922d944ef24d614253ec}{Populate\+Answers}} (List$<$ Answer $>$ answers)
+\begin{DoxyCompactList}\small\item\em This method takes in a list of answers and populate the text in the answer buttons in the question page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_aaecd057b0098df77b901cc6ca4f7cdd5}{Populate\+Question}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible to populate the question page with a question. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_a5bdfeedd90906ae173853a5d7e65189d}{Enable\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible to enable the buttons when the question page is active to allow the player to choose an answer for the question. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_a9dd26cd23e6060c26867b31f0c8982fc}{Verify\+Answer}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible to verify and update the players points or lifes in cases where the player answer the question correctly or wrongly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_ab53bc9e37036f09609de4886c433ca05}{Resume\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible for continuing the game once the player pressed on continue button. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_a7bc6e810b32393ed18cb9ae8e9f821f4}{Turn\+Red}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible changing answer button to red color to show wrong answer has be selected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_a50a68231f9595b43b3410dfef309ea67}{Turn\+Green}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible changing answer button to green color to show correct answer has be selected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_controller}{Player\+Controller}} \mbox{\hyperlink{class_q_a_manager_ae4549eb0625195cdf81daf79b2ab722c}{player\+Controller}}
+\begin{DoxyCompactList}\small\item\em A variable that holds player\textquotesingle{}s controller class that will be used to manipulate the player game object in the game. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_a14374ca1004101109e830e9faf04c85a}{top\+Left\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the first answer button game object located at the top left side of the display. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_ac4461e4c29bc3195e4d3fac915fcab39}{top\+Right\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the second answer button game object located at the top right side of the display. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_ab2a971847930628326a797140ea7b08a}{bottom\+Left\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the third answer button game object located at the bottom left side of the display. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_adb3111a3d6526cd205d93f0e5ce38eed}{bottom\+Right\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the forth answer button game object located at the bottom right side of the display. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_a0eaec42bf5a84290269b469eb1a1b16f}{continue\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the continue button game object. \end{DoxyCompactList}\item 
+Button \mbox{\hyperlink{class_q_a_manager_a3f21d9a6df2cc9beedb22e8b5f2a6cae}{pressed\+Button}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the pressed answer button game object. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_q_a_manager_a2c8ae37771eca6ef8687a7b969a30211}{qn\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that holds question text ui object displayed on the screen. \end{DoxyCompactList}\item 
+Color\+Block \mbox{\hyperlink{class_q_a_manager_ab9565bc2f4ebc2730438912c97c0eafa}{original\+Colors}} = Color\+Block.\+default\+Color\+Block
+\begin{DoxyCompactList}\small\item\em A variable that holds the color of a answer button. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_q_a_manager_a5373e10eaa1b6eb6070b8ae80e93dd2b}{correct}}
+\begin{DoxyCompactList}\small\item\em A variable that holds a boolean to indicate is the player have answered the question correctly. Correct would be true. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_q_a_manager_aee521ff519206130b5c217f77d550bc6}{is\+Multiplayer\+Mode}}
+\begin{DoxyCompactList}\small\item\em A boolean variable that records if the scene is in single or multiplayer mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} \mbox{\hyperlink{class_q_a_manager_a723e8ad00a6232a557128b022c1181d0}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable that contains \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} instance. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_q_a_manager_a454e09d36c77e35d914df3fd60a1a5b5}{question\+ID}}
+\begin{DoxyCompactList}\small\item\em A variable that holds question id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_a_manager_a02b78306549543bd88d1d55478a1959e}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to create an \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} instance to allow other scripts to access the methods defined in this class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_ae52118fe2c0d6065b17b4a112157d4bc}{On\+Enable}} ()
+\begin{DoxyCompactList}\small\item\em This method is called whenever the question page is called, the method is responsble to initiailize the question by calling \mbox{\hyperlink{class_q_a_manager_aaecd057b0098df77b901cc6ca4f7cdd5}{Populate\+Question()}} and initializing the player variable to be used for manipulation later. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_q_a_manager_a3a0363a1343166ec1ad3f3d13a5a8885}{Disable\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsible for disabling the buttons to prevent unwanted interactions that may cause error after the player has answered the question. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_q_a_manager_a33a0887aacb15972acb8268bf2b819a5}{player}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the player game object where the player attributes will be manipulated in the game. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_q_a_manager_ac1425e32c436311f77d690bafba3a074}{ans\+Text}} = null
+\begin{DoxyCompactList}\small\item\em A variable that holds answer text ui object displayed on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_q_a_manager_a8d88411280419ceae873f07ac9d2c1dd}{answer\+ID}}
+\begin{DoxyCompactList}\small\item\em A variable that holds answer id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Date\+Time \mbox{\hyperlink{class_q_a_manager_afade6d97902e8cf93147f8d0b8dfdfb0}{start\+Time}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the time the player open a chest and starts answering a question. This is recorded in date \& time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This manager class is responsible for displaying of questions, managing the interactions between players and the game, as well as giving out rewards or penalties for every question answered. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_a_manager_a3a0363a1343166ec1ad3f3d13a5a8885}\label{class_q_a_manager_a3a0363a1343166ec1ad3f3d13a5a8885}} 
+\index{QAManager@{QAManager}!DisableButtons@{DisableButtons}}
+\index{DisableButtons@{DisableButtons}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{DisableButtons()}{DisableButtons()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Disable\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is responsible for disabling the buttons to prevent unwanted interactions that may cause error after the player has answered the question. 
+
+\mbox{\Hypertarget{class_q_a_manager_a5bdfeedd90906ae173853a5d7e65189d}\label{class_q_a_manager_a5bdfeedd90906ae173853a5d7e65189d}} 
+\index{QAManager@{QAManager}!EnableButtons@{EnableButtons}}
+\index{EnableButtons@{EnableButtons}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{EnableButtons()}{EnableButtons()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Enable\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible to enable the buttons when the question page is active to allow the player to choose an answer for the question. 
+
+\mbox{\Hypertarget{class_q_a_manager_ae52118fe2c0d6065b17b4a112157d4bc}\label{class_q_a_manager_ae52118fe2c0d6065b17b4a112157d4bc}} 
+\index{QAManager@{QAManager}!OnEnable@{OnEnable}}
+\index{OnEnable@{OnEnable}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+On\+Enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called whenever the question page is called, the method is responsble to initiailize the question by calling \mbox{\hyperlink{class_q_a_manager_aaecd057b0098df77b901cc6ca4f7cdd5}{Populate\+Question()}} and initializing the player variable to be used for manipulation later. 
+
+\mbox{\Hypertarget{class_q_a_manager_a0f60c3975df0922d944ef24d614253ec}\label{class_q_a_manager_a0f60c3975df0922d944ef24d614253ec}} 
+\index{QAManager@{QAManager}!PopulateAnswers@{PopulateAnswers}}
+\index{PopulateAnswers@{PopulateAnswers}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{PopulateAnswers()}{PopulateAnswers()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Populate\+Answers (\begin{DoxyParamCaption}\item[{List$<$ Answer $>$}]{answers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method takes in a list of answers and populate the text in the answer buttons in the question page. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em answers} & A list of answers for a given question\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_q_a_manager_aaecd057b0098df77b901cc6ca4f7cdd5}\label{class_q_a_manager_aaecd057b0098df77b901cc6ca4f7cdd5}} 
+\index{QAManager@{QAManager}!PopulateQuestion@{PopulateQuestion}}
+\index{PopulateQuestion@{PopulateQuestion}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{PopulateQuestion()}{PopulateQuestion()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Populate\+Question (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible to populate the question page with a question. 
+
+\mbox{\Hypertarget{class_q_a_manager_ab53bc9e37036f09609de4886c433ca05}\label{class_q_a_manager_ab53bc9e37036f09609de4886c433ca05}} 
+\index{QAManager@{QAManager}!ResumeGame@{ResumeGame}}
+\index{ResumeGame@{ResumeGame}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{ResumeGame()}{ResumeGame()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Resume\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible for continuing the game once the player pressed on continue button. 
+
+\mbox{\Hypertarget{class_q_a_manager_a02b78306549543bd88d1d55478a1959e}\label{class_q_a_manager_a02b78306549543bd88d1d55478a1959e}} 
+\index{QAManager@{QAManager}!Start@{Start}}
+\index{Start@{Start}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to create an \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} instance to allow other scripts to access the methods defined in this class. 
+
+\mbox{\Hypertarget{class_q_a_manager_a50a68231f9595b43b3410dfef309ea67}\label{class_q_a_manager_a50a68231f9595b43b3410dfef309ea67}} 
+\index{QAManager@{QAManager}!TurnGreen@{TurnGreen}}
+\index{TurnGreen@{TurnGreen}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{TurnGreen()}{TurnGreen()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Turn\+Green (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible changing answer button to green color to show correct answer has be selected. 
+
+\mbox{\Hypertarget{class_q_a_manager_a7bc6e810b32393ed18cb9ae8e9f821f4}\label{class_q_a_manager_a7bc6e810b32393ed18cb9ae8e9f821f4}} 
+\index{QAManager@{QAManager}!TurnRed@{TurnRed}}
+\index{TurnRed@{TurnRed}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{TurnRed()}{TurnRed()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Turn\+Red (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible changing answer button to red color to show wrong answer has be selected. 
+
+\mbox{\Hypertarget{class_q_a_manager_a9dd26cd23e6060c26867b31f0c8982fc}\label{class_q_a_manager_a9dd26cd23e6060c26867b31f0c8982fc}} 
+\index{QAManager@{QAManager}!VerifyAnswer@{VerifyAnswer}}
+\index{VerifyAnswer@{VerifyAnswer}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{VerifyAnswer()}{VerifyAnswer()}}
+{\footnotesize\ttfamily void Q\+A\+Manager.\+Verify\+Answer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsible to verify and update the players points or lifes in cases where the player answer the question correctly or wrongly. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_a_manager_ac1425e32c436311f77d690bafba3a074}\label{class_q_a_manager_ac1425e32c436311f77d690bafba3a074}} 
+\index{QAManager@{QAManager}!ansText@{ansText}}
+\index{ansText@{ansText}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{ansText}{ansText}}
+{\footnotesize\ttfamily Text Q\+A\+Manager.\+ans\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that holds answer text ui object displayed on the screen. 
+
+\mbox{\Hypertarget{class_q_a_manager_a8d88411280419ceae873f07ac9d2c1dd}\label{class_q_a_manager_a8d88411280419ceae873f07ac9d2c1dd}} 
+\index{QAManager@{QAManager}!answerID@{answerID}}
+\index{answerID@{answerID}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{answerID}{answerID}}
+{\footnotesize\ttfamily int Q\+A\+Manager.\+answer\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that holds answer id. 
+
+\mbox{\Hypertarget{class_q_a_manager_ab2a971847930628326a797140ea7b08a}\label{class_q_a_manager_ab2a971847930628326a797140ea7b08a}} 
+\index{QAManager@{QAManager}!bottomLeftButton@{bottomLeftButton}}
+\index{bottomLeftButton@{bottomLeftButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{bottomLeftButton}{bottomLeftButton}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+bottom\+Left\+Button}
+
+
+
+A variable that holds the third answer button game object located at the bottom left side of the display. 
+
+\mbox{\Hypertarget{class_q_a_manager_adb3111a3d6526cd205d93f0e5ce38eed}\label{class_q_a_manager_adb3111a3d6526cd205d93f0e5ce38eed}} 
+\index{QAManager@{QAManager}!bottomRightButton@{bottomRightButton}}
+\index{bottomRightButton@{bottomRightButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{bottomRightButton}{bottomRightButton}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+bottom\+Right\+Button}
+
+
+
+A variable that holds the forth answer button game object located at the bottom right side of the display. 
+
+\mbox{\Hypertarget{class_q_a_manager_a0eaec42bf5a84290269b469eb1a1b16f}\label{class_q_a_manager_a0eaec42bf5a84290269b469eb1a1b16f}} 
+\index{QAManager@{QAManager}!continueButton@{continueButton}}
+\index{continueButton@{continueButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{continueButton}{continueButton}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+continue\+Button}
+
+
+
+A variable that holds the continue button game object. 
+
+\mbox{\Hypertarget{class_q_a_manager_a5373e10eaa1b6eb6070b8ae80e93dd2b}\label{class_q_a_manager_a5373e10eaa1b6eb6070b8ae80e93dd2b}} 
+\index{QAManager@{QAManager}!correct@{correct}}
+\index{correct@{correct}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{correct}{correct}}
+{\footnotesize\ttfamily int Q\+A\+Manager.\+correct}
+
+
+
+A variable that holds a boolean to indicate is the player have answered the question correctly. Correct would be true. 
+
+\mbox{\Hypertarget{class_q_a_manager_a723e8ad00a6232a557128b022c1181d0}\label{class_q_a_manager_a723e8ad00a6232a557128b022c1181d0}} 
+\index{QAManager@{QAManager}!Instance@{Instance}}
+\index{Instance@{Instance}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} Q\+A\+Manager.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains \mbox{\hyperlink{class_q_a_manager}{Q\+A\+Manager}} instance. 
+
+\mbox{\Hypertarget{class_q_a_manager_aee521ff519206130b5c217f77d550bc6}\label{class_q_a_manager_aee521ff519206130b5c217f77d550bc6}} 
+\index{QAManager@{QAManager}!isMultiplayerMode@{isMultiplayerMode}}
+\index{isMultiplayerMode@{isMultiplayerMode}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{isMultiplayerMode}{isMultiplayerMode}}
+{\footnotesize\ttfamily bool Q\+A\+Manager.\+is\+Multiplayer\+Mode}
+
+
+
+A boolean variable that records if the scene is in single or multiplayer mode. 
+
+\mbox{\Hypertarget{class_q_a_manager_ab9565bc2f4ebc2730438912c97c0eafa}\label{class_q_a_manager_ab9565bc2f4ebc2730438912c97c0eafa}} 
+\index{QAManager@{QAManager}!originalColors@{originalColors}}
+\index{originalColors@{originalColors}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{originalColors}{originalColors}}
+{\footnotesize\ttfamily Color\+Block Q\+A\+Manager.\+original\+Colors = Color\+Block.\+default\+Color\+Block}
+
+
+
+A variable that holds the color of a answer button. 
+
+\mbox{\Hypertarget{class_q_a_manager_a33a0887aacb15972acb8268bf2b819a5}\label{class_q_a_manager_a33a0887aacb15972acb8268bf2b819a5}} 
+\index{QAManager@{QAManager}!player@{player}}
+\index{player@{player}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that holds the player game object where the player attributes will be manipulated in the game. 
+
+\mbox{\Hypertarget{class_q_a_manager_ae4549eb0625195cdf81daf79b2ab722c}\label{class_q_a_manager_ae4549eb0625195cdf81daf79b2ab722c}} 
+\index{QAManager@{QAManager}!playerController@{playerController}}
+\index{playerController@{playerController}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{playerController}{playerController}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller}{Player\+Controller}} Q\+A\+Manager.\+player\+Controller}
+
+
+
+A variable that holds player\textquotesingle{}s controller class that will be used to manipulate the player game object in the game. 
+
+\mbox{\Hypertarget{class_q_a_manager_a3f21d9a6df2cc9beedb22e8b5f2a6cae}\label{class_q_a_manager_a3f21d9a6df2cc9beedb22e8b5f2a6cae}} 
+\index{QAManager@{QAManager}!pressedButton@{pressedButton}}
+\index{pressedButton@{pressedButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{pressedButton}{pressedButton}}
+{\footnotesize\ttfamily Button Q\+A\+Manager.\+pressed\+Button}
+
+
+
+A variable that holds the pressed answer button game object. 
+
+\mbox{\Hypertarget{class_q_a_manager_a2c8ae37771eca6ef8687a7b969a30211}\label{class_q_a_manager_a2c8ae37771eca6ef8687a7b969a30211}} 
+\index{QAManager@{QAManager}!qnText@{qnText}}
+\index{qnText@{qnText}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{qnText}{qnText}}
+{\footnotesize\ttfamily Text Q\+A\+Manager.\+qn\+Text}
+
+
+
+A variable that holds question text ui object displayed on the screen. 
+
+\mbox{\Hypertarget{class_q_a_manager_a454e09d36c77e35d914df3fd60a1a5b5}\label{class_q_a_manager_a454e09d36c77e35d914df3fd60a1a5b5}} 
+\index{QAManager@{QAManager}!questionID@{questionID}}
+\index{questionID@{questionID}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{questionID}{questionID}}
+{\footnotesize\ttfamily int Q\+A\+Manager.\+question\+ID\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that holds question id. 
+
+\mbox{\Hypertarget{class_q_a_manager_afade6d97902e8cf93147f8d0b8dfdfb0}\label{class_q_a_manager_afade6d97902e8cf93147f8d0b8dfdfb0}} 
+\index{QAManager@{QAManager}!startTime@{startTime}}
+\index{startTime@{startTime}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{startTime}{startTime}}
+{\footnotesize\ttfamily Date\+Time Q\+A\+Manager.\+start\+Time\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+A variable that holds the time the player open a chest and starts answering a question. This is recorded in date \& time. 
+
+\mbox{\Hypertarget{class_q_a_manager_a14374ca1004101109e830e9faf04c85a}\label{class_q_a_manager_a14374ca1004101109e830e9faf04c85a}} 
+\index{QAManager@{QAManager}!topLeftButton@{topLeftButton}}
+\index{topLeftButton@{topLeftButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{topLeftButton}{topLeftButton}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+top\+Left\+Button}
+
+
+
+A variable that holds the first answer button game object located at the top left side of the display. 
+
+\mbox{\Hypertarget{class_q_a_manager_ac4461e4c29bc3195e4d3fac915fcab39}\label{class_q_a_manager_ac4461e4c29bc3195e4d3fac915fcab39}} 
+\index{QAManager@{QAManager}!topRightButton@{topRightButton}}
+\index{topRightButton@{topRightButton}!QAManager@{QAManager}}
+\doxysubsubsection{\texorpdfstring{topRightButton}{topRightButton}}
+{\footnotesize\ttfamily Game\+Object Q\+A\+Manager.\+top\+Right\+Button}
+
+
+
+A variable that holds the second answer button game object located at the top right side of the display. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Q\+A\+Manager.\+cs\end{DoxyCompactItemize}

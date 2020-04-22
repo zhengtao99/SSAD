@@ -7,17 +7,53 @@ using UnityEngine.UI;
 using Photon.Pun;       //import 
 using Photon.Realtime;  //import 
 
+
+/// <summary>
+/// This controller class holds the method responsible for displaying the multiplayer result page.
+/// </summary>
 public class MultiPlayerResultController : MonoBehaviour
 {
-    public Text winnerName;
-    public Text winnerScore;
-    public Text loserName;
-    public Text loserScore;
-    public Text player1Score;
-    public Text player2Score;
-    string[] player1Array = null, player2Array = null;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// A variable holding the winner name.
+    /// </summary>
+    public Text winnerName;
+    /// <summary>
+    /// A variable holding the winner score.
+    /// </summary>
+    public Text winnerScore;
+    /// <summary>
+    /// A variable holding the loser name.
+    /// </summary>
+    public Text loserName;
+    /// <summary>
+    /// A variable holding the loser score.
+    /// </summary>
+    public Text loserScore;
+
+    /// <summary>
+    /// A variable holding player 1's score.
+    /// </summary>
+    public Text player1Score;
+
+    /// <summary>
+    /// A variable holding player 2's score.
+    /// </summary>
+    public Text player2Score;
+
+    /// <summary>
+    /// An array holding player 1's name and score in a string
+    /// </summary>
+    string[] player1Array = null;
+
+    /// <summary>
+    /// An array holding player 2's name and score in a string
+    /// </summary>
+    string[] player2Array = null;
+
+    /// <summary>
+    /// This method is used to set the winner and loser names and scores in the result page.
+    /// </summary>
     void OnEnable()
     {
         if (player1Score != null && player2Score != null)

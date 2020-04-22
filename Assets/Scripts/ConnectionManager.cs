@@ -14,7 +14,7 @@ using Photon.Pun;
 namespace Assets.Scripts
 {
     /// <summary>
-    /// Contains all methods Learnable Mobile will use to retrieve or to update the database through Learnable Manage System's self-created API.
+    /// This manager class ontains all methods Learnable Mobile will use to retrieve or to update the database through Learnable Manage System's self-created API.
     /// </summary>
     class ConnectionManager
     {
@@ -44,7 +44,12 @@ namespace Assets.Scripts
         /// A variable to store the retrieved questions according to a specific world and topic.
         /// </summary>
         public static List<Question> Questions;
+
+        /// <summary>
+        /// A variable to store the cleared stages according to the player's user id.
+        /// </summary>
         public static List<ClearedStage> ClearedStages;
+
         /// <summary>
         /// A variable list to store the list of available stages that has questions created by the teachers.
         /// </summary>
@@ -143,7 +148,7 @@ namespace Assets.Scripts
 
 
         /// <summary>
-        /// To retrieve respective questions from datbase based on player selected topic and difficulty level.
+        /// This method is used to retrieve respective questions from datbase based on player selected topic and difficulty level.
         /// </summary>
         /// <param name="topicId">Player's selected topic.</param>
         /// <param name="stage">Player's selected diffculty stage between 1 to 10.</param>
@@ -159,6 +164,11 @@ namespace Assets.Scripts
             GameManager.Instance.createNewGame();
             GameManager.Instance.SetPageState(GameManager.PageState.Play);
         }
+
+        /// <summary>
+        /// This method is used to retrieve random questions based on player's user id in the multiplayer gameplay mode.
+        /// </summary>
+        /// <param name="Player">Player's user id</param>
         public IEnumerator GetRandomQuestions(string Player)
         {
             GameManager.Instance.ShowLoading();
@@ -180,7 +190,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To get the topics available for the world/subject the player has selected.
+        /// This method is used to get the topics available for the world/subject the player has selected.
         /// </summary>
         /// <param name="WorldId">Player's selected world.</param>
         public static IEnumerator GetTopic(int WorldId)
@@ -197,7 +207,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To get the world/subject available in the game.
+        /// This method is used to get the world/subject available in the game.
         /// </summary>
         public static IEnumerator GetWorld()
         {
@@ -212,7 +222,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To get all the unlocked stages based on topic selected and the player's identity.
+        /// This method is used to get all the unlocked stages based on topic selected and the player's identity.
         /// </summary>
         /// <param name="TopicId">Player's selected topic</param>
         /// <param name="UserId">Player's user id.</param>
@@ -227,6 +237,11 @@ namespace Assets.Scripts
             AvailableStages = stageCollection.AvailableStages;
             GameManager.Instance.loadClearedStages(TopicId);
         }
+
+        /// <summary>
+        /// This method is used to get all the cleared stages based on player's user id and topic selected.
+        /// </summary>
+        /// <param name="TopicId">Player's selected topic</param>
         public IEnumerator GetClearedStages(int TopicId)
         {
             Debug.Log("in");
@@ -242,7 +257,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To update player's new highscore into database, the score obtained after clearing a stage for a topic.  
+        /// This method is used to update player's new highscore into database, the score obtained after clearing a stage for a topic.  
         /// </summary>
         /// <param name="UserId">Player's user id.</param>
         /// <param name="TopicId">Player's selected topic.</param>
@@ -256,7 +271,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To update player's performance to database for analysis done at Learnable Management System.  
+        /// This method is used to update player's performance to database for analysis done at Learnable Management System.  
         /// </summary>
         /// <param name="UserId">Player's user id.</param>
         /// <param name="QnsId">The question answered.</param>
@@ -285,7 +300,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To retrieve player's accumulated score for the world or topic selected.
+        /// This method is used to retrieve player's accumulated score for the world or topic selected.
         /// </summary>
         /// <param name="Id">Player's selected world or topic id.</param>
         /// <param name="UserId">Player's user id.</param>
@@ -307,7 +322,7 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// To retrieve a list of players that matches the player's search input.
+        /// This method is used to retrieve a list of players that matches the player's search input.
         /// </summary>
         /// <param name="id">Player's selected world or topic id.</param>
         /// <param name="Search">Player's input in search box.</param>

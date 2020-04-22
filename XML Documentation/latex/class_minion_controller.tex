@@ -1,0 +1,305 @@
+\hypertarget{class_minion_controller}{}\doxysection{Minion\+Controller Class Reference}
+\label{class_minion_controller}\index{MinionController@{MinionController}}
+
+
+This controller class contains all the methods manipulate the minions. The controller will be attached onto the minions in order to control them.  
+
+
+Inheritance diagram for Minion\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_minion_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_minion_controller_ab727ce8c228867a2884da83e6e00c290}{I\+Fire}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to generate fire balls shooting out of minions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_minion_controller_a2eb1ef90d327254024a6c2408627e0a9}{I\+Freeze\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to call Freeze\+Minion() method to freeze the minions\textquotesingle{} movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_minion_controller_af5629f3dd9f905bb04ddf2ff09c27d60}{I\+Slow\+Down\+Minion}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to call \mbox{\hyperlink{class_minion_controller_ad3d21cf8de3e99a8bf89f58103fca895}{Slow\+Down\+Minion()}} method to slow down the minions\textquotesingle{} movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_minion_controller_a64ff8af22c72e5bbd312838d3f54e2f9}{I\+Speed\+Up\+Minion}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to call \mbox{\hyperlink{class_minion_controller_a6bd7679ae96abf80c8dd94964ee50b0c}{Speed\+Up\+Minion()}} method to speed up the minions\textquotesingle{} movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_minion_controller_a5fc8cd403264a222a89503f3d220fa0e}{speed}}
+\begin{DoxyCompactList}\small\item\em A variable hold and manipulate the movement speed of minions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_minion_controller_af641f1f50e801da2041a326cb73cf483}{is\+Pause}} = false
+\begin{DoxyCompactList}\small\item\em A variable to hold a boolean value to check if the game is paused, this is used to restrict movements of minions during a game pause. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_minion_controller_a0e99bb82e83c799a41002f955167cc38}{attack\+Effect}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the attack effect game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_minion_controller_aa3e44bc1b1a4906dda8a451a9b400ed3}{fireball}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the fire ball game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_minion_controller_a449cc82dbc451cbf7759bbc910eb489c}{freeze}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the freeze effect game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_minion_controller_ae6905d3439a6ab6497a05fb54eb258db}{alert}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the alert effect game object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_minion_controller_a8614de12bd23b39e13c06428d29c05aa}{stop\+Firing}} = false
+\begin{DoxyCompactList}\small\item\em A boolean variable to control the firing, the firing will stop when it is true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_minion_controller_ad0961f09b2e158b563b182e1ebfdcc0e}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called at the start of the game, to get the minion\textquotesingle{}s rigidbody and set the minion\textquotesingle{}s movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_minion_controller_a56c93d23dd1a933042cbda79a3ddebde}{Fixed\+Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame to move the minions throughout the entire game. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_minion_controller_ad3d21cf8de3e99a8bf89f58103fca895}{Slow\+Down\+Minion}} ()
+\begin{DoxyCompactList}\small\item\em This method performs the actual slowing down of minions for 10 seconds. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_minion_controller_a6bd7679ae96abf80c8dd94964ee50b0c}{Speed\+Up\+Minion}} ()
+\begin{DoxyCompactList}\small\item\em This method performs the actual speeding up of minions for 10 seconds. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_minion_controller_aba84394144822d753f9adfc97cb2b1a7}{Freeze\+Minions}} ()
+\begin{DoxyCompactList}\small\item\em This method performs the actual freezing of minions for 5 seconds then unfreeze them. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_minion_controller_a59ca007561087d9c7e66aeba8262f9dc}{Fire}} ()
+\begin{DoxyCompactList}\small\item\em This method holds the logic to create the fireball attacks. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_minion_controller_a530ea7175a49f40f8af8dfa8418e7012}{activate\+Effect2}} ()
+\begin{DoxyCompactList}\small\item\em This method performs effect generated from the fireball attack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_minion_controller_a999e2a8a7fc55362a7acd76d306b7ef3}{On\+Trigger\+Enter2D}} (Collider2D other)
+\begin{DoxyCompactList}\small\item\em This method is responsible for manipulating minions\textquotesingle{} movement in cases where the minion touches a wall, to prevent the minion from moving out of the maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Rigidbody2D \mbox{\hyperlink{class_minion_controller_aa8654da5bac3fa8280d2b04a7a5015ec}{rb}}
+\begin{DoxyCompactList}\small\item\em A variable to hold the rigidbody2D component on the minion. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_minion_controller_aafcb9870a2631bb4c3dea4608386f395}{move\+Input}}
+\begin{DoxyCompactList}\small\item\em A variable to hold and control the direction the minion is facing. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_minion_controller_ab2cdbfe2fcda6569a51df4c8799bc7fa}{delay}} = 0
+\begin{DoxyCompactList}\small\item\em A variable to hold the delay to regulate the movement calculation interval for the minions. To ensure a steady flow of movements shown the G\+UI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class contains all the methods manipulate the minions. The controller will be attached onto the minions in order to control them. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_minion_controller_a530ea7175a49f40f8af8dfa8418e7012}\label{class_minion_controller_a530ea7175a49f40f8af8dfa8418e7012}} 
+\index{MinionController@{MinionController}!activateEffect2@{activateEffect2}}
+\index{activateEffect2@{activateEffect2}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{activateEffect2()}{activateEffect2()}}
+{\footnotesize\ttfamily I\+Enumerator Minion\+Controller.\+activate\+Effect2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method performs effect generated from the fireball attack. 
+
+\mbox{\Hypertarget{class_minion_controller_a59ca007561087d9c7e66aeba8262f9dc}\label{class_minion_controller_a59ca007561087d9c7e66aeba8262f9dc}} 
+\index{MinionController@{MinionController}!Fire@{Fire}}
+\index{Fire@{Fire}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{Fire()}{Fire()}}
+{\footnotesize\ttfamily I\+Enumerator Minion\+Controller.\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method holds the logic to create the fireball attacks. 
+
+\mbox{\Hypertarget{class_minion_controller_a56c93d23dd1a933042cbda79a3ddebde}\label{class_minion_controller_a56c93d23dd1a933042cbda79a3ddebde}} 
+\index{MinionController@{MinionController}!FixedUpdate@{FixedUpdate}}
+\index{FixedUpdate@{FixedUpdate}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{FixedUpdate()}{FixedUpdate()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+Fixed\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame to move the minions throughout the entire game. 
+
+\mbox{\Hypertarget{class_minion_controller_aba84394144822d753f9adfc97cb2b1a7}\label{class_minion_controller_aba84394144822d753f9adfc97cb2b1a7}} 
+\index{MinionController@{MinionController}!FreezeMinions@{FreezeMinions}}
+\index{FreezeMinions@{FreezeMinions}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{FreezeMinions()}{FreezeMinions()}}
+{\footnotesize\ttfamily I\+Enumerator Minion\+Controller.\+Freeze\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method performs the actual freezing of minions for 5 seconds then unfreeze them. 
+
+\mbox{\Hypertarget{class_minion_controller_ab727ce8c228867a2884da83e6e00c290}\label{class_minion_controller_ab727ce8c228867a2884da83e6e00c290}} 
+\index{MinionController@{MinionController}!IFire@{IFire}}
+\index{IFire@{IFire}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{IFire()}{IFire()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+I\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to generate fire balls shooting out of minions. 
+
+\mbox{\Hypertarget{class_minion_controller_a2eb1ef90d327254024a6c2408627e0a9}\label{class_minion_controller_a2eb1ef90d327254024a6c2408627e0a9}} 
+\index{MinionController@{MinionController}!IFreezeMinions@{IFreezeMinions}}
+\index{IFreezeMinions@{IFreezeMinions}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{IFreezeMinions()}{IFreezeMinions()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+I\+Freeze\+Minions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to call Freeze\+Minion() method to freeze the minions\textquotesingle{} movement. 
+
+\mbox{\Hypertarget{class_minion_controller_af5629f3dd9f905bb04ddf2ff09c27d60}\label{class_minion_controller_af5629f3dd9f905bb04ddf2ff09c27d60}} 
+\index{MinionController@{MinionController}!ISlowDownMinion@{ISlowDownMinion}}
+\index{ISlowDownMinion@{ISlowDownMinion}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{ISlowDownMinion()}{ISlowDownMinion()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+I\+Slow\+Down\+Minion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to call \mbox{\hyperlink{class_minion_controller_ad3d21cf8de3e99a8bf89f58103fca895}{Slow\+Down\+Minion()}} method to slow down the minions\textquotesingle{} movement. 
+
+\mbox{\Hypertarget{class_minion_controller_a64ff8af22c72e5bbd312838d3f54e2f9}\label{class_minion_controller_a64ff8af22c72e5bbd312838d3f54e2f9}} 
+\index{MinionController@{MinionController}!ISpeedUpMinion@{ISpeedUpMinion}}
+\index{ISpeedUpMinion@{ISpeedUpMinion}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{ISpeedUpMinion()}{ISpeedUpMinion()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+I\+Speed\+Up\+Minion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to call \mbox{\hyperlink{class_minion_controller_a6bd7679ae96abf80c8dd94964ee50b0c}{Speed\+Up\+Minion()}} method to speed up the minions\textquotesingle{} movement. 
+
+\mbox{\Hypertarget{class_minion_controller_a999e2a8a7fc55362a7acd76d306b7ef3}\label{class_minion_controller_a999e2a8a7fc55362a7acd76d306b7ef3}} 
+\index{MinionController@{MinionController}!OnTriggerEnter2D@{OnTriggerEnter2D}}
+\index{OnTriggerEnter2D@{OnTriggerEnter2D}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter2D()}{OnTriggerEnter2D()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+On\+Trigger\+Enter2D (\begin{DoxyParamCaption}\item[{Collider2D}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is responsible for manipulating minions\textquotesingle{} movement in cases where the minion touches a wall, to prevent the minion from moving out of the maze. 
+
+\mbox{\Hypertarget{class_minion_controller_ad3d21cf8de3e99a8bf89f58103fca895}\label{class_minion_controller_ad3d21cf8de3e99a8bf89f58103fca895}} 
+\index{MinionController@{MinionController}!SlowDownMinion@{SlowDownMinion}}
+\index{SlowDownMinion@{SlowDownMinion}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{SlowDownMinion()}{SlowDownMinion()}}
+{\footnotesize\ttfamily I\+Enumerator Minion\+Controller.\+Slow\+Down\+Minion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method performs the actual slowing down of minions for 10 seconds. 
+
+\mbox{\Hypertarget{class_minion_controller_a6bd7679ae96abf80c8dd94964ee50b0c}\label{class_minion_controller_a6bd7679ae96abf80c8dd94964ee50b0c}} 
+\index{MinionController@{MinionController}!SpeedUpMinion@{SpeedUpMinion}}
+\index{SpeedUpMinion@{SpeedUpMinion}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{SpeedUpMinion()}{SpeedUpMinion()}}
+{\footnotesize\ttfamily I\+Enumerator Minion\+Controller.\+Speed\+Up\+Minion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method performs the actual speeding up of minions for 10 seconds. 
+
+\mbox{\Hypertarget{class_minion_controller_ad0961f09b2e158b563b182e1ebfdcc0e}\label{class_minion_controller_ad0961f09b2e158b563b182e1ebfdcc0e}} 
+\index{MinionController@{MinionController}!Start@{Start}}
+\index{Start@{Start}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Minion\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called at the start of the game, to get the minion\textquotesingle{}s rigidbody and set the minion\textquotesingle{}s movement. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_minion_controller_ae6905d3439a6ab6497a05fb54eb258db}\label{class_minion_controller_ae6905d3439a6ab6497a05fb54eb258db}} 
+\index{MinionController@{MinionController}!alert@{alert}}
+\index{alert@{alert}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{alert}{alert}}
+{\footnotesize\ttfamily Game\+Object Minion\+Controller.\+alert}
+
+
+
+A variable to hold the alert effect game object. 
+
+\mbox{\Hypertarget{class_minion_controller_a0e99bb82e83c799a41002f955167cc38}\label{class_minion_controller_a0e99bb82e83c799a41002f955167cc38}} 
+\index{MinionController@{MinionController}!attackEffect@{attackEffect}}
+\index{attackEffect@{attackEffect}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{attackEffect}{attackEffect}}
+{\footnotesize\ttfamily Game\+Object Minion\+Controller.\+attack\+Effect}
+
+
+
+A variable to hold the attack effect game object. 
+
+\mbox{\Hypertarget{class_minion_controller_ab2cdbfe2fcda6569a51df4c8799bc7fa}\label{class_minion_controller_ab2cdbfe2fcda6569a51df4c8799bc7fa}} 
+\index{MinionController@{MinionController}!delay@{delay}}
+\index{delay@{delay}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{delay}{delay}}
+{\footnotesize\ttfamily float Minion\+Controller.\+delay = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to hold the delay to regulate the movement calculation interval for the minions. To ensure a steady flow of movements shown the G\+UI. 
+
+\mbox{\Hypertarget{class_minion_controller_aa3e44bc1b1a4906dda8a451a9b400ed3}\label{class_minion_controller_aa3e44bc1b1a4906dda8a451a9b400ed3}} 
+\index{MinionController@{MinionController}!fireball@{fireball}}
+\index{fireball@{fireball}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{fireball}{fireball}}
+{\footnotesize\ttfamily Game\+Object Minion\+Controller.\+fireball}
+
+
+
+A variable to hold the fire ball game object. 
+
+\mbox{\Hypertarget{class_minion_controller_a449cc82dbc451cbf7759bbc910eb489c}\label{class_minion_controller_a449cc82dbc451cbf7759bbc910eb489c}} 
+\index{MinionController@{MinionController}!freeze@{freeze}}
+\index{freeze@{freeze}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{freeze}{freeze}}
+{\footnotesize\ttfamily Game\+Object Minion\+Controller.\+freeze}
+
+
+
+A variable to hold the freeze effect game object. 
+
+\mbox{\Hypertarget{class_minion_controller_af641f1f50e801da2041a326cb73cf483}\label{class_minion_controller_af641f1f50e801da2041a326cb73cf483}} 
+\index{MinionController@{MinionController}!isPause@{isPause}}
+\index{isPause@{isPause}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{isPause}{isPause}}
+{\footnotesize\ttfamily bool Minion\+Controller.\+is\+Pause = false}
+
+
+
+A variable to hold a boolean value to check if the game is paused, this is used to restrict movements of minions during a game pause. 
+
+\mbox{\Hypertarget{class_minion_controller_aafcb9870a2631bb4c3dea4608386f395}\label{class_minion_controller_aafcb9870a2631bb4c3dea4608386f395}} 
+\index{MinionController@{MinionController}!moveInput@{moveInput}}
+\index{moveInput@{moveInput}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{moveInput}{moveInput}}
+{\footnotesize\ttfamily Vector2 Minion\+Controller.\+move\+Input\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to hold and control the direction the minion is facing. 
+
+\mbox{\Hypertarget{class_minion_controller_aa8654da5bac3fa8280d2b04a7a5015ec}\label{class_minion_controller_aa8654da5bac3fa8280d2b04a7a5015ec}} 
+\index{MinionController@{MinionController}!rb@{rb}}
+\index{rb@{rb}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{rb}{rb}}
+{\footnotesize\ttfamily Rigidbody2D Minion\+Controller.\+rb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable to hold the rigidbody2D component on the minion. 
+
+\mbox{\Hypertarget{class_minion_controller_a5fc8cd403264a222a89503f3d220fa0e}\label{class_minion_controller_a5fc8cd403264a222a89503f3d220fa0e}} 
+\index{MinionController@{MinionController}!speed@{speed}}
+\index{speed@{speed}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Minion\+Controller.\+speed}
+
+
+
+A variable hold and manipulate the movement speed of minions. 
+
+\mbox{\Hypertarget{class_minion_controller_a8614de12bd23b39e13c06428d29c05aa}\label{class_minion_controller_a8614de12bd23b39e13c06428d29c05aa}} 
+\index{MinionController@{MinionController}!stopFiring@{stopFiring}}
+\index{stopFiring@{stopFiring}!MinionController@{MinionController}}
+\doxysubsubsection{\texorpdfstring{stopFiring}{stopFiring}}
+{\footnotesize\ttfamily bool Minion\+Controller.\+stop\+Firing = false}
+
+
+
+A boolean variable to control the firing, the firing will stop when it is true. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Minion\+Controller.\+cs\end{DoxyCompactItemize}

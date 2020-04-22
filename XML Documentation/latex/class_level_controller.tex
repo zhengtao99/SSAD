@@ -1,0 +1,416 @@
+\hypertarget{class_level_controller}{}\doxysection{Level\+Controller Class Reference}
+\label{class_level_controller}\index{LevelController@{LevelController}}
+
+
+This controller class holds all the methods for responsible for the interactions between player and the level page.  
+
+
+Inheritance diagram for Level\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_level_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_level_controller_a7ccbb394dda45e4e264f186c14ffe745}{get\+Last\+Completed\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to get last completed level. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_controller_a25dcbb5c2afb79f9e570e47e02403a4a}{get\+Chosen\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to get player\textquotesingle{}s chosen level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a088a37dd2e55754c8855ff25d7d58e04}{Set\+Available\+Stages}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set the level page with available levels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_adeb22f631955393b20c86e1abbbbcc6b}{open\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to open up the different player game boards based on whether the level is completed or newly unlocked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_aef6c6682c53ea4962a7985f373974738}{close\+Level\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to close all the popups and return to the level page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a11e2ea3a4ecf48d53f04f74e42c24e3e}{Game\+Over\+Pop\+Up}} (int value)
+\begin{DoxyCompactList}\small\item\em This method is used to display the game over pop up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_aa5c39751f2ed24bedee43045e463eb5c}{Win\+Pop\+Up}} (int value)
+\begin{DoxyCompactList}\small\item\em This method is used to display the win game pop up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a174e272102a07d7fb4831056592168e4}{complete\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to move players to a new level on level completion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_aac819c094527c6c99e7505e086dd1ced}{unlock\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to show the animation of unlocking a new level when players completes a level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a93688d2d1fb27a0f4d76bf32f8f20371}{wakeup\+Btn}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to change a level button to allow players to select it when the level is unlocked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_ac7a70ed4f5728e32f28d0f6b28a987c5}{enable\+All\+Level\+Btns}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set all unlocked level buttons as active. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a85b93de3013c940e4e27fb7cf011d348}{disable\+All\+Level\+Btns}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set all unlocked level buttons as inactive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_level_controller_a1e9d62e8e7c7bcccb812e187328234ea}{canvas}}
+\begin{DoxyCompactList}\small\item\em A variable that contains a personalised canvas game object to display animation on the level page. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_level_controller_ae7771a2cb9db11c5d6fe8a72471ef94d}{locked\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the sprite to show that the level is locked. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_level_controller_ab799debacd3b5e5379158081a8e8f701}{unlocked\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the sprite to show that the level has been unlocked. \end{DoxyCompactList}\item 
+Sprite \mbox{\hyperlink{class_level_controller_a62a268f6c285b988af3d23216a341553}{unavailable\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the sprite to show that the level is unavailable. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_level_controller_abc91cee508a6f8145589d2aea9e90614}{flag\+Scale}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the scale to manipulate the flag scale. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_level_controller_a6dd68f7e0a6f2f2631ce6b3f9c127544}{Unlocked\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains unlocked level pop up game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_level_controller_a914bc4b83040aa1a30e60bb4265e2727}{Completed\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains completed level pop up game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_level_controller_af6c1a1bd46c97684056ec1d027eee470}{Lose\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains lose level pop up game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_level_controller_a40bccaddc3d81078ebdab3fc7ffeb735}{Win\+Level\+Pop\+Up}}
+\begin{DoxyCompactList}\small\item\em A variable that contains win level pop up game object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_level_controller_a90091f32be8e474ceab66bb75a5d084b}{unlock\+New\+Level}} = false
+\begin{DoxyCompactList}\small\item\em A boolean variable initialized to false, it is used to identify if the player has unlocked a new level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_level_controller}{Level\+Controller}} \mbox{\hyperlink{class_level_controller_ad9f4cc10c29beaf8d9dfea26a91ebfa4}{Instance}}
+\begin{DoxyCompactList}\small\item\em An instance controller variable created to allow other game object\textquotesingle{}s controller to make use of the methods defined here. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_level_controller_a64be9851b2d42babf7829d7a090fe41f}{chosen\+Level}} = -\/1
+\begin{DoxyCompactList}\small\item\em A variable that contains chosen level initialized to -\/1 when no level is chosen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_level_controller_ae6bb3a0ae24fc84fcdb5cd00f69ae25b}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method that is called to initialize at the start of the game to iniialize the level controller instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_adae9da4b8719b32812d395c3c27060c5}{On\+Enable}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to call \mbox{\hyperlink{class_level_controller_a088a37dd2e55754c8855ff25d7d58e04}{Set\+Available\+Stages()}} everytime the level page is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_controller_a0debd800795b3ddf29e99998be15c07b}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to check if there are new levels completed and creates a flag on newly completed levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_level_controller_ab70ee00dd4c4ac39d3c2aef47b93e351}{level\+Buttons}} = new List$<$Game\+Object$>$()
+\begin{DoxyCompactList}\small\item\em A variable that contains a list of level buttons. \end{DoxyCompactList}\item 
+List$<$ Game\+Object $>$ \mbox{\hyperlink{class_level_controller_a343fa1773b3274b41582a972663a001f}{flags}} = new List$<$Game\+Object$>$()
+\begin{DoxyCompactList}\small\item\em A variable that contains a list of flags for cleared levels. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_level_controller_ab385c71eb44b20a560a36ffc99deb135}{temp}} = new Vector3(0, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains initial position of all 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_controller_af0b1d47842efd2de8da25a74daad3fd6}{last\+Completed\+Level}} = 2
+\begin{DoxyCompactList}\small\item\em A variable that contains the last completed level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds all the methods for responsible for the interactions between player and the level page. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_level_controller_ae6bb3a0ae24fc84fcdb5cd00f69ae25b}\label{class_level_controller_ae6bb3a0ae24fc84fcdb5cd00f69ae25b}} 
+\index{LevelController@{LevelController}!Awake@{Awake}}
+\index{Awake@{Awake}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Level\+Controller.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method that is called to initialize at the start of the game to iniialize the level controller instance. 
+
+\mbox{\Hypertarget{class_level_controller_aef6c6682c53ea4962a7985f373974738}\label{class_level_controller_aef6c6682c53ea4962a7985f373974738}} 
+\index{LevelController@{LevelController}!closeLevelPopUp@{closeLevelPopUp}}
+\index{closeLevelPopUp@{closeLevelPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{closeLevelPopUp()}{closeLevelPopUp()}}
+{\footnotesize\ttfamily void Level\+Controller.\+close\+Level\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to close all the popups and return to the level page. 
+
+\mbox{\Hypertarget{class_level_controller_a174e272102a07d7fb4831056592168e4}\label{class_level_controller_a174e272102a07d7fb4831056592168e4}} 
+\index{LevelController@{LevelController}!completeLevel@{completeLevel}}
+\index{completeLevel@{completeLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{completeLevel()}{completeLevel()}}
+{\footnotesize\ttfamily void Level\+Controller.\+complete\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to move players to a new level on level completion. 
+
+\mbox{\Hypertarget{class_level_controller_a85b93de3013c940e4e27fb7cf011d348}\label{class_level_controller_a85b93de3013c940e4e27fb7cf011d348}} 
+\index{LevelController@{LevelController}!disableAllLevelBtns@{disableAllLevelBtns}}
+\index{disableAllLevelBtns@{disableAllLevelBtns}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{disableAllLevelBtns()}{disableAllLevelBtns()}}
+{\footnotesize\ttfamily void Level\+Controller.\+disable\+All\+Level\+Btns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set all unlocked level buttons as inactive. 
+
+\mbox{\Hypertarget{class_level_controller_ac7a70ed4f5728e32f28d0f6b28a987c5}\label{class_level_controller_ac7a70ed4f5728e32f28d0f6b28a987c5}} 
+\index{LevelController@{LevelController}!enableAllLevelBtns@{enableAllLevelBtns}}
+\index{enableAllLevelBtns@{enableAllLevelBtns}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{enableAllLevelBtns()}{enableAllLevelBtns()}}
+{\footnotesize\ttfamily void Level\+Controller.\+enable\+All\+Level\+Btns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set all unlocked level buttons as active. 
+
+\mbox{\Hypertarget{class_level_controller_a11e2ea3a4ecf48d53f04f74e42c24e3e}\label{class_level_controller_a11e2ea3a4ecf48d53f04f74e42c24e3e}} 
+\index{LevelController@{LevelController}!GameOverPopUp@{GameOverPopUp}}
+\index{GameOverPopUp@{GameOverPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{GameOverPopUp()}{GameOverPopUp()}}
+{\footnotesize\ttfamily void Level\+Controller.\+Game\+Over\+Pop\+Up (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to display the game over pop up. 
+
+\mbox{\Hypertarget{class_level_controller_a25dcbb5c2afb79f9e570e47e02403a4a}\label{class_level_controller_a25dcbb5c2afb79f9e570e47e02403a4a}} 
+\index{LevelController@{LevelController}!getChosenLevel@{getChosenLevel}}
+\index{getChosenLevel@{getChosenLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{getChosenLevel()}{getChosenLevel()}}
+{\footnotesize\ttfamily int Level\+Controller.\+get\+Chosen\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to get player\textquotesingle{}s chosen level. 
+
+\mbox{\Hypertarget{class_level_controller_a7ccbb394dda45e4e264f186c14ffe745}\label{class_level_controller_a7ccbb394dda45e4e264f186c14ffe745}} 
+\index{LevelController@{LevelController}!getLastCompletedLevel@{getLastCompletedLevel}}
+\index{getLastCompletedLevel@{getLastCompletedLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{getLastCompletedLevel()}{getLastCompletedLevel()}}
+{\footnotesize\ttfamily int Level\+Controller.\+get\+Last\+Completed\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to get last completed level. 
+
+\mbox{\Hypertarget{class_level_controller_adae9da4b8719b32812d395c3c27060c5}\label{class_level_controller_adae9da4b8719b32812d395c3c27060c5}} 
+\index{LevelController@{LevelController}!OnEnable@{OnEnable}}
+\index{OnEnable@{OnEnable}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
+{\footnotesize\ttfamily void Level\+Controller.\+On\+Enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to call \mbox{\hyperlink{class_level_controller_a088a37dd2e55754c8855ff25d7d58e04}{Set\+Available\+Stages()}} everytime the level page is enabled. 
+
+\mbox{\Hypertarget{class_level_controller_adeb22f631955393b20c86e1abbbbcc6b}\label{class_level_controller_adeb22f631955393b20c86e1abbbbcc6b}} 
+\index{LevelController@{LevelController}!openLevel@{openLevel}}
+\index{openLevel@{openLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{openLevel()}{openLevel()}}
+{\footnotesize\ttfamily void Level\+Controller.\+open\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to open up the different player game boards based on whether the level is completed or newly unlocked. 
+
+\mbox{\Hypertarget{class_level_controller_a088a37dd2e55754c8855ff25d7d58e04}\label{class_level_controller_a088a37dd2e55754c8855ff25d7d58e04}} 
+\index{LevelController@{LevelController}!SetAvailableStages@{SetAvailableStages}}
+\index{SetAvailableStages@{SetAvailableStages}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{SetAvailableStages()}{SetAvailableStages()}}
+{\footnotesize\ttfamily void Level\+Controller.\+Set\+Available\+Stages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set the level page with available levels. 
+
+\mbox{\Hypertarget{class_level_controller_aac819c094527c6c99e7505e086dd1ced}\label{class_level_controller_aac819c094527c6c99e7505e086dd1ced}} 
+\index{LevelController@{LevelController}!unlockLevel@{unlockLevel}}
+\index{unlockLevel@{unlockLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{unlockLevel()}{unlockLevel()}}
+{\footnotesize\ttfamily void Level\+Controller.\+unlock\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to show the animation of unlocking a new level when players completes a level. 
+
+\mbox{\Hypertarget{class_level_controller_a0debd800795b3ddf29e99998be15c07b}\label{class_level_controller_a0debd800795b3ddf29e99998be15c07b}} 
+\index{LevelController@{LevelController}!Update@{Update}}
+\index{Update@{Update}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Level\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to check if there are new levels completed and creates a flag on newly completed levels. 
+
+\mbox{\Hypertarget{class_level_controller_a93688d2d1fb27a0f4d76bf32f8f20371}\label{class_level_controller_a93688d2d1fb27a0f4d76bf32f8f20371}} 
+\index{LevelController@{LevelController}!wakeupBtn@{wakeupBtn}}
+\index{wakeupBtn@{wakeupBtn}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{wakeupBtn()}{wakeupBtn()}}
+{\footnotesize\ttfamily void Level\+Controller.\+wakeup\+Btn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to change a level button to allow players to select it when the level is unlocked. 
+
+\mbox{\Hypertarget{class_level_controller_aa5c39751f2ed24bedee43045e463eb5c}\label{class_level_controller_aa5c39751f2ed24bedee43045e463eb5c}} 
+\index{LevelController@{LevelController}!WinPopUp@{WinPopUp}}
+\index{WinPopUp@{WinPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{WinPopUp()}{WinPopUp()}}
+{\footnotesize\ttfamily void Level\+Controller.\+Win\+Pop\+Up (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to display the win game pop up. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_level_controller_a1e9d62e8e7c7bcccb812e187328234ea}\label{class_level_controller_a1e9d62e8e7c7bcccb812e187328234ea}} 
+\index{LevelController@{LevelController}!canvas@{canvas}}
+\index{canvas@{canvas}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{canvas}{canvas}}
+{\footnotesize\ttfamily Game\+Object Level\+Controller.\+canvas}
+
+
+
+A variable that contains a personalised canvas game object to display animation on the level page. 
+
+\mbox{\Hypertarget{class_level_controller_a64be9851b2d42babf7829d7a090fe41f}\label{class_level_controller_a64be9851b2d42babf7829d7a090fe41f}} 
+\index{LevelController@{LevelController}!chosenLevel@{chosenLevel}}
+\index{chosenLevel@{chosenLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{chosenLevel}{chosenLevel}}
+{\footnotesize\ttfamily int Level\+Controller.\+chosen\+Level = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains chosen level initialized to -\/1 when no level is chosen. 
+
+\mbox{\Hypertarget{class_level_controller_a914bc4b83040aa1a30e60bb4265e2727}\label{class_level_controller_a914bc4b83040aa1a30e60bb4265e2727}} 
+\index{LevelController@{LevelController}!CompletedLevelPopUp@{CompletedLevelPopUp}}
+\index{CompletedLevelPopUp@{CompletedLevelPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{CompletedLevelPopUp}{CompletedLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Level\+Controller.\+Completed\+Level\+Pop\+Up}
+
+
+
+A variable that contains completed level pop up game object. 
+
+\mbox{\Hypertarget{class_level_controller_a343fa1773b3274b41582a972663a001f}\label{class_level_controller_a343fa1773b3274b41582a972663a001f}} 
+\index{LevelController@{LevelController}!flags@{flags}}
+\index{flags@{flags}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily List$<$Game\+Object$>$ Level\+Controller.\+flags = new List$<$Game\+Object$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a list of flags for cleared levels. 
+
+\mbox{\Hypertarget{class_level_controller_abc91cee508a6f8145589d2aea9e90614}\label{class_level_controller_abc91cee508a6f8145589d2aea9e90614}} 
+\index{LevelController@{LevelController}!flagScale@{flagScale}}
+\index{flagScale@{flagScale}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{flagScale}{flagScale}}
+{\footnotesize\ttfamily Vector3 Level\+Controller.\+flag\+Scale}
+
+
+
+A variable that contains the scale to manipulate the flag scale. 
+
+\mbox{\Hypertarget{class_level_controller_ad9f4cc10c29beaf8d9dfea26a91ebfa4}\label{class_level_controller_ad9f4cc10c29beaf8d9dfea26a91ebfa4}} 
+\index{LevelController@{LevelController}!Instance@{Instance}}
+\index{Instance@{Instance}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_level_controller}{Level\+Controller}} Level\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+An instance controller variable created to allow other game object\textquotesingle{}s controller to make use of the methods defined here. 
+
+\mbox{\Hypertarget{class_level_controller_af0b1d47842efd2de8da25a74daad3fd6}\label{class_level_controller_af0b1d47842efd2de8da25a74daad3fd6}} 
+\index{LevelController@{LevelController}!lastCompletedLevel@{lastCompletedLevel}}
+\index{lastCompletedLevel@{lastCompletedLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{lastCompletedLevel}{lastCompletedLevel}}
+{\footnotesize\ttfamily int Level\+Controller.\+last\+Completed\+Level = 2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the last completed level. 
+
+\mbox{\Hypertarget{class_level_controller_ab70ee00dd4c4ac39d3c2aef47b93e351}\label{class_level_controller_ab70ee00dd4c4ac39d3c2aef47b93e351}} 
+\index{LevelController@{LevelController}!levelButtons@{levelButtons}}
+\index{levelButtons@{levelButtons}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{levelButtons}{levelButtons}}
+{\footnotesize\ttfamily List$<$Game\+Object$>$ Level\+Controller.\+level\+Buttons = new List$<$Game\+Object$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a list of level buttons. 
+
+\mbox{\Hypertarget{class_level_controller_ae7771a2cb9db11c5d6fe8a72471ef94d}\label{class_level_controller_ae7771a2cb9db11c5d6fe8a72471ef94d}} 
+\index{LevelController@{LevelController}!lockedImg@{lockedImg}}
+\index{lockedImg@{lockedImg}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{lockedImg}{lockedImg}}
+{\footnotesize\ttfamily Sprite Level\+Controller.\+locked\+Img}
+
+
+
+A variable that contains the sprite to show that the level is locked. 
+
+\mbox{\Hypertarget{class_level_controller_af6c1a1bd46c97684056ec1d027eee470}\label{class_level_controller_af6c1a1bd46c97684056ec1d027eee470}} 
+\index{LevelController@{LevelController}!LoseLevelPopUp@{LoseLevelPopUp}}
+\index{LoseLevelPopUp@{LoseLevelPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{LoseLevelPopUp}{LoseLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Level\+Controller.\+Lose\+Level\+Pop\+Up}
+
+
+
+A variable that contains lose level pop up game object. 
+
+\mbox{\Hypertarget{class_level_controller_ab385c71eb44b20a560a36ffc99deb135}\label{class_level_controller_ab385c71eb44b20a560a36ffc99deb135}} 
+\index{LevelController@{LevelController}!temp@{temp}}
+\index{temp@{temp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{temp}{temp}}
+{\footnotesize\ttfamily Vector3 Level\+Controller.\+temp = new Vector3(0, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains initial position of all 0. 
+
+\mbox{\Hypertarget{class_level_controller_a62a268f6c285b988af3d23216a341553}\label{class_level_controller_a62a268f6c285b988af3d23216a341553}} 
+\index{LevelController@{LevelController}!unavailableImg@{unavailableImg}}
+\index{unavailableImg@{unavailableImg}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{unavailableImg}{unavailableImg}}
+{\footnotesize\ttfamily Sprite Level\+Controller.\+unavailable\+Img}
+
+
+
+A variable that contains the sprite to show that the level is unavailable. 
+
+\mbox{\Hypertarget{class_level_controller_ab799debacd3b5e5379158081a8e8f701}\label{class_level_controller_ab799debacd3b5e5379158081a8e8f701}} 
+\index{LevelController@{LevelController}!unlockedImg@{unlockedImg}}
+\index{unlockedImg@{unlockedImg}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{unlockedImg}{unlockedImg}}
+{\footnotesize\ttfamily Sprite Level\+Controller.\+unlocked\+Img}
+
+
+
+A variable that contains the sprite to show that the level has been unlocked. 
+
+\mbox{\Hypertarget{class_level_controller_a6dd68f7e0a6f2f2631ce6b3f9c127544}\label{class_level_controller_a6dd68f7e0a6f2f2631ce6b3f9c127544}} 
+\index{LevelController@{LevelController}!UnlockedLevelPopUp@{UnlockedLevelPopUp}}
+\index{UnlockedLevelPopUp@{UnlockedLevelPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{UnlockedLevelPopUp}{UnlockedLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Level\+Controller.\+Unlocked\+Level\+Pop\+Up}
+
+
+
+A variable that contains unlocked level pop up game object. 
+
+\mbox{\Hypertarget{class_level_controller_a90091f32be8e474ceab66bb75a5d084b}\label{class_level_controller_a90091f32be8e474ceab66bb75a5d084b}} 
+\index{LevelController@{LevelController}!unlockNewLevel@{unlockNewLevel}}
+\index{unlockNewLevel@{unlockNewLevel}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{unlockNewLevel}{unlockNewLevel}}
+{\footnotesize\ttfamily bool Level\+Controller.\+unlock\+New\+Level = false}
+
+
+
+A boolean variable initialized to false, it is used to identify if the player has unlocked a new level. 
+
+\mbox{\Hypertarget{class_level_controller_a40bccaddc3d81078ebdab3fc7ffeb735}\label{class_level_controller_a40bccaddc3d81078ebdab3fc7ffeb735}} 
+\index{LevelController@{LevelController}!WinLevelPopUp@{WinLevelPopUp}}
+\index{WinLevelPopUp@{WinLevelPopUp}!LevelController@{LevelController}}
+\doxysubsubsection{\texorpdfstring{WinLevelPopUp}{WinLevelPopUp}}
+{\footnotesize\ttfamily Game\+Object Level\+Controller.\+Win\+Level\+Pop\+Up}
+
+
+
+A variable that contains win level pop up game object. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Level\+Controller.\+cs\end{DoxyCompactItemize}

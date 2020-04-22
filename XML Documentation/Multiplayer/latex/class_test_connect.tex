@@ -1,0 +1,98 @@
+\hypertarget{class_test_connect}{}\doxysection{Test\+Connect Class Reference}
+\label{class_test_connect}\index{TestConnect@{TestConnect}}
+
+
+This multiplayer tester class holds the methods required to test if the players are connected to the online listing player page to be able to view each other.  
+
+
+Inheritance diagram for Test\+Connect\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_test_connect}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_test_connect_ac767520306e10ef367b907f386c235c9}{On\+Connected\+To\+Master}} ()
+\begin{DoxyCompactList}\small\item\em This method is make players appear on the player listing page when the master player enters the multiplayer invitation lobby. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_test_connect_afd8497e7cc74aad39fd2a50d23bfe00d}{On\+Disconnected}} (Disconnect\+Cause cause)
+\begin{DoxyCompactList}\small\item\em This method is used to return warning messages in case of unsuccessful photon connections. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_test_connect_a25f8711058ff0a364426bd2c8a653f95}{On\+Joined\+Lobby}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create a master invitation lobby. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_test_connect_aedc926205d7adcbbea297fac2c077283}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update, it is used to create a connection to other players. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_test_connect_a32cb7acf6fa11958154b637c5c6dce80}{is\+First\+Time}} = true
+\begin{DoxyCompactList}\small\item\em A boolean variable to check if the player has created a connection prior to this instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This multiplayer tester class holds the methods required to test if the players are connected to the online listing player page to be able to view each other. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_test_connect_ac767520306e10ef367b907f386c235c9}\label{class_test_connect_ac767520306e10ef367b907f386c235c9}} 
+\index{TestConnect@{TestConnect}!OnConnectedToMaster@{OnConnectedToMaster}}
+\index{OnConnectedToMaster@{OnConnectedToMaster}!TestConnect@{TestConnect}}
+\doxysubsubsection{\texorpdfstring{OnConnectedToMaster()}{OnConnectedToMaster()}}
+{\footnotesize\ttfamily override void Test\+Connect.\+On\+Connected\+To\+Master (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is make players appear on the player listing page when the master player enters the multiplayer invitation lobby. 
+
+\mbox{\Hypertarget{class_test_connect_afd8497e7cc74aad39fd2a50d23bfe00d}\label{class_test_connect_afd8497e7cc74aad39fd2a50d23bfe00d}} 
+\index{TestConnect@{TestConnect}!OnDisconnected@{OnDisconnected}}
+\index{OnDisconnected@{OnDisconnected}!TestConnect@{TestConnect}}
+\doxysubsubsection{\texorpdfstring{OnDisconnected()}{OnDisconnected()}}
+{\footnotesize\ttfamily override void Test\+Connect.\+On\+Disconnected (\begin{DoxyParamCaption}\item[{Disconnect\+Cause}]{cause }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to return warning messages in case of unsuccessful photon connections. 
+
+\mbox{\Hypertarget{class_test_connect_a25f8711058ff0a364426bd2c8a653f95}\label{class_test_connect_a25f8711058ff0a364426bd2c8a653f95}} 
+\index{TestConnect@{TestConnect}!OnJoinedLobby@{OnJoinedLobby}}
+\index{OnJoinedLobby@{OnJoinedLobby}!TestConnect@{TestConnect}}
+\doxysubsubsection{\texorpdfstring{OnJoinedLobby()}{OnJoinedLobby()}}
+{\footnotesize\ttfamily override void Test\+Connect.\+On\+Joined\+Lobby (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to create a master invitation lobby. 
+
+\mbox{\Hypertarget{class_test_connect_aedc926205d7adcbbea297fac2c077283}\label{class_test_connect_aedc926205d7adcbbea297fac2c077283}} 
+\index{TestConnect@{TestConnect}!Start@{Start}}
+\index{Start@{Start}!TestConnect@{TestConnect}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Test\+Connect.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update, it is used to create a connection to other players. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_test_connect_a32cb7acf6fa11958154b637c5c6dce80}\label{class_test_connect_a32cb7acf6fa11958154b637c5c6dce80}} 
+\index{TestConnect@{TestConnect}!isFirstTime@{isFirstTime}}
+\index{isFirstTime@{isFirstTime}!TestConnect@{TestConnect}}
+\doxysubsubsection{\texorpdfstring{isFirstTime}{isFirstTime}}
+{\footnotesize\ttfamily bool Test\+Connect.\+is\+First\+Time = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A boolean variable to check if the player has created a connection prior to this instance. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/\+Multiplayer Scripts/Test\+Connect.\+cs\end{DoxyCompactItemize}

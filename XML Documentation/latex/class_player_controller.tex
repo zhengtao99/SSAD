@@ -1,0 +1,652 @@
+\hypertarget{class_player_controller}{}\doxysection{Player\+Controller Class Reference}
+\label{class_player_controller}\index{PlayerController@{PlayerController}}
+
+
+This controller class holds the methods responsible for the player\textquotesingle{}s movements, score and life updates in the game.  
+
+
+Inheritance diagram for Player\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{class_player_controller_ae30ace1a446484f1107b950f2a7cfa39}{Player\+Delegate}} (int value)
+\begin{DoxyCompactList}\small\item\em A delegate variable used to detect player events. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a193f4495470f1ac3d9be23a16fd15bdc}{I\+Start\+Glow}} ()
+\begin{DoxyCompactList}\small\item\em This method is called when player is to receive a power up, the startglow() method is called. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_aa998b4a1d85eb762e7b9686d3f3cc444}{Push}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to push players away from chest boxes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ae5054b25c4c18ff62160dd65d8128b9d}{Score\+Update}} (int point=10)
+\begin{DoxyCompactList}\small\item\em This method is called to update the player\textquotesingle{}s score on coin accumulated as well as the number of questions answered correctly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_afd401e01a74d8d4d9138246e85fca5ce}{Life\+Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to update the player\textquotesingle{}s lives remaining in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ac53931d3afe50c4ea7535aae60b39802}{Resume\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to resume game play. A\+Llow minions and player to move again. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a563607ab9339e0ecdd3b0a54cd224504}{Pause\+Game}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to pause game play, restricting minions and player\textquotesingle{}s movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a1f136fe0dd53bf2dd0d271b4fea4668b}{open\+New\+Level}} ()
+\begin{DoxyCompactList}\small\item\em This method is called when player answers 3 questions and a new level will be unlocked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a7db9b03648a7df75897268efe3800061}{increase\+Correct\+Ans}} ()
+\begin{DoxyCompactList}\small\item\em This method is called whenever a player answers a question correctly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a0e513cb110a0efaab1ab0b0560ebcfd2}{hide\+Level\+Box}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to hide the new level box. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a6ff49d7cadfebd58e212e5d418878c65}{move\+Left}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to set the direction = 1, pointing to left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a039dcf07b1f460fe0108d0afedee7802}{move\+Right}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to set the direction = 0, pointing to right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ade1a85c23eb57e75fd7f85783e85ec09}{move\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to set the direction = 2, pointing to up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ac01844d3162a397fad7b664353531551}{move\+Down}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to set the direction = 3, pointing to down. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ab15b18d25a49ea4724529a0fb3440e62}{stop\+Move}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to set the direction = -\/1, pointing to no directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_player_controller_ab080ea6300a9e94037d7a9bb1f414fbf}{glow}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the glow effect game object that will be casted on the player. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_controller_a848335709139bcac1e650d5273eeb712}{dead\+Effect}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the dead effect game object that will be casted on the player. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_controller_a9e495cb18629b6b936ffc8be354175c1}{is\+Glowing}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains boolean to check if player is glowing, this is used to check if player can kill the minions. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_player_controller_a043a60804a6fe31bc3b416371a6344a1}{glow\+Time}} = 10.\+0f
+\begin{DoxyCompactList}\small\item\em A variable that contains a time limit to the how long the player can hold the glow effect. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_controller_ab5e678ad4856011331a0ed5f87d13c74}{is\+Injured}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to check if the player has collided with minions or answered a question wrongly, this is used to decrease the player\textquotesingle{}s lives accordingly. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_controller_aec5b458773488021ee37771f49338d1d}{is\+Pause}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to check if the game is paused, it is used to restrict the player\textquotesingle{}s movement is the game is paused. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_player_controller_a0928605583f0563cd84fe43119d336ec}{speed}}
+\begin{DoxyCompactList}\small\item\em A variable that contains player\textquotesingle{}s speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_player_controller_ae30ace1a446484f1107b950f2a7cfa39}{Player\+Delegate}} \mbox{\hyperlink{class_player_controller_ac163fb24b4ed1491ac0fb4d6e1307a27}{On\+Player\+Died}}
+\begin{DoxyCompactList}\small\item\em A event variable that will receive the delegate notification when player dies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_player_controller_ae1117d9c4da3193181cddad2c814e467}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to initialize all of the parameters in the player controller to set up the initial game play environment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame to update the player\textquotesingle{}s move\+Input according to the input received from the joystick manipulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_ae5bdb1b48571f67c3f722a58b6f404d4}{Fixed\+Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called one per frame to move the player rigidbody2D component according to the move\+Input \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a751c7590dfb8e726d1eb3a27d0b197a2}{On\+Trigger\+Enter2D}} (Collider2D other)
+\item 
+I\+Enumerator \mbox{\hyperlink{class_player_controller_ac74ae7b6f1d77a642317f2ade957a2f8}{activate\+Effect}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once the player runs out of lives and the dead effect will appear on the player\textquotesingle{}s avatar. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_player_controller_ad1d008c484094ac78d71228676792777}{hit}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once the player touches a minion, it will display the hurt effect. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_player_controller_a70f6111169722f63edc93e7f57aaae3e}{start\+Glow}} ()
+\begin{DoxyCompactList}\small\item\em This method is called to place a glow on the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_controller_a4df1a4920ec69e472090e1e49cb48d2d}{End\+Game}} (bool win)
+\begin{DoxyCompactList}\small\item\em This method is called to restart the environment on game end. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_controller_a38d6e91503d755adecce507bc6a71279}{heart\+Arr}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of heart game objects representing the number of lives the player has in the game. \end{DoxyCompactList}\item 
+Unity\+Engine.\+Object \mbox{\hyperlink{class_player_controller_a3bffc545f74d99b14e708d3e8568a68d}{explosion\+Ref}}
+\begin{DoxyCompactList}\small\item\em A variable that contains unity defined explosion effect game object. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_player_controller_ad4beebf47e749a68d06d055c330b3c3e}{minions}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of minion gameobjects. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_a81def95285a0e2de8a4a1a0ba464da11}{count\+Life}} = 3
+\begin{DoxyCompactList}\small\item\em A variable that contains player\textquotesingle{}s lives count initialized to 3. \end{DoxyCompactList}\item 
+Sprite\+Renderer \mbox{\hyperlink{class_player_controller_af7735afd2f83b315d5e8562c597f50ac}{life\+Box}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the border UI object that surrounds the life game objects. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_controller_abeb7f15519dcbeeb787e93708cf89135}{life\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that contains life text. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_controller_a8f1361a4354591db4e79c4e6609e0a88}{score\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that contains score text \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_player_controller_a71a369001e58c2b8233a0ffc0a819998}{player}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the player game object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_a73f074439e5ebb4d8d29ce5005703cd9}{correct\+Ans}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the correct answer id. \end{DoxyCompactList}\item 
+Text \mbox{\hyperlink{class_player_controller_aa9db6bb729491dad366bc5237b2a4b2e}{level\+Text}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the level text. \end{DoxyCompactList}\item 
+Sprite\+Renderer \mbox{\hyperlink{class_player_controller_a781cea7b60c3bd48d13e5bc3f29b93c3}{level\+Box}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the level border around the text. \end{DoxyCompactList}\item 
+Rigidbody2D \mbox{\hyperlink{class_player_controller_af656c35d14d18c09958ce86e6fb874d1}{rb}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the player\textquotesingle{}s rigidbody2D component used to detect collisions. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_player_controller_abde38db539969cb9d3da629a39e8e510}{move\+Velocity}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the player\textquotesingle{}s move velocity. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_ac4f30954818a6c7d0e344721a0342fec}{score}} = 0
+\begin{DoxyCompactList}\small\item\em A variable that contains player\textquotesingle{}s score accumulated in the one game run. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_a29464dce45ee6e571d21538dc7d73fd4}{direction}}
+\begin{DoxyCompactList}\small\item\em A variable that contains player\textquotesingle{}s facing direction. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{class_player_controller_a3900f394c365a12d9989b85a92619960}{move\+Input}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the joy stick move input. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_a79d02d6149b6ba446c51602ea9c56567}{nsew}} = 0
+\begin{DoxyCompactList}\small\item\em A variable that contains joy stick position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_controller_adaea9fa468b769fe84172dac801f701d}{coins\+Cnt}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the count of coins accumulated. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_controller_af320002d626be04376bd45f0d250331f}{is\+Freeze}}
+\begin{DoxyCompactList}\small\item\em A variable that contains boolean to check if player is freezed to restrict the player\textquotesingle{}s movement in the maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds the methods responsible for the player\textquotesingle{}s movements, score and life updates in the game. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_controller_ac74ae7b6f1d77a642317f2ade957a2f8}\label{class_player_controller_ac74ae7b6f1d77a642317f2ade957a2f8}} 
+\index{PlayerController@{PlayerController}!activateEffect@{activateEffect}}
+\index{activateEffect@{activateEffect}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{activateEffect()}{activateEffect()}}
+{\footnotesize\ttfamily I\+Enumerator Player\+Controller.\+activate\+Effect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once the player runs out of lives and the dead effect will appear on the player\textquotesingle{}s avatar. 
+
+\mbox{\Hypertarget{class_player_controller_a4df1a4920ec69e472090e1e49cb48d2d}\label{class_player_controller_a4df1a4920ec69e472090e1e49cb48d2d}} 
+\index{PlayerController@{PlayerController}!EndGame@{EndGame}}
+\index{EndGame@{EndGame}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{EndGame()}{EndGame()}}
+{\footnotesize\ttfamily void Player\+Controller.\+End\+Game (\begin{DoxyParamCaption}\item[{bool}]{win }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to restart the environment on game end. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & A boolean to indicate whether the player win or lose the game.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_controller_ae5bdb1b48571f67c3f722a58b6f404d4}\label{class_player_controller_ae5bdb1b48571f67c3f722a58b6f404d4}} 
+\index{PlayerController@{PlayerController}!FixedUpdate@{FixedUpdate}}
+\index{FixedUpdate@{FixedUpdate}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{FixedUpdate()}{FixedUpdate()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Fixed\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called one per frame to move the player rigidbody2D component according to the move\+Input 
+
+\mbox{\Hypertarget{class_player_controller_a0e513cb110a0efaab1ab0b0560ebcfd2}\label{class_player_controller_a0e513cb110a0efaab1ab0b0560ebcfd2}} 
+\index{PlayerController@{PlayerController}!hideLevelBox@{hideLevelBox}}
+\index{hideLevelBox@{hideLevelBox}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{hideLevelBox()}{hideLevelBox()}}
+{\footnotesize\ttfamily void Player\+Controller.\+hide\+Level\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to hide the new level box. 
+
+\mbox{\Hypertarget{class_player_controller_ad1d008c484094ac78d71228676792777}\label{class_player_controller_ad1d008c484094ac78d71228676792777}} 
+\index{PlayerController@{PlayerController}!hit@{hit}}
+\index{hit@{hit}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{hit()}{hit()}}
+{\footnotesize\ttfamily I\+Enumerator Player\+Controller.\+hit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once the player touches a minion, it will display the hurt effect. 
+
+\mbox{\Hypertarget{class_player_controller_a7db9b03648a7df75897268efe3800061}\label{class_player_controller_a7db9b03648a7df75897268efe3800061}} 
+\index{PlayerController@{PlayerController}!increaseCorrectAns@{increaseCorrectAns}}
+\index{increaseCorrectAns@{increaseCorrectAns}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{increaseCorrectAns()}{increaseCorrectAns()}}
+{\footnotesize\ttfamily void Player\+Controller.\+increase\+Correct\+Ans (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called whenever a player answers a question correctly. 
+
+\mbox{\Hypertarget{class_player_controller_a193f4495470f1ac3d9be23a16fd15bdc}\label{class_player_controller_a193f4495470f1ac3d9be23a16fd15bdc}} 
+\index{PlayerController@{PlayerController}!IStartGlow@{IStartGlow}}
+\index{IStartGlow@{IStartGlow}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{IStartGlow()}{IStartGlow()}}
+{\footnotesize\ttfamily void Player\+Controller.\+I\+Start\+Glow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called when player is to receive a power up, the startglow() method is called. 
+
+\mbox{\Hypertarget{class_player_controller_afd401e01a74d8d4d9138246e85fca5ce}\label{class_player_controller_afd401e01a74d8d4d9138246e85fca5ce}} 
+\index{PlayerController@{PlayerController}!LifeUpdate@{LifeUpdate}}
+\index{LifeUpdate@{LifeUpdate}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{LifeUpdate()}{LifeUpdate()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Life\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to update the player\textquotesingle{}s lives remaining in the game. 
+
+\mbox{\Hypertarget{class_player_controller_ac01844d3162a397fad7b664353531551}\label{class_player_controller_ac01844d3162a397fad7b664353531551}} 
+\index{PlayerController@{PlayerController}!moveDown@{moveDown}}
+\index{moveDown@{moveDown}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveDown()}{moveDown()}}
+{\footnotesize\ttfamily void Player\+Controller.\+move\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the direction = 3, pointing to down. 
+
+\mbox{\Hypertarget{class_player_controller_a6ff49d7cadfebd58e212e5d418878c65}\label{class_player_controller_a6ff49d7cadfebd58e212e5d418878c65}} 
+\index{PlayerController@{PlayerController}!moveLeft@{moveLeft}}
+\index{moveLeft@{moveLeft}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveLeft()}{moveLeft()}}
+{\footnotesize\ttfamily void Player\+Controller.\+move\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the direction = 1, pointing to left. 
+
+\mbox{\Hypertarget{class_player_controller_a039dcf07b1f460fe0108d0afedee7802}\label{class_player_controller_a039dcf07b1f460fe0108d0afedee7802}} 
+\index{PlayerController@{PlayerController}!moveRight@{moveRight}}
+\index{moveRight@{moveRight}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveRight()}{moveRight()}}
+{\footnotesize\ttfamily void Player\+Controller.\+move\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the direction = 0, pointing to right. 
+
+\mbox{\Hypertarget{class_player_controller_ade1a85c23eb57e75fd7f85783e85ec09}\label{class_player_controller_ade1a85c23eb57e75fd7f85783e85ec09}} 
+\index{PlayerController@{PlayerController}!moveUp@{moveUp}}
+\index{moveUp@{moveUp}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveUp()}{moveUp()}}
+{\footnotesize\ttfamily void Player\+Controller.\+move\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the direction = 2, pointing to up. 
+
+\mbox{\Hypertarget{class_player_controller_a751c7590dfb8e726d1eb3a27d0b197a2}\label{class_player_controller_a751c7590dfb8e726d1eb3a27d0b197a2}} 
+\index{PlayerController@{PlayerController}!OnTriggerEnter2D@{OnTriggerEnter2D}}
+\index{OnTriggerEnter2D@{OnTriggerEnter2D}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter2D()}{OnTriggerEnter2D()}}
+{\footnotesize\ttfamily void Player\+Controller.\+On\+Trigger\+Enter2D (\begin{DoxyParamCaption}\item[{Collider2D}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+
+
+This method is called on collision and it will check if the collided game object is a coin or minion and does the manipulation accordingly. Coin will increase the player\textquotesingle{}s points and minion will decrease the player\textquotesingle{}s lives. \mbox{\Hypertarget{class_player_controller_a1f136fe0dd53bf2dd0d271b4fea4668b}\label{class_player_controller_a1f136fe0dd53bf2dd0d271b4fea4668b}} 
+\index{PlayerController@{PlayerController}!openNewLevel@{openNewLevel}}
+\index{openNewLevel@{openNewLevel}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{openNewLevel()}{openNewLevel()}}
+{\footnotesize\ttfamily void Player\+Controller.\+open\+New\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called when player answers 3 questions and a new level will be unlocked. 
+
+\mbox{\Hypertarget{class_player_controller_a563607ab9339e0ecdd3b0a54cd224504}\label{class_player_controller_a563607ab9339e0ecdd3b0a54cd224504}} 
+\index{PlayerController@{PlayerController}!PauseGame@{PauseGame}}
+\index{PauseGame@{PauseGame}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{PauseGame()}{PauseGame()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Pause\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to pause game play, restricting minions and player\textquotesingle{}s movement. 
+
+\mbox{\Hypertarget{class_player_controller_ae30ace1a446484f1107b950f2a7cfa39}\label{class_player_controller_ae30ace1a446484f1107b950f2a7cfa39}} 
+\index{PlayerController@{PlayerController}!PlayerDelegate@{PlayerDelegate}}
+\index{PlayerDelegate@{PlayerDelegate}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{PlayerDelegate()}{PlayerDelegate()}}
+{\footnotesize\ttfamily delegate void Player\+Controller.\+Player\+Delegate (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+A delegate variable used to detect player events. 
+
+\mbox{\Hypertarget{class_player_controller_aa998b4a1d85eb762e7b9686d3f3cc444}\label{class_player_controller_aa998b4a1d85eb762e7b9686d3f3cc444}} 
+\index{PlayerController@{PlayerController}!Push@{Push}}
+\index{Push@{Push}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Push (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to push players away from chest boxes. 
+
+\mbox{\Hypertarget{class_player_controller_ac53931d3afe50c4ea7535aae60b39802}\label{class_player_controller_ac53931d3afe50c4ea7535aae60b39802}} 
+\index{PlayerController@{PlayerController}!ResumeGame@{ResumeGame}}
+\index{ResumeGame@{ResumeGame}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{ResumeGame()}{ResumeGame()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Resume\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to resume game play. A\+Llow minions and player to move again. 
+
+\mbox{\Hypertarget{class_player_controller_ae5054b25c4c18ff62160dd65d8128b9d}\label{class_player_controller_ae5054b25c4c18ff62160dd65d8128b9d}} 
+\index{PlayerController@{PlayerController}!ScoreUpdate@{ScoreUpdate}}
+\index{ScoreUpdate@{ScoreUpdate}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{ScoreUpdate()}{ScoreUpdate()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Score\+Update (\begin{DoxyParamCaption}\item[{int}]{point = {\ttfamily 10} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to update the player\textquotesingle{}s score on coin accumulated as well as the number of questions answered correctly. 
+
+\mbox{\Hypertarget{class_player_controller_ae1117d9c4da3193181cddad2c814e467}\label{class_player_controller_ae1117d9c4da3193181cddad2c814e467}} 
+\index{PlayerController@{PlayerController}!Start@{Start}}
+\index{Start@{Start}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to initialize all of the parameters in the player controller to set up the initial game play environment. 
+
+\mbox{\Hypertarget{class_player_controller_a70f6111169722f63edc93e7f57aaae3e}\label{class_player_controller_a70f6111169722f63edc93e7f57aaae3e}} 
+\index{PlayerController@{PlayerController}!startGlow@{startGlow}}
+\index{startGlow@{startGlow}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{startGlow()}{startGlow()}}
+{\footnotesize\ttfamily I\+Enumerator Player\+Controller.\+start\+Glow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called to place a glow on the player. 
+
+\mbox{\Hypertarget{class_player_controller_ab15b18d25a49ea4724529a0fb3440e62}\label{class_player_controller_ab15b18d25a49ea4724529a0fb3440e62}} 
+\index{PlayerController@{PlayerController}!stopMove@{stopMove}}
+\index{stopMove@{stopMove}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{stopMove()}{stopMove()}}
+{\footnotesize\ttfamily void Player\+Controller.\+stop\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is called to set the direction = -\/1, pointing to no directions. 
+
+\mbox{\Hypertarget{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}\label{class_player_controller_ae8bc83dffb99867a04be016473ed2c43}} 
+\index{PlayerController@{PlayerController}!Update@{Update}}
+\index{Update@{Update}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Player\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame to update the player\textquotesingle{}s move\+Input according to the input received from the joystick manipulation. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_player_controller_adaea9fa468b769fe84172dac801f701d}\label{class_player_controller_adaea9fa468b769fe84172dac801f701d}} 
+\index{PlayerController@{PlayerController}!coinsCnt@{coinsCnt}}
+\index{coinsCnt@{coinsCnt}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{coinsCnt}{coinsCnt}}
+{\footnotesize\ttfamily int Player\+Controller.\+coins\+Cnt\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the count of coins accumulated. 
+
+\mbox{\Hypertarget{class_player_controller_a73f074439e5ebb4d8d29ce5005703cd9}\label{class_player_controller_a73f074439e5ebb4d8d29ce5005703cd9}} 
+\index{PlayerController@{PlayerController}!correctAns@{correctAns}}
+\index{correctAns@{correctAns}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{correctAns}{correctAns}}
+{\footnotesize\ttfamily int Player\+Controller.\+correct\+Ans\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the correct answer id. 
+
+\mbox{\Hypertarget{class_player_controller_a81def95285a0e2de8a4a1a0ba464da11}\label{class_player_controller_a81def95285a0e2de8a4a1a0ba464da11}} 
+\index{PlayerController@{PlayerController}!countLife@{countLife}}
+\index{countLife@{countLife}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{countLife}{countLife}}
+{\footnotesize\ttfamily int Player\+Controller.\+count\+Life = 3\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains player\textquotesingle{}s lives count initialized to 3. 
+
+\mbox{\Hypertarget{class_player_controller_a848335709139bcac1e650d5273eeb712}\label{class_player_controller_a848335709139bcac1e650d5273eeb712}} 
+\index{PlayerController@{PlayerController}!deadEffect@{deadEffect}}
+\index{deadEffect@{deadEffect}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{deadEffect}{deadEffect}}
+{\footnotesize\ttfamily Game\+Object Player\+Controller.\+dead\+Effect}
+
+
+
+A variable that contains the dead effect game object that will be casted on the player. 
+
+\mbox{\Hypertarget{class_player_controller_a29464dce45ee6e571d21538dc7d73fd4}\label{class_player_controller_a29464dce45ee6e571d21538dc7d73fd4}} 
+\index{PlayerController@{PlayerController}!direction@{direction}}
+\index{direction@{direction}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily int Player\+Controller.\+direction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains player\textquotesingle{}s facing direction. 
+
+\mbox{\Hypertarget{class_player_controller_a3bffc545f74d99b14e708d3e8568a68d}\label{class_player_controller_a3bffc545f74d99b14e708d3e8568a68d}} 
+\index{PlayerController@{PlayerController}!explosionRef@{explosionRef}}
+\index{explosionRef@{explosionRef}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{explosionRef}{explosionRef}}
+{\footnotesize\ttfamily Unity\+Engine.\+Object Player\+Controller.\+explosion\+Ref\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains unity defined explosion effect game object. 
+
+\mbox{\Hypertarget{class_player_controller_ab080ea6300a9e94037d7a9bb1f414fbf}\label{class_player_controller_ab080ea6300a9e94037d7a9bb1f414fbf}} 
+\index{PlayerController@{PlayerController}!glow@{glow}}
+\index{glow@{glow}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{glow}{glow}}
+{\footnotesize\ttfamily Game\+Object Player\+Controller.\+glow}
+
+
+
+A variable that contains the glow effect game object that will be casted on the player. 
+
+\mbox{\Hypertarget{class_player_controller_a043a60804a6fe31bc3b416371a6344a1}\label{class_player_controller_a043a60804a6fe31bc3b416371a6344a1}} 
+\index{PlayerController@{PlayerController}!glowTime@{glowTime}}
+\index{glowTime@{glowTime}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{glowTime}{glowTime}}
+{\footnotesize\ttfamily float Player\+Controller.\+glow\+Time = 10.\+0f}
+
+
+
+A variable that contains a time limit to the how long the player can hold the glow effect. 
+
+\mbox{\Hypertarget{class_player_controller_a38d6e91503d755adecce507bc6a71279}\label{class_player_controller_a38d6e91503d755adecce507bc6a71279}} 
+\index{PlayerController@{PlayerController}!heartArr@{heartArr}}
+\index{heartArr@{heartArr}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{heartArr}{heartArr}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Player\+Controller.\+heart\+Arr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains an array of heart game objects representing the number of lives the player has in the game. 
+
+\mbox{\Hypertarget{class_player_controller_af320002d626be04376bd45f0d250331f}\label{class_player_controller_af320002d626be04376bd45f0d250331f}} 
+\index{PlayerController@{PlayerController}!isFreeze@{isFreeze}}
+\index{isFreeze@{isFreeze}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{isFreeze}{isFreeze}}
+{\footnotesize\ttfamily bool Player\+Controller.\+is\+Freeze\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains boolean to check if player is freezed to restrict the player\textquotesingle{}s movement in the maze. 
+
+\mbox{\Hypertarget{class_player_controller_a9e495cb18629b6b936ffc8be354175c1}\label{class_player_controller_a9e495cb18629b6b936ffc8be354175c1}} 
+\index{PlayerController@{PlayerController}!isGlowing@{isGlowing}}
+\index{isGlowing@{isGlowing}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{isGlowing}{isGlowing}}
+{\footnotesize\ttfamily bool Player\+Controller.\+is\+Glowing = false}
+
+
+
+A variable that contains boolean to check if player is glowing, this is used to check if player can kill the minions. 
+
+\mbox{\Hypertarget{class_player_controller_ab5e678ad4856011331a0ed5f87d13c74}\label{class_player_controller_ab5e678ad4856011331a0ed5f87d13c74}} 
+\index{PlayerController@{PlayerController}!isInjured@{isInjured}}
+\index{isInjured@{isInjured}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{isInjured}{isInjured}}
+{\footnotesize\ttfamily bool Player\+Controller.\+is\+Injured = false}
+
+
+
+A variable that contains a boolean to check if the player has collided with minions or answered a question wrongly, this is used to decrease the player\textquotesingle{}s lives accordingly. 
+
+\mbox{\Hypertarget{class_player_controller_aec5b458773488021ee37771f49338d1d}\label{class_player_controller_aec5b458773488021ee37771f49338d1d}} 
+\index{PlayerController@{PlayerController}!isPause@{isPause}}
+\index{isPause@{isPause}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{isPause}{isPause}}
+{\footnotesize\ttfamily bool Player\+Controller.\+is\+Pause = false}
+
+
+
+A variable that contains a boolean to check if the game is paused, it is used to restrict the player\textquotesingle{}s movement is the game is paused. 
+
+\mbox{\Hypertarget{class_player_controller_a781cea7b60c3bd48d13e5bc3f29b93c3}\label{class_player_controller_a781cea7b60c3bd48d13e5bc3f29b93c3}} 
+\index{PlayerController@{PlayerController}!levelBox@{levelBox}}
+\index{levelBox@{levelBox}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{levelBox}{levelBox}}
+{\footnotesize\ttfamily Sprite\+Renderer Player\+Controller.\+level\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the level border around the text. 
+
+\mbox{\Hypertarget{class_player_controller_aa9db6bb729491dad366bc5237b2a4b2e}\label{class_player_controller_aa9db6bb729491dad366bc5237b2a4b2e}} 
+\index{PlayerController@{PlayerController}!levelText@{levelText}}
+\index{levelText@{levelText}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{levelText}{levelText}}
+{\footnotesize\ttfamily Text Player\+Controller.\+level\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the level text. 
+
+\mbox{\Hypertarget{class_player_controller_af7735afd2f83b315d5e8562c597f50ac}\label{class_player_controller_af7735afd2f83b315d5e8562c597f50ac}} 
+\index{PlayerController@{PlayerController}!lifeBox@{lifeBox}}
+\index{lifeBox@{lifeBox}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{lifeBox}{lifeBox}}
+{\footnotesize\ttfamily Sprite\+Renderer Player\+Controller.\+life\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the border UI object that surrounds the life game objects. 
+
+\mbox{\Hypertarget{class_player_controller_abeb7f15519dcbeeb787e93708cf89135}\label{class_player_controller_abeb7f15519dcbeeb787e93708cf89135}} 
+\index{PlayerController@{PlayerController}!lifeText@{lifeText}}
+\index{lifeText@{lifeText}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{lifeText}{lifeText}}
+{\footnotesize\ttfamily Text Player\+Controller.\+life\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains life text. 
+
+\mbox{\Hypertarget{class_player_controller_ad4beebf47e749a68d06d055c330b3c3e}\label{class_player_controller_ad4beebf47e749a68d06d055c330b3c3e}} 
+\index{PlayerController@{PlayerController}!minions@{minions}}
+\index{minions@{minions}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{minions}{minions}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Player\+Controller.\+minions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains an array of minion gameobjects. 
+
+\mbox{\Hypertarget{class_player_controller_a3900f394c365a12d9989b85a92619960}\label{class_player_controller_a3900f394c365a12d9989b85a92619960}} 
+\index{PlayerController@{PlayerController}!moveInput@{moveInput}}
+\index{moveInput@{moveInput}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveInput}{moveInput}}
+{\footnotesize\ttfamily Vector2 Player\+Controller.\+move\+Input\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the joy stick move input. 
+
+\mbox{\Hypertarget{class_player_controller_abde38db539969cb9d3da629a39e8e510}\label{class_player_controller_abde38db539969cb9d3da629a39e8e510}} 
+\index{PlayerController@{PlayerController}!moveVelocity@{moveVelocity}}
+\index{moveVelocity@{moveVelocity}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{moveVelocity}{moveVelocity}}
+{\footnotesize\ttfamily Vector2 Player\+Controller.\+move\+Velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the player\textquotesingle{}s move velocity. 
+
+\mbox{\Hypertarget{class_player_controller_a79d02d6149b6ba446c51602ea9c56567}\label{class_player_controller_a79d02d6149b6ba446c51602ea9c56567}} 
+\index{PlayerController@{PlayerController}!nsew@{nsew}}
+\index{nsew@{nsew}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{nsew}{nsew}}
+{\footnotesize\ttfamily int Player\+Controller.\+nsew = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains joy stick position. 
+
+\mbox{\Hypertarget{class_player_controller_a71a369001e58c2b8233a0ffc0a819998}\label{class_player_controller_a71a369001e58c2b8233a0ffc0a819998}} 
+\index{PlayerController@{PlayerController}!player@{player}}
+\index{player@{player}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily Game\+Object Player\+Controller.\+player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the player game object. 
+
+\mbox{\Hypertarget{class_player_controller_af656c35d14d18c09958ce86e6fb874d1}\label{class_player_controller_af656c35d14d18c09958ce86e6fb874d1}} 
+\index{PlayerController@{PlayerController}!rb@{rb}}
+\index{rb@{rb}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{rb}{rb}}
+{\footnotesize\ttfamily Rigidbody2D Player\+Controller.\+rb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the player\textquotesingle{}s rigidbody2D component used to detect collisions. 
+
+\mbox{\Hypertarget{class_player_controller_ac4f30954818a6c7d0e344721a0342fec}\label{class_player_controller_ac4f30954818a6c7d0e344721a0342fec}} 
+\index{PlayerController@{PlayerController}!score@{score}}
+\index{score@{score}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int Player\+Controller.\+score = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains player\textquotesingle{}s score accumulated in the one game run. 
+
+\mbox{\Hypertarget{class_player_controller_a8f1361a4354591db4e79c4e6609e0a88}\label{class_player_controller_a8f1361a4354591db4e79c4e6609e0a88}} 
+\index{PlayerController@{PlayerController}!scoreText@{scoreText}}
+\index{scoreText@{scoreText}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{scoreText}{scoreText}}
+{\footnotesize\ttfamily Text Player\+Controller.\+score\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains score text 
+
+\mbox{\Hypertarget{class_player_controller_a0928605583f0563cd84fe43119d336ec}\label{class_player_controller_a0928605583f0563cd84fe43119d336ec}} 
+\index{PlayerController@{PlayerController}!speed@{speed}}
+\index{speed@{speed}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Player\+Controller.\+speed}
+
+
+
+A variable that contains player\textquotesingle{}s speed. 
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_player_controller_ac163fb24b4ed1491ac0fb4d6e1307a27}\label{class_player_controller_ac163fb24b4ed1491ac0fb4d6e1307a27}} 
+\index{PlayerController@{PlayerController}!OnPlayerDied@{OnPlayerDied}}
+\index{OnPlayerDied@{OnPlayerDied}!PlayerController@{PlayerController}}
+\doxysubsubsection{\texorpdfstring{OnPlayerDied}{OnPlayerDied}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_controller_ae30ace1a446484f1107b950f2a7cfa39}{Player\+Delegate}} Player\+Controller.\+On\+Player\+Died\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A event variable that will receive the delegate notification when player dies. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Player\+Controller.\+cs\end{DoxyCompactItemize}

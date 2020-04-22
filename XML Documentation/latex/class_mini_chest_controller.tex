@@ -1,0 +1,110 @@
+\hypertarget{class_mini_chest_controller}{}\doxysection{Mini\+Chest\+Controller Class Reference}
+\label{class_mini_chest_controller}\index{MiniChestController@{MiniChestController}}
+
+
+This controller class holds the methods to control the micro animations on the chests in the maze environment, when the player hits starts. Replaces closed with open chests when player collides with the chest.  
+
+
+Inheritance diagram for Mini\+Chest\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mini_chest_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mini_chest_controller_a9380d369c75222c16f9c307e6b9292c7}{Create\+Opened\+Chests}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em This method is responsbile for creation of openchests to replace the closed ones on the maze environment when the user opens a chest. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mini_chest_controller_af992c14f8e07356e12e9f7c82e654e56}{Close\+Opened\+Chest}} ()
+\begin{DoxyCompactList}\small\item\em This method is responsbile for closing of openchests in order to reinitialize the environment to start a new game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_mini_chest_controller_a8a2732ec98e099e147c8003075c191b4}{opened\+Chest}}
+\begin{DoxyCompactList}\small\item\em A variable that holds the game object that will be used to replace closed chests in the maze environment when the player opens a chest. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_mini_chest_controller}{Mini\+Chest\+Controller}} \mbox{\hyperlink{class_mini_chest_controller_a330695b5ed8a0ce7ce3406e390ead412}{Opened\+Chest\+Instance}}
+\begin{DoxyCompactList}\small\item\em An variable that holds \mbox{\hyperlink{class_mini_chest_controller}{Mini\+Chest\+Controller}} instance to allow other Game Objects\textquotesingle{} to access the methods implemented here. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mini_chest_controller_a6209be4924056000788cd9559d2b8cb6}{Start}} ()
+\begin{DoxyCompactList}\small\item\em This method is called before the first frame update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds the methods to control the micro animations on the chests in the maze environment, when the player hits starts. Replaces closed with open chests when player collides with the chest. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mini_chest_controller_af992c14f8e07356e12e9f7c82e654e56}\label{class_mini_chest_controller_af992c14f8e07356e12e9f7c82e654e56}} 
+\index{MiniChestController@{MiniChestController}!CloseOpenedChest@{CloseOpenedChest}}
+\index{CloseOpenedChest@{CloseOpenedChest}!MiniChestController@{MiniChestController}}
+\doxysubsubsection{\texorpdfstring{CloseOpenedChest()}{CloseOpenedChest()}}
+{\footnotesize\ttfamily void Mini\+Chest\+Controller.\+Close\+Opened\+Chest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsbile for closing of openchests in order to reinitialize the environment to start a new game. 
+
+\mbox{\Hypertarget{class_mini_chest_controller_a9380d369c75222c16f9c307e6b9292c7}\label{class_mini_chest_controller_a9380d369c75222c16f9c307e6b9292c7}} 
+\index{MiniChestController@{MiniChestController}!CreateOpenedChests@{CreateOpenedChests}}
+\index{CreateOpenedChests@{CreateOpenedChests}!MiniChestController@{MiniChestController}}
+\doxysubsubsection{\texorpdfstring{CreateOpenedChests()}{CreateOpenedChests()}}
+{\footnotesize\ttfamily void Mini\+Chest\+Controller.\+Create\+Opened\+Chests (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is responsbile for creation of openchests to replace the closed ones on the maze environment when the user opens a chest. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the closed chest in the environment\\
+\hline
+{\em y} & Y coordinate of the closed chest in the environment\\
+\hline
+{\em z} & Z coordinate of the closed chest in the environment\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mini_chest_controller_a6209be4924056000788cd9559d2b8cb6}\label{class_mini_chest_controller_a6209be4924056000788cd9559d2b8cb6}} 
+\index{MiniChestController@{MiniChestController}!Start@{Start}}
+\index{Start@{Start}!MiniChestController@{MiniChestController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Mini\+Chest\+Controller.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called before the first frame update. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_mini_chest_controller_a8a2732ec98e099e147c8003075c191b4}\label{class_mini_chest_controller_a8a2732ec98e099e147c8003075c191b4}} 
+\index{MiniChestController@{MiniChestController}!openedChest@{openedChest}}
+\index{openedChest@{openedChest}!MiniChestController@{MiniChestController}}
+\doxysubsubsection{\texorpdfstring{openedChest}{openedChest}}
+{\footnotesize\ttfamily Game\+Object Mini\+Chest\+Controller.\+opened\+Chest}
+
+
+
+A variable that holds the game object that will be used to replace closed chests in the maze environment when the player opens a chest. 
+
+\mbox{\Hypertarget{class_mini_chest_controller_a330695b5ed8a0ce7ce3406e390ead412}\label{class_mini_chest_controller_a330695b5ed8a0ce7ce3406e390ead412}} 
+\index{MiniChestController@{MiniChestController}!OpenedChestInstance@{OpenedChestInstance}}
+\index{OpenedChestInstance@{OpenedChestInstance}!MiniChestController@{MiniChestController}}
+\doxysubsubsection{\texorpdfstring{OpenedChestInstance}{OpenedChestInstance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mini_chest_controller}{Mini\+Chest\+Controller}} Mini\+Chest\+Controller.\+Opened\+Chest\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+An variable that holds \mbox{\hyperlink{class_mini_chest_controller}{Mini\+Chest\+Controller}} instance to allow other Game Objects\textquotesingle{} to access the methods implemented here. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Mini\+Chest\+Controller.\+cs\end{DoxyCompactItemize}

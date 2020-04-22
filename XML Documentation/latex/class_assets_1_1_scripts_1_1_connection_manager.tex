@@ -1,0 +1,357 @@
+\hypertarget{class_assets_1_1_scripts_1_1_connection_manager}{}\doxysection{Assets.\+Scripts.\+Connection\+Manager Class Reference}
+\label{class_assets_1_1_scripts_1_1_connection_manager}\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+
+
+This manager class ontains all methods Learnable Mobile will use to retrieve or to update the database through Learnable Manage System\textquotesingle{}s self-\/created A\+PI.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a0acde67c519a02bd42d8ff6484ca9d60}{Get\+Random\+Questions}} (string Player)
+\begin{DoxyCompactList}\small\item\em This method is used to retrieve random questions based on player\textquotesingle{}s user id in the multiplayer gameplay mode. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a25f2e1528217c2620c005df0ca505c3c}{Get\+Available\+Stages}} (int Topic\+Id)
+\begin{DoxyCompactList}\small\item\em This method is used to get all the unlocked stages based on topic selected and the player\textquotesingle{}s identity. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a2a39cca6c09ff2a0a2b27ce73dd6fe86}{Get\+Cleared\+Stages}} (int Topic\+Id)
+\begin{DoxyCompactList}\small\item\em This method is used to get all the cleared stages based on player\textquotesingle{}s user id and topic selected. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a2849603ef168326e57c9d8ce4a8cbe44}{Save\+Analytics}} (int User\+Id, int Qns\+Id, int Ans\+Id, Time\+Span Speed)
+\begin{DoxyCompactList}\small\item\em This method is used to update player\textquotesingle{}s performance to database for analysis done at Learnable Management System. ~\newline
+ \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_ac8d35e81456174c8e3ec5bd93a43c1ed}{Get\+Current\+User\+Score}} (int Id, int User\+Id, string category)
+\begin{DoxyCompactList}\small\item\em This method is used to retrieve player\textquotesingle{}s accumulated score for the world or topic selected. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a1eb3378d364709d9c12346553a63be38}{Get\+Highscore}} (int id, string Search, string Filter)
+\begin{DoxyCompactList}\small\item\em This method is used to retrieve a list of players that matches the player\textquotesingle{}s search input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a76c1dbe8fc3ef21fb825effa0b91372e}{Login}} (string username, string password)
+\begin{DoxyCompactList}\small\item\em To authenticate the player after they enter their username and password. \end{DoxyCompactList}\item 
+static I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_ada87185599d7fe7c492c345c7283914c}{Get\+Questions}} (int topic\+Id, int stage)
+\begin{DoxyCompactList}\small\item\em This method is used to retrieve respective questions from datbase based on player selected topic and difficulty level. \end{DoxyCompactList}\item 
+static I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a992b749adf00f780bc1dc55747044a5b}{Get\+Topic}} (int World\+Id)
+\begin{DoxyCompactList}\small\item\em This method is used to get the topics available for the world/subject the player has selected. \end{DoxyCompactList}\item 
+static I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a3a0636f35370525e2c96fa62fb6362d7}{Get\+World}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to get the world/subject available in the game. \end{DoxyCompactList}\item 
+static I\+Enumerator \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a3b4d2bd4407ac2575e30463a06dcadea}{Update\+Highscore}} (int User\+Id, int Topic\+Id, int Stage, int Score, bool Is\+Cleared)
+\begin{DoxyCompactList}\small\item\em This method is used to update player\textquotesingle{}s new highscore into database, the score obtained after clearing a stage for a topic. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static User \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_af45cf639734b2909cfc2e1839583fe32}{user}}
+\begin{DoxyCompactList}\small\item\em A variable to store the student\textquotesingle{}s identity upon successfully login. \end{DoxyCompactList}\item 
+static List$<$ World $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_af70eee197b568c623529682b748d6cf8}{Worlds}}
+\begin{DoxyCompactList}\small\item\em A variable to store the world the student has selected. \end{DoxyCompactList}\item 
+static List$<$ Topic $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a888b1544f2ed62c0b432dc722a638d09}{Topics}}
+\begin{DoxyCompactList}\small\item\em A variable list to store the list of topics the subject contains the student has selected. \end{DoxyCompactList}\item 
+static List$<$ Question $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_ab809e32d1bc90867b53944af99ef20b1}{Questions}}
+\begin{DoxyCompactList}\small\item\em A variable to store the retrieved questions according to a specific world and topic. \end{DoxyCompactList}\item 
+static List$<$ Cleared\+Stage $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_ad6bf91da00a88c2ff852b405926c32d5}{Cleared\+Stages}}
+\begin{DoxyCompactList}\small\item\em A variable to store the cleared stages according to the player\textquotesingle{}s user id. \end{DoxyCompactList}\item 
+static List$<$ Available\+Stage $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a9eaf88877029aae0d298f408d07e15e1}{Available\+Stages}}
+\begin{DoxyCompactList}\small\item\em A variable list to store the list of available stages that has questions created by the teachers. \end{DoxyCompactList}\item 
+static List$<$ Highscore $>$ \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_ad86c762fec89e9c7f14040e2e39ef9dd}{Highscores}}
+\begin{DoxyCompactList}\small\item\em A variable list to store the list of high scores for the subject selected. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a2beaa57c07e651d1ed0836bdf7fc14b4}{Category}}
+\begin{DoxyCompactList}\small\item\em A variable to store the choice of retrieving students records by world or topic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_assets_1_1_scripts_1_1_connection_manager_a75322134ee397f06537656b16714039c}{Domain}} = \char`\"{}https\+://learnablems20200220070049.\+azurewebsites.\+net\char`\"{}
+\begin{DoxyCompactList}\small\item\em A variable to store the domain\textquotesingle{}s name that the Leanrnable Mobile will be using to update or retrieve students\textquotesingle{} records. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This manager class ontains all methods Learnable Mobile will use to retrieve or to update the database through Learnable Manage System\textquotesingle{}s self-\/created A\+PI. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a25f2e1528217c2620c005df0ca505c3c}\label{class_assets_1_1_scripts_1_1_connection_manager_a25f2e1528217c2620c005df0ca505c3c}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetAvailableStages@{GetAvailableStages}}
+\index{GetAvailableStages@{GetAvailableStages}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetAvailableStages()}{GetAvailableStages()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Available\+Stages (\begin{DoxyParamCaption}\item[{int}]{Topic\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to get all the unlocked stages based on topic selected and the player\textquotesingle{}s identity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Topic\+Id} & Player\textquotesingle{}s selected topic\\
+\hline
+{\em User\+Id} & Player\textquotesingle{}s user id.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a2a39cca6c09ff2a0a2b27ce73dd6fe86}\label{class_assets_1_1_scripts_1_1_connection_manager_a2a39cca6c09ff2a0a2b27ce73dd6fe86}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetClearedStages@{GetClearedStages}}
+\index{GetClearedStages@{GetClearedStages}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetClearedStages()}{GetClearedStages()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Cleared\+Stages (\begin{DoxyParamCaption}\item[{int}]{Topic\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to get all the cleared stages based on player\textquotesingle{}s user id and topic selected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Topic\+Id} & Player\textquotesingle{}s selected topic\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_ac8d35e81456174c8e3ec5bd93a43c1ed}\label{class_assets_1_1_scripts_1_1_connection_manager_ac8d35e81456174c8e3ec5bd93a43c1ed}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetCurrentUserScore@{GetCurrentUserScore}}
+\index{GetCurrentUserScore@{GetCurrentUserScore}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentUserScore()}{GetCurrentUserScore()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Current\+User\+Score (\begin{DoxyParamCaption}\item[{int}]{Id,  }\item[{int}]{User\+Id,  }\item[{string}]{category }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to retrieve player\textquotesingle{}s accumulated score for the world or topic selected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Id} & Player\textquotesingle{}s selected world or topic id.\\
+\hline
+{\em User\+Id} & Player\textquotesingle{}s user id.\\
+\hline
+{\em category} & Player\textquotesingle{}s selected world or topic.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a1eb3378d364709d9c12346553a63be38}\label{class_assets_1_1_scripts_1_1_connection_manager_a1eb3378d364709d9c12346553a63be38}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetHighscore@{GetHighscore}}
+\index{GetHighscore@{GetHighscore}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetHighscore()}{GetHighscore()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Highscore (\begin{DoxyParamCaption}\item[{int}]{id,  }\item[{string}]{Search,  }\item[{string}]{Filter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to retrieve a list of players that matches the player\textquotesingle{}s search input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Player\textquotesingle{}s selected world or topic id.\\
+\hline
+{\em Search} & Player\textquotesingle{}s input in search box.\\
+\hline
+{\em Filter} & Player\textquotesingle{}s selected world or topic.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_ada87185599d7fe7c492c345c7283914c}\label{class_assets_1_1_scripts_1_1_connection_manager_ada87185599d7fe7c492c345c7283914c}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetQuestions@{GetQuestions}}
+\index{GetQuestions@{GetQuestions}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetQuestions()}{GetQuestions()}}
+{\footnotesize\ttfamily static I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Questions (\begin{DoxyParamCaption}\item[{int}]{topic\+Id,  }\item[{int}]{stage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This method is used to retrieve respective questions from datbase based on player selected topic and difficulty level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em topic\+Id} & Player\textquotesingle{}s selected topic.\\
+\hline
+{\em stage} & Player\textquotesingle{}s selected diffculty stage between 1 to 10.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a0acde67c519a02bd42d8ff6484ca9d60}\label{class_assets_1_1_scripts_1_1_connection_manager_a0acde67c519a02bd42d8ff6484ca9d60}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetRandomQuestions@{GetRandomQuestions}}
+\index{GetRandomQuestions@{GetRandomQuestions}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetRandomQuestions()}{GetRandomQuestions()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Random\+Questions (\begin{DoxyParamCaption}\item[{string}]{Player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to retrieve random questions based on player\textquotesingle{}s user id in the multiplayer gameplay mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Player} & Player\textquotesingle{}s user id\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a992b749adf00f780bc1dc55747044a5b}\label{class_assets_1_1_scripts_1_1_connection_manager_a992b749adf00f780bc1dc55747044a5b}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetTopic@{GetTopic}}
+\index{GetTopic@{GetTopic}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetTopic()}{GetTopic()}}
+{\footnotesize\ttfamily static I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+Topic (\begin{DoxyParamCaption}\item[{int}]{World\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This method is used to get the topics available for the world/subject the player has selected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em World\+Id} & Player\textquotesingle{}s selected world.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a3a0636f35370525e2c96fa62fb6362d7}\label{class_assets_1_1_scripts_1_1_connection_manager_a3a0636f35370525e2c96fa62fb6362d7}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!GetWorld@{GetWorld}}
+\index{GetWorld@{GetWorld}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{GetWorld()}{GetWorld()}}
+{\footnotesize\ttfamily static I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Get\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This method is used to get the world/subject available in the game. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a76c1dbe8fc3ef21fb825effa0b91372e}\label{class_assets_1_1_scripts_1_1_connection_manager_a76c1dbe8fc3ef21fb825effa0b91372e}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Login@{Login}}
+\index{Login@{Login}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily static I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Login (\begin{DoxyParamCaption}\item[{string}]{username,  }\item[{string}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+To authenticate the player after they enter their username and password. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & Username input.\\
+\hline
+{\em password} & Password input.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a2849603ef168326e57c9d8ce4a8cbe44}\label{class_assets_1_1_scripts_1_1_connection_manager_a2849603ef168326e57c9d8ce4a8cbe44}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!SaveAnalytics@{SaveAnalytics}}
+\index{SaveAnalytics@{SaveAnalytics}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{SaveAnalytics()}{SaveAnalytics()}}
+{\footnotesize\ttfamily I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Save\+Analytics (\begin{DoxyParamCaption}\item[{int}]{User\+Id,  }\item[{int}]{Qns\+Id,  }\item[{int}]{Ans\+Id,  }\item[{Time\+Span}]{Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to update player\textquotesingle{}s performance to database for analysis done at Learnable Management System. ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em User\+Id} & Player\textquotesingle{}s user id.\\
+\hline
+{\em Qns\+Id} & The question answered.\\
+\hline
+{\em Ans\+Id} & Player\textquotesingle{}s selected answer.\\
+\hline
+{\em Speed} & Time for player to answer the question.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a3b4d2bd4407ac2575e30463a06dcadea}\label{class_assets_1_1_scripts_1_1_connection_manager_a3b4d2bd4407ac2575e30463a06dcadea}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!UpdateHighscore@{UpdateHighscore}}
+\index{UpdateHighscore@{UpdateHighscore}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{UpdateHighscore()}{UpdateHighscore()}}
+{\footnotesize\ttfamily static I\+Enumerator Assets.\+Scripts.\+Connection\+Manager.\+Update\+Highscore (\begin{DoxyParamCaption}\item[{int}]{User\+Id,  }\item[{int}]{Topic\+Id,  }\item[{int}]{Stage,  }\item[{int}]{Score,  }\item[{bool}]{Is\+Cleared }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+This method is used to update player\textquotesingle{}s new highscore into database, the score obtained after clearing a stage for a topic. ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em User\+Id} & Player\textquotesingle{}s user id.\\
+\hline
+{\em Topic\+Id} & Player\textquotesingle{}s selected topic.\\
+\hline
+{\em Stage} & Player\textquotesingle{}s selected stage.\\
+\hline
+{\em Score} & Player\textquotesingle{}s score for the stage.\\
+\hline
+{\em Is\+Cleared} & A check to verify if stage has been cleared.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a9eaf88877029aae0d298f408d07e15e1}\label{class_assets_1_1_scripts_1_1_connection_manager_a9eaf88877029aae0d298f408d07e15e1}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!AvailableStages@{AvailableStages}}
+\index{AvailableStages@{AvailableStages}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{AvailableStages}{AvailableStages}}
+{\footnotesize\ttfamily List$<$Available\+Stage$>$ Assets.\+Scripts.\+Connection\+Manager.\+Available\+Stages\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable list to store the list of available stages that has questions created by the teachers. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a2beaa57c07e651d1ed0836bdf7fc14b4}\label{class_assets_1_1_scripts_1_1_connection_manager_a2beaa57c07e651d1ed0836bdf7fc14b4}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Category@{Category}}
+\index{Category@{Category}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Category}{Category}}
+{\footnotesize\ttfamily string Assets.\+Scripts.\+Connection\+Manager.\+Category\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable to store the choice of retrieving students records by world or topic. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_ad6bf91da00a88c2ff852b405926c32d5}\label{class_assets_1_1_scripts_1_1_connection_manager_ad6bf91da00a88c2ff852b405926c32d5}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!ClearedStages@{ClearedStages}}
+\index{ClearedStages@{ClearedStages}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{ClearedStages}{ClearedStages}}
+{\footnotesize\ttfamily List$<$Cleared\+Stage$>$ Assets.\+Scripts.\+Connection\+Manager.\+Cleared\+Stages\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable to store the cleared stages according to the player\textquotesingle{}s user id. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a75322134ee397f06537656b16714039c}\label{class_assets_1_1_scripts_1_1_connection_manager_a75322134ee397f06537656b16714039c}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Domain@{Domain}}
+\index{Domain@{Domain}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Domain}{Domain}}
+{\footnotesize\ttfamily string Assets.\+Scripts.\+Connection\+Manager.\+Domain = \char`\"{}https\+://learnablems20200220070049.\+azurewebsites.\+net\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+A variable to store the domain\textquotesingle{}s name that the Leanrnable Mobile will be using to update or retrieve students\textquotesingle{} records. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_ad86c762fec89e9c7f14040e2e39ef9dd}\label{class_assets_1_1_scripts_1_1_connection_manager_ad86c762fec89e9c7f14040e2e39ef9dd}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Highscores@{Highscores}}
+\index{Highscores@{Highscores}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Highscores}{Highscores}}
+{\footnotesize\ttfamily List$<$Highscore$>$ Assets.\+Scripts.\+Connection\+Manager.\+Highscores\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable list to store the list of high scores for the subject selected. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_ab809e32d1bc90867b53944af99ef20b1}\label{class_assets_1_1_scripts_1_1_connection_manager_ab809e32d1bc90867b53944af99ef20b1}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Questions@{Questions}}
+\index{Questions@{Questions}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Questions}{Questions}}
+{\footnotesize\ttfamily List$<$Question$>$ Assets.\+Scripts.\+Connection\+Manager.\+Questions\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable to store the retrieved questions according to a specific world and topic. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_a888b1544f2ed62c0b432dc722a638d09}\label{class_assets_1_1_scripts_1_1_connection_manager_a888b1544f2ed62c0b432dc722a638d09}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Topics@{Topics}}
+\index{Topics@{Topics}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Topics}{Topics}}
+{\footnotesize\ttfamily List$<$Topic$>$ Assets.\+Scripts.\+Connection\+Manager.\+Topics\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable list to store the list of topics the subject contains the student has selected. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_af45cf639734b2909cfc2e1839583fe32}\label{class_assets_1_1_scripts_1_1_connection_manager_af45cf639734b2909cfc2e1839583fe32}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!user@{user}}
+\index{user@{user}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily User Assets.\+Scripts.\+Connection\+Manager.\+user\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable to store the student\textquotesingle{}s identity upon successfully login. 
+
+\mbox{\Hypertarget{class_assets_1_1_scripts_1_1_connection_manager_af70eee197b568c623529682b748d6cf8}\label{class_assets_1_1_scripts_1_1_connection_manager_af70eee197b568c623529682b748d6cf8}} 
+\index{Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}!Worlds@{Worlds}}
+\index{Worlds@{Worlds}!Assets.Scripts.ConnectionManager@{Assets.Scripts.ConnectionManager}}
+\doxysubsubsection{\texorpdfstring{Worlds}{Worlds}}
+{\footnotesize\ttfamily List$<$World$>$ Assets.\+Scripts.\+Connection\+Manager.\+Worlds\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable to store the world the student has selected. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Connection\+Manager.\+cs\end{DoxyCompactItemize}

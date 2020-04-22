@@ -1,0 +1,351 @@
+\hypertarget{class_room_controller}{}\doxysection{Room\+Controller Class Reference}
+\label{class_room_controller}\index{RoomController@{RoomController}}
+
+
+This controller class holds the methods with photonnetwork connections, as well as the different ways of handling inivitations between 2 players.  
+
+
+Inheritance diagram for Room\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_room_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_room_controller_af076ca5bcde27b8a00ac86821313e880}{Create\+Room}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create a connection into the photon network. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_room_controller_a6459b7d6765dbd980b4b3a162869c7af}{On\+Created\+Room}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to display successful message when the player\textquotesingle{}s game client creates a room. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_room_controller_ab5bd4e2f9a6a54d1abb96cf2d20eaea1}{On\+Create\+Room\+Failed}} (short return\+Code, string message)
+\begin{DoxyCompactList}\small\item\em This method is used to display error message when the player\textquotesingle{}s game client fails to create a room. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a25f0ec48d1e9f8fcb4de9081b65cc15b}{Leave\+Room}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to leave the photon network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_ac988287bd37217ef3cb804b9f8aacd9e}{Send\+Invitation}} (string sender\+Name)
+\begin{DoxyCompactList}\small\item\em This method is used to send the invitation request using \mbox{\hyperlink{class_room_controller_a1f90113f8fedf15447f301551824b308}{R\+P\+C\+\_\+\+Show\+Invitation()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_abf3df5aae188cf87f1f3b09615927f6b}{On\+Click\+Accept\+Invitation}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to accept the invitation request using \mbox{\hyperlink{class_room_controller_aff935d2cf2807eeba8e698f76e3e1a85}{R\+P\+C\+\_\+\+Show\+Multiplayer\+Match\+Other\+Side()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_adbb55897ce7e0a617c3b41b194bb4aee}{Load\+Multiplayer\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to go into multiplayer maze environment \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_afcc037318b0e54e413e9ad9606194ced}{On\+Click\+Decline\+Invitation}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to reject the invitation request using \mbox{\hyperlink{class_room_controller_a5adcc063df67c23065323bfb28a4afe4}{R\+P\+C\+\_\+\+Force\+Leave\+Room()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a7e84205ce7ba4c8b0f9482f32342cad7}{On\+Click\+Cancel\+Invitation}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to cancel invitation on the opponent side using \mbox{\hyperlink{class_room_controller_a67fa844b176d1edff420b7607d0d3b5f}{R\+P\+C\+\_\+\+Hide\+Invitation()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a38e192c2aaec91277efefd27488d51b3}{Score\+Update\+Other\+Side}} (int score)
+\begin{DoxyCompactList}\small\item\em This method is used to update current player score at the opponent side using \mbox{\hyperlink{class_room_controller_acdba6079ac3c40fddc5a63306c25a492}{R\+P\+C\+\_\+\+Score\+Update\+Other\+Side()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a93ec45482e40325e6709a33f977e15a7}{Life\+Update\+Other\+Side}} (int count\+Life)
+\begin{DoxyCompactList}\small\item\em This method is used to update current player live at the opponent side using \mbox{\hyperlink{class_room_controller_a98d6ea0dd6ae6b3af1bd9e789148180e}{R\+P\+C\+\_\+\+Life\+Update\+Other\+Side()}} method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a10f615711b5ce074356c439fd79c6fc7}{Mini\+Chest\+Update\+Other\+Side}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em This method is used to open the mini chest at the slave side using R\+P\+C\+\_\+\+Mini\+Chest\+Updateother\+Side() method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a969fcfa69e6d4551ae3cec1b8361c454}{Game\+Over\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create game over pop up at both master and slave sides using \mbox{\hyperlink{class_room_controller_a080c71287bd7f701b8de1aa005aaa1c7}{R\+P\+C\+\_\+\+Game\+Over\+Pop\+Up()}} method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_room_controller}{Room\+Controller}} \mbox{\hyperlink{class_room_controller_a5a01d82183993dae9689ec4781866e9e}{Instance}}
+\begin{DoxyCompactList}\small\item\em A variable holding the \mbox{\hyperlink{class_room_controller}{Room\+Controller}} Instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_room_controller_a83bba64bad4ef481c65fd1695a34d9e9}{Awake}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to instantiate \mbox{\hyperlink{class_room_controller}{Room\+Controller}} instance to allow other scripts to access the methods define in this class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a1f90113f8fedf15447f301551824b308}{R\+P\+C\+\_\+\+Show\+Invitation}} (string sender\+Name)
+\begin{DoxyCompactList}\small\item\em This method is used show invitation request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_aff935d2cf2807eeba8e698f76e3e1a85}{R\+P\+C\+\_\+\+Show\+Multiplayer\+Match\+Other\+Side}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to display Match up screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a5adcc063df67c23065323bfb28a4afe4}{R\+P\+C\+\_\+\+Force\+Leave\+Room}} ()
+\begin{DoxyCompactList}\small\item\em This method is used when an invitation has been rejected, waiting board will be closed and a reject message will be shown. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a67fa844b176d1edff420b7607d0d3b5f}{R\+P\+C\+\_\+\+Hide\+Invitation}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to hide game invitation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_acdba6079ac3c40fddc5a63306c25a492}{R\+P\+C\+\_\+\+Score\+Update\+Other\+Side}} (int player\+Number, string nickname, int score)
+\begin{DoxyCompactList}\small\item\em This method is used to update player scores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a98d6ea0dd6ae6b3af1bd9e789148180e}{R\+P\+C\+\_\+\+Life\+Update\+Other\+Side}} (int player\+Number, int count\+Life)
+\begin{DoxyCompactList}\small\item\em This method is used to update player lives. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a060542aa83b403ef9f550bddc843c8b8}{R\+P\+C\+\_\+\+Mini\+Chest\+Update\+Other\+Side}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em This method is used to open the mini chest. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_room_controller_a080c71287bd7f701b8de1aa005aaa1c7}{R\+P\+C\+\_\+\+Game\+Over\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to create game over pop up. \end{DoxyCompactList}\item 
+I\+Enumerator \mbox{\hyperlink{class_room_controller_a775c9419864bbe02a4785eaf90ba5444}{Close\+Game\+Over\+Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to close game over pop up after 4 seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_room_controller_a4b0c7810a91665e7fcaca3af13a44efa}{count}} = 0
+\begin{DoxyCompactList}\small\item\em A counter variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds the methods with photonnetwork connections, as well as the different ways of handling inivitations between 2 players. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_room_controller_a83bba64bad4ef481c65fd1695a34d9e9}\label{class_room_controller_a83bba64bad4ef481c65fd1695a34d9e9}} 
+\index{RoomController@{RoomController}!Awake@{Awake}}
+\index{Awake@{Awake}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{Awake()}{Awake()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Awake (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to instantiate \mbox{\hyperlink{class_room_controller}{Room\+Controller}} instance to allow other scripts to access the methods define in this class. 
+
+\mbox{\Hypertarget{class_room_controller_a775c9419864bbe02a4785eaf90ba5444}\label{class_room_controller_a775c9419864bbe02a4785eaf90ba5444}} 
+\index{RoomController@{RoomController}!CloseGameOverPopUp@{CloseGameOverPopUp}}
+\index{CloseGameOverPopUp@{CloseGameOverPopUp}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{CloseGameOverPopUp()}{CloseGameOverPopUp()}}
+{\footnotesize\ttfamily I\+Enumerator Room\+Controller.\+Close\+Game\+Over\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to close game over pop up after 4 seconds. 
+
+\mbox{\Hypertarget{class_room_controller_af076ca5bcde27b8a00ac86821313e880}\label{class_room_controller_af076ca5bcde27b8a00ac86821313e880}} 
+\index{RoomController@{RoomController}!CreateRoom@{CreateRoom}}
+\index{CreateRoom@{CreateRoom}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{CreateRoom()}{CreateRoom()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Create\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to create a connection into the photon network. 
+
+\mbox{\Hypertarget{class_room_controller_a969fcfa69e6d4551ae3cec1b8361c454}\label{class_room_controller_a969fcfa69e6d4551ae3cec1b8361c454}} 
+\index{RoomController@{RoomController}!GameOverPopUp@{GameOverPopUp}}
+\index{GameOverPopUp@{GameOverPopUp}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{GameOverPopUp()}{GameOverPopUp()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Game\+Over\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to create game over pop up at both master and slave sides using \mbox{\hyperlink{class_room_controller_a080c71287bd7f701b8de1aa005aaa1c7}{R\+P\+C\+\_\+\+Game\+Over\+Pop\+Up()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_a25f0ec48d1e9f8fcb4de9081b65cc15b}\label{class_room_controller_a25f0ec48d1e9f8fcb4de9081b65cc15b}} 
+\index{RoomController@{RoomController}!LeaveRoom@{LeaveRoom}}
+\index{LeaveRoom@{LeaveRoom}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{LeaveRoom()}{LeaveRoom()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Leave\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to leave the photon network. 
+
+\mbox{\Hypertarget{class_room_controller_a93ec45482e40325e6709a33f977e15a7}\label{class_room_controller_a93ec45482e40325e6709a33f977e15a7}} 
+\index{RoomController@{RoomController}!LifeUpdateOtherSide@{LifeUpdateOtherSide}}
+\index{LifeUpdateOtherSide@{LifeUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{LifeUpdateOtherSide()}{LifeUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Life\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{int}]{count\+Life }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to update current player live at the opponent side using \mbox{\hyperlink{class_room_controller_a98d6ea0dd6ae6b3af1bd9e789148180e}{R\+P\+C\+\_\+\+Life\+Update\+Other\+Side()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_adbb55897ce7e0a617c3b41b194bb4aee}\label{class_room_controller_adbb55897ce7e0a617c3b41b194bb4aee}} 
+\index{RoomController@{RoomController}!LoadMultiplayerScene@{LoadMultiplayerScene}}
+\index{LoadMultiplayerScene@{LoadMultiplayerScene}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{LoadMultiplayerScene()}{LoadMultiplayerScene()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Load\+Multiplayer\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to go into multiplayer maze environment 
+
+\mbox{\Hypertarget{class_room_controller_a10f615711b5ce074356c439fd79c6fc7}\label{class_room_controller_a10f615711b5ce074356c439fd79c6fc7}} 
+\index{RoomController@{RoomController}!MiniChestUpdateOtherSide@{MiniChestUpdateOtherSide}}
+\index{MiniChestUpdateOtherSide@{MiniChestUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{MiniChestUpdateOtherSide()}{MiniChestUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Mini\+Chest\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to open the mini chest at the slave side using R\+P\+C\+\_\+\+Mini\+Chest\+Updateother\+Side() method. 
+
+\mbox{\Hypertarget{class_room_controller_abf3df5aae188cf87f1f3b09615927f6b}\label{class_room_controller_abf3df5aae188cf87f1f3b09615927f6b}} 
+\index{RoomController@{RoomController}!OnClickAcceptInvitation@{OnClickAcceptInvitation}}
+\index{OnClickAcceptInvitation@{OnClickAcceptInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{OnClickAcceptInvitation()}{OnClickAcceptInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+On\+Click\+Accept\+Invitation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to accept the invitation request using \mbox{\hyperlink{class_room_controller_aff935d2cf2807eeba8e698f76e3e1a85}{R\+P\+C\+\_\+\+Show\+Multiplayer\+Match\+Other\+Side()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_a7e84205ce7ba4c8b0f9482f32342cad7}\label{class_room_controller_a7e84205ce7ba4c8b0f9482f32342cad7}} 
+\index{RoomController@{RoomController}!OnClickCancelInvitation@{OnClickCancelInvitation}}
+\index{OnClickCancelInvitation@{OnClickCancelInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{OnClickCancelInvitation()}{OnClickCancelInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+On\+Click\+Cancel\+Invitation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to cancel invitation on the opponent side using \mbox{\hyperlink{class_room_controller_a67fa844b176d1edff420b7607d0d3b5f}{R\+P\+C\+\_\+\+Hide\+Invitation()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_afcc037318b0e54e413e9ad9606194ced}\label{class_room_controller_afcc037318b0e54e413e9ad9606194ced}} 
+\index{RoomController@{RoomController}!OnClickDeclineInvitation@{OnClickDeclineInvitation}}
+\index{OnClickDeclineInvitation@{OnClickDeclineInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{OnClickDeclineInvitation()}{OnClickDeclineInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+On\+Click\+Decline\+Invitation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to reject the invitation request using \mbox{\hyperlink{class_room_controller_a5adcc063df67c23065323bfb28a4afe4}{R\+P\+C\+\_\+\+Force\+Leave\+Room()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_a6459b7d6765dbd980b4b3a162869c7af}\label{class_room_controller_a6459b7d6765dbd980b4b3a162869c7af}} 
+\index{RoomController@{RoomController}!OnCreatedRoom@{OnCreatedRoom}}
+\index{OnCreatedRoom@{OnCreatedRoom}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{OnCreatedRoom()}{OnCreatedRoom()}}
+{\footnotesize\ttfamily override void Room\+Controller.\+On\+Created\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to display successful message when the player\textquotesingle{}s game client creates a room. 
+
+\mbox{\Hypertarget{class_room_controller_ab5bd4e2f9a6a54d1abb96cf2d20eaea1}\label{class_room_controller_ab5bd4e2f9a6a54d1abb96cf2d20eaea1}} 
+\index{RoomController@{RoomController}!OnCreateRoomFailed@{OnCreateRoomFailed}}
+\index{OnCreateRoomFailed@{OnCreateRoomFailed}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{OnCreateRoomFailed()}{OnCreateRoomFailed()}}
+{\footnotesize\ttfamily override void Room\+Controller.\+On\+Create\+Room\+Failed (\begin{DoxyParamCaption}\item[{short}]{return\+Code,  }\item[{string}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to display error message when the player\textquotesingle{}s game client fails to create a room. 
+
+\mbox{\Hypertarget{class_room_controller_a5adcc063df67c23065323bfb28a4afe4}\label{class_room_controller_a5adcc063df67c23065323bfb28a4afe4}} 
+\index{RoomController@{RoomController}!RPC\_ForceLeaveRoom@{RPC\_ForceLeaveRoom}}
+\index{RPC\_ForceLeaveRoom@{RPC\_ForceLeaveRoom}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_ForceLeaveRoom()}{RPC\_ForceLeaveRoom()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Force\+Leave\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used when an invitation has been rejected, waiting board will be closed and a reject message will be shown. 
+
+\mbox{\Hypertarget{class_room_controller_a080c71287bd7f701b8de1aa005aaa1c7}\label{class_room_controller_a080c71287bd7f701b8de1aa005aaa1c7}} 
+\index{RoomController@{RoomController}!RPC\_GameOverPopUp@{RPC\_GameOverPopUp}}
+\index{RPC\_GameOverPopUp@{RPC\_GameOverPopUp}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_GameOverPopUp()}{RPC\_GameOverPopUp()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Game\+Over\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to create game over pop up. 
+
+\mbox{\Hypertarget{class_room_controller_a67fa844b176d1edff420b7607d0d3b5f}\label{class_room_controller_a67fa844b176d1edff420b7607d0d3b5f}} 
+\index{RoomController@{RoomController}!RPC\_HideInvitation@{RPC\_HideInvitation}}
+\index{RPC\_HideInvitation@{RPC\_HideInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_HideInvitation()}{RPC\_HideInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Hide\+Invitation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to hide game invitation. 
+
+\mbox{\Hypertarget{class_room_controller_a98d6ea0dd6ae6b3af1bd9e789148180e}\label{class_room_controller_a98d6ea0dd6ae6b3af1bd9e789148180e}} 
+\index{RoomController@{RoomController}!RPC\_LifeUpdateOtherSide@{RPC\_LifeUpdateOtherSide}}
+\index{RPC\_LifeUpdateOtherSide@{RPC\_LifeUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_LifeUpdateOtherSide()}{RPC\_LifeUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Life\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{int}]{player\+Number,  }\item[{int}]{count\+Life }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to update player lives. 
+
+\mbox{\Hypertarget{class_room_controller_a060542aa83b403ef9f550bddc843c8b8}\label{class_room_controller_a060542aa83b403ef9f550bddc843c8b8}} 
+\index{RoomController@{RoomController}!RPC\_MiniChestUpdateOtherSide@{RPC\_MiniChestUpdateOtherSide}}
+\index{RPC\_MiniChestUpdateOtherSide@{RPC\_MiniChestUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_MiniChestUpdateOtherSide()}{RPC\_MiniChestUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Mini\+Chest\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to open the mini chest. 
+
+\mbox{\Hypertarget{class_room_controller_acdba6079ac3c40fddc5a63306c25a492}\label{class_room_controller_acdba6079ac3c40fddc5a63306c25a492}} 
+\index{RoomController@{RoomController}!RPC\_ScoreUpdateOtherSide@{RPC\_ScoreUpdateOtherSide}}
+\index{RPC\_ScoreUpdateOtherSide@{RPC\_ScoreUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_ScoreUpdateOtherSide()}{RPC\_ScoreUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Score\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{int}]{player\+Number,  }\item[{string}]{nickname,  }\item[{int}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to update player scores. 
+
+\mbox{\Hypertarget{class_room_controller_a1f90113f8fedf15447f301551824b308}\label{class_room_controller_a1f90113f8fedf15447f301551824b308}} 
+\index{RoomController@{RoomController}!RPC\_ShowInvitation@{RPC\_ShowInvitation}}
+\index{RPC\_ShowInvitation@{RPC\_ShowInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_ShowInvitation()}{RPC\_ShowInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Show\+Invitation (\begin{DoxyParamCaption}\item[{string}]{sender\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used show invitation request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender\+Name} & The master/sender player\textquotesingle{}s name\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_room_controller_aff935d2cf2807eeba8e698f76e3e1a85}\label{class_room_controller_aff935d2cf2807eeba8e698f76e3e1a85}} 
+\index{RoomController@{RoomController}!RPC\_ShowMultiplayerMatchOtherSide@{RPC\_ShowMultiplayerMatchOtherSide}}
+\index{RPC\_ShowMultiplayerMatchOtherSide@{RPC\_ShowMultiplayerMatchOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{RPC\_ShowMultiplayerMatchOtherSide()}{RPC\_ShowMultiplayerMatchOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+R\+P\+C\+\_\+\+Show\+Multiplayer\+Match\+Other\+Side (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is used to display Match up screen. 
+
+\mbox{\Hypertarget{class_room_controller_a38e192c2aaec91277efefd27488d51b3}\label{class_room_controller_a38e192c2aaec91277efefd27488d51b3}} 
+\index{RoomController@{RoomController}!ScoreUpdateOtherSide@{ScoreUpdateOtherSide}}
+\index{ScoreUpdateOtherSide@{ScoreUpdateOtherSide}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{ScoreUpdateOtherSide()}{ScoreUpdateOtherSide()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Score\+Update\+Other\+Side (\begin{DoxyParamCaption}\item[{int}]{score }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to update current player score at the opponent side using \mbox{\hyperlink{class_room_controller_acdba6079ac3c40fddc5a63306c25a492}{R\+P\+C\+\_\+\+Score\+Update\+Other\+Side()}} method. 
+
+\mbox{\Hypertarget{class_room_controller_ac988287bd37217ef3cb804b9f8aacd9e}\label{class_room_controller_ac988287bd37217ef3cb804b9f8aacd9e}} 
+\index{RoomController@{RoomController}!SendInvitation@{SendInvitation}}
+\index{SendInvitation@{SendInvitation}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{SendInvitation()}{SendInvitation()}}
+{\footnotesize\ttfamily void Room\+Controller.\+Send\+Invitation (\begin{DoxyParamCaption}\item[{string}]{sender\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to send the invitation request using \mbox{\hyperlink{class_room_controller_a1f90113f8fedf15447f301551824b308}{R\+P\+C\+\_\+\+Show\+Invitation()}} method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender\+Name} & The master/sender player\textquotesingle{}s name\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_room_controller_a4b0c7810a91665e7fcaca3af13a44efa}\label{class_room_controller_a4b0c7810a91665e7fcaca3af13a44efa}} 
+\index{RoomController@{RoomController}!count@{count}}
+\index{count@{count}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int Room\+Controller.\+count = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A counter variable. 
+
+\mbox{\Hypertarget{class_room_controller_a5a01d82183993dae9689ec4781866e9e}\label{class_room_controller_a5a01d82183993dae9689ec4781866e9e}} 
+\index{RoomController@{RoomController}!Instance@{Instance}}
+\index{Instance@{Instance}!RoomController@{RoomController}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_room_controller}{Room\+Controller}} Room\+Controller.\+Instance\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable holding the \mbox{\hyperlink{class_room_controller}{Room\+Controller}} Instance. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/\+Multiplayer Scripts/Room\+Controller.\+cs\end{DoxyCompactItemize}

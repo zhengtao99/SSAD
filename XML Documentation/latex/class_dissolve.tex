@@ -1,0 +1,122 @@
+\hypertarget{class_dissolve}{}\doxysection{Dissolve Class Reference}
+\label{class_dissolve}\index{Dissolve@{Dissolve}}
+
+
+This entity class is used to model dissolving materials, the class contains attributes and behaviour for a given game object to dissolve.  
+
+
+Inheritance diagram for Dissolve\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_dissolve}
+\end{center}
+\end{figure}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dissolve_aa99c6bdb9be4a0e4025c10f9a57b9097}{On\+Enable}} ()
+\begin{DoxyCompactList}\small\item\em Tis method will be called when the dissolve material is enabled and the object will starts to dissolve. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dissolve_aa54567fbca625bf5234731a5de8a5dba}{On\+Disable}} ()
+\begin{DoxyCompactList}\small\item\em This method will be called when the dissolve material is disabled and the object recover to it\textquotesingle{}s original state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_dissolve_abc795a8fc98689b76c7efb0864c46d68}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame and it will constantly check if the object is full dissolved. If so, the object will be disabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Material \mbox{\hyperlink{class_dissolve_a12df723abfdb9dd845a380b96999c746}{material}}
+\begin{DoxyCompactList}\small\item\em A variable contain the initial object\textquotesingle{}s material and the text material. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_dissolve_af9550782e8bb4c58f2111bd6c28eb468}\label{class_dissolve_af9550782e8bb4c58f2111bd6c28eb468}} 
+Material {\bfseries text\+Material}
+\item 
+bool \mbox{\hyperlink{class_dissolve_af6d1f396a68a1bec6271de04920a5f99}{is\+Dissolving}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to check if the object is dissolving. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_dissolve_aab8b3a4050fadbf8f8e1892895f1601e}{dissolved}}
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to check if the object has dissolved \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_dissolve_a1dc235202618ed067755437978803182}{visible}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the visibility of the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This entity class is used to model dissolving materials, the class contains attributes and behaviour for a given game object to dissolve. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dissolve_aa54567fbca625bf5234731a5de8a5dba}\label{class_dissolve_aa54567fbca625bf5234731a5de8a5dba}} 
+\index{Dissolve@{Dissolve}!OnDisable@{OnDisable}}
+\index{OnDisable@{OnDisable}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{OnDisable()}{OnDisable()}}
+{\footnotesize\ttfamily void Dissolve.\+On\+Disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method will be called when the dissolve material is disabled and the object recover to it\textquotesingle{}s original state. 
+
+\mbox{\Hypertarget{class_dissolve_aa99c6bdb9be4a0e4025c10f9a57b9097}\label{class_dissolve_aa99c6bdb9be4a0e4025c10f9a57b9097}} 
+\index{Dissolve@{Dissolve}!OnEnable@{OnEnable}}
+\index{OnEnable@{OnEnable}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
+{\footnotesize\ttfamily void Dissolve.\+On\+Enable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Tis method will be called when the dissolve material is enabled and the object will starts to dissolve. 
+
+\mbox{\Hypertarget{class_dissolve_abc795a8fc98689b76c7efb0864c46d68}\label{class_dissolve_abc795a8fc98689b76c7efb0864c46d68}} 
+\index{Dissolve@{Dissolve}!Update@{Update}}
+\index{Update@{Update}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Dissolve.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame and it will constantly check if the object is full dissolved. If so, the object will be disabled. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_dissolve_aab8b3a4050fadbf8f8e1892895f1601e}\label{class_dissolve_aab8b3a4050fadbf8f8e1892895f1601e}} 
+\index{Dissolve@{Dissolve}!dissolved@{dissolved}}
+\index{dissolved@{dissolved}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{dissolved}{dissolved}}
+{\footnotesize\ttfamily bool Dissolve.\+dissolved\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to check if the object has dissolved 
+
+\mbox{\Hypertarget{class_dissolve_af6d1f396a68a1bec6271de04920a5f99}\label{class_dissolve_af6d1f396a68a1bec6271de04920a5f99}} 
+\index{Dissolve@{Dissolve}!isDissolving@{isDissolving}}
+\index{isDissolving@{isDissolving}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{isDissolving}{isDissolving}}
+{\footnotesize\ttfamily bool Dissolve.\+is\+Dissolving = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to check if the object is dissolving. 
+
+\mbox{\Hypertarget{class_dissolve_a12df723abfdb9dd845a380b96999c746}\label{class_dissolve_a12df723abfdb9dd845a380b96999c746}} 
+\index{Dissolve@{Dissolve}!material@{material}}
+\index{material@{material}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{material}{material}}
+{\footnotesize\ttfamily Material Dissolve.\+material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable contain the initial object\textquotesingle{}s material and the text material. 
+
+\mbox{\Hypertarget{class_dissolve_a1dc235202618ed067755437978803182}\label{class_dissolve_a1dc235202618ed067755437978803182}} 
+\index{Dissolve@{Dissolve}!visible@{visible}}
+\index{visible@{visible}!Dissolve@{Dissolve}}
+\doxysubsubsection{\texorpdfstring{visible}{visible}}
+{\footnotesize\ttfamily float Dissolve.\+visible\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the visibility of the object. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Dissolve.\+cs\end{DoxyCompactItemize}

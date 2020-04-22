@@ -1,0 +1,311 @@
+\hypertarget{class_section_controller}{}\doxysection{Section\+Controller Class Reference}
+\label{class_section_controller}\index{SectionController@{SectionController}}
+
+
+This controller class holds all the methods pertaining to the animations and functions in the section/topic selection page.  
+
+
+Inheritance diagram for Section\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_section_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_section_controller_ad35cdceb63e0615ff1a9f473314ca1df}{Set\+Current\+Page}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to set default topic and congifuring the topic\textquotesingle{}s neighbouring topics, it will be used to perform the animation of switching topics when needed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_section_controller_a5640b5c70a62b9f7572c10112ba6a495}{On\+Click\+Back}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to perform the switching topic animation when the left button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_section_controller_a87f85064d8e299057560eb362bd35778}{On\+Click\+Forward}} ()
+\begin{DoxyCompactList}\small\item\em This method is used to perform the switching topic animation when the right button is clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_section_controller_a45f0d963d8d73435988b3ec42fdb8ac2}{View\+Leaderboard}} ()
+\begin{DoxyCompactList}\small\item\em This method is used navigate the player to the leaderboard page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_section_controller_acfbb1fd0707d14a46a8f6c94acd5bb14}{Start\+Section\+Page}} ()
+\begin{DoxyCompactList}\small\item\em This method is used display the initial section page with all the default game objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Text \mbox{\hyperlink{class_section_controller_a0fbbf4cc82d01d1cbcda88d22fa13b1c}{section\+Txt}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the section/topic name. \end{DoxyCompactList}\item 
+Game\+Object\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_section_controller_a10f1752891c791d488dbc877433d9eaa}{images}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of the section/topic game objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Topic \mbox{\hyperlink{class_section_controller_af468e13b138c98dbaf6236c84e4bbf6f}{current\+Topic}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current topic selected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_section_controller_a13e74debf8319e92a08b5be989edcc88}{Update}} ()
+\begin{DoxyCompactList}\small\item\em This method is called once per frame, it is responsible to detect if player choses to change world and perform the section/topic game object manipulation/animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_section_controller_afbb56eb4abbc90949204e741e9763534}{current\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the current section/topic game object. \end{DoxyCompactList}\item 
+Game\+Object \mbox{\hyperlink{class_section_controller_a3656572e375f3f52fcb86502a5309b9f}{last\+Img}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the previous section/topic game object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_section_controller_a83094e825f93ecbd32ade4a151ec0bb4}{current\+Page}} = 0
+\begin{DoxyCompactList}\small\item\em A variable that contains page number representing the index of the topics selected. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_section_controller_a95abbd253f9180a4127d5b95acb392ea}{speed}} = 500.\+0f
+\begin{DoxyCompactList}\small\item\em A variable that contains speed which controls the animation\textquotesingle{}s movement. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_section_controller_a779be5c7a7477a7a01838b8f67711d12}{move\+Current}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected the next topic. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_section_controller_af382b1c1801501444479ea50bdb9272a}{move\+Last}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected the previous topic. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_section_controller_aece2720b06d413093176c94eb183a456}{right}} = false
+\begin{DoxyCompactList}\small\item\em A variable that contains a boolean to detect if the player selected to the right arrow. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_section_controller_a9c505222c39295ed36fef6664610daa8}{last\+Img\+Dest}}
+\begin{DoxyCompactList}\small\item\em A variable that contains the previous image destination location. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_section_controller_a2411987b63fc0fa4b5023efbb88c64ee}{current\+Img\+Dest}} = new Vector3(300f, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains the current image destination location. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_section_controller_a4577af45c4552e3dffe76eed31b9c6a9}{scale\+Factor}} = new Vector3(0.\+8f, 0.\+8f, 0.\+8f)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale the current to previous image size. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_section_controller_a835aa025de0f9502afa9b341b2156c62}{left\+End}} = new Vector3(150, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale image to the left. \end{DoxyCompactList}\item 
+Vector3 \mbox{\hyperlink{class_section_controller_a63386d796c39342495f6f8438f126352}{right\+End}} = new Vector3(450f, 0, 0)
+\begin{DoxyCompactList}\small\item\em A variable that contains scale to scale image to the right. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static string\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_section_controller_a97b488239dffd82c5503a4b03227ab92}{sections}}
+\begin{DoxyCompactList}\small\item\em A variable that contains an array of section/topic names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This controller class holds all the methods pertaining to the animations and functions in the section/topic selection page. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_section_controller_a5640b5c70a62b9f7572c10112ba6a495}\label{class_section_controller_a5640b5c70a62b9f7572c10112ba6a495}} 
+\index{SectionController@{SectionController}!OnClickBack@{OnClickBack}}
+\index{OnClickBack@{OnClickBack}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{OnClickBack()}{OnClickBack()}}
+{\footnotesize\ttfamily void Section\+Controller.\+On\+Click\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to perform the switching topic animation when the left button is clicked. 
+
+\mbox{\Hypertarget{class_section_controller_a87f85064d8e299057560eb362bd35778}\label{class_section_controller_a87f85064d8e299057560eb362bd35778}} 
+\index{SectionController@{SectionController}!OnClickForward@{OnClickForward}}
+\index{OnClickForward@{OnClickForward}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{OnClickForward()}{OnClickForward()}}
+{\footnotesize\ttfamily void Section\+Controller.\+On\+Click\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to perform the switching topic animation when the right button is clicked. 
+
+\mbox{\Hypertarget{class_section_controller_ad35cdceb63e0615ff1a9f473314ca1df}\label{class_section_controller_ad35cdceb63e0615ff1a9f473314ca1df}} 
+\index{SectionController@{SectionController}!SetCurrentPage@{SetCurrentPage}}
+\index{SetCurrentPage@{SetCurrentPage}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{SetCurrentPage()}{SetCurrentPage()}}
+{\footnotesize\ttfamily void Section\+Controller.\+Set\+Current\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used to set default topic and congifuring the topic\textquotesingle{}s neighbouring topics, it will be used to perform the animation of switching topics when needed. 
+
+\mbox{\Hypertarget{class_section_controller_acfbb1fd0707d14a46a8f6c94acd5bb14}\label{class_section_controller_acfbb1fd0707d14a46a8f6c94acd5bb14}} 
+\index{SectionController@{SectionController}!StartSectionPage@{StartSectionPage}}
+\index{StartSectionPage@{StartSectionPage}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{StartSectionPage()}{StartSectionPage()}}
+{\footnotesize\ttfamily void Section\+Controller.\+Start\+Section\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used display the initial section page with all the default game objects. 
+
+\mbox{\Hypertarget{class_section_controller_a13e74debf8319e92a08b5be989edcc88}\label{class_section_controller_a13e74debf8319e92a08b5be989edcc88}} 
+\index{SectionController@{SectionController}!Update@{Update}}
+\index{Update@{Update}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Section\+Controller.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+This method is called once per frame, it is responsible to detect if player choses to change world and perform the section/topic game object manipulation/animation. 
+
+\mbox{\Hypertarget{class_section_controller_a45f0d963d8d73435988b3ec42fdb8ac2}\label{class_section_controller_a45f0d963d8d73435988b3ec42fdb8ac2}} 
+\index{SectionController@{SectionController}!ViewLeaderboard@{ViewLeaderboard}}
+\index{ViewLeaderboard@{ViewLeaderboard}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{ViewLeaderboard()}{ViewLeaderboard()}}
+{\footnotesize\ttfamily void Section\+Controller.\+View\+Leaderboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is used navigate the player to the leaderboard page. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_section_controller_afbb56eb4abbc90949204e741e9763534}\label{class_section_controller_afbb56eb4abbc90949204e741e9763534}} 
+\index{SectionController@{SectionController}!currentImg@{currentImg}}
+\index{currentImg@{currentImg}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{currentImg}{currentImg}}
+{\footnotesize\ttfamily Game\+Object Section\+Controller.\+current\+Img\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the current section/topic game object. 
+
+\mbox{\Hypertarget{class_section_controller_a2411987b63fc0fa4b5023efbb88c64ee}\label{class_section_controller_a2411987b63fc0fa4b5023efbb88c64ee}} 
+\index{SectionController@{SectionController}!currentImgDest@{currentImgDest}}
+\index{currentImgDest@{currentImgDest}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{currentImgDest}{currentImgDest}}
+{\footnotesize\ttfamily Vector3 Section\+Controller.\+current\+Img\+Dest = new Vector3(300f, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the current image destination location. 
+
+\mbox{\Hypertarget{class_section_controller_a83094e825f93ecbd32ade4a151ec0bb4}\label{class_section_controller_a83094e825f93ecbd32ade4a151ec0bb4}} 
+\index{SectionController@{SectionController}!currentPage@{currentPage}}
+\index{currentPage@{currentPage}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{currentPage}{currentPage}}
+{\footnotesize\ttfamily int Section\+Controller.\+current\+Page = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains page number representing the index of the topics selected. 
+
+\mbox{\Hypertarget{class_section_controller_af468e13b138c98dbaf6236c84e4bbf6f}\label{class_section_controller_af468e13b138c98dbaf6236c84e4bbf6f}} 
+\index{SectionController@{SectionController}!currentTopic@{currentTopic}}
+\index{currentTopic@{currentTopic}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{currentTopic}{currentTopic}}
+{\footnotesize\ttfamily Topic Section\+Controller.\+current\+Topic\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A variable that contains the current topic selected. 
+
+\mbox{\Hypertarget{class_section_controller_a10f1752891c791d488dbc877433d9eaa}\label{class_section_controller_a10f1752891c791d488dbc877433d9eaa}} 
+\index{SectionController@{SectionController}!images@{images}}
+\index{images@{images}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{images}{images}}
+{\footnotesize\ttfamily Game\+Object \mbox{[}$\,$\mbox{]} Section\+Controller.\+images}
+
+
+
+A variable that contains an array of the section/topic game objects. 
+
+\mbox{\Hypertarget{class_section_controller_a3656572e375f3f52fcb86502a5309b9f}\label{class_section_controller_a3656572e375f3f52fcb86502a5309b9f}} 
+\index{SectionController@{SectionController}!lastImg@{lastImg}}
+\index{lastImg@{lastImg}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{lastImg}{lastImg}}
+{\footnotesize\ttfamily Game\+Object Section\+Controller.\+last\+Img\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the previous section/topic game object. 
+
+\mbox{\Hypertarget{class_section_controller_a9c505222c39295ed36fef6664610daa8}\label{class_section_controller_a9c505222c39295ed36fef6664610daa8}} 
+\index{SectionController@{SectionController}!lastImgDest@{lastImgDest}}
+\index{lastImgDest@{lastImgDest}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{lastImgDest}{lastImgDest}}
+{\footnotesize\ttfamily Vector3 Section\+Controller.\+last\+Img\+Dest\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains the previous image destination location. 
+
+\mbox{\Hypertarget{class_section_controller_a835aa025de0f9502afa9b341b2156c62}\label{class_section_controller_a835aa025de0f9502afa9b341b2156c62}} 
+\index{SectionController@{SectionController}!leftEnd@{leftEnd}}
+\index{leftEnd@{leftEnd}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{leftEnd}{leftEnd}}
+{\footnotesize\ttfamily Vector3 Section\+Controller.\+left\+End = new Vector3(150, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains scale to scale image to the left. 
+
+\mbox{\Hypertarget{class_section_controller_a779be5c7a7477a7a01838b8f67711d12}\label{class_section_controller_a779be5c7a7477a7a01838b8f67711d12}} 
+\index{SectionController@{SectionController}!moveCurrent@{moveCurrent}}
+\index{moveCurrent@{moveCurrent}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{moveCurrent}{moveCurrent}}
+{\footnotesize\ttfamily bool Section\+Controller.\+move\+Current = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected the next topic. 
+
+\mbox{\Hypertarget{class_section_controller_af382b1c1801501444479ea50bdb9272a}\label{class_section_controller_af382b1c1801501444479ea50bdb9272a}} 
+\index{SectionController@{SectionController}!moveLast@{moveLast}}
+\index{moveLast@{moveLast}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{moveLast}{moveLast}}
+{\footnotesize\ttfamily bool Section\+Controller.\+move\+Last = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected the previous topic. 
+
+\mbox{\Hypertarget{class_section_controller_aece2720b06d413093176c94eb183a456}\label{class_section_controller_aece2720b06d413093176c94eb183a456}} 
+\index{SectionController@{SectionController}!right@{right}}
+\index{right@{right}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily bool Section\+Controller.\+right = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains a boolean to detect if the player selected to the right arrow. 
+
+\mbox{\Hypertarget{class_section_controller_a63386d796c39342495f6f8438f126352}\label{class_section_controller_a63386d796c39342495f6f8438f126352}} 
+\index{SectionController@{SectionController}!rightEnd@{rightEnd}}
+\index{rightEnd@{rightEnd}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{rightEnd}{rightEnd}}
+{\footnotesize\ttfamily Vector3 Section\+Controller.\+right\+End = new Vector3(450f, 0, 0)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains scale to scale image to the right. 
+
+\mbox{\Hypertarget{class_section_controller_a4577af45c4552e3dffe76eed31b9c6a9}\label{class_section_controller_a4577af45c4552e3dffe76eed31b9c6a9}} 
+\index{SectionController@{SectionController}!scaleFactor@{scaleFactor}}
+\index{scaleFactor@{scaleFactor}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{scaleFactor}{scaleFactor}}
+{\footnotesize\ttfamily Vector3 Section\+Controller.\+scale\+Factor = new Vector3(0.\+8f, 0.\+8f, 0.\+8f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains scale to scale the current to previous image size. 
+
+\mbox{\Hypertarget{class_section_controller_a97b488239dffd82c5503a4b03227ab92}\label{class_section_controller_a97b488239dffd82c5503a4b03227ab92}} 
+\index{SectionController@{SectionController}!sections@{sections}}
+\index{sections@{sections}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{sections}{sections}}
+{\footnotesize\ttfamily string \mbox{[}$\,$\mbox{]} Section\+Controller.\+sections\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+A variable that contains an array of section/topic names. 
+
+\mbox{\Hypertarget{class_section_controller_a0fbbf4cc82d01d1cbcda88d22fa13b1c}\label{class_section_controller_a0fbbf4cc82d01d1cbcda88d22fa13b1c}} 
+\index{SectionController@{SectionController}!sectionTxt@{sectionTxt}}
+\index{sectionTxt@{sectionTxt}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{sectionTxt}{sectionTxt}}
+{\footnotesize\ttfamily Text Section\+Controller.\+section\+Txt}
+
+
+
+A variable that contains the section/topic name. 
+
+\mbox{\Hypertarget{class_section_controller_a95abbd253f9180a4127d5b95acb392ea}\label{class_section_controller_a95abbd253f9180a4127d5b95acb392ea}} 
+\index{SectionController@{SectionController}!speed@{speed}}
+\index{speed@{speed}!SectionController@{SectionController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Section\+Controller.\+speed = 500.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A variable that contains speed which controls the animation\textquotesingle{}s movement. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Yuanchao/\+Documents/\+Git\+Hub/\+S\+S\+A\+D/\+Assets/\+Scripts/Section\+Controller.\+cs\end{DoxyCompactItemize}
