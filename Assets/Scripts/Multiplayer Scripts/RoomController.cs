@@ -144,6 +144,7 @@ public class RoomController : MonoBehaviourPunCallbacks
     /// </summary>
     public void LoadMultiplayerScene()
     {
+        StopAllCoroutines();
         //Set room with IsOpen and IsVisible
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;

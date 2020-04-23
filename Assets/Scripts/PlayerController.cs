@@ -453,6 +453,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void LifeUpdate()
     {
+        StopAllCoroutines();
         countLife -= 1;
         Destroy(heartArr[countLife]);
         //lifeText.text = "Life: " + countLife;

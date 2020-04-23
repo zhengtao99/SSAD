@@ -270,6 +270,7 @@ public class MyPlayerController : MonoBehaviour
     /// </summary>
     public void LifeUpdate()
     {
+        StopAllCoroutines();
         countLife -= 1;
         if (PV.IsMine)
         {

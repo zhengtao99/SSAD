@@ -204,6 +204,7 @@ public class SectionController : MonoBehaviour
     /// </summary>
     public void StartSectionPage()
     {
+        StopAllCoroutines();
         this.currentPage = 0;
         sections = ConnectionManager.Topics.OrderByDescending(z => z.Name).Select(z => z.Name).ToArray();
         currentTopic = ConnectionManager.Topics.Where(z => z.Name == sections[currentPage]).First();

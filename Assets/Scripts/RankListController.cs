@@ -99,8 +99,7 @@ public class RankListController : MonoBehaviour
     /// <param name="highscore">Player's highscore</param>
     /// <param name="category">Current Topic selected</param>
     public void AddRank(int id, string Search, string Filter, Highscore highscore, string category)
-    {
-        
+    {       
         StopAllCoroutines();
         ConnectionManager cm = new ConnectionManager();
         GameObject rank = Instantiate(rankTemplate) as GameObject;
@@ -133,6 +132,7 @@ public class RankListController : MonoBehaviour
     /// </summary>
     public void ClearRanks()
     {
+        StopAllCoroutines();
         foreach(var rank in ranks)
         {
             Destroy(rank);
@@ -145,6 +145,7 @@ public class RankListController : MonoBehaviour
     /// <param name="highscore">Player's highscore for a selected topic or world.</param>
     public void SetCurrentPlayerRank(Highscore highscore)
     {
+        StopAllCoroutines();
         TextMeshProUGUI indexText = currentPlayerRank.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI nameText = currentPlayerRank.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI levelText = currentPlayerRank.transform.GetChild(2).GetComponent<TextMeshProUGUI>();

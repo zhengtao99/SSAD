@@ -760,6 +760,7 @@ public class GameManager : MonoBehaviour
     /// <param name="TopicId">Player's selected topic id.</param>
     public void loadClearedStages(int TopicId)
     {
+        StopAllCoroutines();
         ConnectionManager cm = new ConnectionManager();
         StartCoroutine(cm.GetClearedStages(TopicId));
     }

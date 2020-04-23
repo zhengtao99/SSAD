@@ -42,14 +42,15 @@ public class LoginController : MonoBehaviourPunCallbacks
         var password = inputFields.Where(z => z.name == "Password").First().text;
         nickname = username;
         StartCoroutine(ConnectionManager.Login(username, password));
+      
     }
 
     /// <summary>
     /// This method is responsible for the changing to world page on successful login.
     /// </summary
-    public static void Result(string result)
+    public  void Result(string result)
     {
-        
+        StopAllCoroutines();
         var message = loginPage.GetComponentsInChildren<Text>().Where(z => z.name == "Message").First();
         message.enabled = true;
         message.text = result;

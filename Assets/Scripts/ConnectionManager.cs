@@ -83,7 +83,7 @@ namespace Assets.Scripts
             }
             catch(Exception)
             {
-                LoginController.Result(www.downloadHandler.text.Replace("\"",""));
+               GameObject.Find("LoginPage").GetComponent<LoginController>().Result(www.downloadHandler.text.Replace("\"", ""));
             }
             
         }

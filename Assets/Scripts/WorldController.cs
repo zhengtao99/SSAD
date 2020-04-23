@@ -223,6 +223,7 @@ public class WorldController : MonoBehaviour
     /// </summary>
     public void StartWorldPage()
     {
+        StopAllCoroutines();
         Destroy(lastImg);
         Destroy(currentImg);
         worlds = ConnectionManager.Worlds.Select(z => z.Name).ToArray();
