@@ -31,7 +31,7 @@ public class TestConnect : MonoBehaviourPunCallbacks  //inherit MonoBehaviourPun
             PhotonNetwork.NickName = ConnectionManager.user.FirstName;
 
             //Get GameVersion
-            PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
+            PhotonNetwork.GameVersion = "0.0.1";
 
             PhotonNetwork.ConnectUsingSettings();  //connect by photon app id
         }

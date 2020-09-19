@@ -21,11 +21,6 @@ public class MultiplayerSceneManager : MonoBehaviour
     public GameObject loading;
 
     /// <summary>
-    /// A variable that contains multiplayer page game object.
-    /// </summary>
-    public GameObject multiplayerMatch;
-
-    /// <summary>
     /// A variable that contains play page game object.
     /// </summary>
     public GameObject playPage;
@@ -61,7 +56,6 @@ public class MultiplayerSceneManager : MonoBehaviour
     public enum PageState
     {
         None,    //None of others
-        MultiplayerMatch,
         Play,
         ChestPopUp,
         QuestionPopUp,
@@ -91,13 +85,6 @@ public class MultiplayerSceneManager : MonoBehaviour
         switch (state)
         {
             case PageState.None:
-                multiplayerMatch.SetActive(false);
-                playPage.SetActive(false);
-                chestPopUpPage.SetActive(false);
-                questionPopUpPage.SetActive(false);
-                break;
-            case PageState.MultiplayerMatch:
-                multiplayerMatch.SetActive(true);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
@@ -105,25 +92,21 @@ public class MultiplayerSceneManager : MonoBehaviour
             case PageState.Play:
                 FindObjectOfType<SoundManager>().Play("MediumStage");
                 FindObjectOfType<SoundManager>().Stop("Lobby");
-                multiplayerMatch.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.ChestPopUp:
-                multiplayerMatch.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(true);
                 questionPopUpPage.SetActive(false);
                 break;
             case PageState.QuestionPopUp:
-                multiplayerMatch.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(true);
                 questionPopUpPage.SetActive(true);
                 break;
             case PageState.GameOverPopUp:
-                multiplayerMatch.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
                 questionPopUpPage.SetActive(false);
@@ -189,14 +172,6 @@ public class MultiplayerSceneManager : MonoBehaviour
     public void HideLoading()
     {
         loading.SetActive(false);
-    }
-
-    /// <summary>
-    /// This method is called to display multiplayer match up page for both players.
-    /// </summary>
-    public void MultiplayerMatchingUI()
-    {
-        SetPageState(PageState.MultiplayerMatch);
     }
 
     /// <summary>

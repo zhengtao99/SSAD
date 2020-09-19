@@ -34,16 +34,6 @@ public class GameManager : MonoBehaviour
     public GameObject profilePage;
 
     /// <summary>
-    /// A variable that contains ready page game object.
-    /// </summary>
-    public GameObject readyPage;
-
-    /// <summary>
-    /// A variable that contains start page game object.
-    /// </summary>
-    public GameObject startPage;
-
-    /// <summary>
     /// A variable that contains play page game object.
     /// </summary>
     public GameObject playPage;
@@ -174,7 +164,6 @@ public class GameManager : MonoBehaviour
     public enum PageState {
         None,    //None of others
         Profile,
-        Ready,
         Play,
         GameOver,
         ChestPopUp,
@@ -230,31 +219,6 @@ public class GameManager : MonoBehaviour
         switch (state) {
             case PageState.None:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
-                gameOverPage.SetActive(false);
-                playPage.SetActive(false);
-                chestPopUpPage.SetActive(false);
-                worldPage.SetActive(false);
-                sectionPage.SetActive(false);
-                questionPopUpPage.SetActive(false);
-                levelPage.SetActive(false);
-                unlockedLevelPopUp.SetActive(false);
-                completedLevelPopUp.SetActive(false);
-                winLevelPopUp.SetActive(false);
-                leaderboardPage.SetActive(false);
-                multiPlayerPage.SetActive(false);
-                modePage.SetActive(false);
-                onlinePlayerListingsPage.SetActive(false);
-                invitation.SetActive(false);
-                waitingBoard.SetActive(false);
-                mutiplayerMatchPage.SetActive(false);
-                break;
-           
-            case PageState.Ready:
-                profilePage.SetActive(false);
-
-                readyPage.SetActive(true);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
@@ -277,8 +241,6 @@ public class GameManager : MonoBehaviour
 
                 //FindObjectOfType<SoundManager>().Pause("EasyStage");
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(true);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
@@ -315,8 +277,6 @@ public class GameManager : MonoBehaviour
                 //FindObjectOfType<SoundManager>().Play("EasyStage");
                 FindObjectOfType<SoundManager>().Stop("Lobby");
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(false);
@@ -337,8 +297,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.ChestPopUp:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 chestPopUpPage.SetActive(true);
@@ -360,8 +318,6 @@ public class GameManager : MonoBehaviour
             case PageState.WorldUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
@@ -383,8 +339,6 @@ public class GameManager : MonoBehaviour
             case PageState.SectionUI:
                 FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
@@ -406,8 +360,6 @@ public class GameManager : MonoBehaviour
             case PageState.LeaderboardPage:
                 FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 chestPopUpPage.SetActive(false);
@@ -428,8 +380,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.QuestionPopUp:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 worldPage.SetActive(false);
@@ -465,8 +415,6 @@ public class GameManager : MonoBehaviour
                     }
                 FindObjectOfType<SoundManager>().Play("Lobby");
                 profilePage.SetActive(true);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -487,8 +435,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.UnlockedLevelPopUp:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -509,8 +455,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.CompletedLevelPopUp:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -531,8 +475,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.GameWin:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(true);
                 worldPage.SetActive(false);
@@ -553,8 +495,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.MultiplayerPage:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -577,8 +517,6 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<SoundManager>().Play("Lobby");
                 warningInModePage.SetActive(false);
                 profilePage.SetActive(true);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -599,8 +537,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.OnlinePlayerListingsPage:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -621,8 +557,6 @@ public class GameManager : MonoBehaviour
                 break;
             case PageState.MultiplayerMatchPage:
                 profilePage.SetActive(false);
-
-                readyPage.SetActive(false);
                 gameOverPage.SetActive(false);
                 playPage.SetActive(false);
                 worldPage.SetActive(false);
@@ -862,14 +796,6 @@ public class GameManager : MonoBehaviour
     public void ViewLeaderboard()
     {
         SetPageState(PageState.LeaderboardPage);
-    }
-
-    /// <summary>
-    /// This method is called to display the topic selection page.
-    /// </summary>
-    public void Ready()
-    {
-        SetPageState(PageState.Ready);
     }
 
     /// <summary>
